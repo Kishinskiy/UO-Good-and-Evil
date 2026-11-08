@@ -1,0 +1,68 @@
+
+# Project Assemblies
+/Server/bin
+/Server/obj
+/Scripts/bin
+/Scripts/obj
+/Settings/bin
+/Settings/obj
+/Setup/bin
+/Setup/obj
+/Application/bin
+/Application/obj
+
+# Common Directories
+/.vs
+/.JustCode
+/Honesty
+/Logs
+/Backups
+/Saves
+/Web
+/Docs
+/Reports
+
+# Custom Directories
+/VitaNexCore
+/Leaderboard
+/UltimaLive
+/TheBox
+/Export
+/Cache
+
+# Build Files
+/Server.dll
+/Scripts.dll
+/Settings.dll
+
+# Common Files
+/firewall.cfg
+/drng64.dll
+/drng32.dll
+/libdrng.so
+/System.Drawing.Common.dll
+
+# Custom Files
+/TotalAccountGold.txt
+
+# Wildcard Files
+*.pdb
+*.exe
+*.exe.mdb
+*.exe.config
+*.dll.config
+*.sh
+*.suo
+*.idea
+*.log
+*.bin
+*.csproj.user
+*.DotSettings.user
+*.ini
+
+# Include Data Files
+!/Data/*
+!/Data/Binary/*
+
+# Exclude Data Files
+/Data/PVPTournamentSystemData
