@@ -378,6 +378,7 @@ namespace Server.Engines.CannedEvil
 
             TimerRegistry.Register(_TimerID, this, TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(1), false, spawner => spawner.OnSlice());
             TimerRegistry.RemoveFromRegistry(_RestartTimerID, this);
+            m_RestartTime = DateTime.MinValue;
 
             if (m_Altar != null)
                 m_Altar.Hue = 0;
