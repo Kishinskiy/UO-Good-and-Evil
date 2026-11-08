@@ -1,0 +1,94 @@
+<?xml version="1.0" standalone="yes"?>
+<Spawns>
+  <!-- Fixed XMLSpawner2 points for mercenary recruiters on Trammel. -->
+  <Points>
+    <Name>Mercenary Captain Moonglow</Name>
+    <UniqueId>7c76d9cb-7cf8-45fc-9387-81c590c69b81</UniqueId>
+    <Map>Trammel</Map>
+    <X>4418</X><Y>1044</Y><Width>0</Width><Height>0</Height>
+    <CentreX>4418</CentreX><CentreY>1044</CentreY><CentreZ>-2</CentreZ>
+    <Range>0</Range><MaxCount>1</MaxCount><MinDelay>10</MinDelay><MaxDelay>10</MaxDelay>
+    <Team>0</Team><IsGroup>False</IsGroup><IsRunning>True</IsRunning>
+    <Objects2>MercenaryCaptain:MX=1:SB=0:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1</Objects2>
+  </Points>
+  <Points>
+    <Name>Mercenary Captain Britain</Name>
+    <UniqueId>83677019-d823-4230-8297-7704a9904261</UniqueId>
+    <Map>Trammel</Map>
+    <X>1438</X><Y>1760</Y><Width>0</Width><Height>0</Height>
+    <CentreX>1438</CentreX><CentreY>1760</CentreY><CentreZ>-2</CentreZ>
+    <Range>0</Range><MaxCount>1</MaxCount><MinDelay>10</MinDelay><MaxDelay>10</MaxDelay>
+    <Team>0</Team><IsGroup>False</IsGroup><IsRunning>True</IsRunning>
+    <Objects2>MercenaryCaptain:MX=1:SB=0:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1</Objects2>
+  </Points>
+  <Points>
+    <Name>Mercenary Captain Jhelom</Name>
+    <UniqueId>960c0a99-fd93-4f90-83ce-eab8b5767425</UniqueId>
+    <Map>Trammel</Map>
+    <X>1379</X><Y>3879</Y><Width>0</Width><Height>0</Height>
+    <CentreX>1379</CentreX><CentreY>3879</CentreY><CentreZ>0</CentreZ>
+    <Range>0</Range><MaxCount>1</MaxCount><MinDelay>10</MinDelay><MaxDelay>10</MaxDelay>
+    <Team>0</Team><IsGroup>False</IsGroup><IsRunning>True</IsRunning>
+    <Objects2>MercenaryCaptain:MX=1:SB=0:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1</Objects2>
+  </Points>
+  <Points>
+    <Name>Mercenary Captain Yew</Name>
+    <UniqueId>8f36cf75-b988-45fc-a801-39a1cd5f5f0d</UniqueId>
+    <Map>Trammel</Map>
+    <X>623</X><Y>1043</Y><Width>0</Width><Height>0</Height>
+    <CentreX>623</CentreX><CentreY>1043</CentreY><CentreZ>0</CentreZ>
+    <Range>0</Range><MaxCount>1</MaxCount><MinDelay>10</MinDelay><MaxDelay>10</MaxDelay>
+    <Team>0</Team><IsGroup>False</IsGroup><IsRunning>True</IsRunning>
+    <Objects2>MercenaryCaptain:MX=1:SB=0:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1</Objects2>
+  </Points>
+  <Points>
+    <Name>Mercenary Captain Minoc</Name>
+    <UniqueId>883fab84-6cd8-4ed1-8c31-cc57c6d65377</UniqueId>
+    <Map>Trammel</Map>
+    <X>2501</X><Y>398</Y><Width>0</Width><Height>0</Height>
+    <CentreX>2501</CentreX><CentreY>398</CentreY><CentreZ>15</CentreZ>
+    <Range>0</Range><MaxCount>1</MaxCount><MinDelay>10</MinDelay><MaxDelay>10</MaxDelay>
+    <Team>0</Team><IsGroup>False</IsGroup><IsRunning>True</IsRunning>
+    <Objects2>MercenaryCaptain:MX=1:SB=0:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1</Objects2>
+  </Points>
+  <Points>
+    <Name>Mercenary Captain Trinsic</Name>
+    <UniqueId>fb56e830-b202-4611-a6d5-dc8fa7115430</UniqueId>
+    <Map>Trammel</Map>
+    <X>2063</X><Y>2855</Y><Width>0</Width><Height>0</Height>
+    <CentreX>2063</CentreX><CentreY>2855</CentreY><CentreZ>-2</CentreZ>
+    <Range>0</Range><MaxCount>1</MaxCount><MinDelay>10</MinDelay><MaxDelay>10</MaxDelay>
+    <Team>0</Team><IsGroup>False</IsGroup><IsRunning>True</IsRunning>
+    <Objects2>MercenaryCaptain:MX=1:SB=0:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1</Objects2>
+  </Points>
+  <Points>
+    <Name>Mercenary Captain Skara Brae</Name>
+    <UniqueId>f8d2b832-f49a-48b2-8041-7f6a19516b02</UniqueId>
+    <Map>Trammel</Map>
+    <X>647</X><Y>2228</Y><Width>0</Width><Height>0</Height>
+    <CentreX>647</CentreX><CentreY>2228</CentreY><CentreZ>-2</CentreZ>
+    <Range>0</Range><MaxCount>1</MaxCount><MinDelay>10</MinDelay><MaxDelay>10</MaxDelay>
+    <Team>0</Team><IsGroup>False</IsGroup><IsRunning>True</IsRunning>
+    <Objects2>MercenaryCaptain:MX=1:SB=0:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1</Objects2>
+  </Points>
+  <Points>
+    <Name>Mercenary Captain New Magincia</Name>
+    <UniqueId>c34678c4-b502-4b2c-a0cf-0f47a730e2aa</UniqueId>
+    <Map>Trammel</Map>
+    <X>3679</X><Y>2254</Y><Width>0</Width><Height>0</Height>
+    <CentreX>3679</CentreX><CentreY>2254</CentreY><CentreZ>20</CentreZ>
+    <Range>0</Range><MaxCount>1</MaxCount><MinDelay>10</MinDelay><MaxDelay>10</MaxDelay>
+    <Team>0</Team><IsGroup>False</IsGroup><IsRunning>True</IsRunning>
+    <Objects2>MercenaryCaptain:MX=1:SB=0:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1</Objects2>
+  </Points>
+  <Points>
+    <Name>Mercenary Captain Vesper</Name>
+    <UniqueId>fa3366c3-4f52-4688-9d75-8c90af43509f</UniqueId>
+    <Map>Trammel</Map>
+    <X>3006</X><Y>834</Y><Width>0</Width><Height>0</Height>
+    <CentreX>3006</CentreX><CentreY>834</CentreY><CentreZ>0</CentreZ>
+    <Range>0</Range><MaxCount>1</MaxCount><MinDelay>10</MinDelay><MaxDelay>10</MaxDelay>
+    <Team>0</Team><IsGroup>False</IsGroup><IsRunning>True</IsRunning>
+    <Objects2>MercenaryCaptain:MX=1:SB=0:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1</Objects2>
+  </Points>
+</Spawns>

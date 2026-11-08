@@ -1,6 +1,8 @@
 using Server.Mobiles;
 using Server.Network;
 using Server.Targeting;
+using Server.Custom.MercenarySystem;
+using System.Collections.Generic;
 using System;
 
 namespace Server.SkillHandlers
@@ -45,6 +47,31 @@ namespace Server.SkillHandlers
                 else if (targeted is Mobile)
                 {
                     Mobile targ = (Mobile)targeted;
+
+                    if (targ is BaseMercenary mercenary)
+                    {
+                        if (from.CheckTargetSkill(SkillName.EvalInt, targ, 0.0, 120.0))
+                        {
+                            from.SendMessage($"{mercenary.Name} — {mercenary.Class}, {mercenary.Race}, {(mercenary.Female ? "женщина" : "мужчина")}, уровень {mercenary.MercLevel}.");
+                            from.SendMessage($"Опыт: {mercenary.MercExp}/{mercenary.NextLevelExperience}. Здоровье: {mercenary.Hits}/{mercenary.HitsMax}; выносливость: {mercenary.Stam}/{mercenary.StamMax}; мана: {mercenary.Mana}/{mercenary.ManaMax}.");
+                            from.SendMessage($"Сила: {mercenary.Str}; ловкость: {mercenary.Dex}; интеллект: {mercenary.Int}.");
+
+                            List<string> skills = new List<string>();
+                            foreach (Skill skill in mercenary.Skills)
+                            {
+                                if (skill.Base > 0.0)
+                                    skills.Add($"{skill.Name}: {skill.Value:F1}");
+                            }
+
+                            from.SendMessage("Навыки: " + String.Join(", ", skills));
+                        }
+                        else
+                        {
+                            from.SendLocalizedMessage(1038166 + (mercenary.Female ? 1 : 0)); // You cannot judge his/her mental abilities.
+                        }
+
+                        return;
+                    }
 
                     int marginOfError = Math.Max(0, 20 - (int)(from.Skills[SkillName.EvalInt].Value / 5));
 
