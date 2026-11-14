@@ -7,6 +7,7 @@ using System.Xml;
 using Server.Commands;
 using Server.Gumps;
 using Server.Network;
+using Server.Prompts;
 
 namespace Server.Engines.CannedEvil
 {
@@ -17,6 +18,7 @@ namespace Server.Engines.CannedEvil
 
 		private static readonly int[] m_DefaultRankRedSkulls = new[] { 5, 10, 13 };
 		private static readonly int[] m_DefaultRankMaxKills = new[] { 256, 128, 64, 32 };
+		
 
 		private static bool m_Initialized;
 
@@ -299,8 +301,9 @@ namespace Server.Engines.CannedEvil
 				{
 					foreach (var s in g)
 					{
-						s.AutoRestart = true;
-						s.Active = true;
+						s.AutoRestart = false;
+						if (s.Active)
+							s.Active = false;
 					}
 				}
 				else
@@ -319,8 +322,8 @@ namespace Server.Engines.CannedEvil
 
 					if (e != null)
 					{
-						e.AutoRestart = true;
-						e.Active = true;
+						e.AutoRestart = false;
+						e.Active = false;
 					}
 				}
 			}
@@ -441,4 +444,5 @@ namespace Server.Engines.CannedEvil
 			}
 		}
 	}
+	
 }

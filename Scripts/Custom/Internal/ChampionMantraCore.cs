@@ -2,6 +2,8 @@ using System;
 using Server;
 using Server.Mobiles;
 using Server.Network;
+using Server.Items;
+using Server.Custom.KarmaVirtueSystem;
 
 namespace Server.Engines.CannedEvil
 {
@@ -39,6 +41,30 @@ namespace Server.Engines.CannedEvil
                         continue;
                     }
 
+                    if (spawn.Type == ChampionSpawnType.AvatarTrial || spawn.Type == ChampionSpawnType.MondainTrial)
+                    {
+	                    
+	                    bool isDarkPath = KarmaVirtueManager.IsPredominantlyDark(pm);
+
+	                    if (spawn.Type == ChampionSpawnType.AvatarTrial && isDarkPath)
+	                    {
+		                    pm.SendMessage(0x22, "Ваша душа осквернена Тьмой! Испытание Аватара доступно только идущим Путем Просветления.");
+		                    continue;
+	                    }
+
+	                    if (spawn.Type == ChampionSpawnType.MondainTrial && !isDarkPath)
+	                    {
+		                    pm.SendMessage(0x22, "В вас слишком много Света! Испытание Мондейна покорится лишь адепту Книги Порока.");
+		                    continue;
+	                    }
+	                    
+	                    if (!ConsumeElementalRelics(pm))
+	                    {
+		                    pm.SendMessage(0x22, "Для пробуждения этого алтаря в вашем рюкзаке должны находиться все 4 Реликвии Пагана (Земли, Огня, Воды и Воздуха)!");
+		                    continue;
+	                    }
+                    }
+                    
                     // Если таймер вышел (DateTime.UtcNow >= spawn.RestartTime), алтарь перешел в режим ожидания мантры
                     spawn.Active = true;
 
@@ -52,6 +78,32 @@ namespace Server.Engines.CannedEvil
                 }
             }
         }
+        
+        private static bool ConsumeElementalRelics(PlayerMobile pm)
+        {
+	        if (pm.Backpack == null)
+		        return false;
+
+	        Item earth = pm.Backpack.FindItemByType(typeof(HeartOfEarth));
+	        Item flame = pm.Backpack.FindItemByType(typeof(TongueOfFlame));
+	        Item seas  = pm.Backpack.FindItemByType(typeof(TearOfSeas));
+	        Item wind  = pm.Backpack.FindItemByType(typeof(BreathOfWind));
+
+	        // Проверяем, что все 4 реликвии найдены
+	        if (earth == null || flame == null || seas == null || wind == null)
+		        return false;
+
+	        // Удаляем все 4 реликвии
+	        earth.Delete();
+	        flame.Delete();
+	        seas.Delete();
+	        wind.Delete();
+
+	        return true;
+        }
+
+        
+        
 
         public static string GetRequiredMantra(ChampionSpawnType type)
         {
@@ -70,6 +122,8 @@ namespace Server.Engines.CannedEvil
                 case ChampionSpawnType.Corrupt:        return "nox por";
                 case ChampionSpawnType.DragonTurtle:   return "vas ort flam";
                 case ChampionSpawnType.Khaldun:        return "in nox";
+                case ChampionSpawnType.AvatarTrial:    return "in vas mani";
+                case ChampionSpawnType.MondainTrial:   return "vas kal corp";
                 default:                               return null;
             }
         }

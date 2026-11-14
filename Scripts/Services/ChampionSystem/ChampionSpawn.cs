@@ -7,6 +7,7 @@ using Server.Spells.Necromancy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Server.Prompts;
 
 namespace Server.Engines.CannedEvil
 {
@@ -1592,6 +1593,71 @@ namespace Server.Engines.CannedEvil
             Movable = false;
         }
 
+        public override void OnDoubleClick(Mobile from)
+        {
+            if (from == null || !from.Alive)
+                return;
+
+            if (m_Spawn == null || m_Spawn.Deleted)
+            {
+                from.SendMessage("Этот алтарь поврежден.");
+                return;
+            }
+
+            if (m_Spawn.Active)
+            {
+                from.SendMessage("Алтарь уже активен! Сражайтесь со спавном.");
+                return;
+            }
+
+            if (!from.InRange(Location, 3))
+            {
+                from.SendLocalizedMessage(500295); // Вы слишком далеко.
+                return;
+            }
+
+            from.SendMessage(0x35, "Произнесите мантру пробуждения в чат:");
+            from.Prompt = new MantraPrompt(m_Spawn);
+        }
+
+        private class MantraPrompt : Prompt
+        {
+            private readonly ChampionSpawn m_Spawn;
+
+            public MantraPrompt(ChampionSpawn spawn)
+            {
+                m_Spawn = spawn;
+            }
+
+            public override void OnResponse(Mobile from, string text)
+            {
+                if (m_Spawn == null || m_Spawn.Deleted || m_Spawn.Active)
+                    return;
+
+                if (!from.Alive || !from.InRange(new Point3D(m_Spawn.X, m_Spawn.Y, m_Spawn.Z - 15), 4))
+                {
+                    from.SendMessage("Вы отошли слишком далеко от алтаря.");
+                    return;
+                }
+
+                // Получаем нужную мантру для типа этого алтаря
+                string requiredMantra = ChampionMantraCore.GetRequiredMantra(m_Spawn.Type);
+
+                if (!string.IsNullOrEmpty(requiredMantra) &&
+                    text.Trim().Equals(requiredMantra, StringComparison.OrdinalIgnoreCase))
+                {
+                    from.PublicOverheadMessage(Network.MessageType.Regular, 0x35, false, text);
+                    from.SendMessage(0x59, "Древняя сила пробуждается! Алтарь активирован.");
+                    Effects.PlaySound(new Point3D(m_Spawn.X, m_Spawn.Y, m_Spawn.Z - 15), m_Spawn.Map, 0x208);
+                    m_Spawn.Start();
+                }
+                else
+                {
+                    from.SendMessage(0x22, "Слова растворяются в тишине... Мантра неверна.");
+                }
+            }
+        }
+
         public override void OnAfterDelete()
         {
             base.OnAfterDelete();
@@ -1608,29 +1674,20 @@ namespace Server.Engines.CannedEvil
         public override void Serialize(GenericWriter writer)
         {
             base.Serialize(writer);
-
-            writer.Write(0); // version
-
+            writer.Write(0);
             writer.Write(m_Spawn);
         }
 
         public override void Deserialize(GenericReader reader)
         {
             base.Deserialize(reader);
-
             int version = reader.ReadInt();
 
-            switch (version)
+            if (version == 0)
             {
-                case 0:
-                    {
-                        m_Spawn = reader.ReadItem() as ChampionSpawn;
-
-                        if (m_Spawn == null)
-                            Delete();
-
-                        break;
-                    }
+                m_Spawn = reader.ReadItem() as ChampionSpawn;
+                if (m_Spawn == null)
+                    Delete();
             }
         }
     }
