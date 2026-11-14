@@ -581,7 +581,7 @@ namespace Server.Custom.KarmaVirtueSystem
         
         public static void Load()
         {
-            if (!File.Exists(_savePath)) return;
+            if (!File.Exists(_savePath) || new FileInfo(_savePath).Length == 0) return;
             try
             {
                 using (FileStream stream = new FileStream(_savePath, FileMode.Open, FileAccess.Read, FileShare.Read))
