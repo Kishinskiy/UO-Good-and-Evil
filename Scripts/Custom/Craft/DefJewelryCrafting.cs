@@ -305,6 +305,22 @@ namespace Server.Engines.Craft
                 double quality = avg <= 50.0 ? 0.5 : 0.5 + ((avg - 50.0) * 0.05);
                 return new JewelryGem("vamp_shard", quality, 0x1EA7, 1175);
             });
+            
+            // Огненный Рубин Истребителя (FireRubySlayer = 1103)
+            index = AddCraft(typeof(JewelryGem), "Мистическая огранка", "Огненный Рубин Истребителя (+20% Weapon Damage / +10% HCI)", 110.0, 125.0, typeof(FireRuby), "Редкий огненный рубин", 3, "Требуется редкий огненный рубин.");
+            AddRes(index, typeof(ValoriteIngot), "Слитки валорита", 10, "Нужна оправа из валорита.");
+            AddRes(index, typeof(DaemonBlood), "Кровь демона", 10, "Нужна кровь демона для закалки.");
+            AddRecipe(index, (int)JewelryRecipes.FireRubySlayer);
+            SetData(index, "firerubyslayer");
+            AddCreateItem(index, (from, craftItem, tool) =>
+            {
+	            double tink = from.Skills[SkillName.Tinkering].Value;
+	            double tac = from.Skills[SkillName.Tactics].Value;
+	            double avg = (tink + tac) / 2.0;
+	            double quality = avg <= 50.0 ? 0.5 : 0.5 + ((avg - 50.0) * 0.05);
+	            return new JewelryGem("firerubyslayer", quality, 0x1EA7, 1359); // Ярко-алый цвет пламени
+            });
+
 
             AddResistCapGem("physical_resist", "Рубин Физической Стойкости", "physical damage",
                 typeof(Ruby), "Неограненный рубин", 115.0, 125.0, (int)JewelryRecipes.PhysicalResistGem, 1157);
@@ -326,18 +342,33 @@ namespace Server.Engines.Craft
             AddRes(index, typeof(JewelryGem), "Ограненный Изумруд Жизни", 1, "Для инкрустации требуется готовый Изумруд Жизни!");
             AddRecipe(index, (int)JewelryRecipes.AmuletOfLife);
             AddCreateItem(index, (from, craftItem, tool) => {
-                // Нативно ищем камень в рюкзаке, чтобы считать его качество!
-                Item gem = from.Backpack.FindItemByType(typeof(JewelryGem));
-                double qualityMultiplier = (gem is JewelryGem jg) ? jg.GemQuality : 1.0;
+	            JewelryGem jg = FindSpecificGem(from, "perfectemerald");
+	            if (jg == null)
+	            {
+		            from.SendMessage(0x22, "В рюкзаке не найден ограненный Изумруд Жизни! Ресурсы возвращены.");
+		            from.AddToBackpack(new GoldIngot(15));
+		            return null;
+	            }
 
-                GoldNecklace necklace = new GoldNecklace();
-                necklace.Name = "Амулет Живительного Сияния [Ювелирный Артефакт]";
-                necklace.Hue = 1150; // Изумрудное свечение
-                
-                // Накладываем динамический бонус здоровья, унаследованный от качества камня!
-                necklace.Attributes.BonusHits = (int)Math.Round(15.0 * qualityMultiplier); 
-                necklace.Attributes.RegenHits = (int)Math.Round(3.0 * qualityMultiplier);
-                return necklace;
+	            double qualityMultiplier = jg.GemQuality;
+	            // Примечание: ядро ServUO само удалит 1 любой JewelryGem после AddCreateItem.
+	            // Если в сумке лежали другие камни, подменяем удаляемый камень на наш:
+	            Item firstGem = from.Backpack.FindItemByType(typeof(JewelryGem));
+	            if (firstGem != null && firstGem != jg && firstGem is JewelryGem other)
+	            {
+		            // Переносим свойства другого камня в первый, чтобы ядро удалило именно нужный
+		            jg.GemEffect = other.GemEffect;
+		            jg.GemQuality = other.GemQuality;
+		            jg.Hue = other.Hue;
+		            jg.Name = other.Name;
+	            }
+
+	            GoldNecklace necklace = new GoldNecklace();
+	            necklace.Name = "Амулет Живительного Сияния [Ювелирный Артефакт]";
+	            necklace.Hue = 1150;
+	            necklace.Attributes.BonusHits = (int)Math.Round(15.0 * qualityMultiplier); 
+	            necklace.Attributes.RegenHits = (int)Math.Round(3.0 * qualityMultiplier);
+	            return necklace;
             });
 
             // 2. Кольцо Астральной Силы (RingOfAstralPower)
@@ -357,7 +388,7 @@ namespace Server.Engines.Craft
                 return ring;
             });
 
-                        // 3. Браслет Первобытной Бури (BraceletOfStorms)
+			// 3. Браслет Первобытной Бури (BraceletOfStorms)
             index = AddCraft(typeof(GoldBracelet), "Кастомные украшения", "Браслет Первобытной Бури (Эпический Браслет)", 100.0, 125.0, typeof(VeriteIngot), "Слитки верита", 15, "Вам не хватает верита.");
             AddRes(index, typeof(JewelryGem), "Пронзающая Бирюза Грома", 1, "Требуется Бирюза Грома!");
             AddRecipe(index, (int)JewelryRecipes.BraceletOfStorms);
@@ -502,6 +533,19 @@ namespace Server.Engines.Craft
                 double quality = tinkering <= 50.0 ? 0.5 : 0.5 + ((tinkering - 50.0) * 0.05);
                 return new JewelryGem(effect, quality, 0x1EA7, hue);
             });
+        }
+        
+        private static JewelryGem FindSpecificGem(Mobile from, string requiredEffect)
+        {
+	        if (from?.Backpack == null)
+		        return null;
+
+	        foreach (Item item in from.Backpack.Items)
+	        {
+		        if (item is JewelryGem jg && jg.GemEffect == requiredEffect)
+			        return jg;
+	        }
+	        return null;
         }
     }
 }
