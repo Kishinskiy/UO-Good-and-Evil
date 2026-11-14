@@ -64,7 +64,7 @@ namespace Server.Custom.SmartNPCs
         {
             { City.Britain,     new Tuple<string, string>("Compassion (Сострадание)", "MU") },
             { City.Yew,         new Tuple<string, string>("Justice (Справедливость)", "BEH") },
-            { City.Minoc,       new Tuple<string, string>("Sacrifice (Жертвенность)", "KAH") },
+            { City.Minoc,       new Tuple<string, string>("Sacrifice (Жертвенность)", "СAH") },
             { City.Moonglow,    new Tuple<string, string>("Honesty (Честность)", "AHM") },
             { City.Trinsic,     new Tuple<string, string>("Honor (Честь)", "SUMM") },
             { City.SkaraBrae,   new Tuple<string, string>("Spirituality (Духовность)", "OM") },
@@ -284,25 +284,22 @@ namespace Server.Custom.SmartNPCs
             // =========================================================================
             else if (text.Contains("слухи") || text.Contains("новости") || text.Contains("аватар") || text.Contains("зло") || text.Contains("мондейн") || text.Contains("полубог") || text.Contains("сплетни"))
             {
-                List<Mobile> onlineAvatars = new List<Mobile>();
+                List<PlayerMobile> onlineAvatars = new List<PlayerMobile>();
                 
-                // Сканируем всех активных игроков в сети
+                // Сканируем всех активных игроков в сети по новым флагам Полубога!
                 foreach (NetState ns in NetState.Instances)
                 {
-                    Mobile m = ns.Mobile;
-                    if (m == null || !m.Alive || m.AccessLevel > AccessLevel.Player) 
-                        continue;
-
-                    // 🔥 ИСПРАВЛЕНО: Нативная проверка Аватара по капу Magery 130 вместо удаленного EpicAlignmentSystem!
-                    if (m.Skills[SkillName.Magery].Cap >= 130.0)
+                    if (ns.Mobile is PlayerMobile pm && pm.Alive && pm.AccessLevel == AccessLevel.Player)
                     {
-                        onlineAvatars.Add(m);
+                        if (pm.IsDemigod || pm.EpicGood || pm.EpicEvil)
+                        {
+                            onlineAvatars.Add(pm);
+                        }
                     }
                 }
 
                 if (onlineAvatars.Count == 0)
                 {
-                    // Если полубогов нет в сети — выдаем стандартные лорные подсказки к сундукам и шрайнам! 🗺️
                     string[] staticRumors = new string[]
                     {
                         "О, нынче на дорогах затишье. Высшие Полубоги скрылись в своих чертогах. Но поговаривают, Алтарь Justice сокрыт на самом севере Felucca, среди льдов!",
@@ -315,23 +312,35 @@ namespace Server.Custom.SmartNPCs
                 }
                 else
                 {
-                    // Если Аватар в сети — NPC вычисляют его положение, класс и регион!
-                    Mobile av = onlineAvatars[Utility.Random(onlineAvatars.Count)];
-                    
-                    // Динамически определяем архетип по его высшему боевому навыку
-                    string classTitle = "Великий Аватар";
-                    if (av.Skills[SkillName.Swords].Value >= 100.0) classTitle = "Аватар-Паладин";
-                    else if (av.Skills[SkillName.Magery].Value >= 100.0) classTitle = "Арканический Аватар";
-
+                    PlayerMobile av = onlineAvatars[Utility.Random(onlineAvatars.Count)];
                     string regName = (av.Region != null && !string.IsNullOrEmpty(av.Region.Name)) ? av.Region.Name : "Диких землях";
-                    
-                    string[] avatarRumors = new string[]
+
+                    if (av.EpicEvil)
                     {
-                        $"Говорят, истинный Аватар Света по имени {av.Name} сейчас в мире! Его видели как {classTitle} в районе {regName} ({av.Map.Name}). Люди молятся на него!",
-                        $"Шепчутся, что {av.Name} — живое воплощение Добродетелей — сейчас проезжал через {regName}. Сияние его ауры озарило небосвод!",
-                        $"В тавернах только и разговоров, что {av.Name} ведет за собой силы Света где-то в {regName}. Охотники, у вас есть шанс помочь ему!"
-                    };
-                    reply = avatarRumors[Utility.Random(avatarRumors.Length)];
+                        // Слухи, если в сети Владыка Тьмы (EpicEvil)
+                        string[] darkRumors = new string[]
+                        {
+                            $"Шепотом, путник... Владыка Тьмы по имени {av.Name} сейчас ступает по земле! Его видели в районе {regName} ({av.Map.Name}). Храни нас Свет!",
+                            $"Говорят, адепт Хаоса {av.Name}, обретя мощь Полубога, сейчас рыщет где-то в {regName}. Небеса сгустились над теми краями!",
+                            $"В тавернах все дрожат от страха: Владыка Тьмы {av.Name} вышел на охоту в {regName}. Силам Света пора объединиться!"
+                        };
+                        reply = darkRumors[Utility.Random(darkRumors.Length)];
+                    }
+                    else
+                    {
+                        // Слухи, если в сети Аватар Света (EpicGood)
+                        string classTitle = "Великий Аватар";
+                        if (av.Skills[SkillName.Swords].Value >= 100.0) classTitle = "Аватар-Паладин";
+                        else if (av.Skills[SkillName.Magery].Value >= 100.0) classTitle = "Арканический Аватар";
+
+                        string[] lightRumors = new string[]
+                        {
+                            $"Говорят, истинный Аватар Света по имени {av.Name} сейчас в мире! Его видели как {classTitle} в районе {regName} ({av.Map.Name}). Люди молятся на него!",
+                            $"Шепчутся, что {av.Name} — живое воплощение Добродетелей — сейчас проезжал через {regName}. Сияние его ауры озарило небосвод!",
+                            $"В тавернах только и разговоров, что {av.Name} ведет за собой силы Света где-то в {regName}. Охотники, у вас есть шанс помочь ему!"
+                        };
+                        reply = lightRumors[Utility.Random(lightRumors.Length)];
+                    }
                 }
             }
             // =========================================================================
