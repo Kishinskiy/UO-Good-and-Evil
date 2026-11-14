@@ -1403,6 +1403,7 @@ namespace Server.Spells
         public static void Heal(int amount, Mobile target, Mobile from, bool message)
         {
             Spellweaving.ArcaneEmpowermentSpell.AddHealBonus(from, ref amount);
+            amount = Server.Custom.KarmaVirtueSystem.KarmaVirtueManager.ModifyHealing(target, from, amount);
 
             if (amount > 0 && target != from && from is PlayerMobile && target is PlayerMobile)
             {

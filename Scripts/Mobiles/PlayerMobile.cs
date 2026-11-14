@@ -1301,7 +1301,9 @@ namespace Server.Mobiles
         #region City Loyalty
         public override int GetResistance(ResistanceType type)
         {
-            int resistance = base.GetResistance(type) + SphynxFortune.GetResistanceBonus(this, type);
+            int resistance = base.GetResistance(type)
+                            + SphynxFortune.GetResistanceBonus(this, type)
+                            + Custom.KarmaVirtueSystem.KarmaVirtueManager.GetResistanceBonus(this);
 
             if (CityLoyaltySystem.HasTradeDeal(this, TradeDeal.SocietyOfClothiers))
             {
@@ -2051,7 +2053,8 @@ namespace Server.Mobiles
             {
                 if (IsPlayer())
                 {
-                    return Math.Min(base.Str, StrMaxCap);
+	                int bonus = Custom.KarmaVirtueSystem.KarmaVirtueManager.GetStatBonus(this);
+                    return Math.Min(base.Str + bonus, StrMaxCap);
                 }
 
                 return base.Str;
@@ -2066,7 +2069,8 @@ namespace Server.Mobiles
             {
                 if (IsPlayer())
                 {
-                    return Math.Min(base.Int, IntMaxCap);
+	                int bonus = Custom.KarmaVirtueSystem.KarmaVirtueManager.GetStatBonus(this);
+                    return Math.Min(base.Int + bonus, IntMaxCap);
                 }
 
                 return base.Int;
@@ -2082,8 +2086,8 @@ namespace Server.Mobiles
                 if (IsPlayer())
                 {
                     int dex = base.Dex;
-
-                    return Math.Min(dex, DexMaxCap);
+                    int bonus = Custom.KarmaVirtueSystem.KarmaVirtueManager.GetStatBonus(this);
+                    return Math.Min(dex + bonus, DexMaxCap);
                 }
 
                 return base.Dex;

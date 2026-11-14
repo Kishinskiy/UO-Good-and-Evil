@@ -5980,6 +5980,8 @@ namespace Server.Mobiles
                         Titles.AwardKarma(titles[i], karma[i], true);
                     }
                 }
+                
+                Server.Custom.KarmaVirtueSystem.KarmaVirtueManager.HandleMonsterLoot(this, c);
 
                 CreatureDeathEventArgs e = new CreatureDeathEventArgs(this, LastKiller, c);
 

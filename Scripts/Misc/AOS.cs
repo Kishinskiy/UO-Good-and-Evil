@@ -252,6 +252,7 @@ namespace Server
                 SwarmContext.CheckRemove(m);
 
             SpiritualityVirtue.GetDamageReduction(m, ref totalDamage);
+            totalDamage = Server.Custom.KarmaVirtueSystem.KarmaVirtueManager.ModifyIncomingDamage(m, totalDamage);
 
             BestialSetHelper.OnDamage(m, from, ref totalDamage);
 
@@ -339,6 +340,17 @@ namespace Server
             }
 
             totalDamage = m.Damage(totalDamage, from, true, false);
+            
+            if (from != null && totalDamage > 0)
+            {
+	            Server.Custom.KarmaVirtueSystem.KarmaVirtueManager.OnDamageDealt(from, m, totalDamage);
+
+	            int reflected = Server.Custom.KarmaVirtueSystem.KarmaVirtueManager.GetDamageReflection(m, from, totalDamage);
+	            if (reflected > 0)
+	            {
+		            Server.Custom.KarmaVirtueSystem.KarmaVirtueManager.ApplyReflectedDamage(m, from, reflected);
+	            }
+            }
 
             ExplodingTarPotion.RemoveEffects(m);
 
@@ -622,6 +634,8 @@ namespace Server
 
                 if (BaseFishPie.IsUnderEffects(m, FishPieEffect.SpellDamage))
                     value += 5;
+                
+                value += Server.Custom.KarmaVirtueSystem.KarmaVirtueManager.GetSpellDamageBonus(m);
             }
             else if (attribute == AosAttribute.CastSpeed)
             {
@@ -790,6 +804,8 @@ namespace Server
                 value += AnkhPendant.GetManaRegenModifier(m);
             }
             #endregion
+            
+            value += Server.Custom.KarmaVirtueSystem.KarmaVirtueManager.GetAosAttributeBonus(m, attribute);
 
             return value;
         }
