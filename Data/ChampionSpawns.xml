@@ -94,9 +94,9 @@
         <location x="174" y="1629" z="8" map="Malas" radius="25"/>
     </spawn>
     <spawn name="Altar of Avatar" type="AvatarTrial" killsMod="0.5" spawnMod="0.5">
-        <location x="1054" y="358" z="-70" map="Malas" radius="25"/>
+        <location x="435" y="125" z="20" map="Malas" radius="25"/>
     </spawn>
     <spawn name="Altar of Mondain" type="MondainTrial" killsMod="0.5" spawnMod="0.5">
-        <location x="1979" y="1217" z="-70" map="Malas" radius="25"/>
+        <location x="323" y="88" z="20" map="Malas" radius="25"/>
     </spawn>
 </championSystem>
