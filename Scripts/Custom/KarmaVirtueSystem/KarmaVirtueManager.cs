@@ -109,6 +109,11 @@ namespace Server.Custom.KarmaVirtueSystem
             if (from is PlayerMobile pm)
             {
 	            pm.Shrines |= GetShrineFlag(shrine.Virtue);
+
+	            if (pm.FindItemOnLayer(Layer.Neck) is AnkhPendant pendant)
+	            {
+		            pendant.ChargeFromShrine(pm, shrine.Virtue, isDark);
+	            }
             }
 
             if (isDark)

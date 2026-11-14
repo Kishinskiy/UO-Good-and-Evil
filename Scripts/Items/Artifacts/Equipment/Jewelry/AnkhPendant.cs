@@ -1,6 +1,8 @@
 using Server.Regions;
 using System;
 using System.Collections.Generic;
+using Server.Mobiles;
+using Server.Services.Virtues;
 
 namespace Server.Items
 {
@@ -25,6 +27,146 @@ namespace Server.Items
         }
 
         public override int LabelNumber => 1079525;  // Ankh Pendant
+        
+        private ActivatedShrines m_ChargedShrines;
+        private bool m_IsAwakened;
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public ActivatedShrines ChargedShrines
+        {
+            get { return m_ChargedShrines; }
+            set { m_ChargedShrines = value; InvalidateProperties(); }
+        }
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public bool IsAwakened
+        {
+            get { return m_IsAwakened; }
+            set { m_IsAwakened = value; InvalidateProperties(); }
+        }
+
+        // Отображаем прогресс зарядки при наведении мыши на амулет
+        public override void GetProperties(ObjectPropertyList list)
+        {
+            base.GetProperties(list);
+
+            if (m_IsAwakened)
+            {
+                list.Add(1060658, "Состояние\tПробужденная реликвия (8/8)");
+            }
+            else if (m_ChargedShrines != ActivatedShrines.None)
+            {
+                int count = GetChargedCount();
+                list.Add(1060658, $"Заряд святилищ\t{count} / 8");
+            }
+        }
+
+        private int GetChargedCount()
+        {
+            int count = 0;
+            foreach (ActivatedShrines flag in Enum.GetValues(typeof(ActivatedShrines)))
+            {
+                if (flag != ActivatedShrines.None && flag != ActivatedShrines.All && m_ChargedShrines.HasFlag(flag))
+                    count++;
+            }
+            return count;
+        }
+
+        private static ActivatedShrines MapVirtueToFlag(VirtueName virtue)
+        {
+            switch (virtue)
+            {
+                case VirtueName.Honesty:      return ActivatedShrines.Honesty;
+                case VirtueName.Compassion:   return ActivatedShrines.Compassion;
+                case VirtueName.Valor:        return ActivatedShrines.Valor;
+                case VirtueName.Justice:      return ActivatedShrines.Justice;
+                case VirtueName.Sacrifice:    return ActivatedShrines.Sacrifice;
+                case VirtueName.Honor:        return ActivatedShrines.Honor;
+                case VirtueName.Spirituality: return ActivatedShrines.Spirituality;
+                case VirtueName.Humility:     return ActivatedShrines.Humility;
+                default:                      return ActivatedShrines.None;
+            }
+        }
+
+        public void ChargeFromShrine(Mobile from, VirtueName virtue, bool isDark)
+        {
+            // Записываем флаг в сам амулет
+            m_ChargedShrines |= MapVirtueToFlag(virtue);
+
+            switch (virtue)
+            {
+                case VirtueName.Valor: // Доблесть
+                    Attributes.WeaponDamage = Math.Max(Attributes.WeaponDamage, isDark ? 15 : 10);
+                    break;
+                case VirtueName.Spirituality: // Духовность
+                    Attributes.SpellDamage = Math.Max(Attributes.SpellDamage, isDark ? 12 : 8);
+                    Attributes.RegenMana = Math.Max(Attributes.RegenMana, 2);
+                    break;
+                case VirtueName.Honor: // Честь
+                    Attributes.AttackChance = Math.Max(Attributes.AttackChance, 10);
+                    Attributes.DefendChance = Math.Max(Attributes.DefendChance, 10);
+                    break;
+                case VirtueName.Sacrifice: // Жертвенность
+                    Attributes.BonusHits = Math.Max(Attributes.BonusHits, 10);
+                    Attributes.RegenHits = Math.Max(Attributes.RegenHits, 2);
+                    break;
+                case VirtueName.Justice: // Справедливость
+                    Resistances.Physical = Math.Max(Resistances.Physical, 5);
+                    Resistances.Fire = Math.Max(Resistances.Fire, 5);
+                    Resistances.Cold = Math.Max(Resistances.Cold, 5);
+                    Resistances.Poison = Math.Max(Resistances.Poison, 5);
+                    Resistances.Energy = Math.Max(Resistances.Energy, 5);
+                    break;
+                case VirtueName.Honesty: // Честность
+                    Attributes.Luck = Math.Max(Attributes.Luck, 100);
+                    Attributes.LowerManaCost = Math.Max(Attributes.LowerManaCost, 8);
+                    break;
+                case VirtueName.Compassion: // Сострадание
+                    Attributes.CastRecovery = Math.Max(Attributes.CastRecovery, 2);
+                    Attributes.CastSpeed = Math.Max(Attributes.CastSpeed, 1);
+                    break;
+                case VirtueName.Humility: // Смирение
+                    Attributes.BonusStr = Math.Max(Attributes.BonusStr, 5);
+                    Attributes.BonusDex = Math.Max(Attributes.BonusDex, 5);
+                    Attributes.BonusInt = Math.Max(Attributes.BonusInt, 5);
+                    break;
+            }
+
+            // Проверяем, заряжен ли кулон всеми 8 алтарями!
+            if (!m_IsAwakened && m_ChargedShrines == ActivatedShrines.All)
+            {
+                m_IsAwakened = true;
+
+                if (isDark)
+                {
+                    Name = "Оскверненный Анкх Бездны";
+                    Hue = 1175; // Глубокий темный цвет
+                    Attributes.WeaponDamage += 10;
+                    Attributes.SpellDamage += 10;
+                    Attributes.RegenStam += 3;
+                    from.SendMessage(0x22, "Все 8 святилищ осквернены! Ваш кулон переродился в Оскверненный Анкх Бездны!");
+                }
+                else
+                {
+                    Name = "Освященный Анкх Аватара";
+                    Hue = 1153; // Сияющий белый/золотой
+                    Attributes.WeaponDamage += 10;
+                    Attributes.SpellDamage += 10;
+                    Attributes.RegenStam += 3;
+                    from.SendMessage(0x5D, "Все 8 святилищ откликнулись! Ваш кулон переродился в Освященный Анкх Аватара!");
+                }
+
+                Effects.PlaySound(from.Location, from.Map, 0x5C9);
+                from.FixedParticles(0x373A, 10, 15, 5018, EffectLayer.Waist);
+            }
+            else if (!m_IsAwakened)
+            {
+                Hue = isDark ? 1175 : 1153;
+                from.SendMessage(isDark ? 0x22 : 0x5D, $"Ваш Кулон Анкха впитал энергию алтаря {virtue} ({GetChargedCount()}/8)!");
+            }
+
+            InvalidateProperties();
+        }
 
         [Constructable]
         public AnkhPendant()
@@ -347,17 +489,29 @@ namespace Server.Items
         {
             base.Serialize(writer);
 
-            writer.Write(1);
+            writer.Write(2);
+            writer.Write((int)m_ChargedShrines);
+            writer.Write(m_IsAwakened);
         }
 
         public override void Deserialize(GenericReader reader)
         {
-            base.Deserialize(reader);
+	        base.Deserialize(reader);
 
-            int version = reader.ReadInt();
+	        int version = reader.ReadInt();
 
-            if (version == 0)
-                reader.ReadBool();
+	        switch (version)
+	        {
+		        case 2:
+			        m_ChargedShrines = (ActivatedShrines)reader.ReadInt();
+			        m_IsAwakened = reader.ReadBool();
+			        break;
+		        case 1:
+			        break;
+		        case 0:
+			        reader.ReadBool();
+			        break;
+	        }
         }
     }
 }
