@@ -72,7 +72,7 @@ namespace Server.Custom.EpicAlignment
             // Выдаем Гримуар Аватара
             GiveItem(pm, new EpicBookOfDestiny());
 
-            ApplyAscensionStats(pm);
+            ApplyAscensionStats(pm, false);
 
             pm.SendMessage(0x35, $"Поздравляем! Вы получили ранг Аватара Света! Лимиты Str/Dex/Int повышены, общий Stat Cap поднят до {CustomStatCap}. Навыки Magery и EvalInt теперь могут быть развиты до {EpicSkillCap}!");
             Effects.PlaySound(pm.Location, pm.Map, 0x5C9);
@@ -111,7 +111,7 @@ namespace Server.Custom.EpicAlignment
             // Выдаем Темный Гримуар Мондейна
             GiveItem(pm, new EpicGrimoireOfChaos());
 
-            ApplyAscensionStats(pm);
+            ApplyAscensionStats(pm, true);
 
             pm.SendMessage(0x22, $"Поздравляем! Вы получили ранг Владыки Тьмы! Лимиты Str/Dex/Int повышены, общий Stat Cap поднят до {CustomStatCap}. Навыки Magery и EvalInt теперь могут быть развиты до {EpicSkillCap}!");
             Effects.PlaySound(pm.Location, pm.Map, 0x1FB);
