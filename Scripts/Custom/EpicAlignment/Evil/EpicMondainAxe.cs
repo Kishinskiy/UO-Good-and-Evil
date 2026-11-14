@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Server;
 using Server.Items;
+using Server.Mobiles;
 
 namespace Server.Custom.EpicAlignment
 {
@@ -18,6 +19,7 @@ namespace Server.Custom.EpicAlignment
             Name = "Жатва Бездны: Проклятый Клинок Мондейна [Эпический Артефакт]";
             Hue = 1175; // Ядовито-зеленое свечение Хаоса
             LootType = LootType.Blessed; 
+            ItemPower = ItemPower.LegendaryArtifact;
 
             Attributes.WeaponDamage = 60;
             Attributes.WeaponSpeed = 40;
@@ -27,6 +29,18 @@ namespace Server.Custom.EpicAlignment
 
             WeaponAttributes.HitPoisonArea = 35; // 35% шанс отравить всех врагов вокруг
             Slayer = SlayerName.Fey;             // Вшитый урон против эльфов, пикси и сил Света
+        }
+        
+        // Проверка: надеть может только Владыка Тьмы (EpicEvil)
+        public override bool CanEquip(Mobile from)
+        {
+	        if (from is PlayerMobile pm && (!pm.IsDemigod || !pm.EpicEvil))
+	        {
+		        pm.SendMessage(0x22, "Этот проклятый топор испепелит любого, кто не является Владыкой Тьмы!");
+		        return false;
+	        }
+
+	        return base.CanEquip(from);
         }
 
         // Кастомное свойство: Вспышка вампиризма при ударе

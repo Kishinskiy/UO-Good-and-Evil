@@ -63,8 +63,6 @@ namespace Server.Mobiles
             typeof(Aegis), 
             typeof(HolyKnightsBreastplate), 
             typeof(CrimsonCincture),
-            typeof(EpicGrimoireOfChaos),
-            typeof(EpicMondainAxe)
         };
 
         public override Type[] SharedList => new Type[] 

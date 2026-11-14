@@ -5,9 +5,6 @@ using Server.Mobiles;
 
 namespace Server.Custom.EpicAlignment
 {
-    // =========================================================================
-    // 📜 ЛЕГЕНДАРНЫЙ ТЁМНЫЙ ГРИМУАР: КНИГА СКВЕРНЫ МОНДЕЙНА
-    // =========================================================================
     public class EpicGrimoireOfChaos : Item
     {
         private bool[] m_CustomSpells = new bool[4];
@@ -28,10 +25,17 @@ namespace Server.Custom.EpicAlignment
             Name = "Книга Скверны: Эпический Гримуар Мондейна";
             Weight = 1.0;
             LootType = LootType.Blessed; 
-            Hue = 1175; // Ядовито-зеленый
+            Hue = 1175;
 
             m_NextUndeadSummon = DateTime.UtcNow;
             m_NextBossSummon = DateTime.UtcNow;
+        }
+
+        public override void GetProperties(ObjectPropertyList list)
+        {
+            base.GetProperties(list);
+            list.Add(1151495); // Стандартный Cliloc: Legendary Artifact
+            list.Add(1060658, "Путь\tВладыка Тьмы (Evil)");
         }
 
         public override void OnDoubleClick(Mobile from)
@@ -41,26 +45,33 @@ namespace Server.Custom.EpicAlignment
             PlayerMobile pm = from as PlayerMobile;
             if (pm == null) return;
 
+            if (!pm.IsDemigod || !pm.EpicEvil)
+            {
+                pm.SendMessage(0x22, "Тьма Гримуара обжигает ваш разум! Читать его может только Владыка Тьмы.");
+                return;
+            }
+
             if (pm.Backpack == null || !this.IsChildOf(pm.Backpack))
             {
                 pm.SendMessage(0x22, "Гримуар Скверны должен находиться в вашем рюкзаке.");
                 return;
             }
 
-            // Открываем строго готический Гамп Мондейна! 🎉
             pm.CloseGump(typeof(EpicMondainBookGump));
             pm.SendGump(new EpicMondainBookGump(pm, this));
         }
 
         public EpicGrimoireOfChaos(Serial serial) : base(serial) { }
+
         public override void Serialize(GenericWriter writer)
         {
             base.Serialize(writer);
-            writer.Write((int)0); // Version
+            writer.Write((int)0);
             writer.Write(m_NextUndeadSummon);
             writer.Write(m_NextBossSummon);
             for (int i = 0; i < 4; i++) writer.Write(m_CustomSpells[i]);
         }
+
         public override void Deserialize(GenericReader reader)
         {
             base.Deserialize(reader);

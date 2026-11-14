@@ -57,7 +57,7 @@ namespace Server.Mobiles
             AddItem(new Scythe { Hue = 1175, Movable = false });
         }
 
-        public override Type[] UniqueList => new Type[] { typeof(EpicBookOfDestiny), typeof(EpicSwordOfVirtues) };
+        public override Type[] UniqueList => new Type[] { typeof(BladeOfBattle), typeof(BraveKnightOfTheBritannia) };
         public override Type[] SharedList => new Type[] { typeof(CloakOfPower) };
         public override Type[] DecorativeList => new Type[] { typeof(EvilIdolSkull) };
         public override MonsterStatuetteType[] StatueTypes => new MonsterStatuetteType[] { MonsterStatuetteType.Daemon };

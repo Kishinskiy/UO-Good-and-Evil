@@ -45,6 +45,12 @@ namespace Server.Custom.EpicAlignment
             if (pm == null || pm.Deleted)
                 return;
 
+            if (pm.Shrines != ActivatedShrines.All)
+            {
+                pm.SendMessage(0x22, "Вы помогли одолеть Темного Лорда, но без активации всех 8 Алтарей Добродетели вознесение невозможно!");
+                return;
+            }
+
             if (pm.Karma < RequiredKarma)
             {
                 pm.SendMessage(0x22, "Твоей силы света недостаточно для прохождения испытания (требуется карма от +5000).");
@@ -62,6 +68,9 @@ namespace Server.Custom.EpicAlignment
 
             World.Broadcast(0x35, true, $"[Триумф Света] Герой {pm.Name} сокрушил Темного Лорда и совершил Восхождение к рангу Аватара!");
 
+            // Выдаем Гримуар Аватара
+            GiveItem(pm, new EpicBookOfDestiny());
+
             ApplyAscensionStats(pm);
 
             pm.SendMessage(0x35, $"Поздравляем! Вы получили ранг Аватара Света! Лимиты Str/Dex/Int повышены, общий Stat Cap поднят до {CustomStatCap}. Навыки Magery и EvalInt теперь могут быть развиты до {EpicSkillCap}!");
@@ -75,13 +84,19 @@ namespace Server.Custom.EpicAlignment
             if (pm == null || pm.Deleted)
                 return;
 
+            if (pm.Shrines != ActivatedShrines.All)
+            {
+                pm.SendMessage(0x22, "Вы помогли повергнуть Серафима, но без активации всех 8 Алтарей Силы ритуал вознесения невозможен!");
+                return;
+            }
+
             if (pm.Karma > -RequiredKarma)
             {
                 pm.SendMessage(0x22, "В вашей душе недостаточно тьмы для этого ритуала (требуется карма от -5000 и ниже).");
                 return;
             }
 
-            if (pm.IsDemigod)
+            if (pm.IsDemigod || pm.EpicGood || pm.EpicEvil)
             {
                 pm.SendMessage(0x22, "Вы уже прошли путь Вознесения и обладаете силой Полубога!");
                 return;
@@ -91,6 +106,9 @@ namespace Server.Custom.EpicAlignment
             pm.EpicEvil = true;
 
             World.Broadcast(0x22, true, $"[Торжество Тьмы] Адепт Хаоса {pm.Name} поверг Верховного Серафима и обрел мощь Владыки Тьмы!");
+
+            // Выдаем Темный Гримуар Мондейна
+            GiveItem(pm, new EpicGrimoireOfChaos());
 
             ApplyAscensionStats(pm);
 
@@ -108,6 +126,15 @@ namespace Server.Custom.EpicAlignment
 
             pm.Skills[SkillName.Magery].Cap = EpicSkillCap;
             pm.Skills[SkillName.EvalInt].Cap = EpicSkillCap;
+        }
+
+        public static void GiveItem(PlayerMobile player, Item item)
+        {
+            if (player.Backpack == null || !player.AddToBackpack(item))
+            {
+                item.MoveToWorld(player.Location, player.Map);
+                player.SendMessage(0x22, $"В рюкзаке нет места. Предмет [{item.Name}] положен у ваших ног.");
+            }
         }
 
         public static void MonitorAvatarBoss(BaseCreature boss, PlayerMobile player, bool isDarkPath = false)

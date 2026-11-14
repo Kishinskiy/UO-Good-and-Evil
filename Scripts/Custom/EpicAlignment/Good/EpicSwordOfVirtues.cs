@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Server;
 using Server.Items;
+using Server.Mobiles;
 
 namespace Server.Custom.EpicAlignment
 {
@@ -18,6 +19,7 @@ namespace Server.Custom.EpicAlignment
             Name = "Клинок Добродетелей: Высшее Сияние Света [Эпический Артефакт]";
             Hue = 2418; // Свечение Аватара
             LootType = LootType.Blessed; // Благословенный (не выпадает при смерти)
+            ItemPower = ItemPower.LegendaryArtifact;
 
             Attributes.WeaponDamage = 60;
             Attributes.WeaponSpeed = 40;
@@ -29,6 +31,18 @@ namespace Server.Custom.EpicAlignment
             Slayer = SlayerName.Silver;         // Вшитый Серебряный слеер против всей нежити
         }
 
+        // Проверка: надеть может только Полубог Света (EpicGood)
+        public override bool CanEquip(Mobile from)
+        {
+	        if (from is PlayerMobile pm && (!pm.IsDemigod || !pm.EpicGood))
+	        {
+		        pm.SendMessage(0x22, "Этот священный клинок покорится только Аватару Света!");
+		        return false;
+	        }
+
+	        return base.CanEquip(from);
+        }
+        
         // Кастомное свойство: Массовая АоЕ Вспышка Исцеления и Урона при ударе
         public override void OnHit(Mobile attacker, IDamageable defender, double damageBonus)
         {

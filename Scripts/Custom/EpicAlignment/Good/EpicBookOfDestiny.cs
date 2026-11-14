@@ -1,20 +1,13 @@
 using System;
-using System.Collections.Generic;
 using Server;
 using Server.Items;
 using Server.Mobiles;
 
 namespace Server.Custom.EpicAlignment
 {
-    // =========================================================================
-    // 📜 ЭПИЧЕСКИЙ ГРИМУАР: КНИГА СУДЬБЫ С ПОДДЕРЖКОЙ ИЗУЧЕНИЯ МАКРО-СПЕЛЛОВ
-    // =========================================================================
     public class EpicBookOfDestiny : Item
     {
-        // Динамический массив флагов для будущих эпических заклинаний (4 слота)
         private bool[] m_CustomSpells = new bool[4];
-
-        // Кулдауны на базовые способности (Сохраняются на диск!)
         private DateTime m_NextGuardSummon;
         private DateTime m_NextBossSummon;
 
@@ -22,21 +15,27 @@ namespace Server.Custom.EpicAlignment
         public DateTime NextGuardSummon { get { return m_NextGuardSummon; } set { m_NextGuardSummon = value; } }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public DateTime NextBossSummon { get; set; }
+        public DateTime NextBossSummon { get { return m_NextBossSummon; } set { m_NextBossSummon = value; } }
 
-        // Свойства для проверки изученных заклинаний
         public bool[] CustomSpells { get { return m_CustomSpells; } }
 
         [Constructable]
-        public EpicBookOfDestiny() : base(0x22C5) // Графика раскрытого древнего фолианта
+        public EpicBookOfDestiny() : base(0x22C5)
         {
             Name = "Книга Судьбы: Эпический Гримуар Аватара";
             Weight = 1.0;
             LootType = LootType.Blessed; 
-            Hue = 2418; // Сияющий золотой цвет
+            Hue = 2418;
 
             m_NextGuardSummon = DateTime.UtcNow;
             m_NextBossSummon = DateTime.UtcNow;
+        }
+
+        public override void GetProperties(ObjectPropertyList list)
+        {
+            base.GetProperties(list);
+            list.Add(1151495); // Стандартный Cliloc: Legendary Artifact
+            list.Add(1060658, "Путь\tАватар Света (Good)");
         }
 
         public override void OnDoubleClick(Mobile from)
@@ -46,28 +45,20 @@ namespace Server.Custom.EpicAlignment
             PlayerMobile pm = from as PlayerMobile;
             if (pm == null) return;
 
+            if (!pm.IsDemigod || !pm.EpicGood)
+            {
+                pm.SendMessage(0x22, "Страницы Гримуара Судьбы ослепляют вас! Читать его может только Аватар Света.");
+                return;
+            }
+
             if (pm.Backpack == null || !this.IsChildOf(pm.Backpack))
             {
                 pm.SendMessage(0x22, "Гримуар Судьбы должен находиться в вашем рюкзаке.");
                 return;
             }
 
-            // Открываем строго золотой Гамп Аватара! 🎉
             pm.CloseGump(typeof(EpicAvatarBookGump));
             pm.SendGump(new EpicAvatarBookGump(pm, this));
-        }
-
-        // Логика поглощения будущих свитков магии при перетаскивании на Гримуар
-        public override bool OnDragDrop(Mobile from, Item dropped)
-        {
-            PlayerMobile pm = from as PlayerMobile;
-            if (pm == null || dropped == null) return false;
-
-            // Пример заготовки на будущее:
-            // if (dropped is FutureEpicSpellScroll) { ... изучить спелл ... }
-
-            pm.SendMessage(0x22, "Этот свиток не содержит совместимых эпических рун.");
-            return false;
         }
 
         public EpicBookOfDestiny(Serial serial) : base(serial) { }
@@ -75,13 +66,11 @@ namespace Server.Custom.EpicAlignment
         public override void Serialize(GenericWriter writer)
         {
             base.Serialize(writer);
-            writer.Write((int)1); // Повышаем версию сериализации до 1
+            writer.Write((int)1);
 
-            // Сохраняем кулдауны способностей
             writer.Write(m_NextGuardSummon);
             writer.Write(m_NextBossSummon);
 
-            // Сохраняем слоты изученных в будущем заклинаний
             writer.Write((int)m_CustomSpells.Length);
             for (int i = 0; i < m_CustomSpells.Length; i++)
                 writer.Write(m_CustomSpells[i]);

@@ -165,6 +165,29 @@ namespace Server.Items
                 from.SendMessage(isDark ? 0x22 : 0x5D, $"Ваш Кулон Анкха впитал энергию алтаря {virtue} ({GetChargedCount()}/8)!");
             }
 
+            int chargedCount = GetChargedCount();
+
+            if (m_IsAwakened || chargedCount >= 8)
+            {
+	            ItemPower = ItemPower.LegendaryArtifact; // Legendary Artifact (8/8)
+            }
+            else if (chargedCount >= 6)
+            {
+	            ItemPower = ItemPower.MajorArtifact;     // Major Artifact (6-7/8)
+            }
+            else if (chargedCount >= 4)
+            {
+	            ItemPower = ItemPower.GreaterArtifact;   // Greater Artifact (4-5/8)
+            }
+            else if (chargedCount >= 2)
+            {
+	            ItemPower = ItemPower.Major;        // Major Magic Item (2-3/8)
+            }
+            else if (chargedCount == 1)
+            {
+	            ItemPower = ItemPower.Minor;        // Minor Magic Item (1/8)
+            }
+            
             InvalidateProperties();
         }
 
