@@ -157,7 +157,7 @@ namespace Server.Engines.CannedEvil
 	            // Волна 3: Призванные небесные защитники и кирины
 	            new Type[] { typeof(Kirin), typeof(Unicorn) }, 
 	            // Волна 4: Высшие Архангелы (Единороги/Ангелы в зависимости от сборки, заменим на Серебряных Серпентов и Серых магов)
-	            new Type[] { typeof(SilverSerpent), typeof(HolyMage) } 
+	            new Type[]{ typeof( EtherealWarrior ), typeof( SerpentineDragon ) }
             }),
         };
 

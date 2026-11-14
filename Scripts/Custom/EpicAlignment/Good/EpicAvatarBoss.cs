@@ -116,7 +116,7 @@ namespace Server.Mobiles
         // ВОТ ЭТОТ БЛОК ПЕРЕХВАТЫВАЕТ СМЕРТЬ БОССА
         public override void OnDeath(Container c)
         {
-            EpicAvatarRewardSystem.OnChampionDefeated(this);
+            EpicAvatarRewardSystem.OnChampionDefeated(this, false);
             base.OnDeath(c);
         }
 

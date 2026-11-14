@@ -137,7 +137,7 @@ namespace Server.Mobiles
         // Перехват смерти босса: запускаем выдачу статуса Владыки Тьмы (EpicEvil)
         public override void OnDeath(Container c)
         {
-            EpicAvatarRewardSystem.OnDarkChampionDefeated(this);
+            EpicAvatarRewardSystem.OnChampionDefeated(this, true);
             base.OnDeath(c);
         }
 
