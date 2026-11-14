@@ -76,7 +76,8 @@ namespace Server.Mobiles
         ToggleCutClippings = 0x01000000,
         ToggleCutReeds = 0x02000000,
         MechanicalLife = 0x04000000,
-        Unused = 0x08000000,
+        EpicGood = 0x08000000,
+        EpicEvil = 0x00004000,
         ToggleCutTopiaries = 0x10000000,
         HasValiantStatReward = 0x20000000,
         RefuseTrades = 0x40000000,
@@ -85,11 +86,27 @@ namespace Server.Mobiles
     [Flags]
     public enum ExtendedPlayerFlag
     {
-        Unused = 0x00000001,
+	    IsDemigod = 0x00000001,
         ToggleStoneOnly = 0x00000002,
         CanBuyCarpets = 0x00000004,
         VoidPool = 0x00000008,
         DisabledPvpWarning = 0x00000010,
+    }
+    
+    [Flags]
+    public enum ActivatedShrines
+    {
+	    None         = 0x00,
+	    Honesty      = 0x01, // Честность
+	    Compassion   = 0x02, // Сострадание
+	    Valor        = 0x04, // Доблесть
+	    Justice      = 0x08, // Справедливость
+	    Sacrifice    = 0x10, // Жертвенность
+	    Honor        = 0x20, // Честь
+	    Spirituality = 0x40, // Духовность
+	    Humility     = 0x80, // Смирение
+
+	    All = Honesty | Compassion | Valor | Justice | Sacrifice | Honor | Spirituality | Humility
     }
 
     public enum NpcGuild
@@ -124,6 +141,15 @@ namespace Server.Mobiles
         static PlayerMobile()
         {
             Instances = new List<PlayerMobile>(0x1000);
+        }
+        
+        private ActivatedShrines m_ActivatedShrines;
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public ActivatedShrines Shrines
+        {
+	        get { return m_ActivatedShrines; }
+	        set { m_ActivatedShrines = value; }
         }
 
         #region Mount Blocking
@@ -485,6 +511,17 @@ namespace Server.Mobiles
         #region PlayerFlags
         public PlayerFlag Flags { get { return m_Flags; } set { m_Flags = value; } }
         public ExtendedPlayerFlag ExtendedFlags { get { return m_ExtendedFlags; } set { m_ExtendedFlags = value; } }
+        
+        [CommandProperty(AccessLevel.GameMaster)]
+        public bool IsDemigod
+        {
+	        get { return GetFlag(ExtendedPlayerFlag.IsDemigod); }
+	        set 
+	        { 
+		        SetFlag(ExtendedPlayerFlag.IsDemigod, value); 
+		        InvalidateProperties(); 
+	        }
+        }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public bool PagingSquelched { get { return GetFlag(PlayerFlag.PagingSquelched); } set { SetFlag(PlayerFlag.PagingSquelched, value); } }
@@ -1943,6 +1980,31 @@ namespace Server.Mobiles
             }
         }
 
+        #region  Epic Status
+        [CommandProperty(AccessLevel.GameMaster)]
+        public bool EpicGood
+        {
+	        get { return GetFlag(PlayerFlag.EpicGood); }
+	        set 
+	        { 
+		        SetFlag(PlayerFlag.EpicGood, value); 
+		        InvalidateProperties(); 
+	        }
+        }
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public bool EpicEvil
+        {
+	        get { return GetFlag(PlayerFlag.EpicEvil); }
+	        set 
+	        { 
+		        SetFlag(PlayerFlag.EpicEvil, value); 
+		        InvalidateProperties(); 
+	        }
+        }
+        #endregion
+        
+        
         #region [Stats]Max
         [CommandProperty(AccessLevel.GameMaster)]
         public override int HitsMax
@@ -4298,6 +4360,9 @@ namespace Server.Mobiles
 
             switch (version)
             {
+	            case 43:
+		            m_ActivatedShrines = (ActivatedShrines)reader.ReadInt();
+		            goto case 42;
                 case 42: // upgraded quest serialization
                 case 41: // removed PeacedUntil - no need to serialize this
                 case 40: // Version 40, moved gauntlet points, virtua artys and TOT convert to PointsSystem
@@ -4766,7 +4831,9 @@ namespace Server.Mobiles
 
             base.Serialize(writer);
 
-            writer.Write(42); // version
+            writer.Write(43); // version
+            
+            writer.Write((int)m_ActivatedShrines);
 
             writer.Write(NextGemOfSalvationUse);
 
@@ -5061,6 +5128,20 @@ namespace Server.Mobiles
         public override void GetProperties(ObjectPropertyList list)
         {
             base.GetProperties(list);
+            
+            if (IsDemigod)
+            {
+	            list.Add(1060658, "Статус\tПолубог");
+            }
+            
+            if (EpicGood)
+            {
+	            list.Add(1060658, "Статус\tАватар Света (Good)");
+            }
+            else if (EpicEvil)
+            {
+	            list.Add(1060658, "Статус\tВладыка Тьмы (Evil)");
+            }
 
             Engines.JollyRoger.JollyRogerData.DisplayTitle(this, list);
 

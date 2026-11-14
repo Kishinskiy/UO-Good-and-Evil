@@ -1,124 +1,170 @@
 using System;
-using System.Collections.Generic;
-using Server;
+using Server.Custom.EpicAlignment;
 using Server.Items;
-using Server.Mobiles;
+using Server.Spells;
+using Server.Engines.CannedEvil;
 
-namespace Server.Custom.EpicAlignment
+namespace Server.Mobiles
 {
-    // =========================================================================
-    // 👹 ВЫСШИЙ ТЁМНЫЙ БОСС: АСТРАЛЬНЫЙ ЖНЕЦ БЕЗДНЫ (ХРАНИТЕЛЬ ПЕЧАТИ)
-    // =========================================================================
-    public class EpicMondainBoss : BaseCreature
+    [CorpseName("останки Верховного Серафима")]
+    public class SeraphimGuardian : BaseChampion
     {
+        private DateTime m_NextAbilityTime;
+
         [Constructable]
-        public EpicMondainBoss() : base(AIType.AI_Mage, FightMode.Closest, 10, 1, 0.2, 0.4)
+        public SeraphimGuardian() : base(AIType.AI_Mage)
         {
-            Name = "Астральный Жнец [ ХРАНИТЕЛЬ ПЕЧАТИ МОНДЕЙНА ]";
-            Body = 310; // Графика величественного Демона Бездны / Экзекутора
-            Hue = 1175; // Ядовито-зеленый цвет Хаоса
+            Name = "Аурелион";
+            Title = "Верховный Серафим Света";
+            Body = 400; // Тело человека (или 123 для Ethereal Warrior)
+            Hue = 1153; // Сияющий небесно-белый/золотой оттенок (Pure White / Ice)
 
-            // Ультимативные характеристики для хардкорного соло-кооп боя
-            HitsMaxSeed = 35000;
-            Hits = 35000;
-
-            ManaMaxSeed = 5000;
-            Mana = 5000;
-
-            SetStr(600, 750);
+            SetStr(800, 1000);
             SetDex(150, 200);
-            SetInt(300, 450);
+            SetInt(600, 800);
 
-            SetDamage(65, 100); // Огромный урон в ближнем бою
+            SetHits(35000);
+            SetStam(200);
+            SetMana(1000);
 
-            // Защита и сопротивления (Резисты)
-            SetResistance(ResistanceType.Physical, 75);
-            SetResistance(ResistanceType.Fire, 60);
-            SetResistance(ResistanceType.Cold, 60);
-            SetResistance(ResistanceType.Poison, 90); // Высокий иммунитет к ядам
-            SetResistance(ResistanceType.Energy, 65);
+            SetDamage(22, 32);
 
-            // Навыки (Skills) Высшего Босса
-            SetSkill(SkillName.Magery, 120.0);
+            SetDamageType(ResistanceType.Physical, 20);
+            SetDamageType(ResistanceType.Fire, 40);
+            SetDamageType(ResistanceType.Energy, 40);
+
+            SetResistance(ResistanceType.Physical, 60, 70);
+            SetResistance(ResistanceType.Fire, 70, 80);
+            SetResistance(ResistanceType.Cold, 50, 60);
+            SetResistance(ResistanceType.Poison, 70, 80);
+            SetResistance(ResistanceType.Energy, 60, 70);
+
             SetSkill(SkillName.EvalInt, 120.0);
-            SetSkill(SkillName.Swords, 120.0);
-            SetSkill(SkillName.Tactics, 120.0);
-            SetSkill(SkillName.Anatomy, 120.0);
+            SetSkill(SkillName.Magery, 120.0);
+            SetSkill(SkillName.Chivalry, 120.0); // Паладинская магия Света
+            SetSkill(SkillName.Meditation, 120.0);
             SetSkill(SkillName.MagicResist, 130.0);
+            SetSkill(SkillName.Tactics, 110.0);
+            SetSkill(SkillName.Swords, 110.0);
 
-            Fame = 25000;
-            Karma = -25000;
-            Tamable = false;
+            Fame = 22500;
+            Karma = 22500; // Максимально светлая карма
 
-            // Генерируем рюкзак сокровищ с Diablo-лутом Тьмы
-            Container pack = Backpack;
-            if (pack == null)
-            {
-                pack = new Backpack();
-                pack.Movable = false;
-                AddItem(pack);
-            }
+            VirtualArmor = 70;
 
-            pack.DropItem(new Gold(Utility.RandomMinMax(10000, 15000)));
-
-            for (int i = 0; i < 6; i++)
-            {
-                Item magicItem = Loot.RandomArmorOrShieldOrJewelry();
-                if (magicItem != null)
-                {
-                    // Накладываем высокие случайные Diablo-свойства
-                    BaseRunicTool.ApplyAttributesTo(magicItem, 5, 95, 100);
-                    pack.DropItem(magicItem);
-                }
-            }
+            // Небесная экипировка
+            AddItem(new HoodedShroudOfShadows(1153));
+            AddItem(new VikingSword { Hue = 1153, Name = "Клинок Рассвета", Movable = false });
         }
 
-        // 🔥 КАСТОМНЫЙ ИИ: Проклятие Крови (AoE-Вампиризм по площади)
+        // Реальные артефакты из сборки ServUO
+        public override Type[] UniqueList => new Type[] 
+        { 
+            typeof(Aegis), 
+            typeof(HolyKnightsBreastplate), 
+            typeof(CrimsonCincture),
+            typeof(EpicGrimoireOfChaos),
+            typeof(EpicMondainAxe)
+        };
+
+        public override Type[] SharedList => new Type[] 
+        { 
+ 
+            typeof(LieutenantOfTheBritannianRoyalGuard),
+            typeof(EmbroideredOakLeafCloak)
+        };
+
+        public override Type[] DecorativeList => new Type[] 
+        { 
+            typeof(MonsterStatuette), 
+        };
+
+        public override MonsterStatuetteType[] StatueTypes => new MonsterStatuetteType[] { MonsterStatuetteType.ArchDemon };
+        public override ChampionSkullType SkullType => ChampionSkullType.Enlightenment;
+
+        // Механика: Карающий Свет (урон по области + повышенный урон по персонажам Тьмы)
         public override void OnThink()
         {
             base.OnThink();
 
-            if (Alive && Combatant != null && Utility.RandomDouble() < 0.05)
+            if (Combatant != null && DateTime.UtcNow >= m_NextAbilityTime)
             {
-                this.PlaySound(0x1FB); // Потусторонний загробный звук
-                this.PublicOverheadMessage(Network.MessageType.Regular, 0x22, false, "*Жнец высасывает жизненные соки живых существ вокруг!*");
+                SmiteDarkness();
+                m_NextAbilityTime = DateTime.UtcNow + TimeSpan.FromSeconds(15);
+            }
+        }
 
-                List<Mobile> targets = new List<Mobile>();
-                IPooledEnumerable mobiles = Map.GetMobilesInRange(Location, 6);
-                
-                foreach (Mobile m in mobiles)
+        private void SmiteDarkness()
+        {
+            Say("Свет Небес испепелит вашу порочную душу! Тьма не пройдет!");
+            PlaySound(0x212);
+
+            foreach (Mobile m in GetMobilesInRange(8))
+            {
+                if (m != this && m.Player && m.Alive && CanBeHarmful(m))
                 {
-                    // Целями становятся только игроки, их питомцы и наёмники
-                    if (m != this && m.Alive && (m.Player || (m is BaseCreature c && (c.Controlled || c.Summoned))))
-                        targets.Add(m);
-                }
-                mobiles.Free();
+                    DoHarmful(m);
+                    int damage = Utility.RandomMinMax(30, 50);
 
-                int totalVampireHeal = 0;
+                    // Наносим повышенный урон игрокам с отрицательной кармой ("силам Тьмы")
+                    if (m.Karma < -5000)
+                    {
+                        damage += 25;
+                        m.SendMessage(53, "Священный огонь обжигает вашу темную душу!");
+                    }
 
-                foreach (Mobile m in targets)
-                {
-                    int dmg = Utility.RandomMinMax(25, 45);
-                    m.Damage(dmg, this);
-                    
-                    // Эффект кровавых нитей, тянущихся к боссу
-                    m.FixedParticles(0x374A, 10, 30, 5052, 1175, 0, EffectLayer.Waist);
-                    m.SendMessage(0x22, "Ваша жизненная энергия уходит на подпитку Жнеца Бездны!");
-                    
-                    totalVampireHeal += dmg;
-                }
-
-                // Босс исцеляет себя на сумму нанесенного урона
-                if (totalVampireHeal > 0)
-                {
-                    this.Hits = Math.Min(this.HitsMax, this.Hits + totalVampireHeal);
-                    this.FixedParticles(0x376A, 9, 32, 5005, 1175, 0, EffectLayer.Waist); // Зеленые искры на боссе
+                    AOS.Damage(m, this, damage, 0, 50, 0, 0, 50);
+                    Hits += damage / 2;
+                    m.FixedParticles(0x3709, 10, 30, 5052, 1153, 0, EffectLayer.LeftFoot);
                 }
             }
         }
 
-        public EpicMondainBoss(Serial serial) : base(serial) { }
-        public override void Serialize(GenericWriter writer) { base.Serialize(writer); writer.Write((int)0); }
-        public override void Deserialize(GenericReader reader) { base.Deserialize(reader); int version = reader.ReadInt(); }
+        // При получении урона призывает Ангелов-Хранителей
+        public override void OnGotMeleeAttack(Mobile attacker)
+        {
+            base.OnGotMeleeAttack(attacker);
+
+            if (0.15 >= Utility.RandomDouble())
+            {
+                Say("Воинство Света, на защиту Святилища!");
+                BaseCreature spawn = new EtherealWarrior(); // Или EtherealWarrior для более жесткого боя
+                spawn.MoveToWorld(Location, Map);
+                spawn.Combatant = attacker;
+            }
+        }
+
+        // Перехват смерти босса: запускаем выдачу статуса Владыки Тьмы (EpicEvil)
+        public override void OnDeath(Container c)
+        {
+            EpicAvatarRewardSystem.OnDarkChampionDefeated(this);
+            base.OnDeath(c);
+        }
+
+        public override void GenerateLoot()
+        {
+            AddLoot(LootPack.SuperBoss, 3);
+            AddLoot(LootPack.Meager);
+        }
+
+        public override bool AlwaysMurderer => false;
+        public override bool InitialInnocent => true; // Выглядит синим (добрым), пока не атакуют
+        public override bool BardImmune => true;
+
+        public SeraphimGuardian(Serial serial) : base(serial)
+        {
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+            writer.Write(0);
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+            int version = reader.ReadInt();
+        }
     }
 }

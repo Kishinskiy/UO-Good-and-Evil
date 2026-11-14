@@ -33,8 +33,6 @@ namespace Server.Engines.CannedEvil
                 {
                     e.Blocked = true;
 
-                    // ИЗМЕНЕННАЯ ЛОГИКА:
-                    // Если таймер запущен и текущее время МЕНЬШЕ, чем RestartTime (время ожидания еще не прошло)
                     if (spawn.RestartTime != DateTime.MinValue && DateTime.UtcNow < spawn.RestartTime)
                     {
                         pm.SendMessage(0x22, "Алтарь находится на стадии перезарядки. Сейчас пробудить его может только Рыцарь Доблести (Knight of Valor).");
@@ -43,29 +41,37 @@ namespace Server.Engines.CannedEvil
 
                     if (spawn.Type == ChampionSpawnType.AvatarTrial || spawn.Type == ChampionSpawnType.MondainTrial)
                     {
-	                    
-	                    bool isDarkPath = KarmaVirtueManager.IsPredominantlyDark(pm);
+                        // 1. Сначала проверяем активацию всех 8 алтарей (ДО удаления реликвий!)
+                        if (pm.Shrines != ActivatedShrines.All)
+                        {
+                            int count = KarmaVirtueManager.GetTotalActivatedShrinesCount(pm);
+                            pm.SendMessage(0x22, $"Необходимо активировать все 8 алтарей добродетели (сейчас активировано: {count} из 8).");
+                            continue;
+                        }
 
-	                    if (spawn.Type == ChampionSpawnType.AvatarTrial && isDarkPath)
-	                    {
-		                    pm.SendMessage(0x22, "Ваша душа осквернена Тьмой! Испытание Аватара доступно только идущим Путем Просветления.");
-		                    continue;
-	                    }
+                        // 2. Проверяем сторону (Свет или Тьма)
+                        bool isDarkPath = pm.Karma < 0;
 
-	                    if (spawn.Type == ChampionSpawnType.MondainTrial && !isDarkPath)
-	                    {
-		                    pm.SendMessage(0x22, "В вас слишком много Света! Испытание Мондейна покорится лишь адепту Книги Порока.");
-		                    continue;
-	                    }
-	                    
-	                    if (!ConsumeElementalRelics(pm))
-	                    {
-		                    pm.SendMessage(0x22, "Для пробуждения этого алтаря в вашем рюкзаке должны находиться все 4 Реликвии Пагана (Земли, Огня, Воды и Воздуха)!");
-		                    continue;
-	                    }
+                        if (spawn.Type == ChampionSpawnType.AvatarTrial && isDarkPath)
+                        {
+                            pm.SendMessage(0x22, "Ваша душа осквернена Тьмой! Испытание Аватара доступно только идущим Путем Просветления (положительная карма).");
+                            continue;
+                        }
+
+                        if (spawn.Type == ChampionSpawnType.MondainTrial && !isDarkPath)
+                        {
+                            pm.SendMessage(0x22, "В вас слишком много Света! Испытание Мондейна покорится лишь адепту Тьмы (отрицательная карма).");
+                            continue;
+                        }
+
+                        // 3. Только когда все условия выполнены — забираем 4 реликвии Пагана
+                        if (!ConsumeElementalRelics(pm))
+                        {
+                            pm.SendMessage(0x22, "Для пробуждения этого алтаря в вашем рюкзаке должны находиться все 4 Реликвии Пагана (Земли, Огня, Воды и Воздуха)!");
+                            continue;
+                        }
                     }
-                    
-                    // Если таймер вышел (DateTime.UtcNow >= spawn.RestartTime), алтарь перешел в режим ожидания мантры
+
                     spawn.Active = true;
 
                     pm.PlaySound(0x243);
@@ -81,29 +87,24 @@ namespace Server.Engines.CannedEvil
         
         private static bool ConsumeElementalRelics(PlayerMobile pm)
         {
-	        if (pm.Backpack == null)
-		        return false;
+            if (pm.Backpack == null)
+                return false;
 
-	        Item earth = pm.Backpack.FindItemByType(typeof(HeartOfEarth));
-	        Item flame = pm.Backpack.FindItemByType(typeof(TongueOfFlame));
-	        Item seas  = pm.Backpack.FindItemByType(typeof(TearOfSeas));
-	        Item wind  = pm.Backpack.FindItemByType(typeof(BreathOfWind));
+            Item earth = pm.Backpack.FindItemByType(typeof(HeartOfEarth));
+            Item flame = pm.Backpack.FindItemByType(typeof(TongueOfFlame));
+            Item seas  = pm.Backpack.FindItemByType(typeof(TearOfSeas));
+            Item wind  = pm.Backpack.FindItemByType(typeof(BreathOfWind));
 
-	        // Проверяем, что все 4 реликвии найдены
-	        if (earth == null || flame == null || seas == null || wind == null)
-		        return false;
+            if (earth == null || flame == null || seas == null || wind == null)
+                return false;
 
-	        // Удаляем все 4 реликвии
-	        earth.Delete();
-	        flame.Delete();
-	        seas.Delete();
-	        wind.Delete();
+            earth.Delete();
+            flame.Delete();
+            seas.Delete();
+            wind.Delete();
 
-	        return true;
+            return true;
         }
-
-        
-        
 
         public static string GetRequiredMantra(ChampionSpawnType type)
         {

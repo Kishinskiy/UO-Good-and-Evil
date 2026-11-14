@@ -21,6 +21,104 @@ namespace Server.Custom.EpicAlignment
             if (boss != null && player != null)
                 new EpicBossMonitorTimer(boss, player).Start();
         }
+        
+        public static void OnChampionDefeated(BaseCreature boss)
+        {
+	        if (boss == null)
+		        return;
+
+	        List<DamageStore> rights = boss.GetLootingRights();
+
+	        foreach (DamageStore store in rights)
+	        {
+		        // Проверяем, что у игрока есть право на лут и он участвовал в бою
+		        if (store.m_HasRight && store.m_Mobile is PlayerMobile pm)
+		        {
+			        // Если нужно выдавать награду только светлым персонажам (раскомментируйте 2 строки ниже):
+			        if (pm.Karma < 5000)
+			        {
+				        pm.SendMessage("Твоей силы света не достаточно для прохождения испытания");
+				        continue;
+			        }
+
+			        // Защита от повторного получения статуса Аватара (проверяем по StatCap)
+			        if (pm.IsDemigod)
+			        {
+				        pm.SendMessage(0x35, "Вы уже обладаете силой Аватара!");
+				        continue;
+			        }
+			        
+			        pm.IsDemigod = true;
+			        pm.EpicGood = true;
+
+			        World.Broadcast(0x35, true, $"[Триумф Света] Герой {pm.Name} сокрушил Темного Лорда и совершил Восхождение к рангу Аватара!");
+
+			        // Накатываем эволюцию характеристик
+			        pm.StatCap = CustomStatCap;
+			        pm.RawStr = Math.Min(MaxIndividualStat, pm.RawStr + StatBonusAmount);
+			        pm.RawDex = Math.Min(MaxIndividualStat, pm.RawDex + StatBonusAmount);
+			        pm.RawInt = Math.Min(MaxIndividualStat, pm.RawInt + StatBonusAmount);
+
+			        // Накатываем эволюцию лимитов магических навыков
+			        pm.Skills[SkillName.Magery].Cap = EpicSkillCap;
+			        pm.Skills[SkillName.EvalInt].Cap = EpicSkillCap;
+
+			        pm.SendMessage(0x35, $"Поздравляем! Вы получили ранг Аватара! Лимиты Str/Dex/Int повышены, общий Stat Cap поднят до {CustomStatCap}. Навыки Magery и EvalInt теперь могут быть развиты до {EpicSkillCap}!");
+			        Effects.PlaySound(pm.Location, pm.Map, 0x5C9);
+		        }
+	        }
+        }
+
+        // Метод для Алтаря Тьмы (вызывается из OnDeath босса SeraphimGuardian)
+        public static void OnDarkChampionDefeated(BaseCreature boss)
+        {
+            if (boss == null)
+                return;
+
+            List<DamageStore> rights = boss.GetLootingRights();
+
+            foreach (DamageStore store in rights)
+            {
+                if (store.m_HasRight && store.m_Mobile is PlayerMobile pm)
+                {
+                    GrantEvilAvatarStatus(pm);
+                }
+            }
+        }
+
+        // Выдача статуса Владыки Тьмы (EpicEvil)
+        public static void GrantEvilAvatarStatus(PlayerMobile pm)
+        {
+            if (pm == null || pm.Deleted)
+                return;
+
+            // Защита от повторного вознесения или смены стороны
+            if (pm.IsDemigod || pm.EpicGood || pm.EpicEvil)
+            {
+                pm.SendMessage(0x22, "Вы уже прошли путь Вознесения и обладаете силой Полубога!");
+                return;
+            }
+
+            World.Broadcast(0x22, true, $"[Торжество Тьмы] Адепт Хаоса {pm.Name} поверг Верховного Серафима и обрел мощь Владыки Тьмы!");
+
+            // Присваиваем флаги статуса
+            pm.IsDemigod = true;
+            pm.EpicEvil = true;
+
+            // Накатываем эволюцию характеристик
+            pm.StatCap = CustomStatCap;
+            pm.RawStr = Math.Min(MaxIndividualStat, pm.RawStr + StatBonusAmount);
+            pm.RawDex = Math.Min(MaxIndividualStat, pm.RawDex + StatBonusAmount);
+            pm.RawInt = Math.Min(MaxIndividualStat, pm.RawInt + StatBonusAmount);
+
+            // Накатываем эволюцию лимитов магических навыков
+            pm.Skills[SkillName.Magery].Cap = EpicSkillCap;
+            pm.Skills[SkillName.EvalInt].Cap = EpicSkillCap;
+
+            pm.SendMessage(0x22, $"Поздравляем! Вы получили ранг Владыки Тьмы! Лимиты Str/Dex/Int повышены, общий Stat Cap поднят до {CustomStatCap}. Навыки Magery и EvalInt теперь могут быть развиты до {EpicSkillCap}!");
+            Effects.PlaySound(pm.Location, pm.Map, 0x1FB);
+            pm.FixedParticles(0x3709, 10, 30, 5052, 0x497, 0, EffectLayer.Waist); // Темное пламя вознесения
+        }
 
         private class EpicBossMonitorTimer : Timer
         {

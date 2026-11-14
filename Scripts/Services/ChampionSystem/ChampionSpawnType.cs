@@ -136,7 +136,7 @@ namespace Server.Engines.CannedEvil
 				new[]{ typeof( KhalAnkurWarriors ) }											                    
 			} ),
             
-            new ChampionSpawnInfo("Avatar Trial", typeof(Balron), new string[] { "Искра", "Пламя", "Аватар" }, new Type[][]
+            new ChampionSpawnInfo("Avatar Trial", typeof(DarkLord), new string[] { "Искра", "Пламя", "Аватар" }, new Type[][]
             { 
 	            // Волна 1: Первые прихвостни Скверны
 	            new Type[] { typeof(GreaterMongbat), typeof(Imp) }, 
@@ -148,7 +148,7 @@ namespace Server.Engines.CannedEvil
 	            new Type[] { typeof(Daemon), typeof(Succubus) }
             }),
 
-            new ChampionSpawnInfo("Mondain Trial", typeof(HolyMage), new string[] { "Святость", "Праведность", "Мондейн" }, new Type[][]
+            new ChampionSpawnInfo("Mondain Trial", typeof(SeraphimGuardian), new string[] { "Святость", "Праведность", "Мондейн" }, new Type[][]
             { 
 	            // Волна 1: Монахи, послушники и святые огоньки
 	            new Type[] { typeof(Pixie), typeof(Wisp) }, 

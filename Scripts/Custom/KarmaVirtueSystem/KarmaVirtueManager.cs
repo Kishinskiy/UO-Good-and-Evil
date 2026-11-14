@@ -33,7 +33,6 @@ namespace Server.Custom.KarmaVirtueSystem
         private static readonly string _savePath = Path.Combine(Core.BaseDirectory, "Saves/Custom/KarmaVirtueSystem.bin");
         private static Dictionary<Mobile, Dictionary<int, DateTime>> _shrineCooldowns = new Dictionary<Mobile, Dictionary<int, DateTime>>();
         private static readonly Dictionary<Mobile, Dictionary<int, ShrineBuffState>> _activeBuffs = new Dictionary<Mobile, Dictionary<int, ShrineBuffState>>();
-        private static Dictionary<Mobile, Dictionary<int, int>> _permanentlyActivatedShrines = new Dictionary<Mobile, Dictionary<int, int>>();
         private static readonly Dictionary<int, int> _shrineWorldStates = new Dictionary<int, int>();
         private static readonly Dictionary<int, DateTime> _shrineWorldStateExpirations = new Dictionary<int, DateTime>();
         private static bool _applyingReflectedDamage;
@@ -105,9 +104,12 @@ namespace Server.Custom.KarmaVirtueSystem
             }
 
             bool isDark = from.Karma < 0;
-
-            if (!_permanentlyActivatedShrines.ContainsKey(from))
-                _permanentlyActivatedShrines[from] = new Dictionary<int, int>();
+            
+            
+            if (from is PlayerMobile pm)
+            {
+	            pm.Shrines |= GetShrineFlag(shrine.Virtue);
+            }
 
             if (isDark)
             {
@@ -116,8 +118,6 @@ namespace Server.Custom.KarmaVirtueSystem
                 Effects.SendLocationEffect(from.Location, from.Map, 0x3709, 30, 10, 0x497, 0);
 
                 from.SendMessage(0x22, $"Вы осквернили алтарь {shrine.Virtue}! Он вспыхнул ТЁМНОЙ энергией Хаоса и зачтен в вашу Книгу Порока.");
-
-                _permanentlyActivatedShrines[from][shrine.ID] = 2;
                 _shrineWorldStates[shrine.ID] = 2;
                 _shrineWorldStateExpirations[shrine.ID] = DateTime.UtcNow + ShrineEffectDuration;
                 ApplyBuffInternal(from, shrine.ID, true);
@@ -129,8 +129,6 @@ namespace Server.Custom.KarmaVirtueSystem
                 Effects.SendLocationEffect(from.Location, from.Map, 0x375A, 9, 20, 0x5D, 0);
 
                 from.SendMessage(0x5D, $"Вы очистили алтарь {shrine.Virtue}! Он озарился СВЕТОМ Небес и зачтен в ваш Путь Просветления.");
-
-                _permanentlyActivatedShrines[from][shrine.ID] = 1;
                 _shrineWorldStates[shrine.ID] = 1;
                 _shrineWorldStateExpirations[shrine.ID] = DateTime.UtcNow + ShrineEffectDuration;
                 ApplyBuffInternal(from, shrine.ID, false);
@@ -437,23 +435,19 @@ namespace Server.Custom.KarmaVirtueSystem
 
         public static int GetTotalActivatedShrinesCount(Mobile m)
         {
-            if (m == null || !_permanentlyActivatedShrines.ContainsKey(m)) return 0;
-            return _permanentlyActivatedShrines[m].Count;
+	        if (m is PlayerMobile pm)
+	        {
+		        int count = 0;
+		        foreach (ShrineData s in Shrines)
+		        {
+			        if (pm.Shrines.HasFlag(GetShrineFlag(s.Virtue)))
+				        count++;
+		        }
+		        return count;
+	        }
+	        return 0;
         }
-
-        public static bool IsPredominantlyDark(Mobile m)
-        {
-            if (m == null || !_permanentlyActivatedShrines.ContainsKey(m) || _permanentlyActivatedShrines[m] == null)
-                return false;
-
-            int lightCount = 0; int darkCount = 0;
-            foreach (int side in _permanentlyActivatedShrines[m].Values)
-            {
-                if (side == 1) lightCount++;
-                if (side == 2) darkCount++;
-            }
-            return darkCount > lightCount;
-        }
+        
 
         public static void HandleMonsterLoot(Mobile victim, Container lootContainer)
         {
@@ -473,14 +467,20 @@ namespace Server.Custom.KarmaVirtueSystem
 
         public static bool CheckAvatarStatus(Mobile from, bool sendMessages)
         {
-            int count = GetTotalActivatedShrinesCount(from);
-            if (count < 8)
-            {
-                if (sendMessages)
-                    from.SendMessage(0x22, $"Вы активировали только {count} из 8 Алтарей Силы в мире. Обойдите все алтари мантрой!");
-                return false;
-            }
-            return true;
+	        if (from is PlayerMobile pm)
+	        {
+		        if (pm.Shrines != ActivatedShrines.All)
+		        {
+			        if (sendMessages)
+			        {
+				        int count = GetTotalActivatedShrinesCount(pm);
+				        pm.SendMessage(0x22, $"Вы активировали только {count} из 8 Алтарей Силы в мире. Обойдите все алтари мантрой!");
+			        }
+			        return false;
+		        }
+		        return true;
+	        }
+	        return false;
         }
 
         public static int GetShrineWorldState(int shrineID)
@@ -579,45 +579,50 @@ namespace Server.Custom.KarmaVirtueSystem
 
             return 1.0; // Базовое значение, если алтарь нейтрален
         }
-        public static void Save()
+        
+        private static ActivatedShrines GetShrineFlag(VirtueName virtue)
         {
-            GenericWriter writer = null;
-            try
-            {
-                string folder = Path.GetDirectoryName(_savePath);
-                if (!Directory.Exists(folder)) Directory.CreateDirectory(folder);
-                writer = new BinaryFileWriter(_savePath, false);
-                writer.Write((int)3);
-
-                writer.Write((int)_permanentlyActivatedShrines.Count);
-                foreach (var kvp in _permanentlyActivatedShrines)
-                {
-                    writer.Write(kvp.Key);
-                    writer.Write((int)kvp.Value.Count);
-                    foreach (var shrineKvp in kvp.Value)
-                    {
-                        writer.Write((int)shrineKvp.Key);
-                        writer.Write((int)shrineKvp.Value);
-                    }
-                }
-
-                writer.Write(_shrineWorldStates.Count);
-                foreach (var shrineKvp in _shrineWorldStates)
-                {
-                    writer.Write(shrineKvp.Key);
-                    writer.Write(shrineKvp.Value);
-                    writer.Write(_shrineWorldStateExpirations.TryGetValue(shrineKvp.Key, out DateTime expiresAt)
-                        ? expiresAt
-                        : DateTime.UtcNow);
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"[KarmaVirtue] Failed to save shrine data: {ex}");
-            }
-            finally { if (writer != null) writer.Close(); }
+	        switch (virtue)
+	        {
+		        case VirtueName.Honesty:      return ActivatedShrines.Honesty;
+		        case VirtueName.Compassion:   return ActivatedShrines.Compassion;
+		        case VirtueName.Valor:        return ActivatedShrines.Valor;
+		        case VirtueName.Justice:      return ActivatedShrines.Justice;
+		        case VirtueName.Sacrifice:    return ActivatedShrines.Sacrifice;
+		        case VirtueName.Honor:        return ActivatedShrines.Honor;
+		        case VirtueName.Spirituality: return ActivatedShrines.Spirituality;
+		        case VirtueName.Humility:     return ActivatedShrines.Humility;
+		        default:                      return ActivatedShrines.None;
+	        }
         }
 
+        public static void Save()
+        {
+	        GenericWriter writer = null;
+	        try
+	        {
+		        string folder = Path.GetDirectoryName(_savePath);
+		        if (!Directory.Exists(folder)) Directory.CreateDirectory(folder);
+		        writer = new BinaryFileWriter(_savePath, false);
+		        writer.Write((int)4);
+
+		        writer.Write(_shrineWorldStates.Count);
+		        foreach (var shrineKvp in _shrineWorldStates)
+		        {
+			        writer.Write(shrineKvp.Key);
+			        writer.Write(shrineKvp.Value);
+			        writer.Write(_shrineWorldStateExpirations.TryGetValue(shrineKvp.Key, out DateTime expiresAt)
+				        ? expiresAt
+				        : DateTime.UtcNow);
+		        }
+	        }
+	        catch (Exception ex)
+	        {
+		        Console.WriteLine($"[KarmaVirtue] Failed to save shrine data: {ex}");
+	        }
+	        finally { if (writer != null) writer.Close(); }
+        }
+        
         public static void Load()
         {
             if (!File.Exists(_savePath)) return;
@@ -629,28 +634,34 @@ namespace Server.Custom.KarmaVirtueSystem
                     {
                         GenericReader reader = new BinaryFileReader(binReader);
                         int version = reader.ReadInt();
-                        if (version < 1 || version > 3)
+                        if (version < 1 || version > 4)
                             throw new InvalidDataException($"Unsupported shrine data version: {version}");
 
                         DateTime legacyExpiration = DateTime.UtcNow + ShrineEffectDuration;
-                        int mobCount = reader.ReadInt();
-                        for (int i = 0; i < mobCount; i++)
+
+                        // Если остался старый файл версии <= 3, переносим данные во флаги игрока
+                        if (version <= 3)
                         {
-                            Mobile m = reader.ReadMobile();
-                            int count = reader.ReadInt();
-                            var dict = new Dictionary<int, int>();
-                            for (int j = 0; j < count; j++)
+                            int mobCount = reader.ReadInt();
+                            for (int i = 0; i < mobCount; i++)
                             {
-                                int id = reader.ReadInt();
-                                int side = reader.ReadInt();
-                                dict[id] = side;
-                                if (version < 2 && !_shrineWorldStates.ContainsKey(id))
+                                Mobile m = reader.ReadMobile();
+                                int count = reader.ReadInt();
+                                for (int j = 0; j < count; j++)
                                 {
-                                    _shrineWorldStates[id] = side;
-                                    _shrineWorldStateExpirations[id] = legacyExpiration;
+                                    int id = reader.ReadInt();
+                                    int side = reader.ReadInt();
+
+                                    if (m is PlayerMobile pm && id >= 0 && id < Shrines.Length)
+                                        pm.Shrines |= GetShrineFlag(Shrines[id].Virtue);
+
+                                    if (version < 2 && !_shrineWorldStates.ContainsKey(id))
+                                    {
+                                        _shrineWorldStates[id] = side;
+                                        _shrineWorldStateExpirations[id] = legacyExpiration;
+                                    }
                                 }
                             }
-                            if (m != null) _permanentlyActivatedShrines[m] = dict;
                         }
 
                         if (version >= 2)

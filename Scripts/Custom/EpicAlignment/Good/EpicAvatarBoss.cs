@@ -1,86 +1,148 @@
 using System;
-using System.Collections.Generic;
-using Server;
+using Server.Custom.EpicAlignment;
 using Server.Items;
-using Server.Mobiles;
+using Server.Spells;
+using Server.Engines.CannedEvil;
 
-namespace Server.Custom.EpicAlignment
+namespace Server.Mobiles
 {
-    // =========================================================================
-    // 👑 ВЫСШИЙ КАСТОМНЫЙ БОСС: ЭФИРНОЕ ЗЕРКАЛО ИСТИНЫ (ЭНДГЕЙМ)
-    // =========================================================================
-    public class EpicAvatarBoss : Travesty
+    [CorpseName("останки Темного Лорда")]
+    public class DarkLord : BaseChampion
     {
+        private DateTime m_NextAbilityTime;
+
         [Constructable]
-        public EpicAvatarBoss() : base()
+        public DarkLord() : base(AIType.AI_Mage)
         {
-            // Настройки ультимативных характеристик эндгейм-босса
-            Name = "Эфирное Зеркало Судьбы [ ВЫСШИЙ СУДИЯ ]";
-            Hue = 2418; // Мерцающее сияние Аватара
-            
-            HitsMaxSeed = 35000; // 35,000 HP для сурового финального соло-кооп боя
-            Hits = 35000;
-            
-            SetDamage(60, 95); // Высокий физический урон
-            Tamable = false;   // Запрет на приручение
-            Fame = 25000;
-            Karma = -15000;    // Босс олицетворяет грехи, поэтому карма отрицательная
+            Name = "Малкор";
+            Title = "Темный Лорд Бездны";
+            Body = 400;
+            Hue = 1175;
 
-            // Генерируем рюкзак с сокровищами внутри босса
-            Container pack = Backpack;
-            if (pack == null)
-            {
-                pack = new Backpack();
-                pack.Movable = false;
-                AddItem(pack);
-            }
+            SetStr(800, 1000);
+            SetDex(150, 200);
+            SetInt(600, 800);
 
-            // Насыпаем золото и гарантированный топовый Diablo-лут
-            pack.DropItem(new Gold(Utility.RandomMinMax(10000, 15000)));
+            SetHits(35000);
+            SetStam(200);
+            SetMana(1000);
 
-            for (int i = 0; i < 6; i++)
-            {
-                Item magicItem = Loot.RandomArmorOrShieldOrJewelry();
-                if (magicItem != null)
-                {
-                    // Накладываем высокие случайные Diablo-характеристики (AOS свойства)
-                    BaseRunicTool.ApplyAttributesTo(magicItem, 5, 95, 100);
-                    pack.DropItem(magicItem);
-                }
-            }
+            SetDamage(22, 32);
+
+            SetDamageType(ResistanceType.Physical, 20);
+            SetDamageType(ResistanceType.Cold, 40);
+            SetDamageType(ResistanceType.Energy, 40);
+
+            SetResistance(ResistanceType.Physical, 60, 70);
+            SetResistance(ResistanceType.Fire, 50, 60);
+            SetResistance(ResistanceType.Cold, 70, 80);
+            SetResistance(ResistanceType.Poison, 70, 80);
+            SetResistance(ResistanceType.Energy, 60, 70);
+
+            SetSkill(SkillName.EvalInt, 120.0);
+            SetSkill(SkillName.Magery, 120.0);
+            SetSkill(SkillName.Necromancy, 120.0);
+            SetSkill(SkillName.SpiritSpeak, 120.0);
+            SetSkill(SkillName.Meditation, 120.0);
+            SetSkill(SkillName.MagicResist, 130.0);
+            SetSkill(SkillName.Tactics, 110.0);
+            SetSkill(SkillName.Wrestling, 110.0);
+
+            Fame = 22500;
+            Karma = -22500;
+
+            VirtualArmor = 70;
+
+            AddItem(new HoodedShroudOfShadows(1175));
+            AddItem(new Scythe { Hue = 1175, Movable = false });
         }
 
-        // Кастомная ИИ-способность: Взрыв ложной праведности (АоЕ урон по площади вокруг босса)
+        public override Type[] UniqueList => new Type[] { typeof(EpicBookOfDestiny), typeof(EpicSwordOfVirtues) };
+        public override Type[] SharedList => new Type[] { typeof(CloakOfPower) };
+        public override Type[] DecorativeList => new Type[] { typeof(EvilIdolSkull) };
+        public override MonsterStatuetteType[] StatueTypes => new MonsterStatuetteType[] { MonsterStatuetteType.Daemon };
+
+        public override ChampionSkullType SkullType => ChampionSkullType.Death;
+
         public override void OnThink()
         {
             base.OnThink();
 
-            if (Alive && Combatant != null && Utility.RandomDouble() < 0.05)
+            if (Combatant != null && DateTime.UtcNow >= m_NextAbilityTime)
             {
-                this.PlaySound(0x2F3); // Зловещий крик
-                this.PublicOverheadMessage(Network.MessageType.Regular, 0x22, false, "*Зеркало искажает пространство, взрываясь световой волной!*");
+                DrainLight();
+                m_NextAbilityTime = DateTime.UtcNow + TimeSpan.FromSeconds(15);
+            }
+        }
 
-                List<Mobile> targets = new List<Mobile>();
-                IPooledEnumerable mobiles = Map.GetMobilesInRange(Location, 5);
-                
-                foreach (Mobile m in mobiles)
-                {
-                    if (m != this && m.Alive && (m.Player || (m is BaseCreature c && (c.Controlled || c.Summoned))))
-                        targets.Add(m);
-                }
-                mobiles.Free();
+        private void DrainLight()
+        {
+            Say("Ваш свет угаснет! Вы никогда не станете Аватаром!");
+            PlaySound(0x1FB);
 
-                foreach (Mobile m in targets)
+            foreach (Mobile m in GetMobilesInRange(8))
+            {
+                if (m != this && m.Player && m.Alive && CanBeHarmful(m))
                 {
-                    m.Damage(Utility.RandomMinMax(30, 55), this);
-                    m.FixedParticles(0x3709, 10, 30, 5052, 2418, 0, EffectLayer.Waist);
-                    m.SendMessage(0x22, "Ваш разум атакован астральным отражением ваших собственных страхов!");
+                    DoHarmful(m);
+                    int damage = Utility.RandomMinMax(30, 50);
+                    
+                    if (m.Karma > 5000)
+                    {
+                        damage += 25;
+                        m.SendMessage(38, "Тьма обжигает вашу светлую душу!");
+                    }
+
+                    AOS.Damage(m, this, damage, 0, 0, 50, 0, 50);
+                    Hits += damage / 2;
+                    m.FixedParticles(0x374A, 10, 15, 5013, 1175, 0, EffectLayer.Waist);
                 }
             }
         }
 
-        public EpicAvatarBoss(Serial serial) : base(serial) { }
-        public override void Serialize(GenericWriter writer) { base.Serialize(writer); writer.Write((int)0); }
-        public override void Deserialize(GenericReader reader) { base.Deserialize(reader); int version = reader.ReadInt(); }
+        public override void OnGotMeleeAttack(Mobile attacker)
+        {
+            base.OnGotMeleeAttack(attacker);
+
+            if (0.15 >= Utility.RandomDouble())
+            {
+                Say("Слуги Бездны, защитите меня!");
+                BaseCreature spawn = new Daemon();
+                spawn.MoveToWorld(Location, Map);
+                spawn.Combatant = attacker;
+            }
+        }
+
+        // ВОТ ЭТОТ БЛОК ПЕРЕХВАТЫВАЕТ СМЕРТЬ БОССА
+        public override void OnDeath(Container c)
+        {
+            EpicAvatarRewardSystem.OnChampionDefeated(this);
+            base.OnDeath(c);
+        }
+
+        public override void GenerateLoot()
+        {
+            AddLoot(LootPack.SuperBoss, 3);
+            AddLoot(LootPack.Meager);
+        }
+
+        public override bool AlwaysMurderer => true;
+        public override bool BardImmune => true;
+
+        public DarkLord(Serial serial) : base(serial)
+        {
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+            writer.Write(0);
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+            int version = reader.ReadInt();
+        }
     }
 }
