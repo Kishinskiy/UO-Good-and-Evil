@@ -111,15 +111,22 @@ jobs:
 
       - name: Backup Current ServUO
         env:
-          RELEASE_ARCHIVE: ${{ runner.temp }}/servuo-release/servuo-release.tar.gz
           DEPLOY_HOST: kishinskiy.ru
           DEPLOY_USER: servuo
-          RELEASE_SHA: ${{ github.sha }}
+          RUN_NUMBER: ${{ github.run_number }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+          SHORT_SHA: ${{ github.sha }}
         shell: bash
         run: |
+          set -Eeuo pipefail
           DATESTAMP=$(date +%Y-%m-%d)
-          ssh -i "$HOME/.ssh/id_ed25519" -o BatchMode=yes -o StrictHostKeyChecking=yes ${DEPLOY_USER}@${DEPLOY_HOST} "mkdir -p /home/servuo/BackUP && DATESTAMP=$(date +%Y-%m-%d) && tar -czf /home/servuo/BackUP/servuo-\$DATESTAMP.tar.gz -C \$HOME ServUO"
+          SHORT_SHA="${SHORT_SHA:0:7}"
+          BACKUP_NAME="servuo-${DATESTAMP}_run-${RUN_NUMBER}-${RUN_ATTEMPT}_${SHORT_SHA}.tar.gz"
 
+          ssh -i "$HOME/.ssh/id_ed25519" -o BatchMode=yes -o StrictHostKeyChecking=yes \
+            "${DEPLOY_USER}@${DEPLOY_HOST}" \
+            "mkdir -p /home/servuo/BackUP && tar -czf '/home/servuo/BackUP/${BACKUP_NAME}' -C /home/servuo ServUO"
+      
       - name: Transfer and activate release
         env:
           RELEASE_ARCHIVE: ${{ runner.temp }}/servuo-release/servuo-release.tar.gz
