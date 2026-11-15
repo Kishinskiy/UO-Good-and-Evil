@@ -165,10 +165,10 @@ jobs:
           set -Eeuo pipefail
           remote_tmp="$1"
           release_sha="$2"
-          # sudo systemctl stop servuo
+          sudo systemctl stop servuo
           mkdir -p /home/servuo/ServUO
           tar -xzf "${remote_tmp}/${release_sha}.tar.gz" -C /home/servuo/ServUO
           rm -f "${remote_tmp}/${release_sha}.tar.gz"
-          # sudo systemctl start servuo
+          sudo systemctl start servuo
           EOF
       
