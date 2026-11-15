@@ -53,7 +53,7 @@ jobs:
 
           git archive --format=tar "$GITHUB_SHA" | tar -xf - -C "$release"
 
-          required=(ServUO.exe Scripts.dll Ultima.dll)
+          required=(ServUO.exe Scripts.dll Settings.dll Server.dll)
           for file in "${required[@]}"; do
             if [[ ! -s "$file" ]]; then
               echo "Required build output is missing or empty: $file" >&2
