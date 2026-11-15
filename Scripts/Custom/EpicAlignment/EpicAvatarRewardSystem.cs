@@ -11,10 +11,11 @@ namespace Server.Custom.EpicAlignment
         // =========================================================================
         // 👑 КОНФИГУРАЦИЯ СВЕРХСПОСОБНОСТЕЙ ПОЛУБОГА (БАЛАНС МЕНЯТЬ ТУТ)
         // =========================================================================
-        public static readonly int StatBonusAmount = 30;       // Буст к силе/ловкости/инте
-        public static readonly int MaxIndividualStat = 130;    // Максимальный предел стата
-        public static readonly int CustomStatCap = 450;        // Лимит суммы всех характеристик (Stat Cap)
-        public static readonly double EpicSkillCap = 130.0;    // Лимит прокачки магии до 130
+        public static readonly int StatBonusAmount = 25;       // Мгновенный прирост к Str/Dex/Int (+25 к каждому)
+        public static readonly int MaxIndividualStat = 150;    // Предел одного стата (было 125, стало 150 как StrMaxCap)
+        public static readonly int CustomStatCap = 330;        // Сумма всех статов (было 225, стало 330)
+        public static readonly int CustomTotalSkillCap = 8000; // Общий кап скиллов: 800.0 вместо стандартных 700.0
+        public static readonly double EpicSkillCap = 130.0;    // Лимит прокачки профильных навыков до 130.0
         public static readonly int RequiredKarma = 5000;       // Требуемая карма (+5000 для Света, -5000 для Тьмы)
 
         // Единый метод для обоих Алтарей Чемпионов!
@@ -71,7 +72,7 @@ namespace Server.Custom.EpicAlignment
             // Выдаем Гримуар Аватара
             GiveItem(pm, new EpicBookOfDestiny());
 
-            ApplyAscensionStats(pm);
+            ApplyAscensionStats(pm, false);
 
             pm.SendMessage(0x35, $"Поздравляем! Вы получили ранг Аватара Света! Лимиты Str/Dex/Int повышены, общий Stat Cap поднят до {CustomStatCap}. Навыки Magery и EvalInt теперь могут быть развиты до {EpicSkillCap}!");
             Effects.PlaySound(pm.Location, pm.Map, 0x5C9);
@@ -110,22 +111,41 @@ namespace Server.Custom.EpicAlignment
             // Выдаем Темный Гримуар Мондейна
             GiveItem(pm, new EpicGrimoireOfChaos());
 
-            ApplyAscensionStats(pm);
+            ApplyAscensionStats(pm, true);
 
             pm.SendMessage(0x22, $"Поздравляем! Вы получили ранг Владыки Тьмы! Лимиты Str/Dex/Int повышены, общий Stat Cap поднят до {CustomStatCap}. Навыки Magery и EvalInt теперь могут быть развиты до {EpicSkillCap}!");
             Effects.PlaySound(pm.Location, pm.Map, 0x1FB);
             pm.FixedParticles(0x3709, 10, 30, 5052, 0x497, 0, EffectLayer.Waist);
         }
 
-        private static void ApplyAscensionStats(PlayerMobile pm)
+        private static void ApplyAscensionStats(PlayerMobile pm, bool isDarkPath)
         {
-            pm.StatCap = CustomStatCap;
-            pm.RawStr = Math.Min(MaxIndividualStat, pm.RawStr + StatBonusAmount);
-            pm.RawDex = Math.Min(MaxIndividualStat, pm.RawDex + StatBonusAmount);
-            pm.RawInt = Math.Min(MaxIndividualStat, pm.RawInt + StatBonusAmount);
+	        // 1. Повышаем общий и индивидуальный лимит характеристик (до 330 и 150)
+	        pm.StatCap = CustomStatCap;
+	        pm.RawStr = Math.Min(MaxIndividualStat, pm.RawStr + StatBonusAmount);
+	        pm.RawDex = Math.Min(MaxIndividualStat, pm.RawDex + StatBonusAmount);
+	        pm.RawInt = Math.Min(MaxIndividualStat, pm.RawInt + StatBonusAmount);
 
-            pm.Skills[SkillName.Magery].Cap = EpicSkillCap;
-            pm.Skills[SkillName.EvalInt].Cap = EpicSkillCap;
+	        // 2. Увеличиваем общий лимит всех умений персонажа с 700.0 до 800.0
+	        if (pm.SkillsCap < CustomTotalSkillCap)
+		        pm.SkillsCap = CustomTotalSkillCap;
+
+	        // 3. Открываем прокачку до 130.0 для универсальных и классовых навыков
+	        pm.Skills[SkillName.Magery].Cap = EpicSkillCap;
+	        pm.Skills[SkillName.EvalInt].Cap = EpicSkillCap;
+	        pm.Skills[SkillName.Tactics].Cap = EpicSkillCap;
+	        pm.Skills[SkillName.MagicResist].Cap = EpicSkillCap;
+
+	        if (isDarkPath)
+	        {
+		        pm.Skills[SkillName.Necromancy].Cap = EpicSkillCap;
+		        pm.Skills[SkillName.SpiritSpeak].Cap = EpicSkillCap;
+	        }
+	        else
+	        {
+		        pm.Skills[SkillName.Chivalry].Cap = EpicSkillCap;
+		        pm.Skills[SkillName.Healing].Cap = EpicSkillCap;
+	        }
         }
 
         public static void GiveItem(PlayerMobile player, Item item)
