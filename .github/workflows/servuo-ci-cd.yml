@@ -121,23 +121,32 @@ jobs:
           ssh -i "$HOME/.ssh/id_ed25519" -o BatchMode=yes -o StrictHostKeyChecking=yes ${DEPLOY_USER}@${DEPLOY_HOST} "mkdir -p /home/servuo/BackUP && DATESTAMP=$(date +%Y-%m-%d) && tar -czf /home/servuo/BackUP/servuo-\$DATESTAMP.tar.gz -C \$HOME ServUO"
 
       - name: Transfer and activate release
-        env:
-          RELEASE_ARCHIVE: ${{ runner.temp }}/servuo-release/servuo-release.tar.gz
-          DEPLOY_HOST: kishinskiy.ru
-          DEPLOY_USER: servuo
-          RELEASE_SHA: ${{ github.sha }}
-        shell: bash
-        run: |
-          set -Eeuo pipefail
-          test -s "$RELEASE_ARCHIVE" || { echo "Full server release archive is missing"; exit 1; }
-
-          target="${DEPLOY_USER}@${DEPLOY_HOST}"
-          ssh -i "$HOME/.ssh/id_ed25519" -o BatchMode=yes -o StrictHostKeyChecking=yes \
-            "$target" "mkdir -p /home/servuo/tmp/servuo-deploy"
-          scp -i "$HOME/.ssh/id_ed25519" -o BatchMode=yes -o StrictHostKeyChecking=yes \
-            "$RELEASE_ARCHIVE" "$target:/home/servuo/tmp/servuo-deploy/${RELEASE_SHA}.tar.gz"
-          scp -i "$HOME/.ssh/id_ed25519" -o BatchMode=yes -o StrictHostKeyChecking=yes \
-            "$GITHUB_WORKSPACE/deploy/deploy-release.sh" \
-            "$target:/home/servuo/tmp/servuo-deploy/deploy-release-${RELEASE_SHA}.sh"
-          ssh -i "$HOME/.ssh/id_ed25519" -o BatchMode=yes -o StrictHostKeyChecking=yes \
-            "$target" "bash '/home/servuo/tmp/servuo-deploy/deploy-release-${RELEASE_SHA}.sh' '${RELEASE_SHA}'"
+          env:
+            RELEASE_ARCHIVE: ${{ runner.temp }}/servuo-release/servuo-release.tar.gz
+            DEPLOY_HOST: kishinskiy.ru
+            DEPLOY_USER: servuo
+            RELEASE_SHA: ${{ github.sha }}
+          shell: bash
+          run: |
+            set -Eeuo pipefail
+            test -s "$RELEASE_ARCHIVE" || { echo "Full server release archive is missing"; exit 1; }
+            
+            target="${DEPLOY_USER}@${DEPLOY_HOST}"
+            remote_tmp="/home/servuo/tmp/servuo-deploy"
+            
+            # Создаем временную папку и загружаем архив
+            ssh -i "$HOME/.ssh/id_ed25519" -o BatchMode=yes -o StrictHostKeyChecking=yes \
+              "$target" "mkdir -p '$remote_tmp'"
+            scp -i "$HOME/.ssh/id_ed25519" -o BatchMode=yes -o StrictHostKeyChecking=yes \
+              "$RELEASE_ARCHIVE" "$target:$remote_tmp/${RELEASE_SHA}.tar.gz"
+            
+            # Останавливаем сервер, распаковываем релиз, запускаем обратно и чистим мусор
+            ssh -i "$HOME/.ssh/id_ed25519" -o BatchMode=yes -o StrictHostKeyChecking=yes \
+              "$target" bash -s <<EOF
+            set -Eeuo pipefail
+            # sudo systemctl stop servuo
+            mkdir -p /home/servuo/ServUO
+            tar -xzf "$remote_tmp/${RELEASE_SHA}.tar.gz" -C /home/servuo/ServUO
+            rm -f "$remote_tmp/${RELEASE_SHA}.tar.gz"
+            # sudo systemctl start servuo
+            EOF
