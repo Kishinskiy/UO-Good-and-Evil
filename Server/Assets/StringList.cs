@@ -88,7 +88,7 @@ namespace Server
 				var buffer = new byte[1024];
 
 				bin.ReadInt32();
-				bin.ReadInt16();
+				bin.ReadUInt16();
 
 				while (bin.BaseStream.Length != bin.BaseStream.Position)
 				{
@@ -96,7 +96,7 @@ namespace Server
 
 					bin.ReadByte(); // flag
 
-					int length = bin.ReadInt16();
+					int length = bin.ReadUInt16();
 
 					if (length > buffer.Length)
 						buffer = new byte[(length + 1023) & ~1023];
