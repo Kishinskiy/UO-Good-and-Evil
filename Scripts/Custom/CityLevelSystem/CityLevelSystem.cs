@@ -22,7 +22,7 @@ namespace Server.Custom.CityLevels
     public static class CityLevelSystem
     {
         private static readonly string FilePath = Path.Combine("Saves/Custom", "CityLevels.bin");
-        
+
         // Используем ванильный enum City как ключ словаря
         public static Dictionary<City, CityLevelData> Cities { get; private set; } = new Dictionary<City, CityLevelData>();
 

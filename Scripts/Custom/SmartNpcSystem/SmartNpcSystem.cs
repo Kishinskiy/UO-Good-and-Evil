@@ -92,10 +92,10 @@ namespace Server.Custom.SmartNPCs
             { "Delucia", new Point3D(5228, 3978, 37) },
             { "Papua", new Point3D(5769, 3176, 0) },
             { "Heartwood", new Point3D(6984, 337, 0) },
-            { "Ocllo", new Point3D(3649, 2682, 0) }    
+            { "Ocllo", new Point3D(3649, 2682, 0) }
         };
 
-    
+
 
         public static void Initialize()
         {
@@ -268,7 +268,7 @@ namespace Server.Custom.SmartNPCs
             else if (text.Contains("слухи") || text.Contains("новости") || text.Contains("аватар") || text.Contains("зло") || text.Contains("мондейн") || text.Contains("полубог") || text.Contains("сплетни"))
             {
                 List<PlayerMobile> onlineAvatars = new List<PlayerMobile>();
-                
+
                 // Сканируем всех активных игроков в сети по новым флагам Полубога!
                 foreach (NetState ns in NetState.Instances)
                 {

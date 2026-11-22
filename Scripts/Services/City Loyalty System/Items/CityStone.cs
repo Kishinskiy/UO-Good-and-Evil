@@ -43,7 +43,7 @@ namespace Server.Engines.CityLoyalty
         {
             base.GetProperties(list);
 
-            var levelData = CityLevelSystem.GetCity(City.City); 
+            var levelData = CityLevelSystem.GetCity(City.City);
 
             if (levelData != null)
             {
