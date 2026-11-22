@@ -541,6 +541,28 @@ namespace Server.Custom.KarmaVirtueSystem
             return 1.0; // Базовое значение, если алтарь нейтрален
         }
         
+        public static double GetDungeonSpawnCountModifier(Region region)
+        {
+            if (region == null) return 1.0;
+
+            foreach (ShrineData shrine in Shrines)
+            {
+                if (IsRegionWithin(region, shrine.DungeonRegionName))
+                {
+                    int shrineState = GetShrineWorldState(shrine.ID);
+
+                    if (shrineState == 1) // Свет уменьшает количество монстров (0.70)
+                        return DungeonSpawnCountLightMultiplier;
+
+                    if (shrineState == 2) // Тьма увеличивает количество монстров (1.50)
+                        return DungeonSpawnCountDarkMultiplier;
+
+                    break;
+                }
+            }
+
+            return 1.0;
+        }
         private static ActivatedShrines GetShrineFlag(VirtueName virtue)
         {
 	        switch (virtue)
