@@ -1844,6 +1844,11 @@ namespace Server.Mobiles
 
         public virtual void AlterSpellDamageFrom(Mobile from, ref int damage)
         {
+            if (from != null && from.Player)
+            {
+                damage = (int)(damage * Server.Custom.Bestiary.BestiarySystem.GetDamageBonusMultiplier(from, this));
+            }
+
             if (m_TempDamageAbsorb > 0 && VialofArmorEssence.UnderInfluence(this))
                 damage -= damage / m_TempDamageAbsorb;
         }
@@ -1857,6 +1862,11 @@ namespace Server.Mobiles
             if (from != null && from.Talisman is BaseTalisman)
             {
                 BaseTalisman talisman = (BaseTalisman)from.Talisman;
+
+                if (from != null && from.Player)
+                {
+                    damage = (int)(damage * Server.Custom.Bestiary.BestiarySystem.GetDamageBonusMultiplier(from, this));
+                }
 
                 if (talisman.Killer != null && talisman.Killer.Type != null)
                 {
@@ -2051,15 +2061,15 @@ namespace Server.Mobiles
                         case ScaleType.White: list.Add(new WhiteScales(scales)); break;
                         case ScaleType.Blue: list.Add(new BlueScales(scales)); break;
                         case ScaleType.All:
-                            {
-                                list.Add(new RedScales(scales));
-                                list.Add(new YellowScales(scales));
-                                list.Add(new BlackScales(scales));
-                                list.Add(new GreenScales(scales));
-                                list.Add(new WhiteScales(scales));
-                                list.Add(new BlueScales(scales));
-                                break;
-                            }
+                        {
+                            list.Add(new RedScales(scales));
+                            list.Add(new YellowScales(scales));
+                            list.Add(new BlackScales(scales));
+                            list.Add(new GreenScales(scales));
+                            list.Add(new WhiteScales(scales));
+                            list.Add(new BlueScales(scales));
+                            break;
+                        }
                     }
 
                     if (special)
@@ -2423,14 +2433,14 @@ namespace Server.Mobiles
                     goto case 27;
                 case 27: // Pet Slot Fix
                 case 26:
-                    {
-                        CanMove = reader.ReadBool();
-                        _LockDirection = reader.ReadBool();
+                {
+                    CanMove = reader.ReadBool();
+                    _LockDirection = reader.ReadBool();
 
-                        ApproachWait = reader.ReadBool();
-                        ApproachRange = reader.ReadInt();
-                    }
-                    break;
+                    ApproachWait = reader.ReadBool();
+                    ApproachRange = reader.ReadInt();
+                }
+                break;
             }
 
             m_CurrentAI = (AIType)reader.ReadInt();
@@ -2512,7 +2522,7 @@ namespace Server.Mobiles
                 if (m_bSummoned)
                 {
                     m_SummonEnd = reader.ReadDeltaTime();
-                    TimerRegistry.Register<BaseCreature>("UnsummonTimer", this, m_SummonEnd - DateTime.UtcNow, c => c.Delete()); 
+                    TimerRegistry.Register<BaseCreature>("UnsummonTimer", this, m_SummonEnd - DateTime.UtcNow, c => c.Delete());
                 }
 
                 m_iControlSlots = reader.ReadInt();
@@ -3032,12 +3042,12 @@ namespace Server.Mobiles
             {
                 canDrop = true;
             }
-            
+
             if (!canDrop && CheckGold(from, dropped))
             {
                 canDrop = true;
             }
-            
+
             if (!canDrop && !from.InRange(Location, 2) && base.OnDragDrop(from, dropped))
             {
                 return true;
@@ -4085,52 +4095,52 @@ namespace Server.Mobiles
             switch (res)
             {
                 case TeachResult.KnowsMoreThanMe:
-                    {
-                        Say(501508); // I cannot teach thee, for thou knowest more than I!
-                        break;
-                    }
+                {
+                    Say(501508); // I cannot teach thee, for thou knowest more than I!
+                    break;
+                }
                 case TeachResult.KnowsWhatIKnow:
-                    {
-                        Say(501509); // I cannot teach thee, for thou knowest all I can teach!
-                        break;
-                    }
+                {
+                    Say(501509); // I cannot teach thee, for thou knowest all I can teach!
+                    break;
+                }
                 case TeachResult.NotEnoughFreePoints:
                 case TeachResult.SkillNotRaisable:
-                    {
-                        // Make sure this skill is marked to raise. If you are near the skill cap (700 points) you may need to lose some points in another skill first.
-                        m.SendLocalizedMessage(501510, "", 0x22);
-                        break;
-                    }
+                {
+                    // Make sure this skill is marked to raise. If you are near the skill cap (700 points) you may need to lose some points in another skill first.
+                    m.SendLocalizedMessage(501510, "", 0x22);
+                    break;
+                }
                 case TeachResult.Success:
+                {
+                    if (doTeach)
                     {
-                        if (doTeach)
+                        Say(501539); // Let me show thee something of how this is done.
+                        m.SendLocalizedMessage(501540); // Your skill level increases.
+
+                        m_Teaching = (SkillName)(-1);
+
+                        if (m is PlayerMobile)
                         {
-                            Say(501539); // Let me show thee something of how this is done.
-                            m.SendLocalizedMessage(501540); // Your skill level increases.
-
-                            m_Teaching = (SkillName)(-1);
-
-                            if (m is PlayerMobile)
-                            {
-                                ((PlayerMobile)m).Learning = (SkillName)(-1);
-                            }
+                            ((PlayerMobile)m).Learning = (SkillName)(-1);
                         }
-                        else
-                        {
-                            // I will teach thee all I know, if paid the amount in full.  The price is:
-                            Say(1019077, AffixType.Append, string.Format(" {0}", pointsToLearn), "");
-                            Say(1043108); // For less I shall teach thee less.
-
-                            m_Teaching = skill;
-
-                            if (m is PlayerMobile)
-                            {
-                                ((PlayerMobile)m).Learning = skill;
-                            }
-                        }
-
-                        return true;
                     }
+                    else
+                    {
+                        // I will teach thee all I know, if paid the amount in full.  The price is:
+                        Say(1019077, AffixType.Append, string.Format(" {0}", pointsToLearn), "");
+                        Say(1043108); // For less I shall teach thee less.
+
+                        m_Teaching = skill;
+
+                        if (m is PlayerMobile)
+                        {
+                            ((PlayerMobile)m).Learning = skill;
+                        }
+                    }
+
+                    return true;
+                }
             }
 
             return false;
@@ -5300,14 +5310,14 @@ namespace Server.Mobiles
             if (hue > -1)
                 item.Hue = hue;
 
-            if (dropChance <= 0) 
+            if (dropChance <= 0)
                 item.Movable = false;
-            else if (dropChance >= 1) 
+            else if (dropChance >= 1)
                 item.Movable = true;
             else
                 item.Movable = dropChance > Utility.RandomDouble();
 
-            if(!OnEquip(item) || !item.OnEquip(this))
+            if (!OnEquip(item) || !item.OnEquip(this))
             {
                 PackItem(item);
             }
@@ -5317,7 +5327,7 @@ namespace Server.Mobiles
                 {
                     FindItemOnLayer(item.Layer)?.Delete();
                 }
-				
+
                 AddItem(item);
             }
         }
@@ -5588,13 +5598,13 @@ namespace Server.Mobiles
             }
         }
 
-        public virtual bool IsAggressiveMonster => IsMonster 
-        										&&
-        										 ( m_FightMode == FightMode.Closest 
-        										|| m_FightMode == FightMode.Strongest 
-        										|| m_FightMode == FightMode.Weakest 
-        										|| m_FightMode == FightMode.Good
-        										 );
+        public virtual bool IsAggressiveMonster => IsMonster
+                                                &&
+                                                 (m_FightMode == FightMode.Closest
+                                                || m_FightMode == FightMode.Strongest
+                                                || m_FightMode == FightMode.Weakest
+                                                || m_FightMode == FightMode.Good
+                                                 );
 
         private class FKEntry
         {
@@ -5980,7 +5990,7 @@ namespace Server.Mobiles
                         Titles.AwardKarma(titles[i], karma[i], true);
                     }
                 }
-                
+
                 Server.Custom.KarmaVirtueSystem.KarmaVirtueManager.HandleMonsterLoot(this, c);
 
                 CreatureDeathEventArgs e = new CreatureDeathEventArgs(this, LastKiller, c);
@@ -7084,34 +7094,34 @@ namespace Server.Mobiles
 
             List<Item> items = toRummage.Items;
 
-			if (items.Count == 0)
+            if (items.Count == 0)
             {
-				return false;
-			}
+                return false;
+            }
 
-			double chance = 0.10 + (0.90 * (items.Count / (double)toRummage.MaxItems));
+            double chance = 0.10 + (0.90 * (items.Count / (double)toRummage.MaxItems));
 
-			int index = items.Count;
+            int index = items.Count;
 
-			while (--index >= 0)
+            while (--index >= 0)
             {
-				if (index >= items.Count)
-				{
-					continue;
-				}
+                if (index >= items.Count)
+                {
+                    continue;
+                }
 
-				if (Utility.RandomDouble() <= chance)
-				{
-					Item item = Utility.RandomList(items);
+                if (Utility.RandomDouble() <= chance)
+                {
+                    Item item = Utility.RandomList(items);
 
-					if (Lift(item, item.Amount) && Drop(pack, new Point3D(-1, -1, 0)))
-	                {
-	                    // *rummages through a corpse and takes an item*
-	                    PublicOverheadMessage(MessageType.Emote, 0x3B2, 1008086);
-	
-	                    return true;
-	                }
-	            }
+                    if (Lift(item, item.Amount) && Drop(pack, new Point3D(-1, -1, 0)))
+                    {
+                        // *rummages through a corpse and takes an item*
+                        PublicOverheadMessage(MessageType.Emote, 0x3B2, 1008086);
+
+                        return true;
+                    }
+                }
             }
 
             return false;
@@ -7420,16 +7430,16 @@ namespace Server.Mobiles
     {
         private static readonly TimeSpan InternalDelay = TimeSpan.FromMinutes(5.0);
 
-		public static LoyaltyTimer Instance { get; }
+        public static LoyaltyTimer Instance { get; }
 
-		static LoyaltyTimer()
-		{
-			Instance = new LoyaltyTimer();
-		}
-
-		public static void Initialize()
+        static LoyaltyTimer()
         {
-			Instance.Start();
+            Instance = new LoyaltyTimer();
+        }
+
+        public static void Initialize()
+        {
+            Instance.Start();
         }
 
         public LoyaltyTimer()
@@ -7443,14 +7453,14 @@ namespace Server.Mobiles
 
         protected override void OnTick()
         {
-			if (DateTime.UtcNow < m_NextHourlyCheck)
-			{
-				return;
-			}
+            if (DateTime.UtcNow < m_NextHourlyCheck)
+            {
+                return;
+            }
 
-			m_NextHourlyCheck = DateTime.UtcNow.AddHours(1.0);
+            m_NextHourlyCheck = DateTime.UtcNow.AddHours(1.0);
 
-			ConcurrentQueue<BaseCreature> toRelease = new ConcurrentQueue<BaseCreature>();
+            ConcurrentQueue<BaseCreature> toRelease = new ConcurrentQueue<BaseCreature>();
 
             // added array for wild creatures in house regions to be removed
             ConcurrentQueue<BaseCreature> toRemove = new ConcurrentQueue<BaseCreature>();
@@ -7489,9 +7499,9 @@ namespace Server.Mobiles
 
                         if (c.Map != Map.Internal)
                         {
-							int reduction = BaseCreature.MaxLoyalty / 10;
+                            int reduction = BaseCreature.MaxLoyalty / 10;
 
-							c.Loyalty -= reduction;
+                            c.Loyalty -= reduction;
 
                             if (c.Loyalty < reduction)
                             {
@@ -7511,7 +7521,7 @@ namespace Server.Mobiles
                     {
                         if (++c.RemoveStep >= 20)
                         {
-							toRemove.Enqueue(c);
+                            toRemove.Enqueue(c);
                         }
                     }
                     else
@@ -7521,14 +7531,14 @@ namespace Server.Mobiles
                 }
             });
 
-			BaseCreature bc;
+            BaseCreature bc;
 
-			while (toRelease.TryDequeue(out bc))
-			{
-				if (bc.Deleted)
-				{
-					continue;
-				}
+            while (toRelease.TryDequeue(out bc))
+            {
+                if (bc.Deleted)
+                {
+                    continue;
+                }
 
                 if (bc.IsDeadBondedPet)
                 {
@@ -7543,8 +7553,8 @@ namespace Server.Mobiles
                 bc.BondingBegin = DateTime.MinValue;
                 bc.OwnerAbandonTime = DateTime.MinValue;
                 bc.ControlTarget = null;
-				
-				bc.AIObject?.DoOrderRelease();
+
+                bc.AIObject?.DoOrderRelease();
 
                 // this will prevent no release of creatures left alone with AI disabled (and consequent bug of Followers)
                 bc.DropBackpack();
@@ -7552,9 +7562,9 @@ namespace Server.Mobiles
                 bc.RemoveOnSave = true;
             }
 
-			// added code to handle removing of wild creatures in house regions
-			while (toRemove.TryDequeue(out bc))
-			{
+            // added code to handle removing of wild creatures in house regions
+            while (toRemove.TryDequeue(out bc))
+            {
                 bc.Delete();
             }
         }
