@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Custom.ItemSockets; // Подключаем систему сокетов
 
 namespace Server.Custom.JewelryCrafting
 {
@@ -45,8 +46,29 @@ namespace Server.Custom.JewelryCrafting
             int percent = (int)Math.Round(m_GemQuality * 100);
             list.Add($"Чистота огранки: {percent}%");
             
-            // Выводим динамически рассчитанный бонус прямо в свойства предмета! 🎉
+            // Выводим динамически рассчитанный бонус прямо в свойства предмета!
             list.Add(0x35, $"Эффект: {GetGemBonusDescription(m_GemEffect, m_GemQuality)}");
+        }
+
+        // Добавляем возможность инкрустировать камень по двойному клику
+        public override void OnDoubleClick(Mobile from)
+        {
+            if (!IsChildOf(from.Backpack))
+            {
+                from.SendLocalizedMessage(1042001); // That must be in your pack for you to use it.
+                return;
+            }
+
+            // Ищем в рюкзаке ювелирное зубило кузнеца (SocketChisel)
+            SocketChisel chisel = from.Backpack.FindItemByType<SocketChisel>();
+            if (chisel == null || chisel.Deleted || chisel.UsesRemaining <= 0)
+            {
+                from.SendMessage(0x22, "Для инкрустации этого камня вам необходимо иметь в рюкзаке Ювелирное зубило кузнеца (SocketChisel) и стоять у горна с наковальней.");
+                return;
+            }
+
+            from.SendMessage(0x59, $"Выберите оружие, броню или украшение в рюкзаке, чтобы вставить [{Name}]:");
+            from.Target = new SocketChisel.SelectEquipmentTarget(chisel, this);
         }
 
         private string GetGemBaseName(string effect)
@@ -78,7 +100,6 @@ namespace Server.Custom.JewelryCrafting
             }
         }
 
-        // 🔥 ГЛАВНАЯ ЛОГИКА: Перемножаем базовый бафф на индивидуальный коэффициент крафтера!
         private string GetGemBonusDescription(string effect, double quality)
         {
             switch (effect)
@@ -114,7 +135,7 @@ namespace Server.Custom.JewelryCrafting
                 case "vamp_shard": 
                     return $"+{(int)Math.Round(20.0 * quality)}% Вампиризм (Восстановление HP при ударе)";
                 case "firerubyslayer": 
-	                return $"+{(int)Math.Round(20.0 * quality)}% DI (Урон) и +{(int)Math.Round(10.0 * quality)}% HCI (Точность)";
+                    return $"+{(int)Math.Round(20.0 * quality)}% DI (Урон) и +{(int)Math.Round(10.0 * quality)}% HCI (Точность)";
                 case "physical_resist":
                     return "Используется для повышения максимума физического резиста";
                 case "fire_resist":
