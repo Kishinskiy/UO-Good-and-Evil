@@ -75,44 +75,27 @@ namespace Server.Custom.SmartNPCs
         private static readonly Dictionary<string, Point3D> m_StaticCities = new Dictionary<string, Point3D>(StringComparer.OrdinalIgnoreCase)
         {
             { "Britain", new Point3D(1495, 1629, 10) },
-            { "Minoc", new Point3D(2468, 542, 0) },
-            { "Yew", new Point3D(566, 984, 0) },
-            { "Moonglow", new Point3D(4404, 1169, 0) },
-            { "Magincia", new Point3D(3727, 2159, 20) },
-            { "Trinsic", new Point3D(1844, 2745, 0) },
-            { "Skara Brae", new Point3D(618, 2223, 0) },
-            { "Jhelom", new Point3D(1374, 3816, 0) },
-            { "Vesper", new Point3D(2899, 683, 0) },
-            { "Ocllo", new Point3D(3649, 2682, 0) }
+            { "Minoc", new Point3D(2466, 544, 0) },
+            { "Yew", new Point3D(546, 992, 0) },
+            { "Moonglow", new Point3D(4442, 1172, 0) },
+            { "Magincia", new Point3D(3714, 2220, 20) },
+            { "Trinsic", new Point3D(1867, 2780, 0) },
+            { "Skara Brae", new Point3D(632, 2233, 0) },
+            { "Jhelom", new Point3D(1383, 3815, 0) },
+            { "Vesper", new Point3D(2899, 676, 0) },
+            { "Cove", new Point3D(2275, 1210, 0) },
+            { "New Haven", new Point3D(3503, 2574, 14) },
+            { "Wind", new Point3D(5223, 190, 5) },
+            { "Serpent's Hold", new Point3D(3010, 3371, 15) },
+            { "Nujel'm", new Point3D(3732, 1279, 0) },
+            { "Buccaneer's Den", new Point3D(2706, 2163, 0) },
+            { "Delucia", new Point3D(5228, 3978, 37) },
+            { "Papua", new Point3D(5769, 3176, 0) },
+            { "Heartwood", new Point3D(6984, 337, 0) },
+            { "Ocllo", new Point3D(3649, 2682, 0) }    
         };
 
-        private static readonly Dictionary<string, Point3D> m_Ministers = new Dictionary<string, Point3D>(StringComparer.OrdinalIgnoreCase)
-        {
-            { "Britain", new Point3D(1435, 1680, 0) },
-            { "Minoc", new Point3D(2437, 449, 15) },
-            { "Yew", new Point3D(542, 983, 0) },
-            { "Moonglow", new Point3D(4436, 1076, 0) },
-            { "Magincia", new Point3D(3712, 2228, 20) },
-            { "Trinsic", new Point3D(2061, 2855, -2) },
-            { "Skara Brae", new Point3D(571, 2217, 0) },
-            { "Jhelom", new Point3D(1401, 3778, 0) },
-            { "Vesper", new Point3D(2992, 672, 0) },
-            { "Ocllo", new Point3D(3661, 2603, 0) }
-        };
-
-        private static readonly Dictionary<string, Point3D> m_Governors = new Dictionary<string, Point3D>(StringComparer.OrdinalIgnoreCase)
-        {
-            { "Britain", new Point3D(1324, 1621, 0) },
-            { "Minoc", new Point3D(2450, 480, 0) },
-            { "Yew", new Point3D(618, 934, 0) },
-            { "Moonglow", new Point3D(4474, 1130, 0) },
-            { "Magincia", new Point3D(3731, 2168, 20) },
-            { "Trinsic", new Point3D(1907, 2683, 0) },
-            { "Skara Brae", new Point3D(614, 2137, 0) },
-            { "Jhelom", new Point3D(1376, 3816, 0) },
-            { "Vesper", new Point3D(2937, 574, 0) },
-            { "Ocllo", new Point3D(3649, 2682, 0) }
-        };
+    
 
         public static void Initialize()
         {
@@ -419,32 +402,38 @@ namespace Server.Custom.SmartNPCs
                     }
                 }
             }
-            // 3. ПОИСК МИНИСТРА ⚖️
+                        // 3. ПОИСК МИНИСТРА ⚖️
             if (string.IsNullOrEmpty(reply) && (text.Equals("министр") || text.Contains("министр торговли") || text.Contains("minister")))
             {
-                if (!string.IsNullOrEmpty(currentTownName) && m_Ministers.TryGetValue(currentTownName, out Point3D ministerLoc))
+                Mobile minister = FindCityOfficial(npc, searchGovernor: false);
+                if (minister != null)
                 {
-                    Direction dir = npc.GetDirectionTo(ministerLoc);
-                    reply = $"Торговый министр города {currentTownName} находится на {GetDirectionName(dir)} отсюда. Координаты ратуши: {ministerLoc.X}, {ministerLoc.Y}.";
+                    Direction dir = npc.GetDirectionTo(minister.Location);
+                    string townLabel = !string.IsNullOrEmpty(currentTownName) ? $"города {currentTownName} " : "";
+                    reply = $"Торговый министр {townLabel}находится на {GetDirectionName(dir)} отсюда. Точные координаты: {minister.X}, {minister.Y}.";
                 }
                 else
                 {
-                    reply = "В этой глуши нет никакого Торгового Министра. Ищи его в крупных городах.";
+                    reply = "В этом поселении сейчас нет Торгового Министра. Ищи его в крупных городах.";
                 }
             }
+
             // 4. ПОИСК ГУБЕРНАТОРА 👑
             if (string.IsNullOrEmpty(reply) && (text.Contains("губернатор") || text.Contains("мэр") || text.Contains("governor")))
             {
-                if (!string.IsNullOrEmpty(currentTownName) && m_Governors.TryGetValue(currentTownName, out Point3D govLoc))
+                Mobile governor = FindCityOfficial(npc, searchGovernor: true);
+                if (governor != null)
                 {
-                    Direction dir = npc.GetDirectionTo(govLoc);
-                    reply = $"Губернатор города {currentTownName} принимает на {GetDirectionName(dir)} отсюда. Точные координаты: {govLoc.X}, {govLoc.Y}.";
+                    Direction dir = npc.GetDirectionTo(governor.Location);
+                    string townLabel = !string.IsNullOrEmpty(currentTownName) ? $"города {currentTownName} " : "";
+                    reply = $"Губернатор {townLabel}сейчас находится на {GetDirectionName(dir)} отсюда. Координаты: {governor.X}, {governor.Y}.";
                 }
                 else
                 {
-                    reply = "Здесь нет действующего Губернатора. Тебе нужно зайти в черту какого-нибудь города.";
+                    reply = "В этом городе сейчас нет действующего Губернатора или он отсутствует на месте.";
                 }
             }
+
             // 5. РЕАКЦИЯ НА ПОГОДУ 🌧️
             if (string.IsNullOrEmpty(reply) && (text.Contains("погода") || text.Contains("дождь") || text.Contains("weather") || text.Contains("rain")))
             {
@@ -566,6 +555,47 @@ namespace Server.Custom.SmartNPCs
                 case 7: return "Северо-Запад";
                 default: return "прямо";
             }
+        }
+
+        private static Mobile FindCityOfficial(Mobile npc, bool searchGovernor)
+        {
+            if (npc == null || npc.Map == null)
+                return null;
+
+            Region townRegion = npc.Region?.GetRegion(typeof(TownRegion));
+            string cityName = townRegion != null ? townRegion.Name : npc.Region?.Name;
+
+            // 1. Поиск через систему лояльности города (CityLoyaltySystem)
+            if (!string.IsNullOrEmpty(cityName) && CityLoyaltySystem.Cities != null)
+            {
+                foreach (var sys in CityLoyaltySystem.Cities)
+                {
+                    string sysName = sys.City == City.NewMagincia ? "Magincia" : sys.City.ToString();
+                    if (cityName.IndexOf(sysName, StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
+                        if (searchGovernor && sys.Governor != null && !sys.Governor.Deleted && sys.Governor.Map == npc.Map)
+                            return sys.Governor;
+
+                        if (!searchGovernor && sys.Minister != null && !sys.Minister.Deleted && sys.Minister.Map == npc.Map)
+                            return sys.Minister;
+                    }
+                }
+            }
+
+            // 2. Поиск министра напрямую через статический список TradeMinister.Ministers (в том же городе и карте)
+            if (!searchGovernor && TradeMinister.Ministers != null && !string.IsNullOrEmpty(cityName))
+            {
+                foreach (var m in TradeMinister.Ministers)
+                {
+                    if (m != null && !m.Deleted && m.Map == npc.Map)
+                    {
+                        string mCityName = m.City == City.NewMagincia ? "Magincia" : m.City.ToString();
+                        if (cityName.IndexOf(mCityName, StringComparison.OrdinalIgnoreCase) >= 0)
+                            return m;
+                    }
+                }
+            }
+            return null;
         }
     }
 }
