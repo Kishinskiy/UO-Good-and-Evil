@@ -98,10 +98,101 @@ namespace Server.Custom.CityLevels
                 Spawners.Remove(spawner);
         }
 
+        private static readonly string TimerSavePath = Path.Combine("Saves/Custom", "CityHeroStatueTimer.bin");
+        private static DateTime _nextWeeklyCheck = DateTime.UtcNow.AddDays(7);
+
+        public static void Configure()
+        {
+            EventSink.WorldSave += OnSaveTimer;
+            EventSink.WorldLoad += OnLoadTimer;
+        }
         public static void Initialize()
         {
             LoadFromXml();
-            Timer.DelayCall(TimeSpan.FromSeconds(15), TimeSpan.FromSeconds(30), CheckOnlineDemigods);
+            Timer.DelayCall(TimeSpan.FromMinutes(5), TimeSpan.FromHours(1), CheckWeeklyCycle);
+        }
+
+        private static void CheckWeeklyCycle()
+        {
+            if (DateTime.UtcNow < _nextWeeklyCheck)
+                return;
+
+            EvaluateAllCitiesWeekly();
+
+            // Назначаем следующую проверку ровно через 7 дней
+            _nextWeeklyCheck = DateTime.UtcNow.AddDays(7);
+        }
+
+        public static void EvaluateAllCitiesWeekly()
+        {
+            if (!CityLoyaltySystem.Enabled || Spawners.Count == 0)
+                return;
+
+            // Собираем всех Полубогов в мире (включая оффлайн-персонажей)
+            var demigods = World.Mobiles.Values
+                .OfType<PlayerMobile>()
+                .Where(pm => pm != null && !pm.Deleted && (pm.IsDemigod || pm.EpicGood || pm.EpicEvil))
+                .ToList();
+
+            if (demigods.Count == 0)
+                return;
+
+            foreach (var spawner in Spawners)
+            {
+                if (spawner == null || spawner.Deleted || spawner.HasStatue)
+                    continue;
+
+                City city = spawner.City;
+
+                // Проверяем, достиг ли город максимального уровня (100.0)
+                var levelData = CityLevelSystem.GetCity(city);
+                if (levelData == null || levelData.SkillValue < levelData.SkillCap)
+                    continue;
+
+                var loyaltySys = CityLoyaltySystem.GetCityInstance(city);
+                if (loyaltySys == null)
+                    continue;
+
+                // Ищем среди Полубогов лучшего кандидата с максимальным рангом Adored и наибольшим числом очков Love
+                PlayerMobile bestCandidate = null;
+                int highestLove = -1;
+
+                foreach (PlayerMobile pm in demigods)
+                {
+                    var entry = loyaltySys.GetPlayerEntry<CityLoyaltyEntry>(pm);
+                    if (entry != null && loyaltySys.GetLoyaltyRating(pm, entry) >= LoyaltyRating.Adored)
+                    {
+                        if (entry.Love > highestLove)
+                        {
+                            highestLove = entry.Love;
+                            bestCandidate = pm;
+                        }
+                    }
+                }
+
+                if (bestCandidate != null)
+                {
+                    ErectStatueAtSpawner(bestCandidate, spawner);
+                }
+            }
+        }
+
+        private static void OnSaveTimer(WorldSaveEventArgs e)
+        {
+            Persistence.Serialize(TimerSavePath, writer =>
+            {
+                writer.Write(0);
+                writer.Write(_nextWeeklyCheck);
+            });
+        }
+
+        private static void OnLoadTimer()
+        {
+            Persistence.Deserialize(TimerSavePath, reader =>
+            {
+                int version = reader.ReadInt();
+                _nextWeeklyCheck = reader.ReadDateTime();
+            });
         }
 
         public static void LoadFromXml()
