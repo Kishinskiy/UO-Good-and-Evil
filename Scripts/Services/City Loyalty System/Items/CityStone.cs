@@ -6,6 +6,7 @@ using Server.Targeting;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using Server.Custom.CityLevels;
 
 namespace Server.Engines.CityLoyalty
 {
@@ -41,6 +42,13 @@ namespace Server.Engines.CityLoyalty
         public override void GetProperties(ObjectPropertyList list)
         {
             base.GetProperties(list);
+
+            var levelData = CityLevelSystem.GetCity(City.City); 
+
+            if (levelData != null)
+            {
+                list.Add(1060658, "Уровень города\t{0:F1}", levelData.SkillValue);
+            }
 
             if (!CityLoyaltySystem.Enabled || City == null)
                 return;
