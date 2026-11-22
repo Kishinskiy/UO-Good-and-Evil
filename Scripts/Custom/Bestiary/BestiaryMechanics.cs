@@ -51,10 +51,7 @@ namespace Server.Custom.Bestiary
             // 2. Прокачка знания о монстре (шаг +0.1, с убывающей отдачей как у скиллов UO)
             if (knowledge.SkillValue < knowledge.SkillCap)
             {
-                // Базовый шанс 35% на 0.0, плавно снижается по мере приближения к 100.0
-                double progressFactor = 1.0 - (knowledge.SkillValue / (knowledge.SkillCap + 10.0));
-                double skillBonus = (killer.Skills[SkillName.Forensics].Value + killer.Skills[SkillName.Anatomy].Value) / 2000.0; // до +10%
-                double gainChance = Math.Max(0.02, (0.35 * progressFactor) + skillBonus);
+                double gainChance = CalculateKnowledgeGainChance(killer, victim, knowledge.SkillValue);
 
                 if (Utility.RandomDouble() < gainChance)
                 {
@@ -63,7 +60,6 @@ namespace Server.Custom.Bestiary
 
                     killer.SendMessage(0x59, $"[Бестиарий] Ваши знания о существе [{mobTitle}] выросли до {knowledge.SkillValue:F1}%!");
 
-                    // Звук и уведомление о вехах (50.0 и 100.0)
                     if (knowledge.SkillValue == 50.0)
                     {
                         killer.PlaySound(0x1F7);
@@ -76,6 +72,35 @@ namespace Server.Custom.Bestiary
                     }
                 }
             }
+        }
+
+        private static double CalculateKnowledgeGainChance(Mobile killer, BaseCreature victim, double currentSkill)
+        {
+            // 1. Оцениваем опасность монстра по Fame и максимальному здоровью
+            double dangerScore = Math.Max(victim.Fame, victim.HitsMax * 15.0);
+            if (victim.IsParagon)
+                dangerScore *= 1.5;
+
+            // Базовый шанс на 0.0%: от 15% для слабых мобов до 2% для самых опасных боссов
+            double baseChance;
+            if (dangerScore <= 2000)
+                baseChance = 0.15;
+            else if (dangerScore >= 25000)
+                baseChance = 0.02;
+            else
+                baseChance = 0.15 - ((dangerScore - 2000.0) / 23000.0) * 0.13;
+
+            // 2. Нелинейное усложнение с ростом текущего процента изучения (степень 2.2)
+            double remainingRatio = Math.Max(0.0, 1.0 - (currentSkill / 100.0));
+            double progressMultiplier = Math.Pow(remainingRatio, 2.2);
+
+            // 3. Бонус от исследовательских навыков игрока (Anatomy и Forensic Evaluation дают до +40% к шансу)
+            double researchSkills = killer.Skills[SkillName.Anatomy].Value + killer.Skills[SkillName.Forensics].Value;
+            double skillMultiplier = 1.0 + (researchSkills / 500.0); // При 100+100 = 1.4x
+
+            // Итоговый шанс (минимальный порог 0.05% на 99.9%, чтобы прокачка не упиралась в абсолютный ноль)
+            double finalChance = baseChance * progressMultiplier * skillMultiplier;
+            return Math.Max(0.0005, finalChance);
         }
 
 
