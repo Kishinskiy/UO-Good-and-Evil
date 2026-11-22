@@ -205,13 +205,15 @@ namespace Server.Engines.CityLoyalty
                 }
             }
 
-            switch (Utility.Random(2))
+            if (0.20 > Utility.RandomDouble())
             {
-                default:
-                case 1: return RandomResource(entry);
-                case 2: return ScrollOfTranscendence.CreateRandom(1, 10);
+                return ScrollOfTranscendence.CreateRandom(1, 10);
             }
+
+            return RandomResource(entry);
+
         }
+
 
         private Item RandomResource(TradeEntry entry)
         {
@@ -357,8 +359,8 @@ namespace Server.Engines.CityLoyalty
             reader.ReadInt();
 
             City = (City)reader.ReadInt();
-			
-			Frozen = true;
+
+            Frozen = true;
 
             if (CitySystem != null)
                 CitySystem.Minister = this;
