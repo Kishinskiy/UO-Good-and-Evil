@@ -23,7 +23,7 @@ namespace Server.Custom.ItemSockets
         }
 
         [Constructable]
-        public SocketChisel(int uses) : base(0x1026) // Графика зубила / резца
+        public SocketChisel(int uses) : base(0x1026)
         {
             Name = "Ювелирное зубило кузнеца (Инкрустация)";
             Hue = 0x489;
@@ -34,15 +34,15 @@ namespace Server.Custom.ItemSockets
         public override void GetProperties(ObjectPropertyList list)
         {
             base.GetProperties(list);
-            list.Add(1060584, _usesRemaining.ToString()); // uses remaining: ~1_val~
-            list.Add(1060658, "Назначение\tИнкрустация камней ювелира в экипировку");
+            list.Add(1060584, _usesRemaining.ToString());
+            list.Add(1060658, "Назначение\tИнкрустация камней в экипировку");
         }
 
         public override void OnDoubleClick(Mobile from)
         {
             if (!IsChildOf(from.Backpack))
             {
-                from.SendLocalizedMessage(1042001); // That must be in your pack for you to use it.
+                from.SendLocalizedMessage(1042001);
                 return;
             }
 
@@ -53,7 +53,7 @@ namespace Server.Custom.ItemSockets
                 return;
             }
 
-            from.SendMessage(0x59, "Выберите ограненный камень ювелира в вашем рюкзаке:");
+            from.SendMessage(0x59, "Выберите ограненный камень ювелира или обычный драгоценный камень в рюкзаке:");
             from.Target = new SelectGemTarget(this);
         }
 
@@ -71,23 +71,23 @@ namespace Server.Custom.ItemSockets
                 if (_tool == null || _tool.Deleted)
                     return;
 
-                if (!(targeted is JewelryGem gem) || !gem.IsChildOf(from.Backpack))
+                if (!(targeted is Item gem) || !gem.IsChildOf(from.Backpack))
                 {
-                    from.SendMessage(0x22, "Нужно выбрать ограненный драгоценный камень (JewelryGem) из вашего рюкзака.");
+                    from.SendMessage(0x22, "Выберите камень из вашего рюкзака.");
                     return;
                 }
 
-                from.SendMessage(0x59, $"Выбран камень: [{gem.Name}]. Теперь выберите оружие, броню или щит для инкрустации:");
+                from.SendMessage(0x59, "Теперь выберите оружие, броню, щит или украшение для инкрустации:");
                 from.Target = new SelectEquipmentTarget(_tool, gem);
             }
         }
 
-        private class SelectEquipmentTarget : Target
+        public class SelectEquipmentTarget : Target
         {
             private readonly SocketChisel _tool;
-            private readonly JewelryGem _gem;
+            private readonly Item _gem;
 
-            public SelectEquipmentTarget(SocketChisel tool, JewelryGem gem) : base(-1, false, TargetFlags.None)
+            public SelectEquipmentTarget(SocketChisel tool, Item gem) : base(-1, false, TargetFlags.None)
             {
                 _tool = tool;
                 _gem = gem;
@@ -104,8 +104,7 @@ namespace Server.Custom.ItemSockets
                     return;
                 }
 
-                // Запускаем инкрустацию (при любой попытке тратим 1 заряд инструмента)
-                ItemSocketSystem.TrySocketGem(from, _gem, item);
+                ItemSocketSystem.TrySocketAnyGem(from, _gem, item);
 
                 _tool.UsesRemaining--;
                 if (_tool.UsesRemaining <= 0)

@@ -55,15 +55,26 @@ namespace Server.Custom.ItemSockets
             return list;
         }
 
+        // Учитываем И наши вставленные камни, И ванильные сокеты ServUO (item.Sockets)
         public static int GetUsedSocketsCount(Item item)
         {
-            var list = GetSockets(item);
-            return list?.Count ?? 0;
+            if (item == null || item.Deleted)
+                return 0;
+
+            int customCount = GetSockets(item)?.Count ?? 0;
+            int vanillaCount = item.Sockets?.Count ?? 0;
+
+            return customCount + vanillaCount;
         }
 
-        // Оцениваем сложность самого предмета (артефактность, магия, уже занятые сокеты)
         public static double GetEquipmentDifficultyPenalty(Item target, out string itemTierName)
         {
+            if (target == null)
+            {
+                itemTierName = "Обычная экипировка";
+                return 0.0;
+            }
+
             int rarity = 0;
             bool isArtifact = false;
 
@@ -128,7 +139,6 @@ namespace Server.Custom.ItemSockets
             return false;
         }
 
-        // Расчёт порогов навыка Blacksmithy с учётом И камня, И уровня предмета
         public static void GetSkillThresholds(JewelryGem gem, Item target, out double minSkill, out double maxSkillFor100, out string itemTierName)
         {
             double baseMin;
@@ -182,62 +192,79 @@ namespace Server.Custom.ItemSockets
             return Math.Min(1.0, Math.Max(0.10, 0.10 + (progress * 0.90)));
         }
 
-        public static bool TrySocketGem(Mobile from, JewelryGem gem, Item target)
+        // Поддержка инкрустации КАК огранённых камней ювелира, ТАК И обычных ванильных камней
+        public static bool TrySocketAnyGem(Mobile from, Item gemItem, Item target)
         {
-            if (from == null || gem == null || gem.Deleted || target == null || target.Deleted)
-                return false;
+            if (gemItem is JewelryGem jg)
+                return TrySocketGem(from, jg, target);
 
-            if (!gem.IsChildOf(from.Backpack) || !target.IsChildOf(from.Backpack))
+            // Конвертация обычного ванильного камня (Ruby, Sapphire и т.д.) в базовый эффект с качеством 0.4
+            string vanillaEffect = GetVanillaGemEffect(gemItem, out string vanillaName);
+            if (vanillaEffect != null)
             {
-                from.SendMessage(0x22, "И камень, и предмет для инкрустации должны находиться в вашем рюкзаке (снимите вещь перед работой).");
+                return TrySocketVanillaGem(from, gemItem, target, vanillaEffect, vanillaName);
+            }
+
+            from.SendMessage(0x22, "Этот камень не подходит для инкрустации.");
+            return false;
+        }
+
+        private static string GetVanillaGemEffect(Item gem, out string displayName)
+        {
+            displayName = gem.GetType().Name;
+            if (gem is Sapphire) { displayName = "Неограненный сапфир"; return "sapphire"; }
+            if (gem is Emerald) { displayName = "Неограненный изумруд"; return "emerald"; }
+            if (gem is Diamond) { displayName = "Неограненный алмаз"; return "diamond"; }
+            if (gem is Citrine) { displayName = "Неограненный цитрин"; return "citrine"; }
+            if (gem is Amber) { displayName = "Неограненный янтарь"; return "amber"; }
+            if (gem is Ruby) { displayName = "Неограненный рубин"; return "ruby"; }
+            if (gem is Amethyst) { displayName = "Неограненный аметист"; return "amethyst"; }
+            if (gem is Tourmaline) { displayName = "Неограненный турмалин"; return "tourmaline"; }
+            if (gem is StarSapphire) { displayName = "Неограненный звёздный сапфир"; return "starsapphire"; }
+            return null;
+        }
+
+        private static bool TrySocketVanillaGem(Mobile from, Item rawGem, Item target, string effect, string gemName)
+        {
+            if (!rawGem.IsChildOf(from.Backpack) || !target.IsChildOf(from.Backpack))
+            {
+                from.SendMessage(0x22, "И камень, и предмет должны лежать в вашем рюкзаке.");
                 return false;
             }
 
             int maxSockets = GetMaxSockets(target);
-            if (maxSockets <= 0)
-            {
-                from.SendMessage(0x22, "В этот предмет нельзя вставить драгоценный камень.");
-                return false;
-            }
-
             int used = GetUsedSocketsCount(target);
-            if (used >= maxSockets)
+            if (maxSockets <= 0 || used >= maxSockets)
             {
-                from.SendMessage(0x22, $"В этом предмете больше нет свободных гнезд ({used}/{maxSockets}).");
+                from.SendMessage(0x22, "В этом предмете нет свободных гнёзд.");
                 return false;
             }
 
             DefBlacksmithy.CheckAnvilAndForge(from, 3, out bool anvil, out bool forge);
             if (!anvil || !forge)
             {
-                from.SendMessage(0x22, "Для инкрустации камней вы должны стоять рядом с наковальней и кузнечным горном!");
+                from.SendMessage(0x22, "Встаньте рядом с наковальней и кузнечным горном!");
                 return false;
             }
 
-            GetSkillThresholds(gem, target, out double minSkill, out double maxSkillFor100, out string itemTierName);
             double playerSkill = from.Skills[SkillName.Blacksmith].Value;
-
-            if (playerSkill < minSkill)
+            if (playerSkill < 45.0)
             {
-                from.SendMessage(0x22, $"Предмет: [{itemTierName}]. Для вставки камня [{gem.Name}] требуется навык Blacksmithy {minSkill:F1} (для 100% успеха: {maxSkillFor100:F1}, ваш: {playerSkill:F1}).");
+                from.SendMessage(0x22, "Для простой инкрустации необработанных камней требуется навык Blacksmithy 45.0.");
                 return false;
             }
 
-            double successChance = CalculateSocketSuccessChance(playerSkill, minSkill, maxSkillFor100);
+            double chance = CalculateSocketSuccessChance(playerSkill, 45.0, 75.0);
+            rawGem.Consume(1); // Тратим 1 камень из стопки
 
-            if (Utility.RandomDouble() > successChance)
+            if (Utility.RandomDouble() > chance)
             {
-                gem.Delete();
                 from.PlaySound(0x54);
-                from.SendMessage(0x22, $"Неудача при обработке [{itemTierName}]! Камень раскололся (ваш шанс был {successChance * 100:F0}%, для 100% нужно {maxSkillFor100:F1} Blacksmithy).");
+                from.SendMessage(0x22, $"Необработанный камень раскололся при вставке (шанс был {chance * 100:F0}%).");
                 return false;
             }
 
-            if (!ApplyGemBonusToItem(target, gem.GemEffect, gem.GemQuality))
-            {
-                from.SendMessage(0x22, "Этот тип камня несовместим с выбранным типом экипировки.");
-                return false;
-            }
+            ApplyGemBonusToItem(target, effect, 0.4); // Базовый слабый бонус (40% от стандартного)
 
             if (!SocketedItems.TryGetValue(target.Serial, out var records))
             {
@@ -245,44 +272,96 @@ namespace Server.Custom.ItemSockets
                 SocketedItems[target.Serial] = records;
             }
 
+            records.Add(new SocketedGemRecord { Effect = effect, Quality = 0.4, GemName = gemName });
+            UpdateItemSocketTag(target, GetUsedSocketsCount(target), maxSockets);
+            target.InvalidateProperties();
+
+            from.PlaySound(0x2A);
+            from.SendMessage(0x59, $"Вы вставили простой [{gemName}] в оправу ({GetUsedSocketsCount(target)}/{maxSockets}).");
+            return true;
+        }
+        public static bool TrySocketGem(Mobile from, JewelryGem gem, Item target)
+        {
+            if (from == null || gem == null || gem.Deleted || target == null || target.Deleted)
+                return false;
+            if (!gem.IsChildOf(from.Backpack) || !target.IsChildOf(from.Backpack))
+            {
+                from.SendMessage(0x22, "И камень, и предмет для инкрустации должны находиться в вашем рюкзаке (снимите вещь перед работой).");
+                return false;
+            }
+            int maxSockets = GetMaxSockets(target);
+            if (maxSockets <= 0)
+            {
+                from.SendMessage(0x22, "В этот предмет нельзя вставить драгоценный камень.");
+                return false;
+            }
+            int used = GetUsedSocketsCount(target);
+            if (used >= maxSockets)
+            {
+                from.SendMessage(0x22, $"В этом предмете больше нет свободных гнезд ({used}/{maxSockets}).");
+                return false;
+            }
+            DefBlacksmithy.CheckAnvilAndForge(from, 3, out bool anvil, out bool forge);
+            if (!anvil || !forge)
+            {
+                from.SendMessage(0x22, "Для инкрустации камней вы должны стоять рядом с наковальней и кузнечным горном!");
+                return false;
+            }
+            GetSkillThresholds(gem, target, out double minSkill, out double maxSkillFor100, out string itemTierName);
+            double playerSkill = from.Skills[SkillName.Blacksmith].Value;
+            if (playerSkill < minSkill)
+            {
+                from.SendMessage(0x22, $"Предмет: [{itemTierName}]. Для вставки камня [{gem.Name}] требуется навык Blacksmithy {minSkill:F1} (для 100% успеха: {maxSkillFor100:F1}, ваш: {playerSkill:F1}).");
+                return false;
+            }
+            double successChance = CalculateSocketSuccessChance(playerSkill, minSkill, maxSkillFor100);
+            if (Utility.RandomDouble() > successChance)
+            {
+                gem.Delete();
+                from.PlaySound(0x54);
+                from.SendMessage(0x22, $"Неудача при обработке [{itemTierName}]! Камень раскололся (ваш шанс был {successChance * 100:F0}%, для 100% нужно {maxSkillFor100:F1} Blacksmithy).");
+                return false;
+            }
+            if (!ApplyGemBonusToItem(target, gem.GemEffect, gem.GemQuality))
+            {
+                from.SendMessage(0x22, "Этот тип камня несовместим с выбранным типом экипировки.");
+                return false;
+            }
+            if (!SocketedItems.TryGetValue(target.Serial, out var records))
+            {
+                records = new List<SocketedGemRecord>();
+                SocketedItems[target.Serial] = records;
+            }
             records.Add(new SocketedGemRecord
             {
                 Effect = gem.GemEffect,
                 Quality = gem.GemQuality,
                 GemName = gem.Name
             });
-
-            UpdateItemSocketTag(target, records.Count, maxSockets);
-
+            UpdateItemSocketTag(target, GetUsedSocketsCount(target), maxSockets);
             gem.Delete();
             target.InvalidateProperties();
-
             from.PlaySound(0x2A);
             from.FixedParticles(0x373A, 10, 15, 5018, EffectLayer.Waist);
-            from.SendMessage(0x35, $"Вы успешно инкрустировали [{gem.Name}] в [{itemTierName}]! Гнезд занято: {records.Count} / {maxSockets}.");
+            from.SendMessage(0x35, $"Вы успешно инкрустировали [{gem.Name}] в [{itemTierName}]! Гнезд занято: {GetUsedSocketsCount(target)} / {maxSockets}.");
             return true;
         }
-
         private static void UpdateItemSocketTag(Item item, int used, int max)
         {
             string baseName = !string.IsNullOrEmpty(item.Name) ? item.Name : item.GetType().Name;
             int tagIndex = baseName.IndexOf(" [Сокеты:");
             if (tagIndex >= 0)
                 baseName = baseName.Substring(0, tagIndex);
-
             item.Name = $"{baseName} [Сокеты: {used}/{max}]";
         }
-
         private static bool ApplyGemBonusToItem(Item item, string effect, double q)
         {
             AosAttributes attrs = GetAosAttributes(item);
             if (attrs == null)
                 return false;
-
             BaseWeapon weapon = item as BaseWeapon;
             BaseArmor armor = item as BaseArmor;
             AosElementAttributes resists = GetAosResistances(item);
-
             switch (effect)
             {
                 case "sapphire":
