@@ -40,14 +40,14 @@ namespace Server.Custom.KarmaVirtueSystem
 
         public static readonly ShrineData[] Shrines = new ShrineData[]
         {
-            new ShrineData(0, VirtueName.Valor,        "RA",   2491, 3930, Map.Felucca, "Serpent's Hold", "Destard"),
-            new ShrineData(1, VirtueName.Spirituality, "OM",   1605, 2489, Map.Felucca, "Britain", "Misc Dungeons"), // Храм Жизни / Аватар
-            new ShrineData(2, VirtueName.Honor,        "SUMM", 1726, 3527, Map.Felucca, "Trinsic", "Shame"),
-            new ShrineData(3, VirtueName.Sacrifice,    "CAH",  3354, 289,  Map.Felucca, "Minoc", "Covetous"),
-            new ShrineData(4, VirtueName.Justice,      "BEH",  1300, 633,  Map.Felucca, "Yew", "Wrong"),
-            new ShrineData(5, VirtueName.Honesty,      "AHM",  4208, 563,  Map.Felucca, "Moonglow", "Deceit"),
-            new ShrineData(6, VirtueName.Compassion,   "MU",   1857, 874,  Map.Felucca, "Britain", "Despise"),
-            new ShrineData(7, VirtueName.Humility,     "LUM",  4273, 3696, Map.Felucca, "Magincia", "Hythloth")
+            new ShrineData(0, VirtueName.Valor,        "RA",   2491, 3930, Map.Felucca, "Jhelom",     "Destard"),
+            new ShrineData(1, VirtueName.Spirituality, "OM",   1605, 2489, Map.Felucca, "Skara Brae", "Misc Dungeons"),
+            new ShrineData(2, VirtueName.Honor,        "SUMM", 1726, 3527, Map.Felucca, "Trinsic",    "Shame"),
+            new ShrineData(3, VirtueName.Sacrifice,    "CAH",  3354, 289,  Map.Felucca, "Minoc",      "Covetous"),
+            new ShrineData(4, VirtueName.Justice,      "BEH",  1300, 633,  Map.Felucca, "Yew",        "Wrong"),
+            new ShrineData(5, VirtueName.Honesty,      "AHM",  4208, 563,  Map.Felucca, "Moonglow",   "Deceit"),
+            new ShrineData(6, VirtueName.Compassion,   "MU",   1857, 874,  Map.Felucca, "Britain",    "Despise"),
+            new ShrineData(7, VirtueName.Humility,     "LUM",  4273, 3696, Map.Felucca, "Magincia",   "Hythloth")
         };
 
         public static void Initialize()
