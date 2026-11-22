@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CityStatueSpawns>
+    <!-- Britain (Центральная площадь) -->
+    <Spawn city="Britain" map="Trammel" x="1495" y="1626" z="10" direction="South" />
+
+    <!-- Minoc -->
+    <Spawn city="Minoc" map="Trammel" x="2466" y="541" z="0" direction="South" />
+
+    <!-- Yew -->
+    <Spawn city="Yew" map="Trammel" x="546" y="989" z="0" direction="South" />
+
+    <!-- Moonglow -->
+    <Spawn city="Moonglow" map="Trammel" x="4442" y="1169" z="0" direction="South" />
+
+    <!-- NewMagincia -->
+    <Spawn city="NewMagincia" map="Trammel" x="3714" y="2217" z="20" direction="South" />
+
+    <!-- Trinsic -->
+    <Spawn city="Trinsic" map="Trammel" x="1867" y="2777" z="0" direction="South" />
+
+    <!-- SkaraBrae -->
+    <Spawn city="SkaraBrae" map="Trammel" x="632" y="2230" z="0" direction="South" />
+
+    <!-- Jhelom -->
+    <Spawn city="Jhelom" map="Trammel" x="1383" y="3812" z="0" direction="South" />
+
+    <!-- Vesper -->
+    <Spawn city="Vesper" map="Trammel" x="2899" y="673" z="0" direction="South" />
+</CityStatueSpawns>

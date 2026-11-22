@@ -62,6 +62,7 @@ namespace Server.Custom.EpicAlignment
 
             pm.IsDemigod = true;
             pm.EpicGood = true;
+            pm.Shrines = ActivatedShrines.None;
 
             World.Broadcast(0x35, true, $"[Триумф Света] Герой {pm.Name} сокрушил Темного Лорда и совершил Восхождение к рангу Аватара!");
 
@@ -98,6 +99,7 @@ namespace Server.Custom.EpicAlignment
 
             pm.IsDemigod = true;
             pm.EpicEvil = true;
+            pm.Shrines = ActivatedShrines.None;
 
             World.Broadcast(0x22, true, $"[Торжество Тьмы] Адепт Хаоса {pm.Name} поверг Верховного Серафима и обрел мощь Владыки Тьмы!");
 
