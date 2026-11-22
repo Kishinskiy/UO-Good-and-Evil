@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CityBountyBoards>
+    <!-- ================= TRAMMEL (9 городов) ================= -->
+    <Board city="Britain" map="Trammel" x="1498" y="1629" z="10" itemID="0x1E5E" />
+    <Board city="Minoc" map="Trammel" x="2469" y="544" z="0" itemID="0x1E5E" />
+    <Board city="Yew" map="Trammel" x="549" y="992" z="0" itemID="0x1E5E" />
+    <Board city="Moonglow" map="Trammel" x="4445" y="1172" z="0" itemID="0x1E5E" />
+    <Board city="NewMagincia" map="Trammel" x="3717" y="2220" z="20" itemID="0x1E5E" />
+    <Board city="Trinsic" map="Trammel" x="1870" y="2780" z="0" itemID="0x1E5E" />
+    <Board city="SkaraBrae" map="Trammel" x="635" y="2233" z="0" itemID="0x1E5E" />
+    <Board city="Jhelom" map="Trammel" x="1386" y="3815" z="0" itemID="0x1E5E" />
+    <Board city="Vesper" map="Trammel" x="2902" y="676" z="0" itemID="0x1E5E" />
+
+    <!-- ================= FELUCCA (9 городов) ================= -->
+    <Board city="Britain" map="Felucca" x="1498" y="1629" z="10" itemID="0x1E5E" />
+    <Board city="Minoc" map="Felucca" x="2469" y="544" z="0" itemID="0x1E5E" />
+    <Board city="Yew" map="Felucca" x="549" y="992" z="0" itemID="0x1E5E" />
+    <Board city="Moonglow" map="Felucca" x="4445" y="1172" z="0" itemID="0x1E5E" />
+    <Board city="NewMagincia" map="Felucca" x="3717" y="2220" z="20" itemID="0x1E5E" />
+    <Board city="Trinsic" map="Felucca" x="1870" y="2780" z="0" itemID="0x1E5E" />
+    <Board city="SkaraBrae" map="Felucca" x="635" y="2233" z="0" itemID="0x1E5E" />
+    <Board city="Jhelom" map="Felucca" x="1383" y="3815" z="0" itemID="0x1E5E" />
+    <Board city="Vesper" map="Felucca" x="2902" y="676" z="0" itemID="0x1E5E" />
+</CityBountyBoards>

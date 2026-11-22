@@ -9,18 +9,18 @@ namespace Server.Custom.Bestiary
     public class MonsterKnowledge
     {
         public int Kills { get; set; }
-        public int Level { get; set; } // Уровень изучения от 0 до 5 (или 0..100)
+        public double SkillValue { get; set; } // Шкала от 0.0 до 100.0, как у скиллов игрока
+        public double SkillCap { get; set; } = 100.0;
     }
 
     public static class BestiarySystem
     {
         private static readonly string FilePath = Path.Combine("Saves/Custom", "BestiaryData.bin");
 
-        // Словарь: Serial игрока -> (Имя класса монстра -> Данные изучения)
         public static Dictionary<Serial, Dictionary<string, MonsterKnowledge>> PlayerData { get; private set; }
             = new Dictionary<Serial, Dictionary<string, MonsterKnowledge>>();
 
-        public const int MaxKnowledgeLevel = 5; // Макс. уровень изучения одного монстра (1..5 звёзд/рангов)
+        public const double MaxKnowledgeSkill = 100.0;
 
         public static void Configure()
         {
@@ -58,41 +58,41 @@ namespace Server.Custom.Bestiary
             return knowledge;
         }
 
-        // Бонус урона по конкретному монстру: +4% за каждый уровень изучения (до +20% на 5 уровне)
+        // Бонус урона: до +25% на 100.0 (по 0.25% за каждый 1.0 изучения)
         public static double GetDamageBonusMultiplier(Mobile attacker, BaseCreature defender)
         {
             var k = GetKnowledge(attacker, defender);
-            if (k == null || k.Level <= 0)
+            if (k == null || k.SkillValue <= 0.0)
                 return 1.0;
 
-            return 1.0 + (k.Level * 0.04);
+            return 1.0 + ((k.SkillValue / 100.0) * 0.25);
         }
 
-        // Бонус золота с монстра: +6% за каждый уровень изучения (до +30% на 5 уровне)
+        // Бонус золота: до +30% на 100.0 (по 0.30% за каждый 1.0 изучения)
         public static double GetGoldBonusMultiplier(Mobile killer, BaseCreature victim)
         {
             var k = GetKnowledge(killer, victim);
-            if (k == null || k.Level <= 0)
+            if (k == null || k.SkillValue <= 0.0)
                 return 1.0;
 
-            return 1.0 + (k.Level * 0.06);
+            return 1.0 + ((k.SkillValue / 100.0) * 0.30);
         }
 
-        // Шанс получения редкого трофея/ресурса: +3% за уровень (до +15% на 5 уровне)
+        // Шанс редкого трофея: до +15% на 100.0
         public static double GetRareDropChance(Mobile killer, BaseCreature victim)
         {
             var k = GetKnowledge(killer, victim);
-            if (k == null || k.Level <= 0)
+            if (k == null || k.SkillValue <= 0.0)
                 return 0.0;
 
-            return k.Level * 0.03;
+            return (k.SkillValue / 100.0) * 0.15;
         }
 
         private static void OnSave(WorldSaveEventArgs e)
         {
             Persistence.Serialize(FilePath, writer =>
             {
-                writer.Write(0); // Версия
+                writer.Write(1); // Версия 1 (double SkillValue 0.0 - 100.0)
                 writer.Write(PlayerData.Count);
 
                 foreach (var playerKvp in PlayerData)
@@ -104,7 +104,8 @@ namespace Server.Custom.Bestiary
                     {
                         writer.Write(mobKvp.Key);
                         writer.Write(mobKvp.Value.Kills);
-                        writer.Write(mobKvp.Value.Level);
+                        writer.Write(mobKvp.Value.SkillValue);
+                        writer.Write(mobKvp.Value.SkillCap);
                     }
                 }
             });
@@ -128,9 +129,27 @@ namespace Server.Custom.Bestiary
                     {
                         string mobName = reader.ReadString();
                         int kills = reader.ReadInt();
-                        int level = reader.ReadInt();
 
-                        dict[mobName] = new MonsterKnowledge { Kills = kills, Level = level };
+                        double skillVal;
+                        double skillCap = MaxKnowledgeSkill;
+
+                        if (version >= 1)
+                        {
+                            skillVal = reader.ReadDouble();
+                            skillCap = reader.ReadDouble();
+                        }
+                        else
+                        {
+                            // Конвертация старого формата 0..5 в 0.0..100.0
+                            skillVal = reader.ReadInt() * 20.0;
+                        }
+
+                        dict[mobName] = new MonsterKnowledge
+                        {
+                            Kills = kills,
+                            SkillValue = skillVal,
+                            SkillCap = skillCap
+                        };
                     }
 
                     if (World.FindMobile(serial) != null)

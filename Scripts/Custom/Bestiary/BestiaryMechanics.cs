@@ -21,7 +21,7 @@ namespace Server.Custom.Bestiary
             });
         }
 
-        private static void OnCreatureDeath(CreatureDeathEventArgs e)
+                private static void OnCreatureDeath(CreatureDeathEventArgs e)
         {
             BaseCreature victim = e.Creature as BaseCreature;
             Container corpse = e.Corpse;
@@ -39,31 +39,45 @@ namespace Server.Custom.Bestiary
             var knowledge = BestiarySystem.GetKnowledge(killer, victim, create: true);
             knowledge.Kills++;
 
-            // 1. Применяем бонус золота и ресурсов от УЖЕ имеющихся знаний
-            if (corpse != null && !corpse.Deleted && knowledge.Level > 0)
+            // 1. Применяем бонусы добычи и шанс выпадения книги
+            if (corpse != null && !corpse.Deleted)
             {
-                ApplyLootBonuses(killer, victim, corpse);
+                if (knowledge.SkillValue > 0.0)
+                    ApplyLootBonuses(killer, victim, corpse);
+
                 TryDropBestiaryBook(killer, victim, corpse);
             }
 
-            // 2. Шанс получить новое очко знаний в бестиарий (чем выше уровень, тем ниже шанс)
-            if (knowledge.Level < BestiarySystem.MaxKnowledgeLevel)
+            // 2. Прокачка знания о монстре (шаг +0.1, с убывающей отдачей как у скиллов UO)
+            if (knowledge.SkillValue < knowledge.SkillCap)
             {
-                // Базовый шанс 15% на 0 уровне -> 3% на 4 уровне (плюс небольшой бонус от Anatomy / ItemID / ForensicEval)
-                double skillBonus = (killer.Skills[SkillName.Forensics].Value + killer.Skills[SkillName.Anatomy].Value) / 2000.0; // до +0.10
-                double gainChance = Math.Max(0.02, (0.15 - (knowledge.Level * 0.03)) + skillBonus);
+                // Базовый шанс 35% на 0.0, плавно снижается по мере приближения к 100.0
+                double progressFactor = 1.0 - (knowledge.SkillValue / (knowledge.SkillCap + 10.0));
+                double skillBonus = (killer.Skills[SkillName.Forensics].Value + killer.Skills[SkillName.Anatomy].Value) / 2000.0; // до +10%
+                double gainChance = Math.Max(0.02, (0.35 * progressFactor) + skillBonus);
 
                 if (Utility.RandomDouble() < gainChance)
                 {
-                    knowledge.Level++;
+                    knowledge.SkillValue = Math.Min(knowledge.SkillCap, Math.Round(knowledge.SkillValue + 0.1, 1));
                     string mobTitle = !string.IsNullOrEmpty(victim.Name) ? victim.Name : victim.GetType().Name;
 
-                    killer.PlaySound(0x1F7);
-                    killer.SendMessage(0x59, $"[Бестиарий] Вы изучили повадки существа [{mobTitle}]! Уровень знаний: {knowledge.Level} / {BestiarySystem.MaxKnowledgeLevel}.");
-                    killer.SendMessage(0x35, $"Бонусы против этого вида: +{knowledge.Level * 4}% урона, +{knowledge.Level * 6}% золота, +{knowledge.Level * 3}% шанс трофеев.");
+                    killer.SendMessage(0x59, $"[Бестиарий] Ваши знания о существе [{mobTitle}] выросли до {knowledge.SkillValue:F1}%!");
+
+                    // Звук и уведомление о вехах (50.0 и 100.0)
+                    if (knowledge.SkillValue == 50.0)
+                    {
+                        killer.PlaySound(0x1F7);
+                        killer.SendMessage(0x35, $"[Бестиарий] Вы изучили сопротивления существа [{mobTitle}]! Проверьте книгу.");
+                    }
+                    else if (knowledge.SkillValue == 100.0)
+                    {
+                        killer.PlaySound(0x1F7);
+                        killer.SendMessage(0x35, $"[Бестиарий] Вы в совершенстве постигли анатомию [{mobTitle}] (100.0%)!");
+                    }
                 }
             }
         }
+
 
         private static void ApplyLootBonuses(Mobile killer, BaseCreature victim, Container corpse)
         {
@@ -136,64 +150,173 @@ namespace Server.Custom.Bestiary
     }
 
     // Окно бестиария игрока (команда [bestiary)
-    public class BestiaryGump : Gump
+        public class BestiaryGump : Gump
     {
         private readonly PlayerMobile _player;
         private readonly int _page;
+        private readonly string _selectedMonsterType;
+        private readonly List<KeyValuePair<string, MonsterKnowledge>> _entries;
 
-        public BestiaryGump(PlayerMobile pm, int page) : base(100, 100)
+        public BestiaryGump(PlayerMobile pm, int page, string selectedMonsterType = null) : base(80, 80)
         {
             _player = pm;
             _page = page;
+            _selectedMonsterType = selectedMonsterType;
 
-            AddPage(0);
-            AddBackground(0, 0, 480, 420, 9200);
-            AddAlphaRegion(10, 10, 460, 400);
-
-            AddHtml(20, 15, 440, 25, "<CENTER><BASEFONT COLOR=#FFD700>БЕСТИАРИЙ ИССЛЕДОВАТЕЛЯ</BASEFONT></CENTER>", false, false);
-
-            var entries = BestiarySystem.PlayerData.TryGetValue(pm.Serial, out var dict)
-                ? dict.OrderByDescending(x => x.Value.Level).ThenByDescending(x => x.Value.Kills).ToList()
+            _entries = BestiarySystem.PlayerData.TryGetValue(pm.Serial, out var dict)
+                ? dict.OrderByDescending(x => x.Value.SkillValue).ThenByDescending(x => x.Value.Kills).ToList()
                 : new List<KeyValuePair<string, MonsterKnowledge>>();
 
-            if (entries.Count == 0)
+            AddPage(0);
+            AddBackground(0, 0, 680, 440, 9200);
+            AddAlphaRegion(10, 10, 660, 420);
+
+            AddHtml(20, 15, 640, 25, "<CENTER><BASEFONT COLOR=#FFD700>БЕСТИАРИЙ ИССЛЕДОВАТЕЛЯ</BASEFONT></CENTER>", false, false);
+
+            if (_entries.Count == 0)
             {
-                AddHtml(30, 60, 420, 40, "<BASEFONT COLOR=#FFFFFF>Вы ещё не изучили ни одного существа. Сражайтесь с монстрами, чтобы пополнить бестиарий!</BASEFONT>", false, false);
+                AddHtml(30, 70, 620, 40, "<BASEFONT COLOR=#FFFFFF>Страницы книги пока пусты. Сражайтесь с монстрами, чтобы изучать их анатомию и повадки!</BASEFONT>", false, false);
                 return;
             }
 
             AddLabel(25, 45, 0x35, "Существо");
-            AddLabel(220, 45, 0x35, "Уровень");
-            AddLabel(295, 45, 0x35, "Убито");
-            AddLabel(360, 45, 0x35, "Бонус урона");
+            AddLabel(205, 45, 0x35, "Изучено");
+            AddLabel(275, 45, 0x35, "Убито");
+            AddLabel(335, 45, 0x35, "Инфо");
 
             int perPage = 12;
             int start = page * perPage;
             int y = 75;
 
-            for (int i = start; i < start + perPage && i < entries.Count; i++)
+            for (int i = start; i < start + perPage && i < _entries.Count; i++)
             {
-                var kvp = entries[i];
-                AddLabel(25, y, 0x481, kvp.Key);
-                AddLabel(220, y, 0x59, $"{kvp.Value.Level} / {BestiarySystem.MaxKnowledgeLevel}");
-                AddLabel(295, y, 0x3B2, kvp.Value.Kills.ToString());
-                AddLabel(360, y, 0x35, $"+{kvp.Value.Level * 4}%");
-                y += 24;
+                var kvp = _entries[i];
+                bool isSelected = string.Equals(kvp.Key, _selectedMonsterType, StringComparison.OrdinalIgnoreCase);
+
+                AddLabel(25, y, isSelected ? 0x35 : 0x481, kvp.Key);
+                AddLabel(205, y, 0x59, $"{kvp.Value.SkillValue:F1}%");
+                AddLabel(275, y, 0x3B2, kvp.Value.Kills.ToString());
+
+                AddButton(340, y + 2, 4005, 4007, 100 + i, GumpButtonType.Reply, 0);
+                y += 25;
             }
 
             if (page > 0)
-                AddButton(25, 380, 4014, 4016, 1, GumpButtonType.Reply, 0);
+                AddButton(25, 395, 4014, 4016, 1, GumpButtonType.Reply, 0);
 
-            if (start + perPage < entries.Count)
-                AddButton(425, 380, 4005, 4007, 2, GumpButtonType.Reply, 0);
+            if (start + perPage < _entries.Count)
+                AddButton(335, 395, 4005, 4007, 2, GumpButtonType.Reply, 0);
+
+            DrawMonsterDetailsPanel();
+        }
+
+        private void DrawMonsterDetailsPanel()
+        {
+            AddImageTiled(385, 45, 2, 370, 9304);
+
+            if (string.IsNullOrEmpty(_selectedMonsterType))
+            {
+                AddHtml(400, 120, 255, 100, "<BASEFONT COLOR=#CCCCCC>Нажмите на стрелку рядом с изученным существом, чтобы открыть заметки о его уязвимостях и бонусах.</BASEFONT>", false, false);
+                return;
+            }
+
+            var entry = _entries.FirstOrDefault(x => string.Equals(x.Key, _selectedMonsterType, StringComparison.OrdinalIgnoreCase));
+            if (entry.Value == null)
+                return;
+
+            double skill = entry.Value.SkillValue;
+            int y = 50;
+
+            AddHtml(400, y, 260, 25, $"<BASEFONT COLOR=#FFD700><B>{entry.Key}</B></BASEFONT>", false, false);
+            y += 28;
+
+            AddLabel(400, y, 0x59, $"Изучение вида: {skill:F1}% / {entry.Value.SkillCap:F1}%");
+            y += 22;
+            AddLabel(400, y, 0x3B2, $"Повержено особей: {entry.Value.Kills}");
+            y += 30;
+
+            double dmgBonus = (skill / 100.0) * 25.0;
+            double goldBonus = (skill / 100.0) * 30.0;
+            double dropBonus = (skill / 100.0) * 15.0;
+
+            AddLabel(400, y, 0x35, "Ваши бонусы против вида:");
+            y += 22;
+            AddLabel(410, y, 0x481, $"• Урон: +{dmgBonus:F1}%");
+            y += 20;
+            AddLabel(410, y, 0x481, $"• Золото в добыче: +{goldBonus:F1}%");
+            y += 20;
+            AddLabel(410, y, 0x481, $"• Шанс редкого трофея: +{dropBonus:F1}%");
+            y += 32;
+
+            BaseCreature sample = CreateSampleCreature(_selectedMonsterType);
+            if (sample != null)
+            {
+                if (skill >= 50.0)
+                {
+                    AddLabel(400, y, 0x35, "Сопротивления (открыто на 50.0%):");
+                    y += 22;
+                    AddLabel(410, y, 0x481, $"Физ: {sample.PhysicalResistance}% | Огонь: {sample.FireResistance}% | Холод: {sample.ColdResistance}%");
+                    y += 20;
+                    AddLabel(410, y, 0x481, $"Яд: {sample.PoisonResistance}% | Энергия: {sample.EnergyResistance}%");
+                    y += 28;
+                }
+                else
+                {
+                    AddHtml(400, y, 255, 40, "<BASEFONT COLOR=#888888>[Сопротивления существа откроются при изучении 50.0%]</BASEFONT>", false, false);
+                    y += 45;
+                }
+
+                if (skill >= 100.0)
+                {
+                    AddLabel(400, y, 0x35, "Анатомия (открыто на 100.0%):");
+                    y += 22;
+                    AddLabel(410, y, 0x481, $"Здоровье: ~{sample.HitsMax} | Урон: {sample.DamageMin}-{sample.DamageMax}");
+                }
+                else
+                {
+                    AddHtml(400, y, 255, 40, "<BASEFONT COLOR=#888888>[Характеристики и урон откроются при изучении 100.0%]</BASEFONT>", false, false);
+                }
+
+                sample.Delete();
+            }
+        }
+
+        private static BaseCreature CreateSampleCreature(string typeName)
+        {
+            Type t = ScriptCompiler.FindTypeByName(typeName);
+            if (t != null && typeof(BaseCreature).IsAssignableFrom(t))
+            {
+                try
+                {
+                    return Activator.CreateInstance(t) as BaseCreature;
+                }
+                catch { }
+            }
+            return null;
         }
 
         public override void OnResponse(Network.NetState sender, RelayInfo info)
         {
             if (info.ButtonID == 1 && _page > 0)
-                _player.SendGump(new BestiaryGump(_player, _page - 1));
+            {
+                _player.PlaySound(0x55);
+                _player.SendGump(new BestiaryGump(_player, _page - 1, _selectedMonsterType));
+            }
             else if (info.ButtonID == 2)
-                _player.SendGump(new BestiaryGump(_player, _page + 1));
+            {
+                _player.PlaySound(0x55);
+                _player.SendGump(new BestiaryGump(_player, _page + 1, _selectedMonsterType));
+            }
+            else if (info.ButtonID >= 100)
+            {
+                int index = info.ButtonID - 100;
+                if (index >= 0 && index < _entries.Count)
+                {
+                    _player.PlaySound(0x55);
+                    _player.SendGump(new BestiaryGump(_player, _page, _entries[index].Key));
+                }
+            }
         }
     }
+
 }
