@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using Server;
+using Server.Accounting;
 using Server.Items;
 using Server.Mobiles;
 
@@ -15,7 +17,6 @@ namespace Server.Engines.Quests
         public override object Uncomplete => "Ты еще не выполнил условия этого поручения.";
         public override object Complete => "Отличная работа! Гильдия ценит твой вклад.";
 
-        // Пустой конструктор нужен для корректной сериализации/десериализации ServUO
         public DynamicXmlGuildQuest() : base()
         {
         }
@@ -28,9 +29,18 @@ namespace Server.Engines.Quests
             {
                 AddObjective(new ObtainObjective(config.TargetType, config.TargetName, config.Amount));
             }
+            else if (config.ObjectiveType.Equals("SlayRank", StringComparison.OrdinalIgnoreCase))
+            {
+                AddObjective(new XmlSlayRankObjective(config.TargetRank, config.Amount));
+            }
             else
             {
                 AddObjective(new SlayObjective(config.TargetType, config.TargetName, config.Amount));
+            }
+
+            if (config.RemoveYoung)
+            {
+                AddReward(new BaseReward("Снятие статуса новичка (Young)"));
             }
 
             if (config.RewardGold > 0)
@@ -49,9 +59,24 @@ namespace Server.Engines.Quests
             if (Owner == null || Config == null)
                 return false;
 
-            // Проверяем ранг игрока (1 - высший, 10 - низший)
+            // Если квест только для новичков (Young)
+            if (Config.OnlyYoung && !Owner.Young)
+                return false;
+
+            // Проверка ранга гильдии
             if (Owner.QuestGuildRank > Config.RequiredRank)
                 return false;
+
+            // Проверка характеристик (статов)
+            if (Owner.RawStr < Config.MinStr || Owner.RawDex < Config.MinDex || Owner.RawInt < Config.MinInt)
+                return false;
+
+            // Проверка навыков (скиллов)
+            foreach (KeyValuePair<SkillName, double> req in Config.RequiredSkills)
+            {
+                if (Owner.Skills[req.Key].Base < req.Value)
+                    return false;
+            }
 
             return base.CanOffer();
         }
@@ -62,6 +87,17 @@ namespace Server.Engines.Quests
 
             if (Owner != null && Config != null)
             {
+                if (Config.RemoveYoung && Owner.Young)
+                {
+                    if (Owner.Account is Account acc)
+                    {
+                        acc.RemoveYoungStatus(0);
+                    }
+
+                    Owner.Young = false;
+                    Owner.SendMessage(0x35, "Ваш статус новичка (Young) успешно снят! Теперь вам открыт весь мир.");
+                }
+
                 if (Config.RewardGold > 0)
                 {
                     Owner.AddToBackpack(new Gold(Config.RewardGold));
@@ -107,7 +143,6 @@ namespace Server.Engines.Quests
             int version = reader.ReadInt();
             string questId = reader.ReadString();
 
-            // Восстанавливаем конфигурацию квеста из XML после рестарта сервера
             Config = XmlGuildQuestManager.Quests.Find(q => q.Id == questId);
         }
     }
