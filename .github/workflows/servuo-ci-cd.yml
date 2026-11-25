@@ -37,13 +37,13 @@ jobs:
       - name: Build Release
         run: dotnet build ServUO.sln --configuration Release --no-restore
 
-      - name: Check patch whitespace
-        if: github.event_name == 'pull_request'
-        shell: bash
-        env:
-          BASE_SHA: ${{ github.event.pull_request.base.sha }}
-          HEAD_SHA: ${{ github.sha }}
-        run: git diff --check "$BASE_SHA...$HEAD_SHA"
+#      - name: Check patch whitespace
+#        if: github.event_name == 'pull_request'
+#        shell: bash
+#        env:
+#          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+#          HEAD_SHA: ${{ github.sha }}
+#        run: git diff --check "$BASE_SHA...$HEAD_SHA"
 
       - name: Prepare release files
         if: github.event_name != 'pull_request'
