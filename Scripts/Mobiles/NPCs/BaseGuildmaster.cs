@@ -35,7 +35,7 @@ namespace Server.Mobiles
 
         public virtual bool CheckCustomReqs(PlayerMobile pm)
         {
-            return true;
+	        return true;
         }
 
         public virtual void SayGuildTo(Mobile m)
@@ -125,15 +125,14 @@ namespace Server.Mobiles
             }
         }
 
-        public override void OnDoubleClick(Mobile from)
+                public override void OnDoubleClick(Mobile from)
         {
             if (from is PlayerMobile pm && pm.InRange(Location, 3))
             {
-                // 1. Сначала проверяем, нет ли у игрока уже взятых квестов из списка гильдмастера
-                foreach (Type questType in GuildQuests)
+                // 1. Проверяем активные квесты (испытание ранга или взятый XML-квест)
+                foreach (BaseQuest active in pm.Quests)
                 {
-                    BaseQuest active = QuestHelper.GetQuest(pm, questType);
-                    if (active != null)
+                    if (active is RankTrialQuest || active is DynamicXmlGuildQuest)
                     {
                         if (active.Completed)
                         {
@@ -147,33 +146,86 @@ namespace Server.Mobiles
                     }
                 }
 
-                // 2. Собираем все доступные для игрока квесты (с учетом его текущего ранга)
+                // 2. Собираем доступные квесты
                 List<BaseQuest> availableQuests = new List<BaseQuest>();
 
-                foreach (Type questType in GuildQuests)
+                // Добавляем испытание ранга, если еще не 1-й ранг
+                RankTrialQuest trial = new RankTrialQuest { Owner = pm, Quester = this };
+                if (trial.CanOffer())
                 {
-                    if (Activator.CreateInstance(questType) is BaseQuest quest)
-                    {
-                        quest.Owner = pm;
-                        quest.Quester = this;
+                    availableQuests.Add(trial);
+                }
 
-                        if (quest.CanOffer())
+                // Добавляем квесты из XML, подходящие по рангу и типу гильдмастера
+                string masterTypeName = GetType().Name; // Например, "MageGuildmaster"
+
+                foreach (XmlGuildQuestConfig cfg in XmlGuildQuestManager.Quests)
+                {
+                    if (cfg.GuildType.Equals("Any", StringComparison.OrdinalIgnoreCase) ||
+                        masterTypeName.IndexOf(cfg.GuildType, StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
+                        DynamicXmlGuildQuest xmlQuest = new DynamicXmlGuildQuest(cfg)
                         {
-                            availableQuests.Add(quest);
+                            Owner = pm,
+                            Quester = this
+                        };
+
+                        if (xmlQuest.CanOffer())
+                        {
+                            availableQuests.Add(xmlQuest);
                         }
                     }
                 }
 
-                // 3. Если есть доступные квесты — открываем стандартное окно выбора квестов
-                if (availableQuests.Count > 0)
+                // 3. Предлагаем первый доступный квест (или меню выбора, если их несколько)
+                if (availableQuests.Count == 1)
                 {
 	                pm.SendGump(new MondainQuestGump(availableQuests[0]));
+	                return;
+                }
+                else if (availableQuests.Count > 1)
+                {
+	                pm.CloseGump(typeof(GuildQuestSelectGump));
+	                pm.SendGump(new GuildQuestSelectGump(pm, availableQuests));
 	                return;
                 }
             }
 
             base.OnDoubleClick(from);
         }
+                
+        public class GuildQuestSelectGump : Server.Gumps.Gump
+        {
+	        private readonly PlayerMobile m_Player;
+	        private readonly List<BaseQuest> m_Quests;
+
+	        public GuildQuestSelectGump(PlayerMobile player, List<BaseQuest> quests) : base(100, 100)
+	        {
+		        m_Player = player;
+		        m_Quests = quests;
+
+		        AddPage(0);
+		        AddBackground(0, 0, 360, 100 + (quests.Count * 35), 9270);
+		        AddLabel(25, 20, 1153, $"Выберите задание гильдии (Ваш статус: {player.GetGuildRankTitle()}):");
+
+		        for (int i = 0; i < quests.Count; i++)
+		        {
+			        int y = 55 + (i * 35);
+			        AddButton(25, y, 4005, 4007, i + 1, Server.Gumps.GumpButtonType.Reply, 0);
+			        AddLabel(65, y + 2, 0x480, quests[i].Title.ToString());
+		        }
+	        }
+
+	        public override void OnResponse(NetState sender, Server.Gumps.RelayInfo info)
+	        {
+		        int index = info.ButtonID - 1;
+		        if (index >= 0 && index < m_Quests.Count)
+		        {
+			        m_Player.SendGump(new MondainQuestGump(m_Quests[index]));
+		        }
+	        }
+        }
+
         
         
         public override bool OnGoldGiven(Mobile from, Gold dropped)

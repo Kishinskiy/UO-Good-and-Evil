@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GuildQuests>
+    <!-- Пример 1: Квест на убийство (доступен с 10-го ранга, у любого гильдмастера) -->
+    <Quest id="hunt_skeletons_10">
+        <Title>Очистка склепов</Title>
+        <Description>Нежить заполонила старые катакомбы. Уничтожь 15 скелетов и возвращайся за наградой.</Description>
+        <RequiredRank>10</RequiredRank>
+        <GuildType>Any</GuildType> <!-- Any = любой гильдмастер, либо Mage, Warrior, Thief и т.д. -->
+        <ObjectiveType>Slay</ObjectiveType>
+        <TargetType>Skeleton</TargetType>
+        <TargetName>Скелеты</TargetName>
+        <Amount>15</Amount>
+        <RewardGold>1500</RewardGold>
+        <RewardItem>Bandage</RewardItem>
+        <RewardItemAmount>50</RewardItemAmount>
+    </Quest>
+
+    <!-- Пример 2: Квест на сбор предметов (доступен с 5-го ранга, только у гильдмастера магов) -->
+    <Quest id="mage_reagents_5">
+        <Title>Редкие компоненты</Title>
+        <Description>Нашей гильдии срочно требуются реагенты для исследований. Принеси 50 единиц Черного Жемчуга.</Description>
+        <RequiredRank>5</RequiredRank>
+        <GuildType>Mage</GuildType>
+        <ObjectiveType>Obtain</ObjectiveType>
+        <TargetType>BlackPearl</TargetType>
+        <TargetName>Black Pearl</TargetName>
+        <Amount>50</Amount>
+        <RewardGold>5000</RewardGold>
+        <RewardItem>GreaterHealPotion</RewardItem>
+        <RewardItemAmount>10</RewardItemAmount>
+    </Quest>
+</GuildQuests>
