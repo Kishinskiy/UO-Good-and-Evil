@@ -59,24 +59,30 @@ namespace Server.Custom.CityHunting
             list.Add(1060659, "Активных объявлений\t{0}", _postings.Count);
         }
 
+        // Внутри класса CityBountyBoard:
         public void RefreshPostingsIfNeeded()
         {
-            if (DateTime.UtcNow < _nextRefresh && _postings.Count > 0)
-                return;
+	        if (DateTime.UtcNow < _nextRefresh && _postings.Count > 0)
+		        return;
 
-            _postings.Clear();
-            _nextRefresh = DateTime.UtcNow.AddHours(2.0); // Обновление доски каждые 2 часа
+	        _postings.Clear();
+	        _nextRefresh = DateTime.UtcNow.AddHours(2.0); // Обновление доски каждые 2 часа
 
-            // Генерируем 4 объявления разных рангов (от 1 до 4), чтобы на доске всегда был выбор
-            for (int tier = 1; tier <= 4; tier++)
-            {
-                var posting = CreateRandomPostingForTier(tier);
-                if (posting != null)
-                    _postings.Add(posting);
-            }
+	        // Генерируем по 5 объявлений для каждого ранга (1..4), чтобы игроку любого уровня всегда хватало 5 доступных контрактов
+	        int maxTier = CityHuntingSystem.MaxTier;
+	        for (int tier = 1; tier <= maxTier; tier++)
+	        {
+		        for (int i = 0; i < 5; i++)
+		        {
+			        var posting = CreateRandomPostingForTier(tier);
+			        if (posting != null)
+				        _postings.Add(posting);
+		        }
+	        }
 
-            InvalidateProperties();
+	        InvalidateProperties();
         }
+
 
         private static BoardPosting CreateRandomPostingForTier(int tier)
         {
@@ -207,125 +213,5 @@ namespace Server.Custom.CityHunting
             base.OnDelete();
         }
 
-    }
-
-    public class CityBountyBoardGump : Gump
-    {
-        private readonly PlayerMobile _player;
-        private readonly CityBountyBoard _board;
-        private readonly City _city;
-        private readonly List<BoardPosting> _postings;
-
-        public CityBountyBoardGump(PlayerMobile pm, CityBountyBoard board, City city) : base(100, 80)
-        {
-            _player = pm;
-            _board = board;
-            _city = city;
-            _postings = board.GetPostings();
-
-            int playerMaxTier = CityHuntingSystem.GetAvailableTier(pm, city);
-
-            AddPage(0);
-            AddBackground(0, 0, 520, 440, 9200);
-            AddAlphaRegion(10, 10, 500, 420);
-
-            AddHtml(20, 15, 480, 25, $"<CENTER><BASEFONT COLOR=#FFD700>ДОСКА ОБЪЯВЛЕНИЙ ГОРОДА {city.ToString().ToUpper()}</BASEFONT></CENTER>", false, false);
-            AddLabel(25, 42, 0x59, $"Ваш доступный ранг контрактов в этом городе: Tier {playerMaxTier}");
-
-            // Проверяем, есть ли у игрока выполненный контракт этого города для сдачи
-            var completed = pm.Backpack?.Items
-                .OfType<HuntingContract>()
-                .FirstOrDefault(c => c.Owner == pm && c.City == city && c.IsCompleted);
-
-            if (completed != null)
-            {
-                AddImageTiled(20, 68, 480, 45, 9354);
-                AddLabel(30, 72, 0x35, $"ВЫПОЛНЕН КОНТРАКТ: {completed.TargetDisplayName} ({completed.CurrentKills}/{completed.RequiredKills})");
-                AddButton(360, 76, 4005, 4007, 999, GumpButtonType.Reply, 0);
-                AddLabel(395, 78, 0x59, "Получить награду");
-            }
-
-            int y = completed != null ? 125 : 75;
-
-            if (_postings.Count == 0)
-            {
-                AddHtml(30, y + 20, 460, 40, "<BASEFONT COLOR=#FFFFFF>Все контракты на этой доске уже разобраны охотниками. Новые объявления появятся позже!</BASEFONT>", false, false);
-                return;
-            }
-
-            for (int i = 0; i < _postings.Count; i++)
-            {
-                BoardPosting post = _postings[i];
-                bool canTake = playerMaxTier >= post.Tier;
-
-                AddImageTiled(20, y, 480, 65, 9354);
-
-                string tierLabel = post.Target.IsBoss ? "<BASEFONT COLOR=#FF4444>[БОСС - Tier 4]</BASEFONT>" : $"<BASEFONT COLOR=#FFD700>[Tier {post.Tier}]</BASEFONT>";
-                AddHtml(30, y + 6, 300, 20, $"{tierLabel} <BASEFONT COLOR=#FFFFFF>{post.Target.DisplayName}</BASEFONT>", false, false);
-                AddLabel(30, y + 26, 0x3B2, $"Требуется убить: {post.RequiredKills} шт. | Награда: {post.GoldReward} золота");
-                AddLabel(30, y + 44, canTake ? 0x59 : 0x22, canTake ? "Доступно для вас (срок 24 часа)" : $"Требуется ранг Tier {post.Tier} (выше слава/лояльность/уровень города)");
-
-                if (canTake)
-                {
-                    AddButton(375, y + 22, 4005, 4007, 10 + i, GumpButtonType.Reply, 0);
-                    AddLabel(410, y + 24, 0x35, "Взять заказ");
-                }
-
-                y += 72;
-            }
-        }
-
-        public override void OnResponse(NetState sender, RelayInfo info)
-        {
-            if (_board == null || _board.Deleted || !_player.InRange(_board.Location, 4))
-                return;
-
-            // Кнопка сдачи выполненного контракта (ID 999)
-            if (info.ButtonID == 999)
-            {
-                var completed = _player.Backpack?.Items
-                    .OfType<HuntingContract>()
-                    .FirstOrDefault(c => c.Owner == _player && c.City == _city && c.IsCompleted);
-
-                if (completed != null)
-                {
-                    CityHuntingSystem.CompleteContractReward(_player, completed);
-                }
-                return;
-            }
-
-            // Кнопки взятия контракта с доски (ID 10 + index)
-            if (info.ButtonID >= 10 && info.ButtonID < 10 + _postings.Count)
-            {
-                int idx = info.ButtonID - 10;
-                BoardPosting post = _postings[idx];
-
-                // Проверяем, нет ли уже активного контракта
-                var active = _player.Backpack?.Items
-                    .OfType<HuntingContract>()
-                    .FirstOrDefault(c => c.Owner == _player && !c.IsExpired);
-
-                if (active != null)
-                {
-                    _player.SendMessage(0x22, $"У вас уже есть активный контракт на [{active.TargetDisplayName}] ({active.CurrentKills}/{active.RequiredKills})!");
-                    return;
-                }
-
-                int playerMaxTier = CityHuntingSystem.GetAvailableTier(_player, _city);
-                if (playerMaxTier < post.Tier)
-                {
-                    _player.SendMessage(0x22, "Вашей славы, репутации или уровня города недостаточно для этого контракта.");
-                    return;
-                }
-
-                // Создаём свиток контракта, удаляем объявление с доски и кладём свиток в рюкзак
-                HuntingContract contract = new HuntingContract(_player, _city, post.Target, post.RequiredKills, post.Tier);
-                _player.AddToBackpack(contract);
-                _board.RemovePosting(post);
-
-                _player.PlaySound(0x249);
-                _player.SendMessage(0x35, $"Вы сорвали с доски контракт города {_city}: {post.Target.DisplayName} ({post.RequiredKills} шт.). У вас есть 24 часа!");
-            }
-        }
     }
 }
