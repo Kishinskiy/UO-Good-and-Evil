@@ -77,7 +77,7 @@ namespace Server.Mobiles
                     AddItem(new WhiteScales(amount));
                     break;
             }
-            
+
 			res = (CraftResource)Utility.RandomMinMax(1, 9); // All metal types
 
 			SwampDragon mt = new SwampDragon

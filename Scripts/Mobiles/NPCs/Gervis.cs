@@ -15,12 +15,12 @@ namespace Server.Engines.Quests
 
         /* Battered Bucklers */
         public override object Title => 1075511;
-        /* Hey there! Yeah... you! Ya' any good with a hammer? Tell ya what, if yer thinking about tryin' some metal work, 
-        and have a bit of skill, I can show ya how to bend it into shape. Just get some of those ingots there, and grab a 
-        hammer and use it over here at this forge. I need a few more bucklers hammered out to fill this here order with...  
+        /* Hey there! Yeah... you! Ya' any good with a hammer? Tell ya what, if yer thinking about tryin' some metal work,
+        and have a bit of skill, I can show ya how to bend it into shape. Just get some of those ingots there, and grab a
+        hammer and use it over here at this forge. I need a few more bucklers hammered out to fill this here order with...
         hmmm about ten more. that'll give some taste of how to work the metal. */
         public override object Description => 1075512;
-        /* Not enough muscle on yer bones to use it? hmph, probably afraid of the sparks markin' up yer loverly skin... to 
+        /* Not enough muscle on yer bones to use it? hmph, probably afraid of the sparks markin' up yer loverly skin... to
         good for some honest labor... ha!... off with ya! */
         public override object Refuse => 1075514;
         /* Come On! Whats that... a bucket? We need ten bucklers... not spitoons. */

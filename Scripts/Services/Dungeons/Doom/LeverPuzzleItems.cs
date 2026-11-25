@@ -180,7 +180,7 @@ namespace Server.Engines.Doom
             {
                 if (SpellHelper.CheckCombat(m))
                 {
-                    m.SendLocalizedMessage(1005564, "", 0x22); // Wouldst thou flee during the heat of battle??				
+                    m.SendLocalizedMessage(1005564, "", 0x22); // Wouldst thou flee during the heat of battle??
                 }
                 else
                 {

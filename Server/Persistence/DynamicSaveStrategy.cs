@@ -136,7 +136,7 @@ namespace Server
 				_itemThreadWriters.Add(writer);
 			});
 
-			_itemThreadWriters.CompleteAdding();    //We only get here after the Parallel.ForEach completes.  Lets our task 
+			_itemThreadWriters.CompleteAdding();    //We only get here after the Parallel.ForEach completes.  Lets our task
 
 			return commitTask;
 		}
@@ -209,7 +209,7 @@ namespace Server
 				_guildThreadWriters.Add(writer);
 			});
 
-			_guildThreadWriters.CompleteAdding();   //We only get here after the Parallel.ForEach completes.  Lets our task 
+			_guildThreadWriters.CompleteAdding();   //We only get here after the Parallel.ForEach completes.  Lets our task
 
 			return commitTask;
 		}

@@ -800,7 +800,7 @@ namespace Server.Mobiles
                         }
                         else
                         {
-                            m_From.SendLocalizedMessage(1013009); // You decide not to change your hairstyle. 
+                            m_From.SendLocalizedMessage(1013009); // You decide not to change your hairstyle.
                         }
                     }
                 }
@@ -813,7 +813,7 @@ namespace Server.Mobiles
                     }
                     else
                     {
-                        m_From.SendLocalizedMessage(1013009); // You decide not to change your hairstyle. 
+                        m_From.SendLocalizedMessage(1013009); // You decide not to change your hairstyle.
                     }
                 }
             }

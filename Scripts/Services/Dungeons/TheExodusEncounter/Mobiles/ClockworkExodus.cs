@@ -168,7 +168,7 @@ namespace Server.Mobiles
                 dv.MoveToWorld(GetSpawnPosition(target.Location, map, 3), map);
             }
 
-            target.SendLocalizedMessage(1152693); // The power of the Void surges around you! 
+            target.SendLocalizedMessage(1152693); // The power of the Void surges around you!
 
             m_LastTarget = target.Location;
         }
@@ -179,7 +179,7 @@ namespace Server.Mobiles
             {
                 if (m_LastTarget != target.Location)
                 {
-                    target.SendLocalizedMessage(1152692, Name); // ~1_CREATURE~ casts a deadly vortex at you!                    
+                    target.SendLocalizedMessage(1152692, Name); // ~1_CREATURE~ casts a deadly vortex at you!
                     SpawnVortices(target);
                 }
             }

@@ -748,7 +748,7 @@ namespace Server.Items
     }
     #endregion
 
-    #region NaverysWeb4Artifact 
+    #region NaverysWeb4Artifact
     public class NaverysWeb4Artifact : BaseDecorationArtifact
     {
         public override bool IsArtifact => true;

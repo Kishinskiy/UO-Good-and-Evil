@@ -111,7 +111,7 @@ namespace Server.Items
 
         public void GetOptions(RewardOptionList list)
         {
-            list.Add(1, 1150381); // Garden Bed (South) 
+            list.Add(1, 1150381); // Garden Bed (South)
             list.Add(2, 1150382); // Garden Bed (East)
             list.Add(3, 1150620); // Garden Bed (Large)
             list.Add(4, 1150621); // Garden Bed (Small)
@@ -133,7 +133,7 @@ namespace Server.Items
                 from.SendGump(new RewardOptionGump(this, 1076170)); // Choose Direction
             }
             else
-                from.SendLocalizedMessage(1062334); // This item must be in your backpack to be used.       	
+                from.SendLocalizedMessage(1062334); // This item must be in your backpack to be used.
         }
 
         public override void Serialize(GenericWriter writer)

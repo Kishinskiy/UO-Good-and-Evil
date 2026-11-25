@@ -152,7 +152,7 @@ namespace Server.Items
                 if (m_Type == DecorType.Book)
                 {
                     m_Controller.Array.Find(s => s.Mobile == from).Book = true;
-                    from.PublicOverheadMessage(MessageType.Regular, 0x3B2, 1154222); // *You thumb through the pages of the book, it seems to describe the anatomy of a variety of frost creatures*            
+                    from.PublicOverheadMessage(MessageType.Regular, 0x3B2, 1154222); // *You thumb through the pages of the book, it seems to describe the anatomy of a variety of frost creatures*
                 }
                 else if (m_Type == DecorType.Pant)
                 {

@@ -344,7 +344,7 @@ namespace Server.Engines.Quests
 
 					if (Quest.Completed)
 					{
-						escorter.SendLocalizedMessage(1046258, null, 0x23); // Your quest is complete.		
+						escorter.SendLocalizedMessage(1046258, null, 0x23); // Your quest is complete.
 
 						if (QuestHelper.AnyRewards(Quest))
 						{

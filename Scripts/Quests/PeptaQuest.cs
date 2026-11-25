@@ -18,7 +18,7 @@ namespace Server.Engines.Quests
         /* I Think I Overate */
         public override object Title => 1080543;
         /* Arghhhh... *stomach gurgles* I think I ate too much... Oh no! I have to make sure the rest of the food is alright!
-           Ever since the Council was assassinated *gurgle* I've had to taste everything that comes through this kitchen. 
+           Ever since the Council was assassinated *gurgle* I've had to taste everything that comes through this kitchen.
            Will you help me? I need to make some of my 'Satiety Cure.' If you find the ingredients I'll make you some too!  */
         public override object Description => 1080544;
         /* Well, okay. But if you decide you are up for it after all, c'mon back and see me. */

@@ -177,7 +177,7 @@ namespace Server.Engines.Quests
 
             if (success)
             {
-                SayTo(from, 1113040); // Good. I can use 
+                SayTo(from, 1113040); // Good. I can use
 
                 from.AddToBackpack(Activator.CreateInstance(inspectedType) as Item);
                 from.SendLocalizedMessage(1113041); // Now mark the inspected item as a quest item to turn it in.

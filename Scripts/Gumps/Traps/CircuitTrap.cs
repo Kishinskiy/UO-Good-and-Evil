@@ -138,7 +138,7 @@ namespace Server.Gumps
 
             AddButton(448, 185, 10700, 10701, 1, GumpButtonType.Reply, 0); // up
             AddButton(473, 222, 10710, 10711, 2, GumpButtonType.Reply, 0); // right
-            AddButton(448, 243, 10720, 10721, 3, GumpButtonType.Reply, 0); // down 
+            AddButton(448, 243, 10720, 10721, 3, GumpButtonType.Reply, 0); // down
             AddButton(408, 222, 10730, 10731, 4, GumpButtonType.Reply, 0); // left
 
         }

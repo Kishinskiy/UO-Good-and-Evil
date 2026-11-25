@@ -25,7 +25,7 @@ namespace Server.Engines.Points
 
         public override void SendMessage(PlayerMobile from, double old, double points, bool quest)
         {
-            from.SendLocalizedMessage(1158674, ((int)points).ToString()); // You have turned in ~1_COUNT~ artifacts of the Cult         
+            from.SendLocalizedMessage(1158674, ((int)points).ToString()); // You have turned in ~1_COUNT~ artifacts of the Cult
         }
 
         public override void ProcessKill(Mobile victim, Mobile damager)

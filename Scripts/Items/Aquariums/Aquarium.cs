@@ -164,7 +164,7 @@ namespace Server.Items
             if (house != null && house.IsOwner(from))
             {
                 Effects.PlaySound(GetWorldLocation(), Map, 0x3B3);
-                from.SendLocalizedMessage(500461); // You destroy the item.         
+                from.SendLocalizedMessage(500461); // You destroy the item.
 
                 AddonContainerBarrel barrel;
 

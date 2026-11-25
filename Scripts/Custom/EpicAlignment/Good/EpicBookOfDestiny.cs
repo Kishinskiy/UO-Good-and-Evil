@@ -24,7 +24,7 @@ namespace Server.Custom.EpicAlignment
         {
             Name = "Книга Судьбы: Эпический Гримуар Аватара";
             Weight = 1.0;
-            LootType = LootType.Blessed; 
+            LootType = LootType.Blessed;
             Hue = 2418;
 
             m_NextGuardSummon = DateTime.UtcNow;

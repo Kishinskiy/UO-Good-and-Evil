@@ -51,7 +51,7 @@ namespace Server.Custom.MercenarySystem
                 merc.Mana = merc.ManaMax;
                 merc.Stam = merc.StamMax;
 
-                merc.PlaySound(0x5B6); 
+                merc.PlaySound(0x5B6);
                 merc.PublicOverheadMessage(Network.MessageType.Regular, 0x35, false, $"*[Уровень Повышен! Ранг: {GetRankTitle(Level)}]*");
             }
         }

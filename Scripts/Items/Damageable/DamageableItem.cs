@@ -262,7 +262,7 @@ namespace Server.Items
 		{
 			return Notoriety.Compute(beholder, this);
 		}
-		
+
 		public override void OnDoubleClick(Mobile m)
         {
             if (m.Warmode)
@@ -624,7 +624,7 @@ namespace Server.Items
             writer.Write(1); // version
 
 			writer.Write(m_Blessed);
-			
+
 			writer.Write(m_StartID);
             writer.Write(m_HalfHitsID);
             writer.Write(m_DestroyedID);

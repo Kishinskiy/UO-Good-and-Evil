@@ -90,7 +90,7 @@ namespace Server.Multis
 					case 4: number = 502265; break; // Help! Please!
 					case 5: number = 502266; break; // Aaah! Help me!
 					case 6: number = 502267; break; // Go and get some help!
-					default: number = 502268; break; // Quickly, I beg thee! Unlock my chains! If thou dost look at me close thou canst see them.	
+					default: number = 502268; break; // Quickly, I beg thee! Unlock my chains! If thou dost look at me close thou canst see them.
 				}
 
 				Prisoner.Yell(number);

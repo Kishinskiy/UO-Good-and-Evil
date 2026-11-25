@@ -12,26 +12,26 @@ namespace Server.Engines.Quests
         public override object Title => 1078186;
 
         /* Head East out of town and go to Old Haven. Battle monster there until you have raised your Fecning skill to 50.
-        Well hello there, lad. Fighting with elegance and percision is far more enriching than slugging an enemy with a 
-        club or butchering an enemy with a sword. Learn the art of Fencing if you want to master combat and look good 
-        doing it! The key to being a successful fencer is to be the complement and not the opposition to your opponent's 
-        strength. Watch for your opponent to become off balance. Then finish him off with finesses and flair. There are 
-        some undead that need cleansing out in Old Haven towards the East. Head over there and slay them, but remember, 
-        do it with style! Come back to me once you have achived the rank of Apprentice Fencer, and i will reward you 
+        Well hello there, lad. Fighting with elegance and percision is far more enriching than slugging an enemy with a
+        club or butchering an enemy with a sword. Learn the art of Fencing if you want to master combat and look good
+        doing it! The key to being a successful fencer is to be the complement and not the opposition to your opponent's
+        strength. Watch for your opponent to become off balance. Then finish him off with finesses and flair. There are
+        some undead that need cleansing out in Old Haven towards the East. Head over there and slay them, but remember,
+        do it with style! Come back to me once you have achived the rank of Apprentice Fencer, and i will reward you
         with a prize. */
         public override object Description => 1078190;
 
         /* I understand, lad. Being a hero isn't for eeryone. Run along, then. Come back to me if you change your mind. */
         public override object Refuse => 1078191;
 
-        /* You're doing well so far, but you're not quite ready yet. Head back to Old Haven, to the East, and kill some 
+        /* You're doing well so far, but you're not quite ready yet. Head back to Old Haven, to the East, and kill some
         more undead. */
         public override object Uncomplete => 1078192;
 
-        /* Excellent! You are beginning to appreciate the art of Fencing. I told you fighting with elegance and precision 
-        is more enriching than fighting like an orge. Since you have returned victorious, please take this war fork and 
-        use it well. The war fork is a finesse weapon, and this one is magical! I call it "Recaro's Riposte". With it, 
-        you will be able to parry and counterstrike with ease! your enemies will bask in your greatness and glory! Good 
+        /* Excellent! You are beginning to appreciate the art of Fencing. I told you fighting with elegance and precision
+        is more enriching than fighting like an orge. Since you have returned victorious, please take this war fork and
+        use it well. The war fork is a finesse weapon, and this one is magical! I call it "Recaro's Riposte". With it,
+        you will be able to parry and counterstrike with ease! your enemies will bask in your greatness and glory! Good
         luck to you, lad, abd keep practicing! */
         public override object Complete => 1078194;
 

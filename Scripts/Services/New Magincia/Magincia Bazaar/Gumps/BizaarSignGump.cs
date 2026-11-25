@@ -115,7 +115,7 @@ namespace Server.Engines.NewMagincia
             AddHtmlLocalized(217, 40, 150, 18, 1150386, RedColor16, false, false);    // Stall Leasing
 
             AddHtmlLocalized(138, 135, 150, 18, 1150387, RedColor16, false, false); // Your Stall:
-            AddHtmlLocalized(210, 135, 150, 18, 1150530, m_Plot.PlotDef.ID, BlueColor16, false, false); // Stall ~1_NAME 
+            AddHtmlLocalized(210, 135, 150, 18, 1150530, m_Plot.PlotDef.ID, BlueColor16, false, false); // Stall ~1_NAME
 
             AddHtmlLocalized(101, 160, 150, 18, 1150388, RedColor16, false, false); // Lease Duration:
             AddHtmlLocalized(210, 160, 150, 18, 1150543, ((int)MaginciaBazaar.GetLongAuctionTime.TotalDays).ToString(), BlueColor16, false, false); // ~1_DAYS~ Days
@@ -192,14 +192,14 @@ namespace Server.Engines.NewMagincia
             AddHtmlLocalized(195, 5, 150, 18, 1150385, RedColor16, false, false);     // New Magincia Bazaar
             AddHtmlLocalized(217, 40, 150, 18, 1150386, RedColor16, false, false);    // Stall Leasing
 
-            /*In order to abandon your lease, your stall must be empty. To clear out 
-			 *your stall, you must first retrieve all inventory, funds, and personal 
-			 *items from your broker and the stall area, then choose the Fire Broker 
-			 *option to release the broker. Once the stall is cleared, return to this 
+            /*In order to abandon your lease, your stall must be empty. To clear out
+			 *your stall, you must first retrieve all inventory, funds, and personal
+			 *items from your broker and the stall area, then choose the Fire Broker
+			 *option to release the broker. Once the stall is cleared, return to this
 			 *menu to confirm the abandonment of your lease.*/
 
-            /*By clicking the CONFIRM button below, you will abandon your lease on 
-             *this stall and receive no refund of your lease payment. A new lease 
+            /*By clicking the CONFIRM button below, you will abandon your lease on
+             *this stall and receive no refund of your lease payment. A new lease
              *on this stall will be auctioned within 12 hours.*/
 
             AddHtmlLocalized(10, 100, 500, 100, m_Plot.Merchant != null ? 1150693 : 1150694, RedColor16, false, false);
@@ -252,12 +252,12 @@ namespace Server.Engines.NewMagincia
             AddHtmlLocalized(195, 5, 150, 18, 1150385, RedColor16, false, false);     // New Magincia Bazaar
             AddHtmlLocalized(217, 40, 150, 18, 1150386, RedColor16, false, false);    // Stall Leasing
 
-            /*In order to fire your broker, you must empty its inventory, withdraw all 
-			 *funds, and remove any of your personal items from the broker and stall. 
+            /*In order to fire your broker, you must empty its inventory, withdraw all
+			 *funds, and remove any of your personal items from the broker and stall.
 			 *When ready, return to this menu selection to confirm.*/
 
-            /*This option will release your hired broker from service and vacate your 
-             *stall. You will then be able to hire a different broker. Click the 
+            /*This option will release your hired broker from service and vacate your
+             *stall. You will then be able to hire a different broker. Click the
              *CONFIRM button below if you wish to clear out your stall.*/
 
             AddHtmlLocalized(10, 100, 500, 100, m_HasInventory ? 1150691 : 1150692, RedColor16, false, false);
@@ -617,7 +617,7 @@ namespace Server.Engines.NewMagincia
             {
                 if (MaginciaBazaar.TryRetractBid(from))
                 {
-                    /*You have canceled your stall bid of ~1_OLDBID~gp. The funds have been deposited 
+                    /*You have canceled your stall bid of ~1_OLDBID~gp. The funds have been deposited
 					 *into your bank box. Your previous bank balance was ~4_OLDBAL~gp and your current
 					  *bank balance is now ~5_NEWBAL~gp. */
 
@@ -626,8 +626,8 @@ namespace Server.Engines.NewMagincia
                 }
                 else
                 {
-                    /*You are attempting to cancel your stall bid of ~1_OLDBID~gp. The bid cannot be 
-					 *refunded to your bank account, because your bank box cannot hold the additional 
+                    /*You are attempting to cancel your stall bid of ~1_OLDBID~gp. The bid cannot be
+					 *refunded to your bank account, because your bank box cannot hold the additional
 					 *funds. Your current bank balance is ~4_OLDVAL~gp.<br><br>Your bid status has not changed.*/
                     cliloc1 = 1150575;
                     args1 = string.Format("@{0}@{1}@{2}@{3}", FormatAmt(oldBid), "empty", "empty", FormatAmt(bankBal));
@@ -716,9 +716,9 @@ namespace Server.Engines.NewMagincia
 
                     if (bankBal < dif)
                     {
-                        /*You are attempting to increase your stall bid from ~1_OLDBID~gp to 
-						 *~2_NEWBID~gp. The difference of ~3_BIDCHANGE~gp cannot be withdrawn from 
-						 *your bank account. Your current bank balance is ~4_CURBAL~gp.<br><br>The 
+                        /*You are attempting to increase your stall bid from ~1_OLDBID~gp to
+						 *~2_NEWBID~gp. The difference of ~3_BIDCHANGE~gp cannot be withdrawn from
+						 *your bank account. Your current bank balance is ~4_CURBAL~gp.<br><br>The
 						 *status of your bid has not changed.*/
                         cliloc1 = 1150571;
                         args1 = string.Format("@{0}@{1}@{2}@{3}", FormatAmt(oldBid), FormatAmt(newBid), FormatAmt(dif), FormatAmt(bankBal));
@@ -743,9 +743,9 @@ namespace Server.Engines.NewMagincia
                     }
                     else if ((hasbidnextavailable || hasbidspecific) && !MaginciaBazaar.TryRetractBid(from))
                     {
-                        /*You are attempting to cancel your stall bid of ~1_OLDBID~gp. The bid cannot 
-						 *be refunded to your bank account, because your bank box cannot hold the additional 
-						 *funds. Your current bank balance is ~4_OLDVAL~gp.<br><br>Your bid status has not 
+                        /*You are attempting to cancel your stall bid of ~1_OLDBID~gp. The bid cannot
+						 *be refunded to your bank account, because your bank box cannot hold the additional
+						 *funds. Your current bank balance is ~4_OLDVAL~gp.<br><br>Your bid status has not
 						 changed.*/
                         cliloc1 = 1150575;
                         args1 = string.Format("@{0}@{1}@{2}@{3}", FormatAmt(oldBid), "empty", "empty", FormatAmt(bankBal));
@@ -772,17 +772,17 @@ namespace Server.Engines.NewMagincia
                     {
                         Banker.Withdraw(from, dif);
                         newPlot.Auction.MakeBid(from, newBid);
-                        /*You have posted a new bid of ~2_NEWBID~gp. The funds have been 
-						*withdrawn from your bank box. Your previous bank balance was 
+                        /*You have posted a new bid of ~2_NEWBID~gp. The funds have been
+						*withdrawn from your bank box. Your previous bank balance was
 						~4_OLDBAL~gp and your new bank balance is ~5_NEWBAL~gp.*/
                         cliloc1 = 1150578;
                         args1 = string.Format("@{0}@{1}@{2}@{3}@{4}", "empty", FormatAmt(newBid), "empty", FormatAmt(bankBal), FormatAmt(bankBal - dif));
 
                         if (hasbidspecific && oldPlot == newPlot)       // same plot
                         {
-                            /*You are increasing your stall bid from ~1_OLDBID~gp to ~2_NEWBID~gp. 
-							 *The difference of ~3_BIDCHANGE~gp has been withdrawn from your bank 
-							  *account. Your previous bank balance was ~4_CURBAL~gp, and your new 
+                            /*You are increasing your stall bid from ~1_OLDBID~gp to ~2_NEWBID~gp.
+							 *The difference of ~3_BIDCHANGE~gp has been withdrawn from your bank
+							  *account. Your previous bank balance was ~4_CURBAL~gp, and your new
 							  bank balance is ~5_NEWBAL~gp.*/
                             cliloc1 = 1150572;
                             //You are still bidding on Stall ~2_NEWSTALL~.
@@ -816,9 +816,9 @@ namespace Server.Engines.NewMagincia
 
                     if ((hasbidnextavailable || hasbidspecific) && !MaginciaBazaar.TryRetractBid(from))
                     {
-                        /*You are attempting to cancel your stall bid of ~1_OLDBID~gp. The bid cannot 
-						 *be refunded to your bank account, because your bank box cannot hold the additional 
-						 *funds. Your current bank balance is ~4_OLDVAL~gp.<br><br>Your bid status has not 
+                        /*You are attempting to cancel your stall bid of ~1_OLDBID~gp. The bid cannot
+						 *be refunded to your bank account, because your bank box cannot hold the additional
+						 *funds. Your current bank balance is ~4_OLDVAL~gp.<br><br>Your bid status has not
 						 changed.*/
                         cliloc1 = 1150575;
                         args1 = string.Format("@{0}@{1}@{2}@{3}", FormatAmt(oldBid), "empty", "empty", FormatAmt(bankBal));
@@ -843,8 +843,8 @@ namespace Server.Engines.NewMagincia
                     }
                     else
                     {
-                        /*You have posted a new bid of ~2_NEWBID~gp. The funds have been 
-						*withdrawn from your bank box. Your previous bank balance was 
+                        /*You have posted a new bid of ~2_NEWBID~gp. The funds have been
+						*withdrawn from your bank box. Your previous bank balance was
 						~4_OLDBAL~gp and your new bank balance is ~5_NEWBAL~gp.*/
                         cliloc1 = 1150578;
                         args1 = string.Format("@{0}@{1}@{2}@{3}@{4}", "empty", FormatAmt(newBid), "empty", FormatAmt(bankBal), FormatAmt(bankBal - dif));
@@ -854,9 +854,9 @@ namespace Server.Engines.NewMagincia
 
                         if (hasbidspecific && oldPlot == newPlot)       // winner, same plot
                         {
-                            /*You are decreasing your stall bid from ~1_OLDBID~gp to ~2_NEWBID~gp. 
-							 *The difference of ~3_BIDCHANGE~gp has been deposited into your bank 
-							 *account. Your previous bank balance was ~4_CURBAL~gp, and your new 
+                            /*You are decreasing your stall bid from ~1_OLDBID~gp to ~2_NEWBID~gp.
+							 *The difference of ~3_BIDCHANGE~gp has been deposited into your bank
+							 *account. Your previous bank balance was ~4_CURBAL~gp, and your new
 							 *bank balance is ~5_NEWBAL~gp.*/
                             cliloc1 = 1150574;
                             //You are still bidding on Stall ~2_NEWSTALL~.
@@ -893,8 +893,8 @@ namespace Server.Engines.NewMagincia
 
                     if (bankBal < dif)
                     {
-                        /*You are attempting to place a new bid of ~2_NEWBID~gp. This amount exceeds 
-                         *your current bank balance of ~4_OLDBAL~gp.<br><br>Your bid status has not 
+                        /*You are attempting to place a new bid of ~2_NEWBID~gp. This amount exceeds
+                         *your current bank balance of ~4_OLDBAL~gp.<br><br>Your bid status has not
                          changed.*/
                         cliloc1 = 1150577;
                         args1 = string.Format("@{0}@{1}@{2}@{3}", "empty", FormatAmt(newBid), "empty", FormatAmt(bankBal));
@@ -919,9 +919,9 @@ namespace Server.Engines.NewMagincia
                     }
                     else if ((hasbidnextavailable || hasbidspecific) && !MaginciaBazaar.TryRetractBid(from))
                     {
-                        /*You are attempting to cancel your stall bid of ~1_OLDBID~gp. The bid cannot 
-						 *be refunded to your bank account, because your bank box cannot hold the additional 
-						 *funds. Your current bank balance is ~4_OLDVAL~gp.<br><br>Your bid status has not 
+                        /*You are attempting to cancel your stall bid of ~1_OLDBID~gp. The bid cannot
+						 *be refunded to your bank account, because your bank box cannot hold the additional
+						 *funds. Your current bank balance is ~4_OLDVAL~gp.<br><br>Your bid status has not
 						 changed.*/
                         cliloc1 = 1150575;
                         args1 = string.Format("@{0}@{1}@{2}@{3}", FormatAmt(oldBid), "empty", "empty", FormatAmt(bankBal));
@@ -949,8 +949,8 @@ namespace Server.Engines.NewMagincia
                         Banker.Withdraw(from, dif);
                         MaginciaBazaar.MakeBidNextAvailable(from, newBid);
 
-                        /*You have posted a new bid of ~2_NEWBID~gp. The funds have been 
-						*withdrawn from your bank box. Your previous bank balance was 
+                        /*You have posted a new bid of ~2_NEWBID~gp. The funds have been
+						*withdrawn from your bank box. Your previous bank balance was
 						*~4_OLDBAL~gp and your new bank balance is ~5_NEWBAL~gp.*/
                         cliloc1 = 1150578;
                         args1 = string.Format("@{0}@{1}@{2}@{3}@{4}", "empty", FormatAmt(newBid), "empty", FormatAmt(bankBal), FormatAmt(bankBal - newBid));
@@ -981,9 +981,9 @@ namespace Server.Engines.NewMagincia
 
                     if ((hasbidnextavailable || hasbidspecific) && !MaginciaBazaar.TryRetractBid(from))
                     {
-                        /*You are attempting to cancel your stall bid of ~1_OLDBID~gp. The bid cannot 
-						 *be refunded to your bank account, because your bank box cannot hold the additional 
-						 *funds. Your current bank balance is ~4_OLDVAL~gp.<br><br>Your bid status has not 
+                        /*You are attempting to cancel your stall bid of ~1_OLDBID~gp. The bid cannot
+						 *be refunded to your bank account, because your bank box cannot hold the additional
+						 *funds. Your current bank balance is ~4_OLDVAL~gp.<br><br>Your bid status has not
 						 changed.*/
                         cliloc1 = 1150575;
                         args1 = string.Format("@{0}@{1}@{2}@{3}", FormatAmt(oldBid), "empty", "empty", FormatAmt(bankBal));
@@ -1008,8 +1008,8 @@ namespace Server.Engines.NewMagincia
                     }
                     else
                     {
-                        /*You have posted a new bid of ~2_NEWBID~gp. The funds have been 
-						*withdrawn from your bank box. Your previous bank balance was 
+                        /*You have posted a new bid of ~2_NEWBID~gp. The funds have been
+						*withdrawn from your bank box. Your previous bank balance was
 						*~4_OLDBAL~gp and your new bank balance is ~5_NEWBAL~gp.*/
                         cliloc1 = 1150578;
                         args1 = string.Format("@{0}@{1}@{2}@{3}@{4}", "empty", FormatAmt(newBid), "empty", FormatAmt(bankBal), FormatAmt(bankBal - newBid));
@@ -1177,8 +1177,8 @@ namespace Server.Engines.NewMagincia
 
                 if (dif > bankBal)
                 {
-                    /*Your attempt to increase your Match Bid from ~1_OLDBID~gp to ~2_NEWBID~gp 
-					 *failed. The difference of ~3_CHANGE~gp could not be withdrawn from your bank 
+                    /*Your attempt to increase your Match Bid from ~1_OLDBID~gp to ~2_NEWBID~gp
+					 *failed. The difference of ~3_CHANGE~gp could not be withdrawn from your bank
 					 *account balance. Your current bank balance is ~5_NEWBAL~gp.*/
                     cliloc1 = 1150588;
                     args1 = string.Format("@{0}@{1}@{2}@{3}", FormatAmt(current), FormatAmt(amount), FormatAmt(dif), FormatAmt(bankBal));
@@ -1187,9 +1187,9 @@ namespace Server.Engines.NewMagincia
                 {
                     Banker.Withdraw(from, amount);
                     MaginciaBazaar.AddToReserve(from, dif);
-                    /*You have increased your Match Bid from ~1_OLDBID~gp to ~2_NEWBID~gp. The 
-					 *difference of ~3_CHANGE~gp has been withdrawn from your bank account balance. 
-					 *Your previous bank balance was ~4_OLDBAL~gp and your current bank balance is 
+                    /*You have increased your Match Bid from ~1_OLDBID~gp to ~2_NEWBID~gp. The
+					 *difference of ~3_CHANGE~gp has been withdrawn from your bank account balance.
+					 *Your previous bank balance was ~4_OLDBAL~gp and your current bank balance is
 					 ~5_NEWBAL~gp.*/
                     cliloc1 = 1150589;
                     args1 = string.Format("@{0}@{1}@{2}@{3}@{4}", FormatAmt(current), FormatAmt(amount), FormatAmt(dif), FormatAmt(bankBal), FormatAmt(bankBal - dif));
@@ -1201,8 +1201,8 @@ namespace Server.Engines.NewMagincia
 
                 if (!Banker.Deposit(from, dif))
                 {
-                    /*Your attempt to decrease your Match Bid from ~1_OLDBID~gp to ~2_NEWBID~gp 
-					 *failed. The difference of ~3_CHANGE~gp could not be deposited into your bank 
+                    /*Your attempt to decrease your Match Bid from ~1_OLDBID~gp to ~2_NEWBID~gp
+					 *failed. The difference of ~3_CHANGE~gp could not be deposited into your bank
 					 box. Your current bank balance is ~5_NEWBAL~gp.*/
                     cliloc1 = 1150590;
                     args1 = string.Format("@{0}@{1}@{2}@{3}", FormatAmt(current), FormatAmt(amount), FormatAmt(dif), FormatAmt(bankBal));
@@ -1210,9 +1210,9 @@ namespace Server.Engines.NewMagincia
                 else
                 {
                     MaginciaBazaar.DeductReserve(from, dif);
-                    /*You have decreased your Match Bid from ~1_OLDBID~gp to ~2_NEWBID~gp. The 
-					 *difference of ~3_CHANGE~gp has been deposited into your bank box. Your 
-					 *previous bank balance was ~4_OLDBAL~gp and your current bank balance is 
+                    /*You have decreased your Match Bid from ~1_OLDBID~gp to ~2_NEWBID~gp. The
+					 *difference of ~3_CHANGE~gp has been deposited into your bank box. Your
+					 *previous bank balance was ~4_OLDBAL~gp and your current bank balance is
 					 ~5_NEWBAL~gp.*/
                     cliloc1 = 1150591;
                     args1 = string.Format("@{0}@{1}@{2}@{3}@{4}", FormatAmt(current), FormatAmt(amount), FormatAmt(dif), FormatAmt(bankBal), FormatAmt(bankBal + dif));

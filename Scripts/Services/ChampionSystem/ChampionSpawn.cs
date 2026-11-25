@@ -1084,7 +1084,7 @@ namespace Server.Engines.CannedEvil
 
 			AllSpawns.Remove(this);
 		}
-		
+
 		public override void OnAfterDelete()
         {
             base.OnAfterDelete();

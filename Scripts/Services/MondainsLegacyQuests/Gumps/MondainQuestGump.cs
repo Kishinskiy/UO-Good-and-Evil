@@ -239,7 +239,7 @@ namespace Server.Engines.Quests
                 AddHtmlLocalized(98, 140, 312, 16, 1049073, 0x2710, false, false); // Objective:
 
                 if (m_Quest.AllObjectives)
-                    AddHtmlLocalized(98, 156, 312, 16, 1072208, 0x2710, false, false); // All of the following	
+                    AddHtmlLocalized(98, 156, 312, 16, 1072208, 0x2710, false, false); // All of the following
                 else
                     AddHtmlLocalized(98, 156, 312, 16, 1072209, 0x2710, false, false); // Only one of the following
 
@@ -257,7 +257,7 @@ namespace Server.Engines.Quests
                         {
                             AddHtmlLocalized(98, offset, 30, 16, 1072204, 0x15F90, false, false); // Slay
                             AddLabel(133, offset, 0x481, slay.MaxProgress.ToString()); // Count
-                            AddLabel(163, offset, 0x481, slay.Name); // Name 
+                            AddLabel(163, offset, 0x481, slay.Name); // Name
 
                             offset += 16;
 
@@ -290,15 +290,15 @@ namespace Server.Engines.Quests
 
                             if (!m_Offer)
                             {
-                                AddHtmlLocalized(103, offset, 120, 16, 3000087, 0x15F90, false, false); // Total			
+                                AddHtmlLocalized(103, offset, 120, 16, 3000087, 0x15F90, false, false); // Total
                                 AddLabel(223, offset, 0x481, slay.CurProgress.ToString());  // %current progress%
 
                                 offset += 16;
 
                                 if (ReturnTo() != null)
                                 {
-                                    AddHtmlLocalized(103, offset, 120, 16, 1074782, 0x15F90, false, false); // Return to	
-                                    AddLabel(223, offset, 0x481, ReturnTo());  // %return to%		
+                                    AddHtmlLocalized(103, offset, 120, 16, 1074782, 0x15F90, false, false); // Return to
+                                    AddLabel(223, offset, 0x481, ReturnTo());  // %return to%
 
                                     offset += 16;
                                 }
@@ -319,7 +319,7 @@ namespace Server.Engines.Quests
 
                         if (obtain != null)
                         {
-                            AddHtmlLocalized(98, offset, 40, 16, 1072205, 0x15F90, false, false); // Obtain						
+                            AddHtmlLocalized(98, offset, 40, 16, 1072205, 0x15F90, false, false); // Obtain
                             AddLabel(143, offset, 0x481, obtain.MaxProgress + " " + obtain.Name); // %count% + %name%
 
                             if (obtain.Image > 0)
@@ -341,14 +341,14 @@ namespace Server.Engines.Quests
 
                                 continue;
                             }
-                            AddHtmlLocalized(103, offset, 120, 16, 3000087, 0x15F90, false, false); // Total			
+                            AddHtmlLocalized(103, offset, 120, 16, 3000087, 0x15F90, false, false); // Total
                             AddLabel(223, offset, 0x481, obtain.CurProgress.ToString());    // %current progress%
 
                             offset += 16;
 
                             if (ReturnTo() != null)
                             {
-                                AddHtmlLocalized(103, offset, 120, 16, 1074782, 0x15F90, false, false); // Return to	
+                                AddHtmlLocalized(103, offset, 120, 16, 1074782, 0x15F90, false, false); // Return to
                                 AddLabel(223, offset, 0x481, ReturnTo());  // %return to%
 
                                 offset += 16;
@@ -369,12 +369,12 @@ namespace Server.Engines.Quests
 
                         if (deliver != null)
                         {
-                            AddHtmlLocalized(98, offset, 40, 16, 1072207, 0x15F90, false, false); // Deliver						
+                            AddHtmlLocalized(98, offset, 40, 16, 1072207, 0x15F90, false, false); // Deliver
                             AddLabel(143, offset, 0x481, deliver.MaxProgress + " " + deliver.DeliveryName);     // %name%
 
                             offset += 16;
 
-                            AddHtmlLocalized(103, offset, 120, 16, 1072379, 0x15F90, false, false); // Deliver to						
+                            AddHtmlLocalized(103, offset, 120, 16, 1072379, 0x15F90, false, false); // Deliver to
                             AddLabel(223, offset, 0x481, deliver.DestName); // %deliver to%
 
                             offset += 16;
@@ -470,10 +470,10 @@ namespace Server.Engines.Quests
             if (m_Offer)
                 AddHtmlLocalized(130, 45, 270, 16, 1049010, 0xFFFFFF, false, false); // Quest Offer
             else
-                AddHtmlLocalized(130, 45, 270, 16, 1046026, 0xFFFFFF, false, false); // Quest Log	
+                AddHtmlLocalized(130, 45, 270, 16, 1046026, 0xFFFFFF, false, false); // Quest Log
 
             AddHtmlObject(160, 70, 200, 40, m_Quest.Title, DarkGreen, false, false);
-            AddHtmlLocalized(98, 140, 312, 16, 1072201, 0x2710, false, false); // Reward	
+            AddHtmlLocalized(98, 140, 312, 16, 1072201, 0x2710, false, false); // Reward
 
             int offset = 163;
 
@@ -534,7 +534,7 @@ namespace Server.Engines.Quests
             if (m_Quest == null)
                 return;
 
-            AddHtmlLocalized(130, 45, 270, 16, 3006156, 0xFFFFFF, false, false); // Quest Conversation				
+            AddHtmlLocalized(130, 45, 270, 16, 3006156, 0xFFFFFF, false, false); // Quest Conversation
             AddImage(140, 110, 0x4B9);
             AddHtmlObject(160, 70, 200, 40, m_Quest.Title, DarkGreen, false, false);
             AddHtmlObject(98, 140, 312, 180, m_Quest.Uncomplete, LightGreen, false, true);
@@ -582,7 +582,7 @@ namespace Server.Engines.Quests
             if (fail == null)
                 fail = "You have failed to meet the conditions of the quest.";
 
-            AddHtmlLocalized(130, 45, 270, 16, 3006156, 0xFFFFFF, false, false); // Quest Conversation				
+            AddHtmlLocalized(130, 45, 270, 16, 3006156, 0xFFFFFF, false, false); // Quest Conversation
             AddImage(140, 110, 0x4B9);
             AddHtmlObject(160, 70, 200, 40, m_Quest.Title, DarkGreen, false, false);
             AddHtmlObject(98, 140, 312, 240, fail, LightGreen, false, true);

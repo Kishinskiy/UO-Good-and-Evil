@@ -38,8 +38,8 @@ namespace Server.Engines.Quests
          */
         public override object Uncomplete => 1095016;
 
-        /*Oh, have mercy on us!  Have you come to kill every one of us? 
-        Take what you will and go!  Your kind is more terrible than the mistress!  
+        /*Oh, have mercy on us!  Have you come to kill every one of us?
+        Take what you will and go!  Your kind is more terrible than the mistress!
         Woe are we, the gray goblins, we serve the mistress and yet she leaves us to be...*/
         public override object Complete => 1095017;
 

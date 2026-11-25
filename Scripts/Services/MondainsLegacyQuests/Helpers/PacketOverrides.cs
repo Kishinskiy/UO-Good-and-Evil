@@ -49,7 +49,7 @@ namespace Server.Engines.Quests
 
             if (reader.Size == 5)
             {
-                m.SendLocalizedMessage(1073645); // You may try this again later...	
+                m.SendLocalizedMessage(1073645); // You may try this again later...
             }
             else if (reader.Size == 15 && HeritageQuester.Check(m))
             {

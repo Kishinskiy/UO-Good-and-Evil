@@ -15,7 +15,7 @@ namespace Server.Engines.Quests
 
         /* Cuts Both Ways */
         public override object Title => 1073913;
-        /* What would you say is a typical human instrument of war? Is a broadsword a typical example? 
+        /* What would you say is a typical human instrument of war? Is a broadsword a typical example?
         I wish to see more of such human weapons, so I would gladly trade elven knowledge for human steel. */
         public override object Description => 1074103;
         /* I will patiently await your reconsideration. */
@@ -51,8 +51,8 @@ namespace Server.Engines.Quests
 
         /* Dragon Protection */
         public override object Title => 1073915;
-        /* Mankind, I am told, knows how to take the scales of a terrible dragon and forge them into powerful 
-        armor. Such a feat of craftsmanship! I would give anything to view such a creation - I would even teach 
+        /* Mankind, I am told, knows how to take the scales of a terrible dragon and forge them into powerful
+        armor. Such a feat of craftsmanship! I would give anything to view such a creation - I would even teach
         some of the prize secrets of the elven people. */
         public override object Description => 1074105;
         /* I will patiently await your reconsideration. */
@@ -88,8 +88,8 @@ namespace Server.Engines.Quests
 
         /* Nothing Fancy */
         public override object Title => 1073911;
-        /* I am curious to see the results of human blacksmithing. To examine the care and quality 
-        of a simple item. Perhaps, a simple bascinet helmet? Yes, indeed -- if you could bring to 
+        /* I am curious to see the results of human blacksmithing. To examine the care and quality
+        of a simple item. Perhaps, a simple bascinet helmet? Yes, indeed -- if you could bring to
         me some bascinet helmets, I would demonstrate my gratitude. */
         public override object Description => 1074101;
         /* I will patiently await your reconsideration. */
@@ -125,8 +125,8 @@ namespace Server.Engines.Quests
 
         /* The Bulwark */
         public override object Title => 1073912;
-        /* The clank of human iron and steel is strange to elven ears. For instance, the metallic heater shield 
-        which human warriors carry into battle. It is odd to an elf, but nevertheless intriguing. Tell me friend, 
+        /* The clank of human iron and steel is strange to elven ears. For instance, the metallic heater shield
+        which human warriors carry into battle. It is odd to an elf, but nevertheless intriguing. Tell me friend,
         could you bring me such an example of human smithing skill? */
         public override object Description => 1074102;
         /* I will patiently await your reconsideration. */

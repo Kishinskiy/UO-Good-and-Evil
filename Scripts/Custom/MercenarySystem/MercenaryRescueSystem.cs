@@ -87,7 +87,7 @@ namespace Server.Custom.MercenarySystem
         private static readonly string _savePath = Path.Combine(Core.BaseDirectory, "Saves", "Custom", "MercenaryRescue.bin");
 
         // Глобальная база данных погибших наёмников (Имя аккаунта хозяина -> список слуг)
-        private static readonly Dictionary<string, List<FallenMercenaryData>> _rescueRoster 
+        private static readonly Dictionary<string, List<FallenMercenaryData>> _rescueRoster
             = new Dictionary<string, List<FallenMercenaryData>>();
         private static bool _initialized;
 
@@ -126,7 +126,7 @@ namespace Server.Custom.MercenarySystem
             AwardKillExperience(e.Creature);
 
             BaseMercenary merc = e.Creature as BaseMercenary;
-            
+
             // Если погиб наш кастомный наёмник и у него есть хозяин
             if (merc != null && !merc.Deleted && merc.ControlMaster is PlayerMobile pm)
             {
@@ -172,7 +172,7 @@ namespace Server.Custom.MercenarySystem
                 // Оповещаем хозяина
                 pm.PlaySound(0x5C3); // Грустный звук
                 pm.SendMessage(0x22, $"[Гильдия Наёмников]: Ваш спутник {merc.Name} пал в бою! Его снаряжение и душа спасены Вербовщиками. Вы можете выкупить его у любого Капитана Наёмников в городах.");
-                
+
                 // Удаляем нативного моба, чтобы он не оставлял голый лут в данже
                 Timer.DelayCall(TimeSpan.FromMilliseconds(50), () => merc.Delete());
             }

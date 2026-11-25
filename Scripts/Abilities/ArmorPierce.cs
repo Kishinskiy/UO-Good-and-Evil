@@ -29,7 +29,7 @@ namespace Server.Items
             attacker.SendLocalizedMessage(1063350); // You pierce your opponent's armor!
 
             defender.SendLocalizedMessage(1153764); // Your armor has been pierced!
-            defender.SendLocalizedMessage(1063351); // Your attacker pierced your armor!            
+            defender.SendLocalizedMessage(1063351); // Your attacker pierced your armor!
 
             if (_Table.ContainsKey(defender))
             {

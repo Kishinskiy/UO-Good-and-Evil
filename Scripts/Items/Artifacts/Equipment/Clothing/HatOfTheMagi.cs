@@ -9,7 +9,7 @@ namespace Server.Items
         public override int BaseEnergyResistance => 20;
         public override int InitMinHits => 255;
         public override int InitMaxHits => 255;
-		
+
         [Constructable]
         public HatOfTheMagi()
         {

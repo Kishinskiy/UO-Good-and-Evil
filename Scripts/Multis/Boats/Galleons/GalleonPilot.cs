@@ -372,7 +372,7 @@ namespace Server.Mobiles
                         {
                             if (o is Mobile || o is Item)
                             {
-                                from.SendLocalizedMessage(1011577); // This is an invalid location. 
+                                from.SendLocalizedMessage(1011577); // This is an invalid location.
                                 from.Target = new RelocateTarget(m_Pilot, m_Galleon);
                                 eable.Free();
                                 return;
@@ -390,7 +390,7 @@ namespace Server.Mobiles
                     }
                     else
                     {
-                        from.SendLocalizedMessage(1011577); // This is an invalid location. 
+                        from.SendLocalizedMessage(1011577); // This is an invalid location.
                         from.Target = new RelocateTarget(m_Pilot, m_Galleon);
                     }
                 }

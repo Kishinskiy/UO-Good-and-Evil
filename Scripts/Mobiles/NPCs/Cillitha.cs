@@ -17,8 +17,8 @@ namespace Server.Engines.Quests
 
         /* Lethal Darts */
         public override object Title => 1073876;
-        /* We elves are no strangers to archery but I would be interested in learning whether there 
-        is anything to learn from the human approach. I would gladly trade you something I have if 
+        /* We elves are no strangers to archery but I would be interested in learning whether there
+        is anything to learn from the human approach. I would gladly trade you something I have if
         you could teach me of the deadly crossbow bolt. */
         public override object Description => 1074066;
         /* I will patiently await your reconsideration. */
@@ -54,7 +54,7 @@ namespace Server.Engines.Quests
 
         /* A Simple Bow */
         public override object Title => 1073877;
-        /* I wish to try a bow crafted in the human style. Is it possible for you to bring me 
+        /* I wish to try a bow crafted in the human style. Is it possible for you to bring me
         such a weapon? I would be happy to return this favor. */
         public override object Description => 1074067;
         /* I will patiently await your reconsideration. */
@@ -90,7 +90,7 @@ namespace Server.Engines.Quests
 
         /* Ingenious Archery, Part I */
         public override object Title => 1073878;
-        /* I have heard of a curious type of bow, you call it a "crossbow". It sounds fascinating and I would 
+        /* I have heard of a curious type of bow, you call it a "crossbow". It sounds fascinating and I would
         very much like to examine one closely. Would you be able to obtain such an instrument for me? */
         public override object Description => 1074068;
         /* I will patiently await your reconsideration. */
@@ -126,8 +126,8 @@ namespace Server.Engines.Quests
 
         /* Ingenious Archery, Part II */
         public override object Title => 1073879;
-        /* These human "crossbows" are complex and clever. The "heavy crossbow" is a remarkable 
-        instrument of war. I am interested in seeing one up close, if you could arrange for one 
+        /* These human "crossbows" are complex and clever. The "heavy crossbow" is a remarkable
+        instrument of war. I am interested in seeing one up close, if you could arrange for one
         to make its way to my hands. */
         public override object Description => 1074069;
         /* I will patiently await your reconsideration. */
@@ -163,8 +163,8 @@ namespace Server.Engines.Quests
 
         /* Ingenious Archery, Part III */
         public override object Title => 1073880;
-        /* My friend, I am in search of a device, a instrument of remarkable human ingenuity. It is a 
-        repeating crossbow. If you were to obtain such a device, I would gladly reveal to you some of 
+        /* My friend, I am in search of a device, a instrument of remarkable human ingenuity. It is a
+        repeating crossbow. If you were to obtain such a device, I would gladly reveal to you some of
         the secrets of elven craftsmanship. */
         public override object Description => 1074070;
         /* I will patiently await your reconsideration. */

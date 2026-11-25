@@ -271,7 +271,7 @@ namespace Server.Items
                     /*
                     c = new Sphynx();
                     c.MoveToWorld( new Point3D( 4506, 1358, 23 ), Map );
-                    c.Blessed = true;	
+                    c.Blessed = true;
                     c.Tamable = false;
                     list.Add( c );*/
 

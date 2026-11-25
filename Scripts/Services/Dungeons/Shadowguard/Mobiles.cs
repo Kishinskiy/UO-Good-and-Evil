@@ -38,7 +38,7 @@ namespace Server.Engines.Shadowguard
             AddItem(new ExecutionersAxe());
 
             SetWearable(new ExecutionersAxe(), dropChance:1);
-            
+
             SetWearable(new Boots(), Utility.RandomNeutralHue(), 1);
             SetWearable(new ShortPants(), dropChance:1);
             SetWearable(new FancyShirt(), dropChance:1);
@@ -237,7 +237,7 @@ namespace Server.Engines.Shadowguard
     }
 
     public class VileTreefellow : FeralTreefellow
-    {		
+    {
         [Constructable]
         public VileTreefellow()
         {
@@ -262,11 +262,11 @@ namespace Server.Engines.Shadowguard
             SetWeaponAbility(WeaponAbility.Dismount);
             SetWeaponAbility(WeaponAbility.ForceOfNature);
         }
-		
+
 		public VileTreefellow(Serial serial) : base(serial)
         {
         }
-		
+
 		public override bool CanFlee => false; // Per Publish 90 - Treefellows in the Shadowguard Orchard encounter will no longer flee
 
         public override void OnGaveMeleeAttack(Mobile defender)

@@ -10,7 +10,7 @@ namespace Server.Engines.Quests
         /* A Visit to Castle Blackthorn */
         public override object Title => _Title;
 
-        /*It seems that Castle Blackthorn has some secrets that are worth investigating. Your history on how Blackthorn even became 
+        /*It seems that Castle Blackthorn has some secrets that are worth investigating. Your history on how Blackthorn even became
          * king is a little fuzzy. You decide a visit to Castle Blackthorn would be worthwhile.*/
         public override object Description => 1158198;
 
@@ -21,9 +21,9 @@ namespace Server.Engines.Quests
         public override object Uncomplete => 1158199;
 
         /* As you cross the bridge Blackthorn's massive castle towers up from the terrain it sits atop.  The jet-black stone of her walls
-         * are foreboding, yet invite your curiosity. Your eyes scan the courtyard and fixate on an incredibly handsome man. You've never 
-         * seen such beauty and style! Their exquisitely apportioned jester suit perfectly toes the line between comedic expression and 
-         * fashion. His hat is masterfully crafted with golden bells matching radiant jewelry that jingles as he swigs from a bottle. 
+         * are foreboding, yet invite your curiosity. Your eyes scan the courtyard and fixate on an incredibly handsome man. You've never
+         * seen such beauty and style! Their exquisitely apportioned jester suit perfectly toes the line between comedic expression and
+         * fashion. His hat is masterfully crafted with golden bells matching radiant jewelry that jingles as he swigs from a bottle.
          * You decide to follow the jester, who is no doubt headed for the castle bar. */
         public override object Complete => 1158203;
 

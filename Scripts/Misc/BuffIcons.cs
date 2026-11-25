@@ -7,7 +7,7 @@ namespace Server
     public class BuffInfo
     {
     	public static bool Enabled => Core.ML;
-    	
+
         public static void Initialize()
         {
             if (Enabled)
@@ -15,7 +15,7 @@ namespace Server
 	            EventSink.ClientVersionReceived += args =>
 	            {
 	                PlayerMobile pm = args.State.Mobile as PlayerMobile;
-	
+
 	                if (pm != null)
 	                    Timer.DelayCall(TimeSpan.Zero, pm.ResendBuffs);
 	            };

@@ -460,7 +460,7 @@ namespace Server.Items
         public override bool CanEquip(Mobile m)
         {
             if (!RaceDefinitions.ValidateEquipment(m, this))
-            { 
+            {
                 return false;
             }
 
@@ -612,7 +612,7 @@ namespace Server.Items
                 list.Add(1060433, prop.ToString()); // lower mana cost ~1_val~%
 
             if ((prop = m_Attributes.LowerRegCost) != 0)
-                list.Add(1060434, prop.ToString()); // lower reagent cost ~1_val~%	
+                list.Add(1060434, prop.ToString()); // lower reagent cost ~1_val~%
 
             if ((prop = m_Attributes.Luck) != 0)
                 list.Add(1060436, prop.ToString()); // luck ~1_val~
@@ -662,7 +662,7 @@ namespace Server.Items
 
                 if (m_SetEquipped)
                 {
-                    list.Add(1073492); // Full Weapon/Armor Set Present					
+                    list.Add(1073492); // Full Weapon/Armor Set Present
                     SetHelper.GetSetProperties(list, this);
                 }
             }
@@ -677,11 +677,11 @@ namespace Server.Items
             list.Add(1072241, "{0}\t{1}\t{2}\t{3}", Items.Count, DefaultMaxItems, (int)weight, DefaultMaxWeight); // Contents: ~1_COUNT~/~2_MAXCOUNT items, ~3_WEIGHT~/~4_MAXWEIGHT~ stones
 
             if ((prop = m_WeightReduction) != 0)
-                list.Add(1072210, prop.ToString()); // Weight reduction: ~1_PERCENTAGE~%	
+                list.Add(1072210, prop.ToString()); // Weight reduction: ~1_PERCENTAGE~%
 
             if (IsSetItem && !m_SetEquipped)
             {
-                list.Add(1072378); // <br>Only when full set is present:				
+                list.Add(1072378); // <br>Only when full set is present:
                 SetHelper.GetSetProperties(list, this);
             }
         }

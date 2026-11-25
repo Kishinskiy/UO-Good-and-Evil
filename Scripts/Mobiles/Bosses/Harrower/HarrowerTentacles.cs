@@ -199,13 +199,13 @@ namespace Server.Mobiles
 
                     int drain = Utility.RandomMinMax(14, 30);
 
-                    //Monster Stealables 
+                    //Monster Stealables
                     if (m is PlayerMobile)
                     {
                         PlayerMobile pm = m as PlayerMobile;
                         drain = (int)LifeShieldLotion.HandleLifeDrain(pm, drain);
                     }
-                    //end 
+                    //end
 
                     m_Owner.Hits += drain;
 

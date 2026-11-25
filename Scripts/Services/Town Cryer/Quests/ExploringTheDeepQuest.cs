@@ -8,7 +8,7 @@ namespace Server.Engines.Quests
         /* Exploring the Deep */
         public override object Title => 1154327;
 
-        /*The life of a Shipwreck Salvager does seem exciting!  Visiting Hepler Paulson at the Sons of the Sea in the 
+        /*The life of a Shipwreck Salvager does seem exciting!  Visiting Hepler Paulson at the Sons of the Sea in the
          * City of Trinsic is certainly to be an adventure!*/
         public override object Description => 1158127;
 

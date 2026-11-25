@@ -57,7 +57,7 @@ namespace Server.Engines.NewMagincia
         /*	SellPricePer - price per unit the broker is selling to players for
 		 *	BuyPricePer - price per unit the borker is buying from players for
 		 *	BuyAtLimit - Limit a commodity must go below before it will buy that particular commodity
-         *	
+         *
 		 *	SellAtLimit - Limit a commodty must go above before it will sell that particular commodity
 		 *	BuyLimit - Limit (in units) it will buy from players
 		 *	SellLimit - Limit (in units) it will sell to players

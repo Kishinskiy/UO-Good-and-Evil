@@ -70,7 +70,7 @@ namespace Server.Engines.Craft
 
         public override double GetChanceAtMin(CraftItem item)
         {
-            if (item.NameNumber == 1044258 || item.NameNumber == 1046445) // potion keg 
+            if (item.NameNumber == 1044258 || item.NameNumber == 1046445) // potion keg
                 return 0.5; // 50%
 
             return 0.0; // 0%
@@ -325,7 +325,7 @@ namespace Server.Engines.Craft
             AddRes(index, typeof(Diamond), 1062608, 1, 1044240);
 
             AddCraft(typeof(Pitchfork), 1044046, 1023719, 40.0, 90.0, typeof(IronIngot), 1044036, 4, 1044037);
-            //TODO: focus of theurgy - 20th Anniversary Event 
+            //TODO: focus of theurgy - 20th Anniversary Event
             #endregion
 
             #region Parts

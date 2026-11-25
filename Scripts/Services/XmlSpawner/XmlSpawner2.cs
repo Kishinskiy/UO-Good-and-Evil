@@ -408,7 +408,7 @@ namespace Server.Mobiles
 						loc = e.Location;
 					}
 
-					// find the max detection range by examining both spawnrange 
+					// find the max detection range by examining both spawnrange
 					// note, sectors will activate when within +-2 sectors
 					var bufferzone = 2 * Map.SectorSize;
 
@@ -1516,7 +1516,7 @@ namespace Server.Mobiles
 					}
 				}
 
-				//IsInactivated = false; 
+				//IsInactivated = false;
 			}
 		}
 

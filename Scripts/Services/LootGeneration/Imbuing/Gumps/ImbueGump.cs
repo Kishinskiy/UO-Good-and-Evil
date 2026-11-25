@@ -246,7 +246,7 @@ namespace Server.Gumps
             }
 
             AddButton(15, 410, 4005, 4007, 10099, GumpButtonType.Reply, 0);
-            AddHtmlLocalized(50, 412, 100, 20, 1114268, LabelColor, false, false); // Back 
+            AddHtmlLocalized(50, 412, 100, 20, 1114268, LabelColor, false, false); // Back
 
             AddButton(390, 410, 4005, 4007, 10100, GumpButtonType.Reply, 0);
             AddHtmlLocalized(425, 412, 120, 18, 1114267, LabelColor, false, false); // Imbue Item

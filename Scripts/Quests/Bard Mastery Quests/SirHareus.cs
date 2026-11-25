@@ -20,16 +20,16 @@ namespace Server.Engines.Quests
 
         public override object Description => 1115656;  /*This quest is the single quest required for a player to unlock the provocation
                                                                         * mastery abilities for bards. This quest can be completed multiple times to reinstate
-                                                                        * the provocation mastery. To prove yourself worthy, you must be able to incite even 
+                                                                        * the provocation mastery. To prove yourself worthy, you must be able to incite even
                                                                         * the most peaceful to frenzied battle lust.*/
 
-        public override object Refuse => 1115660;        //To inspire you must persevere. 
+        public override object Refuse => 1115660;        //To inspire you must persevere.
 
-        public override object Uncomplete => 1115660;    //To inspire you must persevere. 
+        public override object Uncomplete => 1115660;    //To inspire you must persevere.
 
         public override object Complete => 1115661;      /* You have proven yourself worthy of driving armies. Go forth, and have the blessing
-                                                                         * and curse of the War Heralds always in your heart and mind. May peace always dwell 
-                                                                         * before you, may destruction mark your wake, and may fury be your constant companion. 
+                                                                         * and curse of the War Heralds always in your heart and mind. May peace always dwell
+                                                                         * before you, may destruction mark your wake, and may fury be your constant companion.
                                                                          * Sow the seeds of battle and glory in the music of war.*/
 
         public override bool CanOffer()
@@ -100,7 +100,7 @@ namespace Server.Engines.Quests
                     Quest.OnCompleted();
                 else
                 {
-                    Quest.Owner.SendLocalizedMessage(1115748, true, (MaxProgress - CurProgress).ToString()); // Conflicts remaining to be incited: 
+                    Quest.Owner.SendLocalizedMessage(1115748, true, (MaxProgress - CurProgress).ToString()); // Conflicts remaining to be incited:
                     Quest.Owner.PlaySound(Quest.UpdateSound);
                 }
 

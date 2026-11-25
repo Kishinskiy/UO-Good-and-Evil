@@ -13,7 +13,7 @@ namespace Server.Items
 {
     public class ExodusTomeAltar : BaseDecayingItem
     {
-        public override int LabelNumber => 1153602;  // Exodus Summoning Tome 
+        public override int LabelNumber => 1153602;  // Exodus Summoning Tome
         public static ExodusTomeAltar Altar { get; set; }
         public TimeSpan DelayExit => TimeSpan.FromMinutes(10);
         private Point3D m_TeleportDest = new Point3D(764, 640, 0);
@@ -72,7 +72,7 @@ namespace Server.Items
                 }
                 else
                 {
-                    m_Mobile.SendLocalizedMessage(1153610); // Only the altar owner can commence with the ritual. 
+                    m_Mobile.SendLocalizedMessage(1153610); // Only the altar owner can commence with the ritual.
                 }
             }
         }
@@ -194,7 +194,7 @@ namespace Server.Items
             }
             else
             {
-                from.SendLocalizedMessage(1153596); // You must join a party with the players you wish to perform the ritual with. 
+                from.SendLocalizedMessage(1153596); // You must join a party with the players you wish to perform the ritual with.
             }
         }
 

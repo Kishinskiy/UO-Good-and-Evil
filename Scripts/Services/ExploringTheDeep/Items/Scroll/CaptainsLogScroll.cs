@@ -73,7 +73,7 @@ namespace Server.Items
             {
                 case 0:
                     {
-                        //Cancel                        
+                        //Cancel
                         break;
                     }
             }

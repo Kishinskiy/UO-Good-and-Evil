@@ -731,7 +731,7 @@ namespace Server.Items
 
                 if (m_SetEquipped)
                 {
-                    list.Add(1080241); // Full Jewelry Set Present					
+                    list.Add(1080241); // Full Jewelry Set Present
                     SetHelper.GetSetProperties(list, this);
                 }
             }
@@ -862,7 +862,7 @@ namespace Server.Items
                 list.Add(1060433, prop.ToString()); // lower mana cost ~1_val~%
 
             if ((prop = m_AosAttributes.LowerRegCost) != 0)
-                list.Add(1060434, prop.ToString()); // lower reagent cost ~1_val~%      
+                list.Add(1060434, prop.ToString()); // lower reagent cost ~1_val~%
 
             if ((prop = m_AosAttributes.IncreasedKarmaLoss) != 0)
                 list.Add(1075210, prop.ToString()); // Increased Karma Loss ~1val~%
@@ -874,7 +874,7 @@ namespace Server.Items
 
             if (IsSetItem && !m_SetEquipped)
             {
-                list.Add(1072378); // <br>Only when full set is present:				
+                list.Add(1072378); // <br>Only when full set is present:
                 SetHelper.GetSetProperties(list, this);
             }
         }

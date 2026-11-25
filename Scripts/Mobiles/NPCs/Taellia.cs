@@ -57,9 +57,9 @@ namespace Server.Mobiles
 
                 if (range >= 0 && InRange(m, range) && !InRange(oldLocation, range) && DateTime.UtcNow >= m_Spoken + TimeSpan.FromMinutes(1))
                 {
-                    /* Welcome Seeker.  Do you wish to embrace your elven heritage, casting 
-                    aside your humanity, and accepting the responsibilities of a caretaker 
-                    of our beloved Sosaria.  Then seek out Darius the Wise in Moonglow.  
+                    /* Welcome Seeker.  Do you wish to embrace your elven heritage, casting
+                    aside your humanity, and accepting the responsibilities of a caretaker
+                    of our beloved Sosaria.  Then seek out Darius the Wise in Moonglow.
                     He will place you on the path. */
                     Say(1072800);
 

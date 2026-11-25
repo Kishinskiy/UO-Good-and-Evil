@@ -71,7 +71,7 @@ namespace Server.Items
                     ResourceCount--;
 
                     from.AddToBackpack(item);
-                    from.SendLocalizedMessage(1154176); // Potions have been placed in your backpack. 
+                    from.SendLocalizedMessage(1154176); // Potions have been placed in your backpack.
                 }
             }
             else

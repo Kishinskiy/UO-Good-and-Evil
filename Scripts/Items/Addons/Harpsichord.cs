@@ -111,7 +111,7 @@ namespace Server.Items
 
                     if (addon.List.Contains(Item.Music))
                     {
-                        from.Send(new MessageLocalized(addon.Serial, addon.ItemID, MessageType.Regular, 0x3B2, 3, 1153059, "", "")); // The Harpsichord already has this song.                        
+                        from.Send(new MessageLocalized(addon.Serial, addon.ItemID, MessageType.Regular, 0x3B2, 3, 1153059, "", "")); // The Harpsichord already has this song.
                     }
                     else
                     {
@@ -122,7 +122,7 @@ namespace Server.Items
                 }
                 else
                 {
-                    from.SendLocalizedMessage(1153038); // Use this on an Harpsichord. 
+                    from.SendLocalizedMessage(1153038); // Use this on an Harpsichord.
                 }
             }
         }

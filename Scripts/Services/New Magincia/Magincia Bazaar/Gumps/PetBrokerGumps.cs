@@ -181,7 +181,7 @@ namespace Server.Engines.NewMagincia
 
             AddHtmlLocalized(215, 10, 200, 18, 1150311, RedColor16, false, false); // Animal Broker
             AddHtmlLocalized(145, 50, 250, 18, 1150337, RedColor16, false, false); // ADD PET TO BROKER INVENTORY
-            AddHtmlLocalized(10, 100, 500, 40, 1150338, GreenColor16, false, false); // Click the button next to a pet to select it. Enter the price you wish to charge into the box below the pet list, then click the "ADD PET" button. 
+            AddHtmlLocalized(10, 100, 500, 40, 1150338, GreenColor16, false, false); // Click the button next to a pet to select it. Enter the price you wish to charge into the box below the pet list, then click the "ADD PET" button.
 
             m_List = GetList(from);
 
@@ -255,7 +255,7 @@ namespace Server.Engines.NewMagincia
 
                 }
                 else
-                    from.SendLocalizedMessage(1150341); // You did not select a pet.	
+                    from.SendLocalizedMessage(1150341); // You did not select a pet.
             }
             else
                 from.SendGump(new SelectPetsGump(m_Broker, from, info.ButtonID - 1));
@@ -627,7 +627,7 @@ namespace Server.Engines.NewMagincia
             AddHtmlLocalized(10, 118, 500, 72, 1114513, "#1150370", GreenColor16, false, false); // Please confirm your purchase order below, and click "ACCEPT" if you wish to purchase this animal.
 
             AddHtmlLocalized(10, 235, 245, 18, 1114514, "#1150372", OrangeColor16, false, false); // Animal Name:
-            AddHtmlLocalized(10, 255, 245, 18, 1114514, "#1150371", OrangeColor16, false, false); // Animal Type:            
+            AddHtmlLocalized(10, 255, 245, 18, 1114514, "#1150371", OrangeColor16, false, false); // Animal Type:
             AddHtmlLocalized(10, 275, 245, 18, 1114514, "#1150373", OrangeColor16, false, false); // Sale Price:
 
             AddHtml(265, 235, 245, 18, Color(entry.Pet.Name, BlueColor), false, false);

@@ -38,7 +38,7 @@ namespace Server.Multis
     {
         private DesignState m_Current; // State which is currently visible.
         private DesignState m_Design;  // State of current design.
-        private DesignState m_Backup;  // State at last user backup.        
+        private DesignState m_Backup;  // State at last user backup.
 
         // Graphic type of this foundation.
         public FoundationType Type { get; set; }
@@ -2454,7 +2454,7 @@ namespace Server.Multis
                 Write(deflatedBuffer, 0, deflatedLength);
 
                 totalLength += 4 + deflatedLength;
-                
+
 				m_PlaneBufferPool.ReleaseBuffer(ref inflatedBuffer);
             }
 

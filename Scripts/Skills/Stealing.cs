@@ -119,7 +119,7 @@ namespace Server.SkillHandlers
                         }
                         else if (!m_Thief.CanBeginAction(typeof(PolymorphSpell)))
                         {
-                            m_Thief.SendLocalizedMessage(1010582); //	You cannot steal the sigil while polymorphed				
+                            m_Thief.SendLocalizedMessage(1010582); //	You cannot steal the sigil while polymorphed
                         }
                         else if (TransformationSpellHelper.UnderTransformation(m_Thief))
                         {

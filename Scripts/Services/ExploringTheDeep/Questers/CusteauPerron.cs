@@ -185,7 +185,7 @@ namespace Server.Gumps
             AddPage(2);
             AddHtmlLocalized(107, 140, 300, 150, 1154289, 0x7FFF, false, true); // Ahh, been listening to old Hepler have you?  So I've heard something of these shipwrecks, even all the way out here.  I'm guessing you want me to tell you of one of these suits to help you explore beneath the waves?
 
-            AddHtmlLocalized(145, 300, 250, 24, 1154290, 0x7FFF, false, false); // Do you know of the suit?            
+            AddHtmlLocalized(145, 300, 250, 24, 1154290, 0x7FFF, false, false); // Do you know of the suit?
             AddButton(115, 300, 0x26B0, 0x26B1, 0, GumpButtonType.Page, 3);//Suit
 
             AddButton(345, 440, 0xF7, 0xF8, 0, GumpButtonType.Reply, 0);//OK
@@ -197,13 +197,13 @@ namespace Server.Gumps
 
         }
 
-        public override void OnResponse(NetState sender, RelayInfo info) //Function for GumpButtonType.Reply Buttons 
+        public override void OnResponse(NetState sender, RelayInfo info) //Function for GumpButtonType.Reply Buttons
         {
             switch (info.ButtonID)
             {
                 case 0:
                     {
-                        //Cancel 
+                        //Cancel
                         break;
                     }
             }
@@ -264,7 +264,7 @@ namespace Server.Gumps
             {
                 case 0:
                     {
-                        //Cancel 
+                        //Cancel
                         break;
                     }
             }

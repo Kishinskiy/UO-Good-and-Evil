@@ -257,7 +257,7 @@ namespace Server.Gumps
             {
                 case HouseGumpPage.Information:
                     {
-                        AddHtmlLocalized(20, 130, 200, 20, 1011242, LabelColor, false, false); // Owned By: 
+                        AddHtmlLocalized(20, 130, 200, 20, 1011242, LabelColor, false, false); // Owned By:
                         AddLabel(210, 130, LabelHue, GetOwnerName());
 
                         AddHtmlLocalized(20, 170, 380, 20, 1018032, SelectedColor, false, false); // This house is properly placed.
@@ -294,7 +294,7 @@ namespace Server.Gumps
                         AddHtmlLocalized(20, 330, 200, 20, 1061793, SelectedColor, false, false); // House Value
                         AddLabel(250, 330, LabelHue, house.Price.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("en-US")));
 
-                        AddHtmlLocalized(20, 360, 300, 20, 1011241, SelectedColor, false, false); // Number of visits this building has had: 
+                        AddHtmlLocalized(20, 360, 300, 20, 1011241, SelectedColor, false, false); // Number of visits this building has had:
                         AddLabel(350, 360, LabelHue, house.TotalVisits.ToString());
 
                         break;
@@ -752,7 +752,7 @@ namespace Server.Gumps
                         }
 
                         newHouse.MoveToWorld(new Point3D(house.X + house.ConvertOffsetX, house.Y + house.ConvertOffsetY, house.Z + house.ConvertOffsetZ), house.Map);
-                        
+
 						house.Delete();
 
                         foreach (Item item in house.GetItems())
@@ -1114,7 +1114,7 @@ namespace Server.Gumps
                                         }
                                         else if (m_House.HasAddonContainers)
                                         {
-                                            // The house can not be customized when add-on containers such as aquariums, elven furniture containers, vanities, and boiling cauldrons 
+                                            // The house can not be customized when add-on containers such as aquariums, elven furniture containers, vanities, and boiling cauldrons
                                             // are present in the house.  Please re-deed the add-on containers before customizing the house.
                                             from.SendGump(new NoticeGump(1060637, 30720, 1074863, 32512, 320, 180, CustomizeNotice_Callback, m_House));
                                         }
@@ -1155,7 +1155,7 @@ namespace Server.Gumps
                                         #region Mondain's Legacy
                                         else if (m_House.HasAddonContainers)
                                         {
-                                            // The house can not be customized when add-on containers such as aquariums, elven furniture containers, vanities, and boiling cauldrons 
+                                            // The house can not be customized when add-on containers such as aquariums, elven furniture containers, vanities, and boiling cauldrons
                                             // are present in the house.  Please re-deed the add-on containers before customizing the house.
                                             from.SendGump(new NoticeGump(1060637, 30720, 1074863, 32512, 320, 180, CustomizeNotice_Callback, m_House));
                                         }
@@ -1181,7 +1181,7 @@ namespace Server.Gumps
                                     {
                                         if (!m_House.IsInside(from))
                                         {
-                                            from.SendLocalizedMessage(502092); // You must be in your house to do 
+                                            from.SendLocalizedMessage(502092); // You must be in your house to do
                                         }
                                         else
                                         {
@@ -1241,13 +1241,13 @@ namespace Server.Gumps
                                         }
                                         else if (m_House.HasAddonContainers)
                                         {
-                                            /*The house cannot be swapped when certain special house add-ons including aquariums, raised garden beds, house_only items, goza mats, and special 
+                                            /*The house cannot be swapped when certain special house add-ons including aquariums, raised garden beds, house_only items, goza mats, and special
                                              * temporary add-ons are present in the house. Please re-deed or remove the special add-ons before swapping the house.*/
                                             from.SendGump(new NoticeGump(1060637, 30720, 1158659, 32512, 320, 180, CustomizeNotice_Callback, m_House));
                                         }
                                         else
                                         {
-                                            /*You are about to swap your house into another classic house. You will be refunded or charged the value of this house. All your possessions 
+                                            /*You are about to swap your house into another classic house. You will be refunded or charged the value of this house. All your possessions
                                              * in the house will be transported to a Moving Crate. Deed-based house add-ons will be converted back into deeds. Vendors and barkeeps will
                                              * also be stored in the Moving Crate. Are you sure you wish to continue?
                                             */

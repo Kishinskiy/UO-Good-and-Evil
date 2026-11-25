@@ -21,7 +21,7 @@
 				<child name="Shrine" x="718" y="1161" z="25" />
 				<child name="The Waste" x="724" y="943" z="42" />
 			</parent>
-			<parent name="Isamu-Jima">			
+			<parent name="Isamu-Jima">
 				<child name="Moongate" x="1169" y="998" z="41" />
 				<child name="Shrine" x="1047" y="512" z="15" />
 				<child name="Lotus Lakes" x="1066" y="817" z="20" />

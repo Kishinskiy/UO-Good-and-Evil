@@ -475,7 +475,7 @@ namespace Server.Items
         }
 
         /*  Extreme     Normal      SlowOpposite        FastOpposite
-         * 
+         *
          *  Red         Pink        White               Blue
          *  Blue        White       Pink                Red
          *  Brown       Orange      LightGreen          DarkGreen

@@ -54,7 +54,7 @@ namespace Server.Items
             new BedrollEntry(new Point3D(5658, 563, 20), typeof(WrongBedrollEast)),
             new BedrollEntry(new Point3D(5657, 565, 20), typeof(WrongBedrollEast)),
             new BedrollEntry(new Point3D(5661, 563, 20), typeof(WrongBedrollEast)),
-                     
+
             // Upper Floor Room 3
             new BedrollEntry(new Point3D(5666, 554, 20), typeof(WrongBedrollEast)),
             new BedrollEntry(new Point3D(5665, 557, 20), typeof(WrongBedrollEast)),
@@ -184,7 +184,7 @@ namespace Server.Items
                 Bedrolls.Add(item);
             }
 
-            // Mysterious Tunnels Spawn   
+            // Mysterious Tunnels Spawn
 
             MysteriousTunnel mt;
             WrongBedrollBase bedroll;

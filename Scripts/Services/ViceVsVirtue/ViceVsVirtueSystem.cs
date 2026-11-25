@@ -237,7 +237,7 @@ namespace Server.Engines.VvV
 
                 if (count < 1)
                 {
-                    SendVvVMessageTo(pm, 1154936); // More players are needed before a VvV battle can begin! 
+                    SendVvVMessageTo(pm, 1154936); // More players are needed before a VvV battle can begin!
                 }
                 else if (Battle.InCooldown)
                 {

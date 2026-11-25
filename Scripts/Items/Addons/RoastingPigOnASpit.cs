@@ -18,7 +18,7 @@ namespace Server.Items
             switch (type)
             {
                 case DirectionType.South:
-                    AddComponent(new RoastingPigOnASpitComponent(0x9995), 0, 0, 0); //Roasting Pig on a Spit    
+                    AddComponent(new RoastingPigOnASpitComponent(0x9995), 0, 0, 0); //Roasting Pig on a Spit
                     AddComponent(new LocalizedAddonComponent(0x9994, 1123328), -1, 1, 0); // Pile of Logs
                     break;
                 case DirectionType.East:

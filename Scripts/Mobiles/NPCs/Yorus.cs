@@ -18,8 +18,8 @@ namespace Server.Engines.Quests
 
         /* Guile, Irk and Spite */
         public override object Title => 1074739;
-        /* You know them, don't you.  The three?  They look like you, you'll see. They looked like me, I remember, they 
-        looked like, well, you'll see.  The three.  They'll drive you mad too, if you let them.  They are trouble, and 
+        /* You know them, don't you.  The three?  They look like you, you'll see. They looked like me, I remember, they
+        looked like, well, you'll see.  The three.  They'll drive you mad too, if you let them.  They are trouble, and
         they need to be slain.  Seek them out. */
         public override object Description => 1074740;
         /* You just don't understand the gravity of the situation.  If you did, you'd agree to my task. */

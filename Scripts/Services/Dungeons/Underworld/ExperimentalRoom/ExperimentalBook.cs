@@ -3,7 +3,7 @@ namespace Server.Items
 
     public class ExperimentalBook : BrownBook
     {
-        public override int LabelNumber => 1113479;  // 
+        public override int LabelNumber => 1113479;  //
 
         [Constructable]
         public ExperimentalBook() : base(false)

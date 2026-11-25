@@ -707,7 +707,7 @@ namespace Server.Engines.Craft
             Repair = true;
             CanEnhance = true;
             CanAlter = true;
-        } 
+        }
         #endregion
 
         private void CutUpCloth(Mobile m, CraftItem craftItem, ITool tool)

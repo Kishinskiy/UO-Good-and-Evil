@@ -1106,7 +1106,7 @@ namespace Server
 				       FileAccess.Write, FileShare.Read)))
 			{
 				writer.WriteLine(">>>Logging started on {0:f}.", DateTime.Now);
-				//f = Tuesday, April 10, 2001 3:51 PM 
+				//f = Tuesday, April 10, 2001 3:51 PM
 			}
 
 			_NewLine = true;

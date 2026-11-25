@@ -17,14 +17,14 @@ namespace Server.Engines.Quests
         public override Type NextQuest => typeof(ATangledWeb);
         /*Bad Company*/
         public override object Title => 1095022;
-        /*Travel to the Green Goblin area and kill Green Goblins until they fear you.  
-        Return to Jaacar for your reward.Jaacar make friends with your kind.  
-        Not want violence... not eat each other!  Jaacar eat rotworms... Rotworm stew good!  
-        Make Jaacar smart!<br><br>We can be friends, yes?  Outside kind and inside kind be friends?  This is good, yes?  
+        /*Travel to the Green Goblin area and kill Green Goblins until they fear you.
+        Return to Jaacar for your reward.Jaacar make friends with your kind.
+        Not want violence... not eat each other!  Jaacar eat rotworms... Rotworm stew good!
+        Make Jaacar smart!<br><br>We can be friends, yes?  Outside kind and inside kind be friends?  This is good, yes?
         Jaacar knows who hates your kind; Gray Goblins not hate you. We want to be friends!  Jaacar want to warn you!
-        Yes, friends give good warnings!<br><br>Green Goblins bad, very bad.  Green Goblins building up piles of weapons!  
-        When green goblins get enough weapons, they make war with the outside kind... Your kind!  They come in the night and stab my new friend with own sword!  
-        They will!  I swear!<br><br>Gray Goblins know this, that is why we fight them!  We protect our friend!  You, our friend!  Will you help stop Green Goblins?  
+        Yes, friends give good warnings!<br><br>Green Goblins bad, very bad.  Green Goblins building up piles of weapons!
+        When green goblins get enough weapons, they make war with the outside kind... Your kind!  They come in the night and stab my new friend with own sword!
+        They will!  I swear!<br><br>Gray Goblins know this, that is why we fight them!  We protect our friend!  You, our friend!  Will you help stop Green Goblins?
         If you help, Jaacar give some of smart knowledge! Help each other, yes?*/
         public override object Description => 1095024;
         /*Oh poor friend.  Not believe Jaacar.  You will see.  Maybe too late, but you will see.*/

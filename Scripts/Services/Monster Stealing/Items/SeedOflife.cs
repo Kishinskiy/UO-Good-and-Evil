@@ -87,7 +87,7 @@ namespace Server.Items
             int diff = pm.HitsMax - pm.Hits;
             if (diff == 0)
             {
-                pm.SendLocalizedMessage(1049547); //You are already at full health 
+                pm.SendLocalizedMessage(1049547); //You are already at full health
                 return;
             }
             toHeal = Math.Min(toHeal, diff);

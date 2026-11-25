@@ -240,7 +240,7 @@ namespace Server.Mobiles
 		{
 			base.Serialize(writer);
 
-			writer.Write(1); // version			
+			writer.Write(1); // version
 		}
 
 		public override void Deserialize(GenericReader reader)
@@ -258,7 +258,7 @@ namespace Server.Mobiles
 				m_NextTier = reader.ReadLong();
 				m_DailyDecay = reader.ReadLong();
 				Tier = reader.ReadInt();
-				
+
 				var title = QuestReader.Object(reader);
 
 				if (title is TextDefinition def)
@@ -303,7 +303,7 @@ namespace Server.Mobiles
 			player.AddCollectionPoints(CollectionID, points);
 
 			player.SendLocalizedMessage(1072816); // Thank you for your donation!
-			player.SendLocalizedMessage(1072817, points.ToString()); // You have earned ~1_POINTS~ reward points for this donation.	
+			player.SendLocalizedMessage(1072817, points.ToString()); // You have earned ~1_POINTS~ reward points for this donation.
 			player.SendLocalizedMessage(1072818, points.ToString()); // The Collection has been awarded ~1_POINTS~ points
 
 			Points += points;

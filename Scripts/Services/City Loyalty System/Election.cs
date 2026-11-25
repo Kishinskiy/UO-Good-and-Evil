@@ -80,9 +80,9 @@ namespace Server.Engines.CityLoyalty
             if (pm.Young)
                 pm.SendMessage("Young players cannot be nominated for the ballot!");
             else if (!City.IsCitizen(pm) || pentry == null)
-                pm.SendLocalizedMessage(1153890); // You must be a citizen of this City to nominate yourself for the ballot! 
+                pm.SendLocalizedMessage(1153890); // You must be a citizen of this City to nominate yourself for the ballot!
             else if (City.GetLoyaltyRating(pm) < LoyaltyRating.Adored)
-                pm.SendLocalizedMessage(1153891); // You must at least be adored within the City to nominate yourself for the ballot. 
+                pm.SendLocalizedMessage(1153891); // You must at least be adored within the City to nominate yourself for the ballot.
             else
             {
                 Account a = pm.Account as Account;
@@ -98,20 +98,20 @@ namespace Server.Engines.CityLoyalty
                     if (ballot != null)
                     {
                         pm.SendLocalizedMessage(ballot.Endorsements.Count > 0 ? 1153917 : 1153889);  // A character from this account is currently endorsed for Candidacy and cannot be nominated.                                                                      // A character from this account has already been nominated to run for office.
-                        return false;                                                                // A character from this account has already been nominated to run for office. 
+                        return false;                                                                // A character from this account has already been nominated to run for office.
                     }
 
                     ballot = Candidates.FirstOrDefault(entry => entry.Endorsements.Contains(m));
 
                     if (ballot != null)
                     {
-                        pm.SendLocalizedMessage(1153892); // A character from this account has already endorsed a nominee! 
+                        pm.SendLocalizedMessage(1153892); // A character from this account has already endorsed a nominee!
                         return false;
                     }
                 }
 
                 Candidates.Add(new BallotEntry(pm, pentry.Love, pentry.Hate));
-                pm.PrivateOverheadMessage(Network.MessageType.Regular, 0x3B2, 1153905, pm.NetState); // *You etch your name into the stone* 
+                pm.PrivateOverheadMessage(Network.MessageType.Regular, 0x3B2, 1153905, pm.NetState); // *You etch your name into the stone*
                 pm.SendLocalizedMessage(1154087); // You have 24 hours to get your nomination endorsed. If you do not get an endorsement within that period you will need to re-nominate yourself.
 
                 return true;
@@ -125,7 +125,7 @@ namespace Server.Engines.CityLoyalty
             if (pm.Young)
                 pm.SendMessage("Young players cannot endorose an nominee!");
             else if (!City.IsCitizen(pm))
-                pm.SendLocalizedMessage(1153893); // You must be a citizen of this City to endorse a nominee for the ballot! 
+                pm.SendLocalizedMessage(1153893); // You must be a citizen of this City to endorse a nominee for the ballot!
             else
             {
                 Account a = pm.Account as Account;
@@ -141,7 +141,7 @@ namespace Server.Engines.CityLoyalty
 
                     if (ballot != null)
                     {
-                        pm.SendLocalizedMessage(1153892); // A character from this account has already endorsed a nominee! 
+                        pm.SendLocalizedMessage(1153892); // A character from this account has already endorsed a nominee!
                         return false;
                     }
 
@@ -149,7 +149,7 @@ namespace Server.Engines.CityLoyalty
 
                     if (ballot2 != null)
                     {
-                        pm.SendLocalizedMessage(1153912); // A character from this account is currently nominated for candidacy and cannot offer an endorsement.  
+                        pm.SendLocalizedMessage(1153912); // A character from this account is currently nominated for candidacy and cannot offer an endorsement.
                         return false;
                     }
                 }
@@ -177,13 +177,13 @@ namespace Server.Engines.CityLoyalty
         public bool TryVote(PlayerMobile voter, PlayerMobile candidate)
         {
             if (!CanVote())
-                voter.SendLocalizedMessage(1153919); // The stone is not currently accepting votes. 
+                voter.SendLocalizedMessage(1153919); // The stone is not currently accepting votes.
             else if (voter.Young)
                 voter.SendMessage("Young players cannot vote in a city election!");
             else if (!City.IsCitizen(voter))
-                voter.SendLocalizedMessage(1153894); // You must be a citizen of this City to vote! 
+                voter.SendLocalizedMessage(1153894); // You must be a citizen of this City to vote!
             else if (City.GetLoyaltyRating(voter) < LoyaltyRating.Respected)
-                voter.SendLocalizedMessage(1154579); // You must be at least respected within the city to vote. 
+                voter.SendLocalizedMessage(1154579); // You must be at least respected within the city to vote.
             else
             {
                 Account a = voter.Account as Account;
@@ -208,7 +208,7 @@ namespace Server.Engines.CityLoyalty
                     {
                         BallotEntry e = o as BallotEntry;
                         e.Votes.Add(voter);
-                        m.PrivateOverheadMessage(Network.MessageType.Regular, 0x3B2, 1153923, voter.NetState); // *You etch your vote into the stone* 
+                        m.PrivateOverheadMessage(Network.MessageType.Regular, 0x3B2, 1153923, voter.NetState); // *You etch your vote into the stone*
                     }));
                 }
             }
@@ -222,7 +222,7 @@ namespace Server.Engines.CityLoyalty
 
             if (entry != null)
             {
-                //Are you sure you wish to withdrawal? 
+                //Are you sure you wish to withdrawal?
                 pm.SendGump(new ConfirmCallbackGump(pm, null, 1153918, entry, null, (m, o) =>
                 {
                     BallotEntry e = (BallotEntry)o;
@@ -230,13 +230,13 @@ namespace Server.Engines.CityLoyalty
                     if (Candidates.Contains(e))
                     {
                         Candidates.Remove(e);
-                        m.PrivateOverheadMessage(Network.MessageType.Regular, 0x3B2, 1153911, m.NetState); // *You smudge your name off the stone* 
+                        m.PrivateOverheadMessage(Network.MessageType.Regular, 0x3B2, 1153911, m.NetState); // *You smudge your name off the stone*
                     }
 
                 }));
             }
             else
-                pm.SendLocalizedMessage(1153924); // You are not currently on any ballot to withdraw from. 
+                pm.SendLocalizedMessage(1153924); // You are not currently on any ballot to withdraw from.
         }
 
         public double GetStanding(BallotEntry entry)

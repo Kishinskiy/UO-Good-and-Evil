@@ -15,8 +15,8 @@ namespace Server.Engines.Quests
 
         /* Proof of the Deed */
         public override object Title => 1072339;
-        /* These human vermin must be erradicated!  They despoil fair Sosaria with their every footfall upon her soil, 
-        every exhalation of breath upon her pristine air.  Prove yourself an ally of Sosaria and bring me 20 human ears 
+        /* These human vermin must be erradicated!  They despoil fair Sosaria with their every footfall upon her soil,
+        every exhalation of breath upon her pristine air.  Prove yourself an ally of Sosaria and bring me 20 human ears
         as proof of your devotion to our cause. */
         public override object Description => 1072340;
         /* Do you find the task distasteful?  Are you too weak to shoulder the duty of cleansing Sosaria?  So be it. */

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-/*Party Hit Points increased by up to 20 + 6(Collection Bonus), Party healed for 9-20 dmg every 4 seconds. 
+/*Party Hit Points increased by up to 20 + 6(Collection Bonus), Party healed for 9-20 dmg every 4 seconds.
 (Provocation Based). Party Strength, Dex, Int, Increased by Up to 8.*/
 
 namespace Server.Spells.SkillMasteries

@@ -14,7 +14,7 @@ PHONY : default build clean run
 
 default: run
 
-debug: 
+debug:
 	${MCS} -target:library -out:"${CURPATH}/Settings.dll" -r:${REFS} -nowarn:${NOWARNS} -d:DEBUG ${DEFS} -nologo -debug -unsafe -recurse:"${CFGPATH}/*.cs"
 	${MCS} -target:library -out:"${CURPATH}/Server.dll" -r:"${CURPATH}/Settings.dll",${REFS} -nowarn:${NOWARNS} -d:DEBUG ${DEFS} -nologo -debug -unsafe -recurse:"${SRVPATH}/*.cs"
 	${MCS} -target:library -out:"${CURPATH}/Scripts.dll" -r:"${CURPATH}/Settings.dll","${CURPATH}/Server.dll",${REFS} -nowarn:${NOWARNS} -d:DEBUG ${DEFS} -nologo -debug -unsafe -recurse:"${SCRPATH}/*.cs"
@@ -40,7 +40,7 @@ Server.dll: Settings.dll ${SRVPATH}/*.cs
 Scripts.dll: Settings.dll Server.dll ${SCRPATH}/*.cs
 	${MCS} -target:library -out:"${CURPATH}/Scripts.dll" -r:"${CURPATH}/Settings.dll","${CURPATH}/Server.dll",${REFS} -nowarn:${NOWARNS} ${DEFS} -nologo -optimize -unsafe -recurse:"${SCRPATH}/*.cs"
 
-${EXENAME}.exe: Settings.dll Server.dll Scripts.dll ${APPPATH}/*.cs 
+${EXENAME}.exe: Settings.dll Server.dll Scripts.dll ${APPPATH}/*.cs
 	${MCS} -target:exe -out:"${CURPATH}/${EXENAME}.exe" -win32icon:"${ICOPATH}/servuo.ico" -r:"${CURPATH}/Settings.dll","${CURPATH}/Server.dll","${CURPATH}/Scripts.dll",${REFS} -nowarn:${NOWARNS} ${DEFS} -nologo -optimize -unsafe -recurse:"${APPPATH}/*.cs"
 
 ${EXENAME}.sh: ${EXENAME}.exe

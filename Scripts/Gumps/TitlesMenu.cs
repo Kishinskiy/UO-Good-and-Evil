@@ -1087,7 +1087,7 @@ namespace Server.Gumps
                     return 1157180; // This title is obtained from turning in Bulk Order Deeds.
 
                 if (id >= 1156985 && id <= 1156987)
-                    return 1156984; // This title is obtained from the Halloween Treasures of the Kotl City Event.	
+                    return 1156984; // This title is obtained from the Halloween Treasures of the Kotl City Event.
 
                 if (id >= 1152068 && id <= 1152073)
                     return 1152075; // This is a reward title given for your valorous fights in arenas.
@@ -1096,7 +1096,7 @@ namespace Server.Gumps
                     return 1155601; // This title is obtained from the Halloween Treasures of Doom Event.
 
                 if (id >= 1157649 && id <= 1157651)
-                    return 1157648; // This title is obtained from the Halloween Treasures of the Sorcerer's Dungeon Event.	
+                    return 1157648; // This title is obtained from the Halloween Treasures of the Sorcerer's Dungeon Event.
 
                 switch (id)
                 {
@@ -1123,7 +1123,7 @@ namespace Server.Gumps
                     case 1157594: return 1157595; // This title is obtained by completing the "Discovering Animal Training" quest.
                     case 1158140: return 1158141; // This title is obtained by completing the Huntmaster's Challenge Quest.
                     case 1158090: return 1158087; // This title is obtained by completing the Paladins of Trinsic Quest.
-                    case 1158161: return 1158162; // This title is obtained by completing the Righting Wrong Quest.	
+                    case 1158161: return 1158162; // This title is obtained by completing the Righting Wrong Quest.
                     case 1158389: return 1158248; // This title is obtained by completing the Treasure Chase Quest.
                     case 1158278: return 1158279; // This title is obtained by completing the "A Forced Sacrifice" quest.
                     case 1158303: return 1158324; // This title is obtained by completing the "Whispering with Wisps" quest.

@@ -305,7 +305,7 @@ namespace Server.Engines.Craft
                 double quality = avg <= 50.0 ? 0.5 : 0.5 + ((avg - 50.0) * 0.05);
                 return new JewelryGem("vamp_shard", quality, 0x1EA7, 1175);
             });
-            
+
             // Огненный Рубин Истребителя (FireRubySlayer = 1103)
             index = AddCraft(typeof(JewelryGem), "Мистическая огранка", "Огненный Рубин Истребителя (+20% Weapon Damage / +10% HCI)", 110.0, 125.0, typeof(FireRuby), "Редкий огненный рубин", 3, "Требуется редкий огненный рубин.");
             AddRes(index, typeof(ValoriteIngot), "Слитки валорита", 10, "Нужна оправа из валорита.");
@@ -366,7 +366,7 @@ namespace Server.Engines.Craft
 	            GoldNecklace necklace = new GoldNecklace();
 	            necklace.Name = "Амулет Живительного Сияния [Ювелирный Артефакт]";
 	            necklace.Hue = 1150;
-	            necklace.Attributes.BonusHits = (int)Math.Round(15.0 * qualityMultiplier); 
+	            necklace.Attributes.BonusHits = (int)Math.Round(15.0 * qualityMultiplier);
 	            necklace.Attributes.RegenHits = (int)Math.Round(3.0 * qualityMultiplier);
 	            return necklace;
             });
@@ -382,7 +382,7 @@ namespace Server.Engines.Craft
                 GoldRing ring = new GoldRing();
                 ring.Name = "Кольцо Астральной Силы [Ювелирный Артефакт]";
                 ring.Hue = 1240;
-                
+
                 ring.Attributes.BonusMana = (int)Math.Round(20.0 * qualityMultiplier);
                 ring.Attributes.RegenMana = (int)Math.Round(4.0 * qualityMultiplier);
                 return ring;
@@ -402,10 +402,10 @@ namespace Server.Engines.Craft
 
                 // 🔥 ИСПРАВЛЕНО: Свойства DI вшиваются в бижутерию через нативный Attributes ядра!
                 bracelet.Attributes.WeaponDamage = (int)Math.Round(20.0 * qualityMultiplier);
-                
-                // В ServUO бижутерия не может вызывать Hit Lightning при ударе мечом, 
+
+                // В ServUO бижутерия не может вызывать Hit Lightning при ударе мечом,
                 // поэтому заменим это на мощный буст Spell Damage (+15% к урону магии) или防御 (DCI)!
-                bracelet.Attributes.SpellDamage = (int)Math.Round(15.0 * qualityMultiplier); 
+                bracelet.Attributes.SpellDamage = (int)Math.Round(15.0 * qualityMultiplier);
                 return bracelet;
             });
 
@@ -421,7 +421,7 @@ namespace Server.Engines.Craft
                 earrings.Name = "Серьги Кровавого Графа [Ювелирный Артефакт]";
                 earrings.Hue = 1175;
 
-                // 🔥 ИСПРАВЛЕНО: Бижутерия не поддерживает Hit Leech, заменим на нативный пассивный 
+                // 🔥 ИСПРАВЛЕНО: Бижутерия не поддерживает Hit Leech, заменим на нативный пассивный
                 // реген здоровья куклы и точность (HCI)! Это даст колоссальную живучесть.
                 earrings.Attributes.RegenHits = (int)Math.Round(5.0 * qualityMultiplier);
                 earrings.Attributes.AttackChance = (int)Math.Round(15.0 * qualityMultiplier);
@@ -534,7 +534,7 @@ namespace Server.Engines.Craft
                 return new JewelryGem(effect, quality, 0x1EA7, hue);
             });
         }
-        
+
         private static JewelryGem FindSpecificGem(Mobile from, string requiredEffect)
         {
 	        if (from?.Backpack == null)

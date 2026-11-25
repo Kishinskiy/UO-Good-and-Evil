@@ -45,11 +45,11 @@ namespace Server.Items
             }
             else if (Party.Get(from) == null)
             {
-                from.SendLocalizedMessage(1153596); // You must join a party with the players you wish to perform the ritual with. 
+                from.SendLocalizedMessage(1153596); // You must join a party with the players you wish to perform the ritual with.
             }
             else
             {
-                from.SendLocalizedMessage(1153675); // The Summoning Altar must be built upon a shrine, within Trammel or Felucca it matters not...                
+                from.SendLocalizedMessage(1153675); // The Summoning Altar must be built upon a shrine, within Trammel or Felucca it matters not...
                 from.Target = new SummoningTarget(from, this);
             }
         }
@@ -82,7 +82,7 @@ namespace Server.Items
 
                         if (alter)
                         {
-                            from.SendLocalizedMessage(1153590); // An altar has already been built here. 
+                            from.SendLocalizedMessage(1153590); // An altar has already been built here.
                         }
                         else if (ExodusTomeAltar.Altar == null && VerLorRegController.Active && VerLorRegController.Mobile != null && CheckExodus())
                         {

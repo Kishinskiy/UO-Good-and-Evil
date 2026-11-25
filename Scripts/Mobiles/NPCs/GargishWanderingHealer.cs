@@ -12,7 +12,7 @@ namespace Server.Mobiles
 
             SetWearable(new GnarledStaff(), dropChance: 1);
             //SetWearable(new GargishRobe(), 5, 1);
-            
+
             SetSkill(SkillName.Camping, 80.0, 100.0);
             SetSkill(SkillName.Forensics, 80.0, 100.0);
             SetSkill(SkillName.SpiritSpeak, 80.0, 100.0);

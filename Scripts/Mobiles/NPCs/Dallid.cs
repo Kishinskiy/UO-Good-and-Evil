@@ -15,8 +15,8 @@ namespace Server.Engines.Quests
 
         /* Tapping the Keg */
         public override object Title => 1074037;
-        /* I have acquired a barrel of human brewed beer. I am loathe to drink it, but how else to prove how 
-        inferior it is? I suppose I shall need a barrel tap to drink. Go, bring me a barrel tap quickly, so 
+        /* I have acquired a barrel of human brewed beer. I am loathe to drink it, but how else to prove how
+        inferior it is? I suppose I shall need a barrel tap to drink. Go, bring me a barrel tap quickly, so
         I might get this over with. */
         public override object Description => 1074131;
         /* Fine then, I'm shall find another to run my errands then. */
@@ -52,7 +52,7 @@ namespace Server.Engines.Quests
 
         /* Breeze's Song */
         public override object Title => 1074052;
-        /* I understand humans cruely enslave the very wind to their selfish whims! Fancy wind chimes, what a monstrous 
+        /* I understand humans cruely enslave the very wind to their selfish whims! Fancy wind chimes, what a monstrous
         idea! You must bring me proof of this terrible depredation - hurry, bring me wind chimes! */
         public override object Description => 1074146;
         /* Fine then, I'm shall find another to run my errands then. */
@@ -88,8 +88,8 @@ namespace Server.Engines.Quests
 
         /* Waiting to be Filled */
         public override object Title => 1074036;
-        /* The only good thing I can say about human made bottles is that they are empty and may yet still be filled 
-        with elven wine. Go now, fetch a number of empty bottles so that I might save them from the fate of carrying 
+        /* The only good thing I can say about human made bottles is that they are empty and may yet still be filled
+        with elven wine. Go now, fetch a number of empty bottles so that I might save them from the fate of carrying
         human-made wine. */
         public override object Description => 1074130;
         /* Fine then, I'm shall find another to run my errands then. */

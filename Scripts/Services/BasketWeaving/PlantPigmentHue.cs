@@ -200,13 +200,13 @@ namespace Server.Engines.Plants
 
             //
             // not sure after this point
-            // 
+            //
             // the remaining combinations to precess are (orange,purple,green with
             // any of red, blue, yellow, orange, purple, green)
             // the code below is temporary until proper mixed hues can be confirmed
-            // 
+            //
             // mixing table on stratics seems incorrect because the table is not symmetrical
-            // 
+            //
 
             if (firstPrimary && !secondPrimary)
                 return first;

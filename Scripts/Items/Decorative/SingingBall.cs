@@ -112,7 +112,7 @@ namespace Server.Items
             }
             else
             {
-                PublicOverheadMessage(MessageType.Regular, 0x3E9, 1061637); // You are not allowed to access 
+                PublicOverheadMessage(MessageType.Regular, 0x3E9, 1061637); // You are not allowed to access
             }
         }
 

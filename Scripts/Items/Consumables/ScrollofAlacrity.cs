@@ -10,7 +10,7 @@ namespace Server.Items
     {
         public override int LabelNumber => 1078604;// Scroll of Alacrity
 
-        public override int Message => 1078602;/*Using a Scroll of Transcendence for a given skill will permanently increase your current 
+        public override int Message => 1078602;/*Using a Scroll of Transcendence for a given skill will permanently increase your current
         *level in that skill by the amount of points displayed on the scroll.
         *As you may not gain skills beyond your maximum skill cap, any excess points will be lost.*/
 

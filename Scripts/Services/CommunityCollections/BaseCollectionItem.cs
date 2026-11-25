@@ -233,7 +233,7 @@ namespace Server.Items
 			player.AddCollectionPoints(CollectionID, points);
 
 			player.SendLocalizedMessage(1072816); // Thank you for your donation!
-			player.SendLocalizedMessage(1072817, points.ToString()); // You have earned ~1_POINTS~ reward points for this donation.	
+			player.SendLocalizedMessage(1072817, points.ToString()); // You have earned ~1_POINTS~ reward points for this donation.
 			player.SendLocalizedMessage(1072818, points.ToString()); // The Collection has been awarded ~1_POINTS~ points
 
 			Points += points;

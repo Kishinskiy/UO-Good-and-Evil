@@ -122,9 +122,9 @@ namespace Server.Engines.Shadowguard
             Setup();
 
             SendPartyMessage(1156185);
-            /*Please wait while your Shadowguard encounter is prepared. 
-            Do no leave the area or logoff during this time. You will 
-            teleported when the encounter is ready and if you leave 
+            /*Please wait while your Shadowguard encounter is prepared.
+            Do no leave the area or logoff during this time. You will
+            teleported when the encounter is ready and if you leave
             there is no way to enter once the encounter begins.*/
             CheckAddon();
 

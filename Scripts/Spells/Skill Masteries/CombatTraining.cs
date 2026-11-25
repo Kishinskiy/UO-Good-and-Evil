@@ -460,7 +460,7 @@ namespace Server.Spells.SkillMasteries
             if (info.ButtonID == 0)
             {
                 Spell.FinishSequence();
-                state.Mobile.SendLocalizedMessage(1156110); // Your ability was canceled. 
+                state.Mobile.SendLocalizedMessage(1156110); // Your ability was canceled.
                 return;
             }
 

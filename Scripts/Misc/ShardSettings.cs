@@ -8,7 +8,7 @@ namespace Server
 		public static void Configure()
 		{
 			Core.OnExpansionChanged += Invalidate;
-			
+
 			Invalidate();
 		}
 

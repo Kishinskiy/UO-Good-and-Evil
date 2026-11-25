@@ -450,7 +450,7 @@ namespace Server.Items
                                 {
                                     m_Book.Using = false;
                                     item.Delete();
-                                    from.SendLocalizedMessage(1158819); // There is not enough room in your backpack for the recipe.                                    
+                                    from.SendLocalizedMessage(1158819); // There is not enough room in your backpack for the recipe.
                                 }
                             }
                             else

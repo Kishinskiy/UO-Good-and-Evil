@@ -28,15 +28,15 @@ namespace Server.Engines.Quests
         public override object Uncomplete => 1112684;
 
         /*Answering the last question correctly, you feel a strange energy wash over you.<br><br>
-         * You don't understand how you know, but you are absolutely certain that the guardians will 
-         * no longer bar you from entering the Stygian Abyss.<br><br>It seems you have proven yourself 
+         * You don't understand how you know, but you are absolutely certain that the guardians will
+         * no longer bar you from entering the Stygian Abyss.<br><br>It seems you have proven yourself
          * worthy of La Insep Om.
          */
         public override object Complete => 1112700;
 
         /*
-         * You realize that is not the correct answer.<br><br>You vow to study the Book of Circles again 
-         * so that you might understand all that is required of you. Perhaps meditating again soon will bring 
+         * You realize that is not the correct answer.<br><br>You vow to study the Book of Circles again
+         * so that you might understand all that is required of you. Perhaps meditating again soon will bring
          * the wisdom that you seek.<br>
          */
         public override object FailedMsg => 1112680;

@@ -45,7 +45,7 @@ namespace Server.Items
             }
             else
             {
-                from.SendLocalizedMessage(1154275); // Only Citizens of this City may use this. 
+                from.SendLocalizedMessage(1154275); // Only Citizens of this City may use this.
             }
         }
 

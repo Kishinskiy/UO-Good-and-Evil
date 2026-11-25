@@ -496,10 +496,10 @@ namespace Server.Gumps
 					_ = from.SendGump(new SetFlagsEnumGump(prop, from, m_Object, m_Stack, m_Page, m_List));
 				}
 				else
-				{	
+				{
 					_ = from.SendGump(new SetListOptionGump(prop, from, m_Object, m_Stack, m_Page, m_List, Enum.GetNames(type), GetObjects(Enum.GetValues(type))));
 				}
-				
+
 				return;
 			}
 

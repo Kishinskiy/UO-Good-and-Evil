@@ -3,7 +3,7 @@ namespace Server.Items
     public class ArcaneShield : WoodenKiteShield
     {
         public override bool IsArtifact => true;
-        public override int LabelNumber => 1061101;// Arcane Shield 
+        public override int LabelNumber => 1061101;// Arcane Shield
         public override int ArtifactRarity => 11;
         public override int InitMinHits => 255;
         public override int InitMaxHits => 255;

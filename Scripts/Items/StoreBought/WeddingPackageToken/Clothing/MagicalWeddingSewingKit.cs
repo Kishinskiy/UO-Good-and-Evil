@@ -16,7 +16,7 @@ namespace Server.Items
 
         public void GetOptions(RewardOptionList list)
         {
-            list.Add(1, 1157333); // Bride Set 
+            list.Add(1, 1157333); // Bride Set
             list.Add(2, 1157334); // Groom Set
         }
 
@@ -57,7 +57,7 @@ namespace Server.Items
                 from.SendGump(new RewardOptionGump(this, 1157335)); // Please make a selection:
             }
             else
-                from.SendLocalizedMessage(1062334); // This item must be in your backpack to be used.       	
+                from.SendLocalizedMessage(1062334); // This item must be in your backpack to be used.
         }
 
         public MagicalWeddingSewingKit(Serial serial)

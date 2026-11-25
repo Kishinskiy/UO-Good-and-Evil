@@ -205,7 +205,7 @@ namespace Server.Items
         public override bool Carve(Mobile from, Item with)
         {
             if (IsAccessibleTo(from))
-                with.PublicOverheadMessage(MessageType.Regular, 0x3B2, 1071896); // This is too crude an implement for such a procedure. 
+                with.PublicOverheadMessage(MessageType.Regular, 0x3B2, 1071896); // This is too crude an implement for such a procedure.
 
             return false;
         }
@@ -231,7 +231,7 @@ namespace Server.Items
             AddComponent(new PlagueBeastComponent(0x1777, 0x1), 10, 14);
 
             if (BrainHue > 0)
-                AddComponent(new PlagueBeastComponent(0x1CF0, BrainHue, true), 1, 24); // 22, 29 
+                AddComponent(new PlagueBeastComponent(0x1CF0, BrainHue, true), 1, 24); // 22, 29
             else
                 AddComponent(new PlagueBeastBlood(), -7, 24);
         }
@@ -390,7 +390,7 @@ namespace Server.Items
         public override bool Carve(Mobile from, Item with)
         {
             if (IsAccessibleTo(from))
-                with.PublicOverheadMessage(MessageType.Regular, 0x3B2, 1071896); // This is too crude an implement for such a procedure. 
+                with.PublicOverheadMessage(MessageType.Regular, 0x3B2, 1071896); // This is too crude an implement for such a procedure.
 
             return false;
         }

@@ -13,11 +13,11 @@ namespace Server.Misc
         * Example:
         *  public static readonly string EmailServer = "mail.domain.com";
         *  public static readonly string FromAddress = "servuo@domain.com";
-        * 
+        *
         * If you want to add crash reporting emailing, fill in CrashAddresses:
         * Example:
         *  public static readonly string CrashAddresses = "first@email.here,second@email.here,third@email.here";
-        * 
+        *
         * If you want to add speech log page emailing, fill in SpeechLogPageAddresses:
         * Example:
         *  public static readonly string SpeechLogPageAddresses = "first@email.here,second@email.here,third@email.here";

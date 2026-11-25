@@ -169,7 +169,7 @@ namespace Server.Gumps
             AddButton(345, 440, 0xF7, 0xF8, 0, GumpButtonType.Reply, 0);//OK
         }
 
-        public override void OnResponse(NetState sender, RelayInfo info) //Function for GumpButtonType.Reply Buttons 
+        public override void OnResponse(NetState sender, RelayInfo info) //Function for GumpButtonType.Reply Buttons
         {
             switch (info.ButtonID)
             {
@@ -246,13 +246,13 @@ namespace Server.Gumps
             AddButton(345, 440, 0xF7, 0xF8, 0, GumpButtonType.Reply, 0);//OK
         }
 
-        public override void OnResponse(NetState sender, RelayInfo info) //Function for GumpButtonType.Reply Buttons 
+        public override void OnResponse(NetState sender, RelayInfo info) //Function for GumpButtonType.Reply Buttons
         {
             switch (info.ButtonID)
             {
                 case 0:
                     {
-                        //Cancel 
+                        //Cancel
                         break;
                     }
             }

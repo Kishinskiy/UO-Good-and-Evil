@@ -59,7 +59,7 @@ namespace Server.Mobiles
 		public int TotalBought { get; set; }
 		public int TotalSold { get; set; }
 
-		public virtual bool CanCacheDisplay => false;//return ( m_Args == null || m_Args.Length == 0 ); } 
+		public virtual bool CanCacheDisplay => false;//return ( m_Args == null || m_Args.Length == 0 ); }
 
 		public virtual Type Type { get; set; }
 
@@ -102,7 +102,7 @@ namespace Server.Mobiles
 							price = Int32.MaxValue;
 
 						if (EconomyItem && (int)price + ecoInc < 2)
-							return 2;						
+							return 2;
 
 						return (int)price + ecoInc;
 					}
@@ -188,7 +188,7 @@ namespace Server.Mobiles
 		{
 			if (Args == null || Args.Length == 0)
 				return (IEntity)Activator.CreateInstance(Type);
-			
+
 			return (IEntity)Activator.CreateInstance(Type, Args);
 		}
 
@@ -248,7 +248,7 @@ namespace Server.Mobiles
 		{
 			if (e is Mobile)
 				return DisplayCache.Cache.Mobiles != null && DisplayCache.Cache.Mobiles.Contains((Mobile)e);
-			
+
 			return DisplayCache.Cache.Table != null && DisplayCache.Cache.Table.ContainsValue(e);
 		}
 

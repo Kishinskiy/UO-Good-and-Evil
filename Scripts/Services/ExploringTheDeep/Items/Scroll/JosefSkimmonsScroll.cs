@@ -65,7 +65,7 @@ namespace Server.Items
             AddHtmlLocalized(42, 121, 323, 174, 1154391, 1, false, true); // <I>*This appears to be private journal of Skimmons Josef.*</I>Bloody old Cousteau keeps on coming around and asking me about things I'd much sooner forget. I never bloody wanted to work for that crazed wench on her blasted clockwork abominations, but there weren't much else I could manage after the mess that got made in Skara. Least I got out of both with my skin intact. Still, she's trying to go even further then we did back then...Lass is still trying to make that dead sister of hers proud I reckon. If we'd had the kinda things she's trying to make back then, nobody could've touched us. Makes the little goggles I used to make look like a kid's toy.
         }
 
-        public override void OnResponse(NetState state, RelayInfo info) //Function for GumpButtonType.Reply Buttons 
+        public override void OnResponse(NetState state, RelayInfo info) //Function for GumpButtonType.Reply Buttons
         {
             Mobile from = state.Mobile;
 
@@ -73,7 +73,7 @@ namespace Server.Items
             {
                 case 0:
                     {
-                        //Cancel                        
+                        //Cancel
                         break;
                     }
             }

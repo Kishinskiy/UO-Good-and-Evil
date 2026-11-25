@@ -462,13 +462,13 @@ namespace Server.Items
             AddButton(80, 320, 0xEF, 0xF0, 7, GumpButtonType.Reply, 0); // Apply
             AddButton(120, 345, 0x7DB, 0x7DB, 0, GumpButtonType.Reply, 0);	// Log out
 
-            AddHtmlLocalized(72, 285, 170, 20, 1150180, false, false); // Command Functions: 
+            AddHtmlLocalized(72, 285, 170, 20, 1150180, false, false); // Command Functions:
             AddHtml(200, 285, 100, 20, string.Format("{0}/{1}", m_Item.Attempts, m_Solution.MaxAttempts), false, false);
 
             if (from.Skills[SkillName.Lockpicking].Base >= 100.0)
             {
                 int locked = m_Solution.GetMatches(m_CurrentSolution);
-                AddHtmlLocalized(72, 300, 170, 20, 1150179, false, false); // Crystals Locked  : 
+                AddHtmlLocalized(72, 300, 170, 20, 1150179, false, false); // Crystals Locked  :
                 AddHtml(200, 300, 100, 20, locked.ToString(), false, false);
             }
 

@@ -48,7 +48,7 @@ namespace Server.Mobiles
             SetWeaponAbility(WeaponAbility.MortalStrike);
             SetWeaponAbility(WeaponAbility.WhirlwindAttack);
             SetWeaponAbility(WeaponAbility.Block);
-            //Arcane Pyromancy - Missing ability 
+            //Arcane Pyromancy - Missing ability
         }
 
         public AbysmalHorror(Serial serial)

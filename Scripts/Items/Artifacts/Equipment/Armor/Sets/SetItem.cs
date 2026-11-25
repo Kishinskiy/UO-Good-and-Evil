@@ -132,7 +132,7 @@ namespace Server
                 list.Add(full ? 1151216 : 1154367, (full ? prop + (attrs.WeaponDamage * pieces) : prop).ToString()); // damage increase ~1_val~% (total)
 
             if ((prop = setItem.SetAttributes.WeaponSpeed) != 0)
-                list.Add(full ? 1074323 : 1154368, (full ? prop + (attrs.WeaponSpeed * pieces) : prop).ToString()); // swing speed increase ~1_val~% (total)	
+                list.Add(full ? 1074323 : 1154368, (full ? prop + (attrs.WeaponSpeed * pieces) : prop).ToString()); // swing speed increase ~1_val~% (total)
 
             if ((prop = setItem.SetAttributes.SpellDamage) != 0)
                 list.Add(full ? 1072380 : 1060483, (full ? prop + (attrs.SpellDamage * pieces) : prop).ToString()); // spell damage increase ~1_val~% (total)

@@ -11,23 +11,23 @@ namespace Server.Engines.Quests
         /* It's Hammer Time! */
         public override object Title => 1077732;
 
-        /* Create new daggers and maces using the forge and anvl in George's shop. Try making daggers up to 45 skill, then 
-        switch to making maces until 50 skill. Hail, and welcome to my humble shop. I am George Hephaestus, New Haven's 
-        blacksmith. I assume that you're here to ask me to train you to be an Appretice Blacksmith. I certainly can do that, 
-        but your doing to have to supply your own ingots. You can always buy them at the market, but i highly suggest that 
-        you mine your own. That way, any items you sell will be pure profit!. So, once you have a supply of ingots, use my 
-        forge and anvil to create items. You'll also need a supply of the proper tools, you can use a smith's hammer, a 
-        sledgehammer or tongs. You can either make them yourself if you have the tinkering skill, or buy them from a tinker 
-        at the market. Since I'll be around to give you advice, you'll learn faster here than anywhere else. Start off making 
-        daggers until you reach 45 blacksmithing skill, then switch to maces until you've achived 50. Once you've done that, 
+        /* Create new daggers and maces using the forge and anvl in George's shop. Try making daggers up to 45 skill, then
+        switch to making maces until 50 skill. Hail, and welcome to my humble shop. I am George Hephaestus, New Haven's
+        blacksmith. I assume that you're here to ask me to train you to be an Appretice Blacksmith. I certainly can do that,
+        but your doing to have to supply your own ingots. You can always buy them at the market, but i highly suggest that
+        you mine your own. That way, any items you sell will be pure profit!. So, once you have a supply of ingots, use my
+        forge and anvil to create items. You'll also need a supply of the proper tools, you can use a smith's hammer, a
+        sledgehammer or tongs. You can either make them yourself if you have the tinkering skill, or buy them from a tinker
+        at the market. Since I'll be around to give you advice, you'll learn faster here than anywhere else. Start off making
+        daggers until you reach 45 blacksmithing skill, then switch to maces until you've achived 50. Once you've done that,
         come talk to me and I'll give you something for your hard work */
         public override object Description => 1077735;
 
-        /* You're not interested in learning to be a smith, eh? I thought for sure that's why you were here. Oh well if you 
+        /* You're not interested in learning to be a smith, eh? I thought for sure that's why you were here. Oh well if you
         change your mind, you can always come back and talk to me. */
         public override object Refuse => 1077736;
 
-        /* You're doing well, but you're not quite there yet. Remember that the quickest way to learn is to make daggers up 
+        /* You're doing well, but you're not quite there yet. Remember that the quickest way to learn is to make daggers up
         to 45 skill, and then switch to maces. Also, don't forget that using my forge and anvil will help you learn faster. */
         public override object Uncomplete => 1077737;
 
@@ -41,7 +41,7 @@ namespace Server.Engines.Quests
             AddObjective(new ApprenticeObjective(SkillName.Blacksmith, 50, "Gorge's Shop", 1077733, 1077734));
 
             // 1077733 By using George’s forge and anvil, he is able to give you advice as you create blacksmithing items. This helps you hone your Blacksmithing skill a bit faster than normal.
-            // 1077734 You’re not using George’s forge and anvil any longer, and he cannot give you advice. Your Blacksmithing learning potential is no longer enhanced. 
+            // 1077734 You’re not using George’s forge and anvil any longer, and he cannot give you advice. Your Blacksmithing learning potential is no longer enhanced.
 
             AddReward(new BaseReward(typeof(HammerOfHephaestus), 1077740));
         }

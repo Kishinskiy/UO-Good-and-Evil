@@ -31,11 +31,11 @@ namespace Server.Engines.Craft
 
         public override double GetChanceAtMin(CraftItem item)
         {
-            return 0.0; // 0% 
+            return 0.0; // 0%
         }
 
         private DefMasonry()
-            : base(1, 1, 1.25)// base( 1, 2, 1.7 ) 
+            : base(1, 1, 1.25)// base( 1, 2, 1.7 )
         {
         }
 
@@ -64,7 +64,7 @@ namespace Server.Engines.Craft
         {
         }
 
-        // Delay to synchronize the sound with the hit on the anvil 
+        // Delay to synchronize the sound with the hit on the anvil
         private class InternalTimer : Timer
         {
             private readonly Mobile m_From;
@@ -84,25 +84,25 @@ namespace Server.Engines.Craft
         public override int PlayEndingEffect(Mobile from, bool failed, bool lostMaterial, bool toolBroken, int quality, bool makersMark, CraftItem item)
         {
             if (toolBroken)
-                from.SendLocalizedMessage(1044038); // You have worn out your tool 
+                from.SendLocalizedMessage(1044038); // You have worn out your tool
 
             if (failed)
             {
                 if (lostMaterial)
-                    return 1044043; // You failed to create the item, and some of your materials are lost. 
+                    return 1044043; // You failed to create the item, and some of your materials are lost.
                 else
-                    return 1044157; // You failed to create the item, but no materials were lost. 
+                    return 1044157; // You failed to create the item, but no materials were lost.
             }
             else
             {
                 if (quality == 0)
-                    return 502785; // You were barely able to make this item.  It's quality is below average. 
+                    return 502785; // You were barely able to make this item.  It's quality is below average.
                 else if (makersMark && quality == 2)
-                    return 1044156; // You create an exceptional quality item and affix your maker's mark. 
+                    return 1044156; // You create an exceptional quality item and affix your maker's mark.
                 else if (quality == 2)
-                    return 1044155; // You create an exceptional quality item. 
+                    return 1044155; // You create an exceptional quality item.
                 else
-                    return 1044154; // You create the item. 
+                    return 1044154; // You create the item.
             }
         }
 

@@ -15,8 +15,8 @@ namespace Server.Engines.Quests
 
         /* The King of Clothing */
         public override object Title => 1073902;
-        /* I have heard noble tales of a fine and proud human garment. An article of clothing 
-        fit for both man and god alike. It is called a "kilt" I believe? Could you fetch for 
+        /* I have heard noble tales of a fine and proud human garment. An article of clothing
+        fit for both man and god alike. It is called a "kilt" I believe? Could you fetch for
         me some of these kilts so I that I might revel in their majesty and glory? */
         public override object Description => 1074092;
         /* I will patiently await your reconsideration. */
@@ -52,9 +52,9 @@ namespace Server.Engines.Quests
 
         /* The Puffy Shirt */
         public override object Title => 1073903;
-        /* We elves believe that beauty is expressed in all things, including the garments we 
-        wear. I wish to understand more about human aesthetics, so please kind traveler - could 
-        you bring to me magnificent examples of human fancy shirts? For my thanks, I could teach 
+        /* We elves believe that beauty is expressed in all things, including the garments we
+        wear. I wish to understand more about human aesthetics, so please kind traveler - could
+        you bring to me magnificent examples of human fancy shirts? For my thanks, I could teach
         you more about the beauty of elven vestements. */
         public override object Description => 1074093;
         /* I will patiently await your reconsideration. */
@@ -90,9 +90,9 @@ namespace Server.Engines.Quests
 
         /* From the Gaultier Collection */
         public override object Title => 1073905;
-        /* It is my understanding, the females of humankind actually wear on certain occasions a 
-        studded bustier? This is not simply a fanciful tale? Remarkable! It sounds hideously 
-        uncomfortable as well as ludicrously impracticle. But perhaps, I simply do not understand 
+        /* It is my understanding, the females of humankind actually wear on certain occasions a
+        studded bustier? This is not simply a fanciful tale? Remarkable! It sounds hideously
+        uncomfortable as well as ludicrously impracticle. But perhaps, I simply do not understand
         the nuances of human clothing. Perhaps, I need to see such a studded bustier for myself? */
         public override object Description => 1074095;
         /* I will patiently await your reconsideration. */
@@ -128,8 +128,8 @@ namespace Server.Engines.Quests
 
         /* H'ute Couture */
         public override object Title => 1073901;
-        /* Most human apparel is interesting to elven eyes. But there is one garment - the flower garland - 
-        which sounds very elven indeed. Could I see how a human crafts such an object of beauty? In exchange, 
+        /* Most human apparel is interesting to elven eyes. But there is one garment - the flower garland -
+        which sounds very elven indeed. Could I see how a human crafts such an object of beauty? In exchange,
         I could share with you the wonders of elven garments. */
         public override object Description => 1074091;
         /* I will patiently await your reconsideration. */

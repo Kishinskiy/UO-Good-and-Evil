@@ -49,7 +49,7 @@ namespace Server.Mobiles
         public override void InitOutfit()
 		{
 			base.InitOutfit();
-			
+
 			Item item = Utility.RandomBool() ? null : new RingmailChest();
 
             if (item != null && !EquipItem(item))

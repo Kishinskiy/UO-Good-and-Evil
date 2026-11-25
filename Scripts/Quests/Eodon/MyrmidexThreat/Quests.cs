@@ -14,32 +14,32 @@ namespace Server.Engines.Quests
         public override Type NextQuest => typeof(DestructionOfZipactriotlQuest);
 
         public override object Title => 1156751;          // The Zealotry of Zipactriotl
-        public override object Description => 1156752;    /*All hail our Myrmidex Overlords! Now that the Britannians and the rest of Eodon 
-																	   have been stopped from their offensive against the Myrmidex it is time for the 
-																	   Barrab to restore the Myrmidex to power!  Long ago the Kotl came to Eodon.  
-																	   Their technology was far advanced and they built many creations.  Before long 
-																	   they decided they needed servents to tend to them beyond the metal giants they 
+        public override object Description => 1156752;    /*All hail our Myrmidex Overlords! Now that the Britannians and the rest of Eodon
+																	   have been stopped from their offensive against the Myrmidex it is time for the
+																	   Barrab to restore the Myrmidex to power!  Long ago the Kotl came to Eodon.
+																	   Their technology was far advanced and they built many creations.  Before long
+																	   they decided they needed servents to tend to them beyond the metal giants they
 																	   called "Automatons" and so they created the Myrmidex.  The Myrmidex would not stand
-																	   for their oppression and rose up against their reptilian masters!  The Kotl 
-																	   unleashed a great weapon called Zipactriotl to abolish the Myrmidex.  In time 
-																	   the Myrmidex were reduced in numbers and the Kotl placed Zipactriotl in stasis 
-																	   until such time the Myrmidex were once again a threat. The alien technology of 
-																	   the Kotl has spread throughout the realm in the eons since their arrival - we 
-																	   must recover that technology so we may release Zipactriotl and destroy it once 
-																	   and for all!   The time is now for Myrmidex rule with the Barrabian at their 
+																	   for their oppression and rose up against their reptilian masters!  The Kotl
+																	   unleashed a great weapon called Zipactriotl to abolish the Myrmidex.  In time
+																	   the Myrmidex were reduced in numbers and the Kotl placed Zipactriotl in stasis
+																	   until such time the Myrmidex were once again a threat. The alien technology of
+																	   the Kotl has spread throughout the realm in the eons since their arrival - we
+																	   must recover that technology so we may release Zipactriotl and destroy it once
+																	   and for all!   The time is now for Myrmidex rule with the Barrabian at their
 																	   side!  All hail the Myrmidex!  All hail the Barrab!*/
 
-        public override object Refuse => 1156753;           /*I must question your commitment to the Myrmidex - are you satisfied with these 
+        public override object Refuse => 1156753;           /*I must question your commitment to the Myrmidex - are you satisfied with these
 																	   Britannian invaders and their Eodonian allies?*/
 
-        public override object Uncomplete => 1156754;       /*You must acquire the Activator from the Gemologist at the Shimmering Jewel in 
-																	   Vesper, the Regulator from the Ship Captain at the Horse's Head in Jhelom, the 
-																	   Stator from the Golem Maker at the Tinker's Guild in Britain, and Power Core 
+        public override object Uncomplete => 1156754;       /*You must acquire the Activator from the Gemologist at the Shimmering Jewel in
+																	   Vesper, the Regulator from the Ship Captain at the Horse's Head in Jhelom, the
+																	   Stator from the Golem Maker at the Tinker's Guild in Britain, and Power Core
 																	   from the Oddities Collector at the Lycaeum in Moonglow before the Stasis Chamber
 																	   can be activated and Zipactriotl can be destroyed!*/
 
-        public override object Complete => 1156755;     /**Eyes widen with excitement!*  All hail the Myrmidex! All hail the Barrab! 
-																	   With these components I can bring the Stasis Chamber online and Zipactriotl can 
+        public override object Complete => 1156755;     /**Eyes widen with excitement!*  All hail the Myrmidex! All hail the Barrab!
+																	   With these components I can bring the Stasis Chamber online and Zipactriotl can
 																	   be destroyed!*/
 
         public TheZealotryOfZipactriotlQuest()
@@ -82,18 +82,18 @@ namespace Server.Engines.Quests
 
         public override object Title => 1156757;             // The Destruction of Zipactriotl
 
-        public override object Description => 1156758;   /*All Hail the Myrmidex! All Hail the Barrab! Muwahahah! With these components 
-																		the Stasis Chamber can be reactivated and Zipactriotl shall meet DOOM! Go now 
-																		to the Kotl Antechamber and destroy Zipactriotl so the Myrmidex may once again 
+        public override object Description => 1156758;   /*All Hail the Myrmidex! All Hail the Barrab! Muwahahah! With these components
+																		the Stasis Chamber can be reactivated and Zipactriotl shall meet DOOM! Go now
+																		to the Kotl Antechamber and destroy Zipactriotl so the Myrmidex may once again
 																		rule the Valley of Eodon with the Barrab shall be at their side!*/
 
-        public override object Refuse => 1156760;            /*Only those warriors brave enough to join in the destruction of Zipactriotl 
+        public override object Refuse => 1156760;            /*Only those warriors brave enough to join in the destruction of Zipactriotl
 																		will reap in the glory!  All hail the Myrmidex! All hail the Barrab!*/
 
-        public override object Uncomplete => 1156761;        /*Zipactriotl must be destroyed...the time is NOW! Go to the Antechamber in the 
+        public override object Uncomplete => 1156761;        /*Zipactriotl must be destroyed...the time is NOW! Go to the Antechamber in the
 																		Great Pyramid and restore glory to the Myrmidex!*/
 
-        public override object Complete => 1156762; 		/*MUWAHAHA! ZIPACTRIOTL IS DESTROYED! THE MYRMIDEX ARE FREE TO RECLAIM EODON! 
+        public override object Complete => 1156762; 		/*MUWAHAHA! ZIPACTRIOTL IS DESTROYED! THE MYRMIDEX ARE FREE TO RECLAIM EODON!
 																		THE BARRAB SHALL JOIN THEM AND TOGETHER WE SHALL RULE THE VALLEY!*/
 
         public override bool CanOffer()
@@ -131,19 +131,19 @@ namespace Server.Engines.Quests
     {
         public override object Title => 1156800;          // Hidden Treasures
 
-        public override object Description => 1156801;  /*Hello there, looking to buy? Sell? Perhaps a pearl necklace for your lover - 
-																	 or maybe a fine ring to accompany your finest evening wear?  We've got it all - just let 
-																	 me know what we can do for you and I'm sure we can accomodate!  Activator? Stasis Chamber! 
-																	 Why I haven't an idea what you are talking about! *leans in and whispers*  Not so 
-																	 loud - can't be too sure who's listening in these days.  Listen if you want to get 
+        public override object Description => 1156801;  /*Hello there, looking to buy? Sell? Perhaps a pearl necklace for your lover -
+																	 or maybe a fine ring to accompany your finest evening wear?  We've got it all - just let
+																	 me know what we can do for you and I'm sure we can accomodate!  Activator? Stasis Chamber!
+																	 Why I haven't an idea what you are talking about! *leans in and whispers*  Not so
+																	 loud - can't be too sure who's listening in these days.  Listen if you want to get
 																	 your hands on that item I know where you might be able to find one.  I was able to
-																	 acquire a treasure map that'll get you where you need to go but I need something 
+																	 acquire a treasure map that'll get you where you need to go but I need something
 																	 first.  My supply of prized gemstones has run low - you bring me those gem stones
 																	 and I'll supply you with the map to what you're seeking.*/
 
         public override object Refuse => 1156804;       // Well if you don't want to do it, you shouldn't have asked. Hrmph.
 
-        public override object Uncomplete => 1156803;   /*Acquire the gemstones I've asked for and I'll give you a map that will take you to 
+        public override object Uncomplete => 1156803;   /*Acquire the gemstones I've asked for and I'll give you a map that will take you to
 																	 the item you seek.  It's very simple - now move along I've got customers to tend to!*/
 
         public override object Complete => 1156805;     // *Examines the stones closely* Ahh yes, these will do quite nicely!  As promised here's your map - good luck!
@@ -186,16 +186,16 @@ namespace Server.Engines.Quests
         public override object Title => 1156807;          //The Salty Sea
 
         public override object Description => 1156808;  /*Arr!  The seas have become a wretched and dangerous place - a myriad o' creatures
-																	 be tormentin' me ships.  Can't have it! Can't have it one bit - what's that? 
-																	 Myrmidex. *He pauses and thinks for a moment as he sits back on the stool*  Maybe 
+																	 be tormentin' me ships.  Can't have it! Can't have it one bit - what's that?
+																	 Myrmidex. *He pauses and thinks for a moment as he sits back on the stool*  Maybe
 																	 I heard of em, maybe I aint...I'll tell ya what ye go and clear some o' the creature
 																	 s that be plaguing the seas and maybe I tell ya what I know about them Myrmidex.*/
 
         public override object Refuse => 1156812;     // What's the matter, aint got yer sea legs? Har Har Har!
 
-        public override object Uncomplete => 1156813;   /*Ye needin' to make the seas safe for Captains like me!  Make sure ye killin' the 
-																	 critters in the South Britannian Sea.  The seas south of the Britannian continent 
-																	 and between the far western Island of Jhelom and the Island of Valor.  Big stretch 
+        public override object Uncomplete => 1156813;   /*Ye needin' to make the seas safe for Captains like me!  Make sure ye killin' the
+																	 critters in the South Britannian Sea.  The seas south of the Britannian continent
+																	 and between the far western Island of Jhelom and the Island of Valor.  Big stretch
 																	 o' ocean to be clobberin sea monsters!  Get yerself a special fishing net if ye can
 																	 't find the beasts, that'd be sure to wrangle them in!*/
 
@@ -239,11 +239,11 @@ namespace Server.Engines.Quests
     {
         public override object Title => 1156815;          // A Tinker's Task
 
-        public override object Description => 1156816;  /*Ha ha...he he...hoo hoo...yes yes...its all coming together now if only...*the 
-																	 tinker pauses and looks up*  Myrmidex did you say?  Oh yes, we are most certainly 
-																	 on the same page here!  I assume my Barrabian colleague sent you?  Of course he 
+        public override object Description => 1156816;  /*Ha ha...he he...hoo hoo...yes yes...its all coming together now if only...*the
+																	 tinker pauses and looks up*  Myrmidex did you say?  Oh yes, we are most certainly
+																	 on the same page here!  I assume my Barrabian colleague sent you?  Of course he
 																	 did!  I'm almost ready to begin tinkering on the Automaton - but I need some
-																	 supplies first.  You collect those supplies and I'll give you the Stator you seek.  
+																	 supplies first.  You collect those supplies and I'll give you the Stator you seek.
 																	 Long live the Myrmidex!  Long live the Barrab! Ha ha! He he! Hoo Hoo!*/
 
         public override object Refuse => 1156817;         // No time to waste on those uncommitted to the cause - be gone with you!
@@ -251,7 +251,7 @@ namespace Server.Engines.Quests
         public override object Uncomplete => 1156818;   /*Acquire the items I require to begin work on my Automaton and I'll give you the Stator.
 																	 Don't come back until you've got everything!*/
 
-        public override object Complete => 1156819;   /*Ha ha! He he! Hoo hoo! These are just what I needed - the Automaton won't take long now, 
+        public override object Complete => 1156819;   /*Ha ha! He he! Hoo hoo! These are just what I needed - the Automaton won't take long now,
 																	 soon I shall wield this Kotl Technology and our Insect overlords will rule with the Barrab
 																	 at their side.  Only those loyal Britannians will be spared!  Here is the Stator as
 																	 I promised...*/
@@ -299,29 +299,29 @@ namespace Server.Engines.Quests
 
         public override object Title => 1156763;          // Exterminating the Infestation
 
-        public override object Description => 1156764;  /*It is unfortunate it had to come to this.  My hope was the knowledge gained from 
-																	 all the peoples and creatures of Eodon would better our understanding of life - 
-																	 alas the Myrmidex are an abomination, creatures born into enslavement by an 
-																	 oppressive alien race, the Kotl.  The Kotl came to Eodon to expand their empire 
-																	 and in doing so upset the delicate ecosystem that is the natural wonder of this 
+        public override object Description => 1156764;  /*It is unfortunate it had to come to this.  My hope was the knowledge gained from
+																	 all the peoples and creatures of Eodon would better our understanding of life -
+																	 alas the Myrmidex are an abomination, creatures born into enslavement by an
+																	 oppressive alien race, the Kotl.  The Kotl came to Eodon to expand their empire
+																	 and in doing so upset the delicate ecosystem that is the natural wonder of this
 																	 place.  The Valley cannot survive if the Myrmidex are allowed to spread, and there
-																	 is no guarantee Britannia will be safe - they must be destroyed from within.  
-																	 We must quell their numbers significantly in order to force their Queen into 
+																	 is no guarantee Britannia will be safe - they must be destroyed from within.
+																	 We must quell their numbers significantly in order to force their Queen into
 																	 reproduction, we must also obtain a powerful pheromone to gain safe passage within
-																	 the deepest reaches of their pits, and we must also find an insecticide powerful 
-																	 enough to destroy them. Only then can we confront the Myrmidex Queen and end the 
+																	 the deepest reaches of their pits, and we must also find an insecticide powerful
+																	 enough to destroy them. Only then can we confront the Myrmidex Queen and end the
 																	 Myrmidex threat.*/
 
-        public override object Refuse => 1156767;         /*I must question your commitment to our cause - are you satisfied with these Myrmidex 
+        public override object Refuse => 1156767;         /*I must question your commitment to our cause - are you satisfied with these Myrmidex
 																     invaders and their Barrabian allies?*/
 
-        public override object Uncomplete => 1156768;   /*You must obtain the Insecticide from the Gambler at the Modest Damsel in New 
-																	 Magincia, the Pheremone from the Gardener in Delucia, and the Population Report 
+        public override object Uncomplete => 1156768;   /*You must obtain the Insecticide from the Gambler at the Modest Damsel in New
+																	 Magincia, the Pheremone from the Gardener in Delucia, and the Population Report
 																	 from Lt. Foxx before we can launch an offensive against the Myrmidex Queen!*/
 
         public override object Complete => 1156769;   /*I should be excited but I cannot help but grimace at the destruction of an entire
-																	 population *she frowns a bit*  I must remain pragmatic though, this is for the 
-																	 greater good of the Valley and Britannia.  The time to destroy the Myrmidex Queen 
+																	 population *she frowns a bit*  I must remain pragmatic though, this is for the
+																	 greater good of the Valley and Britannia.  The time to destroy the Myrmidex Queen
 																	 is now.*/
 
         public ExterminatingTheInfestationQuest()
@@ -363,17 +363,17 @@ namespace Server.Engines.Quests
 
         public override object Title => 1156770;           // Insecticide and Regicide
 
-        public override object Description => 1156771;   /*Everything is in place.  In the depths of the Myrmidex Pits are the Queen's 
+        public override object Description => 1156771;   /*Everything is in place.  In the depths of the Myrmidex Pits are the Queen's
 																	  chambers, it is there that she spawns new Myrmidex to bolster the numbers within
-																	  the colony.  No doubt she is powerful - the energy of the moonstones is sure to 
-																	  have seen to that.  It pains me to say this but - take no mercy, she must be 
+																	  the colony.  No doubt she is powerful - the energy of the moonstones is sure to
+																	  have seen to that.  It pains me to say this but - take no mercy, she must be
 																	  destroyed for the safety of the peoples of Eodon.*/
 
         public override object Refuse => 1156767;      /*I must question your commitment to our cause - are you satisfied with these Myrmidex
 																	  invaders and their Barrabian allies?;*/
 
-        public override object Uncomplete => 1156773;    /*You must go into the depths of the Myrmidex Pits and find the Queen - she must 
-																	  be destroyed!  The entrance to the deepest parts of the Myrmidex Pits are in the 
+        public override object Uncomplete => 1156773;    /*You must go into the depths of the Myrmidex Pits and find the Queen - she must
+																	  be destroyed!  The entrance to the deepest parts of the Myrmidex Pits are in the
 																	  sandy valley to the West.*/
 
         public override object Complete => 1156774;      /*You are brave and courageous - the Valley of Eodon is now safe from the Myrmidex threat!;*/
@@ -420,7 +420,7 @@ namespace Server.Engines.Quests
         public override object Title => 1156785;          // Pest Control
 
         public override object Description => 1156776;  /*A significant portion of the Myrmidex population has been quelled in the surface
-																	 reaches of their habitat.  Population reduction estimated to meet or exceed 
+																	 reaches of their habitat.  Population reduction estimated to meet or exceed
 																	 parameters set forth for operational security.  Recommend proceed.*/
 
         public override object Refuse => 1156787;         // I knew it, you must be yellar!  Get out of my sight!
@@ -430,7 +430,7 @@ namespace Server.Engines.Quests
 																	 - stay out of the Myrmidex Pits!*/
 
         public override object Complete => 1156789;   /*Well color me surprised, you did it!  Now that we've gotten rid of enough of these
-																	 pests the Queen will have no choice but to reveal herself - here's the population 
+																	 pests the Queen will have no choice but to reveal herself - here's the population
 																	 report you'll need for Professor Rafkin!*/
 
         public PestControlQuest()
@@ -470,22 +470,22 @@ namespace Server.Engines.Quests
     {
         public override object Title => 1156790;        // Getting Even
 
-        public override object Description => 1156791;  /* *Sobs* Whyyyyy couldn't I just stop, no just had to be one more hand - I knew if 
-																     I could just get on a hot streak I'd make it all better...but I lost everything, 
-																	 even my shirt! I loved that shirt, was so puffy and soft.  How can fortune have 
-																	 cursed me so badly?  The only thing left to do is drink this poison here and - 
-																	 *pauses and looks at you*  You want this poison?  *eyebrow raises a bit*  Well if 
-																	 you want it so bad you've got to do me a solid, head to the Fortune's Fire Casino 
+        public override object Description => 1156791;  /* *Sobs* Whyyyyy couldn't I just stop, no just had to be one more hand - I knew if
+																     I could just get on a hot streak I'd make it all better...but I lost everything,
+																	 even my shirt! I loved that shirt, was so puffy and soft.  How can fortune have
+																	 cursed me so badly?  The only thing left to do is drink this poison here and -
+																	 *pauses and looks at you*  You want this poison?  *eyebrow raises a bit*  Well if
+																	 you want it so bad you've got to do me a solid, head to the Fortune's Fire Casino
 																	 and make them pay!  Bring down the house and I'll let you have the poison, at least
 																	 show me SOMEONE can win in that wretched place!*/
 
         public override object Refuse => 1156796;         // Can't even be bothered to help a guy down on his luck? *sigh*
 
-        public override object Uncomplete => 1156797;   /*You need to go to the Fortune's Fire Casino on Fire Island and show those dealers 
-																	 who's boss!  Win 3 games each of Chuckle's Luck, Hi-Mid-Lo, and Dice Rider and I'll give 
+        public override object Uncomplete => 1156797;   /*You need to go to the Fortune's Fire Casino on Fire Island and show those dealers
+																	 who's boss!  Win 3 games each of Chuckle's Luck, Hi-Mid-Lo, and Dice Rider and I'll give
 																	 you the poison!*/
 
-        public override object Complete => 1156798;   /*Luck be a lady tonight! Winner-winner chicken dinner! I'm back in the game, don't 
+        public override object Complete => 1156798;   /*Luck be a lady tonight! Winner-winner chicken dinner! I'm back in the game, don't
 																	 need this poison anymore - here you go!*/
 
 
@@ -624,18 +624,18 @@ namespace Server.Engines.Quests
 
         public override object Description => 1156781;  /*I cannot believe these wretched pests!  I can't even manage to plant a single head of lettuce
 																	 without these rascals chomping them up!  *She pauses for a moment and looks at you
-																	 quizzically*  Oh, hello there!  What is it I can do for you?  Roses?  Watermelons? 
-																	 Lettuces?  We've got them all...well maybe not lettuces but...Myrmidex Pheremone? 
-																	 Well that is certainly a special request - say, how about this?  You take care of 
+																	 quizzically*  Oh, hello there!  What is it I can do for you?  Roses?  Watermelons?
+																	 Lettuces?  We've got them all...well maybe not lettuces but...Myrmidex Pheremone?
+																	 Well that is certainly a special request - say, how about this?  You take care of
 																	 my rabbit problem and I'll give you the pheremone.  Sounds fair to me!*/
 
         public override object Refuse => 1156782;         // Well if you're afraid of a little bunny then you haven't much business tackling a Myrmidex.  Hrmph!
 
-        public override object Uncomplete => 1156783;     /*There's no time to lose!  My lettuces won't grow until you deal with the dastardly 
+        public override object Uncomplete => 1156783;     /*There's no time to lose!  My lettuces won't grow until you deal with the dastardly
 																	 bunnies wreaking havoc on my gardens! Get a green thorn and plant it in the garden's dirt
 																	 to drive them out!*/
 
-        public override object Complete => 1156784;       /*Well done! With these pests out of my gardens I can finally get on with growing a prized lettuce! 
+        public override object Complete => 1156784;       /*Well done! With these pests out of my gardens I can finally get on with growing a prized lettuce!
 																	 Here's your Pheromone as I promised!*/
 
         public OfVorpalsAndLettacesTheGardnerQuest()

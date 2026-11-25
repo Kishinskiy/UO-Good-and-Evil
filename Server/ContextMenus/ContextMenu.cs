@@ -159,7 +159,7 @@ namespace Server.ContextMenus
 		}
 
 		/// <summary>
-		/// Returns the proper index of Enhanced Client Context Menu when sent from the icon on 
+		/// Returns the proper index of Enhanced Client Context Menu when sent from the icon on
 		/// the vendors status bar. Only known are Bank, Bulk Order Info and Bribe
 		/// </summary>
 		/// <param name="index">pre-described index sent by client. Must be 0x64 or higher</param>

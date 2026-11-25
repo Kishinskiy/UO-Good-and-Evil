@@ -35,10 +35,10 @@ namespace Server.Spells.Necromancy
                 /* Temporarily imbues a weapon with a life draining effect.
                 * Half the damage that the weapon inflicts is added to the necromancer's health.
                 * The effects lasts for (Spirit Speak skill level / 34) + 1 seconds.
-                * 
+                *
                 * NOTE: Above algorithm is fixed point, should be :
                 * (Spirit Speak skill level / 3.4) + 1
-                * 
+                *
                 * TODO: What happens if you curse a weapon then give it to someone else? Should they get the drain effect?
                 */
                 Caster.PlaySound(0x387);

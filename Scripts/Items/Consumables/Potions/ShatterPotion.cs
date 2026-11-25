@@ -114,7 +114,7 @@ namespace Server.Items
 
                 if (p > 1)
                 {
-                    from.SendLocalizedMessage(1115762, string.Format("{0}\t{1}", from.Name, p)); // ~1_NAME~'s shatter potion destroys ~2_NUM~ potions in your inventory.                    
+                    from.SendLocalizedMessage(1115762, string.Format("{0}\t{1}", from.Name, p)); // ~1_NAME~'s shatter potion destroys ~2_NUM~ potions in your inventory.
                 }
                 else
                 {

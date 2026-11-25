@@ -193,7 +193,7 @@ namespace Server.Mobiles
 
             base.OnDoubleClick(from);
         }
-                
+
         public class GuildQuestSelectGump : Server.Gumps.Gump
         {
 	        private readonly PlayerMobile m_Player;
@@ -226,8 +226,8 @@ namespace Server.Mobiles
 	        }
         }
 
-        
-        
+
+
         public override bool OnGoldGiven(Mobile from, Gold dropped)
         {
             if (from is PlayerMobile && dropped.Amount == JoinCost)

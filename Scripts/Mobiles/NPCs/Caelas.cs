@@ -16,8 +16,8 @@ namespace Server.Engines.Quests
 
         /* Warrior Caste */
         public override object Title => 1073078;
-        /* The Terathan are an aggressive species. Left unchecked, they will swarm across our lands. 
-        And where will that leave us? Compost in the hive, that's what! Stop them, stop them cold my 
+        /* The Terathan are an aggressive species. Left unchecked, they will swarm across our lands.
+        And where will that leave us? Compost in the hive, that's what! Stop them, stop them cold my
         friend. Kill their warriors and you'll check their movement, that is certain. */
         public override object Description => 1073568;
         /* I hope you'll reconsider. Until then, farwell. */
@@ -51,8 +51,8 @@ namespace Server.Engines.Quests
 
         /* Big Worms */
         public override object Title => 1073088;
-        /* It makes no sense! Cold blooded serpents cannot live in the ice! It's a biological impossibility! 
-        They are an abomination against reason! Please, I beg you - kill them! Make them disappear for me! Do 
+        /* It makes no sense! Cold blooded serpents cannot live in the ice! It's a biological impossibility!
+        They are an abomination against reason! Please, I beg you - kill them! Make them disappear for me! Do
         this and I will reward you. */
         public override object Description => 1073578;
         /* I hope you'll reconsider. Until then, farwell. */
@@ -87,8 +87,8 @@ namespace Server.Engines.Quests
 
         /* Orcish Elite */
         public override object Title => 1073081;
-        /* Foul brutes! No one loves an orc, but some of them are worse than the rest. Their Captains and their 
-        Bombers, for instance, they're the worst of the lot. Kill a few of those, and the rest are just a rabble. 
+        /* Foul brutes! No one loves an orc, but some of them are worse than the rest. Their Captains and their
+        Bombers, for instance, they're the worst of the lot. Kill a few of those, and the rest are just a rabble.
         Exterminate a few of them and you'll make the world a sunnier place, don't you know. */
         public override object Description => 1073571;
         /* I hope you'll reconsider. Until then, farwell. */

@@ -19,8 +19,8 @@ namespace Server.Engines.Quests
 
         public override object Title => 1113787;
 
-        /*Psst. Do you want to buy something rare and valuable? Yes? Good. I have in my possession an imbuing ingredient that is highly sought after. 
-        If you wish to make a trade, it will not come cheaply. 
+        /*Psst. Do you want to buy something rare and valuable? Yes? Good. I have in my possession an imbuing ingredient that is highly sought after.
+        If you wish to make a trade, it will not come cheaply.
         Provide me with two perfect emeralds and one piece of crystalline blackrock, and what is in this box shall be yours. */
 
         public override object Description => 1113788;
@@ -33,7 +33,7 @@ namespace Server.Engines.Quests
 
         public override object Uncomplete => 1113790;
 
-        /*Let me see what you have brought me. Yes, this is of fine quality, and I accept it in trade. 
+        /*Let me see what you have brought me. Yes, this is of fine quality, and I accept it in trade.
         Here is your box. Please do not spread word of our deal, as I do not want attention brought upon me. I am sure you understand.*/
 
         public override object Complete => 1113791;

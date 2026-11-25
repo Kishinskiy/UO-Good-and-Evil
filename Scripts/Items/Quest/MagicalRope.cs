@@ -15,7 +15,7 @@ namespace Server.Items
         {
         }
 
-        public override int LabelNumber => 1074338;// Magical Rope	
+        public override int LabelNumber => 1074338;// Magical Rope
         public override int Lifespan => 600;
         public override void Serialize(GenericWriter writer)
         {

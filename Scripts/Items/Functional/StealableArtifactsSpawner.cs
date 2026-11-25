@@ -7,7 +7,7 @@ namespace Server.Items
     public class StealableArtifactsSpawner : Item
     {
         private static readonly StealableEntry[] m_Entries = new StealableEntry[]
-        {            
+        {
             // Doom - Artifact rarity 1
             new StealableEntry(Map.Malas, new Point3D(317, 56, -1), 72, 108, typeof(RockArtifact)),
             new StealableEntry(Map.Malas, new Point3D(360, 31, 8), 72, 108, typeof(SkullCandleArtifact)),

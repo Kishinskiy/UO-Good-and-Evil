@@ -206,7 +206,7 @@ namespace Server.Items
         {
             base.Serialize(writer);
 
-            writer.Write(1); // version			
+            writer.Write(1); // version
             writer.WriteEncodedInt((int)m_Level);
         }
 
@@ -514,8 +514,8 @@ namespace Server.Items
                         map = Map.Trammel;
                     }
                     break;
-                // vesper doesn't have it's own moongate, it shares one with minoc. 
-                // but osi has an entry for one, clilocs confirm this.		
+                // vesper doesn't have it's own moongate, it shares one with minoc.
+                // but osi has an entry for one, clilocs confirm this.
                 case "vesper moongate":
                     {
                         loc = new Point3D(2701, 692, 5);

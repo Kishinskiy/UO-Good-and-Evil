@@ -60,7 +60,7 @@ namespace Server.Mobiles
 			public int FindGumpX;
 			public int FindGumpY;
 
-			// these are additional defaults that are not set by XmlAdd but can be used by other routines such as the custom properties gump to determine 
+			// these are additional defaults that are not set by XmlAdd but can be used by other routines such as the custom properties gump to determine
 			// whether properties have been changed from spawner default values
 			public bool Running = true;
 
@@ -1193,7 +1193,7 @@ namespace Server.Mobiles
 				//from.CloseGump(typeof(XmlAddGump));
 				Refresh(m_state.Mobile, true);
 
-				// open the spawner gump 
+				// open the spawner gump
 				DoShowGump(from, spawner);
 			}
 		}

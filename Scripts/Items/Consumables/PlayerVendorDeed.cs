@@ -6,7 +6,7 @@ namespace Server.Items
     public class ContractOfEmployment : Item
     {
 		public override int LabelNumber => 1041243;// a contract of employment
-		
+
         [Constructable]
         public ContractOfEmployment()
             : base(0x14F0)
@@ -59,7 +59,7 @@ namespace Server.Items
 
                 if (house == null)
                 {
-                    from.SendLocalizedMessage(503240); // Vendors can only be placed in houses.	
+                    from.SendLocalizedMessage(503240); // Vendors can only be placed in houses.
                 }
                 else if (!house.IsOwner(from))
                 {

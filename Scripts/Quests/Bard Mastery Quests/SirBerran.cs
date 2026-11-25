@@ -18,16 +18,16 @@ namespace Server.Engines.Quests
 
         public override object Title => 1115696;        //Wielding the Sonic Blade
 
-        public override object Description => 1115697;  /*This quest is the single quest required for a player to unlock the discordance mastery 
-                                                                        * abilities for bards. This quest can be completed multiple times to reinstate the discordance 
-                                                                        * mastery. To prove yourself worthy, you must first be a master of discordance and musicianship. 
+        public override object Description => 1115697;  /*This quest is the single quest required for a player to unlock the discordance mastery
+                                                                        * abilities for bards. This quest can be completed multiple times to reinstate the discordance
+                                                                        * mastery. To prove yourself worthy, you must first be a master of discordance and musicianship.
                                                                         * You must be willing to distort your notes to bring pain to even the most indifferent ears.*/
 
         public override object Refuse => 1115700;        //You must strive to spread discord.
 
         public override object Uncomplete => 1115700;    //You must strive to spread discord.
 
-        public override object Complete => 1115701;      /* You have proven yourself worthy of wielding your music as a weapon. Rend the ears of your 
+        public override object Complete => 1115701;      /* You have proven yourself worthy of wielding your music as a weapon. Rend the ears of your
                                                                          * foes with your wails of discord. Let your song be feared as much as any sword.*/
 
         public override bool CanOffer()
@@ -100,7 +100,7 @@ namespace Server.Engines.Quests
                     Quest.OnCompleted();
                 else
                 {
-                    Quest.Owner.SendLocalizedMessage(1115749, true, (MaxProgress - CurProgress).ToString()); // Creatures remaining to be discorded: 
+                    Quest.Owner.SendLocalizedMessage(1115749, true, (MaxProgress - CurProgress).ToString()); // Creatures remaining to be discorded:
                     Quest.Owner.PlaySound(Quest.UpdateSound);
                 }
 

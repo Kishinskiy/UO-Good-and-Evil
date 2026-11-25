@@ -94,7 +94,7 @@ namespace Server.Items
                         m_Mobile.ToggleCutClippings = true;
                         m_Mobile.ToggleCutReeds = false;
                         m_Mobile.ToggleCutTopiaries = false;
-                        m_Mobile.SendLocalizedMessage(1112284); // You are already set to make plant clippings 
+                        m_Mobile.SendLocalizedMessage(1112284); // You are already set to make plant clippings
                     }
                     else
                     {
@@ -111,7 +111,7 @@ namespace Server.Items
                         m_Mobile.ToggleCutReeds = true;
                         m_Mobile.ToggleCutClippings = false;
                         m_Mobile.ToggleCutTopiaries = false;
-                        m_Mobile.SendLocalizedMessage(1112287); // You are already set to cut reeds. 
+                        m_Mobile.SendLocalizedMessage(1112287); // You are already set to cut reeds.
                     }
                     else
                     {
@@ -128,7 +128,7 @@ namespace Server.Items
                         m_Mobile.ToggleCutTopiaries = true;
                         m_Mobile.ToggleCutReeds = false;
                         m_Mobile.ToggleCutClippings = false;
-                        m_Mobile.SendLocalizedMessage(1150653); // You are already set to cut topiaries! 
+                        m_Mobile.SendLocalizedMessage(1150653); // You are already set to cut topiaries!
                     }
                     else
                     {

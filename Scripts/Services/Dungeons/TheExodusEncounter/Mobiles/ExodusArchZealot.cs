@@ -222,7 +222,7 @@ namespace Server.Mobiles
 
             //// START PAGE 5 Summoning Rite
             AddPage(5);
-            AddHtmlLocalized(107, 110, 300, 230, 1153679, White, false, true); // From the tongue of the summoner these words must flow, for without them thou art not true! 
+            AddHtmlLocalized(107, 110, 300, 230, 1153679, White, false, true); // From the tongue of the summoner these words must flow, for without them thou art not true!
 
             AddHtmlLocalized(155, 340, 250, 24, 1153680, White, false, false);
             AddButton(125, 340, 0x26B0, 0x26B1, 0, GumpButtonType.Page, 6);//Sacrifical Dagger?
@@ -295,7 +295,7 @@ namespace Server.Mobiles
 
         }
 
-        public override void OnResponse(NetState sender, RelayInfo info) //Function for GumpButtonType.Reply Buttons 
+        public override void OnResponse(NetState sender, RelayInfo info) //Function for GumpButtonType.Reply Buttons
         {
             Mobile from = sender.Mobile;
 
@@ -303,7 +303,7 @@ namespace Server.Mobiles
             {
                 case 0:
                     {
-                        //Cancel 
+                        //Cancel
                         from.SendMessage("Good Luck!");
                         break;
                     }

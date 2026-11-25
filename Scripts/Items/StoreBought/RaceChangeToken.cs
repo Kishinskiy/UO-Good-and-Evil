@@ -150,7 +150,7 @@ namespace Server.Items
             AddImageTiled(5, 5, 281, 20, 2702);
             AddImageTiled(5, 30, 281, 100, 2702);
 
-            AddHtmlLocalized(8, 5, 279, 20, 1113641, 0x7FFF, false, false); // Change your character's race. 
+            AddHtmlLocalized(8, 5, 279, 20, 1113641, 0x7FFF, false, false); // Change your character's race.
 
             AddButton(5, 132, 0xFB1, 0xFB3, 0, GumpButtonType.Reply, 0);
             AddHtmlLocalized(40, 132, 100, 20, 1011012, 0x7FFF, false, false); // CANCEL

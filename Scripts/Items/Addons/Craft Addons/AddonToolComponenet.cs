@@ -135,7 +135,7 @@ namespace Server.Items
 
                 if (house == null || Addon == null || !house.HasSecureAccess(m, Addon.Level))
                 {
-                    num = 1061637; // You are not allowed to access 
+                    num = 1061637; // You are not allowed to access
                     return false;
                 }
             }

@@ -198,7 +198,7 @@ namespace Server.SkillHandlers
             {
                 return false;
             }
-			
+
 			// pets shouldn't reveal their masters
 			if (src is BaseCreature sbc && sbc.ControlMaster == target)
 			{
@@ -223,14 +223,14 @@ namespace Server.SkillHandlers
 			{
 				return false;
 			}
-			
+
 			// pets shouldn't reveal their masters
 			if (src is BaseCreature sbc2 && sbc2.ControlMaster == target)
 			{
 				return false;
 			}
-			
-			
+
+
             if (src.Map.Rules == MapRules.FeluccaRules && direct)
             {
                 return !SpellHelper.IsGuildAllyOrParty(src, target);

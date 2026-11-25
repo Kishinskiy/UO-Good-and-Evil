@@ -52,7 +52,7 @@ namespace Server.Engines.CityLoyalty
             Weight = 10.0;
 
             if (CityTradeSystem.KrampusEncounterActive)
-            {                
+            {
                 Hue = Utility.Random(100);
             }
 
@@ -346,7 +346,7 @@ namespace Server.Engines.CityLoyalty
             AddBackground(0, 0, 291, 93, 0x13BE);
             AddImageTiled(5, 5, 280, 60, 0xA40);
 
-            AddHtmlLocalized(9, 9, 272, 60, 1151728, 0x7FFF, false, false); // Are you sure you wish to cancel this trade order?  All contents of the trade crate will be placed in your backpack. 
+            AddHtmlLocalized(9, 9, 272, 60, 1151728, 0x7FFF, false, false); // Are you sure you wish to cancel this trade order?  All contents of the trade crate will be placed in your backpack.
 
             AddButton(160, 67, 0xFB7, 0xFB8, 1, GumpButtonType.Reply, 0);
             AddHtmlLocalized(195, 69, 120, 20, 1006044, 0x7FFF, false, false); // OKAY

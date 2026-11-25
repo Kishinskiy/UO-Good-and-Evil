@@ -23,7 +23,7 @@ namespace Server.Items
                 var chest = new WoodenChest();
 
                 chest.DropItem(new WeddingShortBuffetTableDeed());
-                chest.DropItem(new WeddingLongBuffetTableDeed());                
+                chest.DropItem(new WeddingLongBuffetTableDeed());
 
                 var tablebag = new Bag();
                 tablebag.DropItem(new WeddingCocktailTable());

@@ -603,7 +603,7 @@ namespace Server.Engines.Auction
             }
             else
             {
-                AddHtmlLocalized(200, 330, 175, 18, 1114513, "#1156440", Gray, false, false); // Auction Pending                
+                AddHtmlLocalized(200, 330, 175, 18, 1114513, "#1156440", Gray, false, false); // Auction Pending
             }
 
             AddHtmlLocalized(15, 350, 175, 18, 1114514, "#1156436", Yellow, false, false); // Current Platinum Bid:
@@ -694,20 +694,20 @@ namespace Server.Engines.Auction
             AddHtmlLocalized(50, 10, 500, 18, 1114513, "#1156371", 0x7FFF, false, false); // <DIV ALIGN=CENTER>~1_TOKEN~</DIV>
 
             /*<DIV ALIGN=CENTER>Auction Safe</DIV><DIV ALIGN=LEFT><BR>Auction Safe deeds can be obtained from the veteran reward system.<BR>An Auction
-             * Safe can be placed within public houses. When placed in a home the owner will be able to set access security on which users are allowed 
-             * to place bids.<br>Setting up an auction first requires you to select an item from your backpack for auction. This item cannot be gold, 
-             * a container, over 399 stones in weight, and must meet <A HREF="http://uo.com/wiki/ultima-online-wiki/gameplay/npc-commercial-transactions/npcs-player-owned"> 
+             * Safe can be placed within public houses. When placed in a home the owner will be able to set access security on which users are allowed
+             * to place bids.<br>Setting up an auction first requires you to select an item from your backpack for auction. This item cannot be gold,
+             * a container, over 399 stones in weight, and must meet <A HREF="http://uo.com/wiki/ultima-online-wiki/gameplay/npc-commercial-transactions/npcs-player-owned">
              * requirements for adding an item to a vendor.</A>Once the item has been added it will be placed on the auction safe to be displayed.
-             * A starting bid and auction length must be set before you can start the auction and cannot be changed once the auction begins. 140 
-             * characters can be used to describe your auction item which can be updated at any time. A Buy Now price can be set which will allow 
+             * A starting bid and auction length must be set before you can start the auction and cannot be changed once the auction begins. 140
+             * characters can be used to describe your auction item which can be updated at any time. A Buy Now price can be set which will allow
              * customers to skip a bidding war and purchase the item at listed cost, but by doing so includes an approximate 5% fee on the purchase
-             * price.<br>On completion of the auction the owner account will receive their payment immediately and will be notified by in game mail 
-             * of the outcome. The winning bidder will now have 3 days to retrieve their item from the auction safe or it will revert back to the 
+             * price.<br>On completion of the auction the owner account will receive their payment immediately and will be notified by in game mail
+             * of the outcome. The winning bidder will now have 3 days to retrieve their item from the auction safe or it will revert back to the
              * owner. Once the auctioned item has been retrieved the auction safe will once again be available to start a new auction.<br><br>In order
-             * to bid on an auction, players must have<A HREF="http://uo.com/wiki/ultima-online-wiki/player/money"> currency available in their 
-             * account.</A> Bidders can then place a bid for the maximum amount they are willing to pay for the listed item. Funds will immediately 
+             * to bid on an auction, players must have<A HREF="http://uo.com/wiki/ultima-online-wiki/player/money"> currency available in their
+             * account.</A> Bidders can then place a bid for the maximum amount they are willing to pay for the listed item. Funds will immediately
              * be removed from your account if your bid is successful. If your bid is higher than the current maximum bid yours will become the current
-             * winning bid. If you are out bid as the winning bid you will be notified by in game mail and your bid will be refunded to your account. 
+             * winning bid. If you are out bid as the winning bid you will be notified by in game mail and your bid will be refunded to your account.
              * On completion of the auction if you are the winning bid you will be notified that you have three days to claim your item. Upon claiming
              * your item if you have any change as a result of your maximum bid it will be refunded to you.</DIV>*/
             AddHtmlLocalized(50, 37, 500, 313, 1156441, 0x4100, true, true);

@@ -17,7 +17,7 @@ namespace Server.Items
             : base(serial)
         {
         }
-        
+
         public override int InitMinUses => 1600;
         public override int InitMaxUses => 1600;
 

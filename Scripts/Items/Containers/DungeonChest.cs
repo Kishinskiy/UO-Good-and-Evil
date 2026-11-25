@@ -33,7 +33,7 @@ namespace Server.Items
         {
             base.Serialize(writer);
 
-            writer.Write(0); // version 
+            writer.Write(0); // version
         }
 
         public override void Deserialize(GenericReader reader)
@@ -81,7 +81,7 @@ namespace Server.Items
         {
             base.Serialize(writer);
 
-            writer.Write(0); // version 
+            writer.Write(0); // version
         }
 
         public override void Deserialize(GenericReader reader)
@@ -152,7 +152,7 @@ namespace Server.Items
         {
             base.Serialize(writer);
 
-            writer.Write(0); // version 
+            writer.Write(0); // version
         }
 
         public override void Deserialize(GenericReader reader)
@@ -221,7 +221,7 @@ namespace Server.Items
         {
             base.Serialize(writer);
 
-            writer.Write(0); // version 
+            writer.Write(0); // version
         }
 
         public override void Deserialize(GenericReader reader)

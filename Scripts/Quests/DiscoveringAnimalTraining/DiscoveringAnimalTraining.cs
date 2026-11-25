@@ -20,8 +20,8 @@ namespace Server.Engines.Quests
         /* Discovering Animal Training */
         public override object Title => 1157527;
 
-        /*Years of patience and meticulous study have paid off!  New Animal Training techniques have been discovered!  
-         * Animal tamers may now train their pets, teaching them new ways to fight and survive!  The first step is to 
+        /*Years of patience and meticulous study have paid off!  New Animal Training techniques have been discovered!
+         * Animal tamers may now train their pets, teaching them new ways to fight and survive!  The first step is to
          * tame a creature.  Find a creature in the wild, and using your animal taming skill - tame it!*/
         public override object Description => 1157528;
 
@@ -35,7 +35,7 @@ namespace Server.Engines.Quests
         public override object Complete => 1157532;
 
         public override int AcceptSound => 0x2E8;
-        public override int CompleteMessage => 1157539;  // // You've completed an Animal Training quest! Visit an Animal Trainer to continue!				
+        public override int CompleteMessage => 1157539;  // // You've completed an Animal Training quest! Visit an Animal Trainer to continue!
 
         public static void CheckTame(PlayerMobile pm)
         {
@@ -107,11 +107,11 @@ namespace Server.Engines.Quests
         /* Discovering Animal Training */
         public override object Title => 1157527;
 
-        /*Now that your pet is tame, you must begin the training process.  Pets will train while they are engaged in 
+        /*Now that your pet is tame, you must begin the training process.  Pets will train while they are engaged in
          * combat, and will progress as they battle other creatures.  Pets train best against wild creatures, and will
-         * learn the most from the fiercest creatures in the realm!  There is a limit to how much a pet can learn from 
-         * a single foe, so make sure your pet has fresh adversaries!<br><br>When you are ready to begin the training 
-         * process, use the Animal Lore skill on your pet and select "Begin Animal Training."  When your pet has 
+         * learn the most from the fiercest creatures in the realm!  There is a limit to how much a pet can learn from
+         * a single foe, so make sure your pet has fresh adversaries!<br><br>When you are ready to begin the training
+         * process, use the Animal Lore skill on your pet and select "Begin Animal Training."  When your pet has
          * completed the training process you can teach them new ways to fight and survive!*/
         public override object Description => 1157533;
 
@@ -126,7 +126,7 @@ namespace Server.Engines.Quests
 
         public override void OnCompleted()
         {
-            Owner.SendLocalizedMessage(1157536, null, 0x23); // Well done!  Now that your pet has begun the Animal Training process return to the Animal Trainer to learn more about the next steps.					
+            Owner.SendLocalizedMessage(1157536, null, 0x23); // Well done!  Now that your pet has begun the Animal Training process return to the Animal Trainer to learn more about the next steps.
             Owner.PlaySound(CompleteSound);
         }
 
@@ -201,19 +201,19 @@ namespace Server.Engines.Quests
         /* Discovering Animal Training */
         public override object Title => 1157527;
 
-        /*Now that you have started the training process it is time to lead your pet into battle!  Pets will train while 
-         * they are engaged in combat, and will progress as they battle other creatures.  Pets train best against wild 
-         * creatures, and will learn the most from the fiercest creatures in the realm!  There is a limit to how much a 
+        /*Now that you have started the training process it is time to lead your pet into battle!  Pets will train while
+         * they are engaged in combat, and will progress as they battle other creatures.  Pets train best against wild
+         * creatures, and will learn the most from the fiercest creatures in the realm!  There is a limit to how much a
          * pet can learn from a single foe, so make sure your pet has fresh adversaries!  When the "Pet Training Progress"
-         * bar is full, your pet is ready to learn new ways to fight and survive.  <br><br>Now you must lead your pet into 
+         * bar is full, your pet is ready to learn new ways to fight and survive.  <br><br>Now you must lead your pet into
          * the wild and battle it against other creatures!*/
         public override object Description => 1157540;
 
         /* The life of an animal trainer is not for everyone, return to an Animal Trainer if you wish to try again. */
         public override object Refuse => 1157530;
 
-        /* Lead your pet into the wild and battle it against other creatures until the "Pet Training Progress" bar is full. 
-         * Remember Pets train best against wild creatures, and will learn the most from the fiercest creatures in the realm!  
+        /* Lead your pet into the wild and battle it against other creatures until the "Pet Training Progress" bar is full.
+         * Remember Pets train best against wild creatures, and will learn the most from the fiercest creatures in the realm!
          * There is a limit to how much a pet can learn from a single foe, so make sure your pet has fresh adversaries! */
         public override object Uncomplete => 1157542;
 
@@ -222,7 +222,7 @@ namespace Server.Engines.Quests
 
         public override void OnCompleted()
         {
-            Owner.SendLocalizedMessage(1157536, null, 0x23); // Well done!  Now that your pet has begun the Animal Training process return to the Animal Trainer to learn more about the next steps.	
+            Owner.SendLocalizedMessage(1157536, null, 0x23); // Well done!  Now that your pet has begun the Animal Training process return to the Animal Trainer to learn more about the next steps.
             Owner.PlaySound(CompleteSound);
         }
 
@@ -297,17 +297,17 @@ namespace Server.Engines.Quests
         /* Discovering Animal Training */
         public override object Title => 1157527;
 
-        /*Now that your pet has fully trained, it is time to teach it something new!  Use the Animal Lore skill on your pet and select 
+        /*Now that your pet has fully trained, it is time to teach it something new!  Use the Animal Lore skill on your pet and select
          * "Pet Training Options."  The Animal Training menu lists all of the available training properties you can apply to the pet.
          * <br><br>The Categories pane shows the category of available properties:<br><br>Stats and Resists allow you to increase
          * individual Stat and Resist properties for the pet.<br><br>Increase Magic Skill Caps and Increase Combat Skill Caps allow
          * you to increase skill caps for various magical and combat related skills.  This process requires the use of Power Scrolls
-         * and only increases the skill cap, you will still need to train the pet in the specific skill through traditional pet skill 
+         * and only increases the skill cap, you will still need to train the pet in the specific skill through traditional pet skill
          * training. <br><br>Magical Abilities allow you to give the pet magical abilities in one of several spell schools<br><br>Special
          * Abilities allow you to give the pet special abilities, different than those traditionally found as weapon special moves.
-         * <br><br>Special Moves allow you to give the pet special moves, similar to those traditionally found as weapon special moves. 
+         * <br><br>Special Moves allow you to give the pet special moves, similar to those traditionally found as weapon special moves.
          * <br><br>Area Effect Abilities allow you to give the pet an area attack, targeting multiple adversaries within an area.<br><br>
-         * When you train your pet, the number of control slots the pet requires will increase.  The maximum number of control slots any 
+         * When you train your pet, the number of control slots the pet requires will increase.  The maximum number of control slots any
          * pet can have is 5, however individual pets have maximum control slots they can be trained to.<br><br>A pet can only learn so
          * much during each training level.  As you mix and match properties from the Animal Training menu, the amount of available training
          * points will decrease based on your selections.  Different property selections have different training point costs.  When you are
@@ -317,18 +317,18 @@ namespace Server.Engines.Quests
         /* The life of an animal trainer is not for everyone, return to an Animal Trainer if you wish to try again. */
         public override object Refuse => 1157530;
 
-        /*Use the Animal Lore skill on your pet and select "Pet Training Options" to mix and match which properties 
-             * you will train your pet.  When you are satisfied with the property you have chosen select "Train Pet" 
+        /*Use the Animal Lore skill on your pet and select "Pet Training Options" to mix and match which properties
+             * you will train your pet.  When you are satisfied with the property you have chosen select "Train Pet"
              * and confirm the training!.*/
         public override object Uncomplete => 1157546;
 
-        /* You have Discovered Animal Training!  Train new pets and mix and match properties to create unique variations of pets to take into 
+        /* You have Discovered Animal Training!  Train new pets and mix and match properties to create unique variations of pets to take into
          * battle!  Good Luck, Animal Trainer! */
         public override object Complete => 1157547;
 
         public override void OnCompleted()
         {
-            Owner.SendLocalizedMessage(1157539, null, 0x23); // You've completed an Animal Training quest! Visit an Animal Trainer to continue!						
+            Owner.SendLocalizedMessage(1157539, null, 0x23); // You've completed an Animal Training quest! Visit an Animal Trainer to continue!
             Owner.PlaySound(CompleteSound);
         }
 
@@ -356,8 +356,8 @@ namespace Server.Engines.Quests
         public class InternalObjective : BaseObjective
         {
             public override object ObjectiveDescription => 1157546;
-            /*Use the Animal Lore skill on your pet and select "Pet Training Options" to mix and match which properties 
-            * you will train your pet.  When you are satisfied with the property you have chosen select "Train Pet" 
+            /*Use the Animal Lore skill on your pet and select "Pet Training Options" to mix and match which properties
+            * you will train your pet.  When you are satisfied with the property you have chosen select "Train Pet"
             * and confirm the training!.*/
 
             public InternalObjective()

@@ -51,7 +51,7 @@ namespace Server.Engines.Quests
         /* An escort to the New Haven Bard */
         public override object Title => 1072315;
 
-        /* I fear my talent for music is less than my desire to learn, yet still I would like to try. Can you take me 
+        /* I fear my talent for music is less than my desire to learn, yet still I would like to try. Can you take me
         * to the local music shop? */
         public override object Description => 1042772;
 
@@ -188,7 +188,7 @@ namespace Server.Engines.Quests
         /* An escort to the New Haven Mapmaker */
         public override object Title => 1072319;
 
-        /* Where am I? Who am I? Do you know me? Hmmm - on second thought, I think I best stick with where I am first. 
+        /* Where am I? Who am I? Do you know me? Hmmm - on second thought, I think I best stick with where I am first.
         * Do you know where I can get a map? */
         public override object Description => 1042793;
 
@@ -223,7 +223,7 @@ namespace Server.Engines.Quests
         /* An escort to the New Haven Mage */
         public override object Title => 1072320;
 
-        /* You there. Take me to see a sorcerer so I can turn a friend back in to a human. He is currently a cat 
+        /* You there. Take me to see a sorcerer so I can turn a friend back in to a human. He is currently a cat
         * and keeps demanding milk. */
         public override object Description => 1042790;
 

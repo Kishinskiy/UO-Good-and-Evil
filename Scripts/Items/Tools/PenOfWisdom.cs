@@ -9,7 +9,7 @@ namespace Server.Items
     [Flipable(0x0FBF, 0x0FC0)]
     public class PenOfWisdom : Item, IUsesRemaining
     {
-        public override int LabelNumber => 1115358;  // Pen of Wisdom		
+        public override int LabelNumber => 1115358;  // Pen of Wisdom
         private int m_UsesRemaining;
 
         [CommandProperty(AccessLevel.GameMaster)]

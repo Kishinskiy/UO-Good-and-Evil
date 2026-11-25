@@ -11,7 +11,7 @@
 </preloadedTC>
 
 <!--detail>
-For these to be loaded, you must enable it by marking UsePreloadedMessages field in TownCryerSystem.cs to true. 
+For these to be loaded, you must enable it by marking UsePreloadedMessages field in TownCryerSystem.cs to true.
 
 expires must be blank, or after the current date time, or the message will not load.
 

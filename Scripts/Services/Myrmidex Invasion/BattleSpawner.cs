@@ -785,15 +785,15 @@ namespace Server.Engines.MyrmidexInvasion
         }
 
         private static readonly Point2D[][][] _NavPoints1 =
-        {       
-            //Lane 1                                                                                                                                               
+        {
+            //Lane 1
             new Point2D[][] { new Point2D[] { new Point2D(853, 1785), new Point2D(853, 1800), new Point2D(853, 1815), new Point2D(855, 1830), new Point2D(855, 1845), new Point2D(855, 1860), new Point2D(855, 1875), /*shares with next*/ new Point2D(860, 1883), new Point2D(872, 1887), new Point2D(891, 1887) },
                               new Point2D[] { new Point2D(903, 1875), new Point2D(903, 1860), new Point2D(903, 1845), new Point2D(903, 1830), new Point2D(903, 1815), /*shares with next*/ new Point2D(903, 1807), new Point2D(905, 1797), new Point2D(906, 1787) } },
 
             //Lane 2
             new Point2D[][] { new Point2D[] { new Point2D(859, 1785), new Point2D(859, 1800), new Point2D(859, 1815), new Point2D(859, 1830), new Point2D(859, 1845), new Point2D(859, 1860), new Point2D(859, 1875), /*shares with prev*/ new Point2D(860, 1883), new Point2D(872, 1887), new Point2D(891, 1887) },
                               new Point2D[] { new Point2D(909, 1875), new Point2D(909, 1860), new Point2D(909, 1845), new Point2D(909, 1830), new Point2D(909, 1815), /*shares with prev*/ new Point2D(909, 1807), new Point2D(910, 1797), new Point2D(912, 1787) } },
-            
+
             //Lance 3
             new Point2D[][] { new Point2D[] { new Point2D(865, 1785), new Point2D(865, 1800), new Point2D(865, 1815), new Point2D(865, 1830), new Point2D(865, 1845), new Point2D(865, 1860), new Point2D(865, 1875), /*shares with next*/ new Point2D(872, 1880), new Point2D(879, 1887), new Point2D(891, 1887), new Point2D(903, 1885) },
                               new Point2D[] { new Point2D(915, 1875), new Point2D(915, 1860), new Point2D(915, 1845), new Point2D(915, 1830), new Point2D(915, 1815), /*shares with next*/ new Point2D(915, 1807), new Point2D(915, 1797), new Point2D(915, 1787) } },
@@ -804,8 +804,8 @@ namespace Server.Engines.MyrmidexInvasion
         };
 
         private static readonly Point2D[][][] _NavPoints2 =
-        {       
-            //Lane 1                                                                                                                                               
+        {
+            //Lane 1
             new Point2D[][] {
                               new Point2D[] { new Point2D(906, 1877), new Point2D(904, 1860), new Point2D(903, 1845), new Point2D(903, 1830), new Point2D(903, 1815), /*shares with next*/ new Point2D(909, 1807), new Point2D(921, 1807), new Point2D(935, 1801), new Point2D(950, 1797), new Point2D(959, 1798), new Point2D(973, 1802) },
                               new Point2D[] { new Point2D(973, 1815), new Point2D(973, 1830), new Point2D(973, 1845), new Point2D(973, 1860), new Point2D(973, 1875) } },
@@ -814,7 +814,7 @@ namespace Server.Engines.MyrmidexInvasion
             new Point2D[][] {
                               new Point2D[] { new Point2D(909, 1877), new Point2D(909, 1860), new Point2D(909, 1845), new Point2D(909, 1830), new Point2D(909, 1815), /*shares with prev*/ new Point2D(909, 1807), new Point2D(921, 1807), new Point2D(935, 1801), new Point2D(950, 1797), new Point2D(959, 1798), new Point2D(973, 1802), new Point2D(979, 1805) },
                               new Point2D[] { new Point2D(979, 1820), new Point2D(979, 1820), new Point2D(979, 1835), new Point2D(979, 1850), new Point2D(979, 1865), new Point2D(979, 1880) } },
-            
+
             //Lance 3
             new Point2D[][] {
                               new Point2D[] { new Point2D(915, 1877), new Point2D(915, 1860), new Point2D(915, 1845), new Point2D(915, 1830), new Point2D(915, 1815), /*shares with next*/ new Point2D(921, 1807), new Point2D(935, 1801), new Point2D(950, 1797), new Point2D(959, 1798), new Point2D(973, 1802), new Point2D(979, 1805), new Point2D(985, 1809) },

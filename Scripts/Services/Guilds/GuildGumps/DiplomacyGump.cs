@@ -133,7 +133,7 @@ namespace Server.Guilds
         {
             base.PopulateGump();
 
-            AddHtmlLocalized(431, 43, 110, 26, 1062978, 0xF, false, false); // Diplomacy			
+            AddHtmlLocalized(431, 43, 110, 26, 1062978, 0xF, false, false); // Diplomacy
         }
 
         protected override TextDefinition[] GetValuesFor(Guild g, int aryLength)

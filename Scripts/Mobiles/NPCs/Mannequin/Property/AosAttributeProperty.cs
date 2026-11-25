@@ -426,7 +426,7 @@ namespace Server.Mobiles.MannequinProperty
         public override Catalog Catalog => Catalog.Combat1;
         public override bool IsBoolen => true;
         public override int LabelNumber => 1072792;  // Balanced
-        public override int Description => 1152384;  // This property is only available on archery weapons.  This property allows a player to use a two handed weapon as if it were a one handed weapon.  You can perform any action that normally requires a free hand, such as drinking a potion or throwing a shuriken.  
+        public override int Description => 1152384;  // This property is only available on archery weapons.  This property allows a player to use a two handed weapon as if it were a one handed weapon.  You can perform any action that normally requires a free hand, such as drinking a potion or throwing a shuriken.
         public override AosAttribute Attribute => AosAttribute.BalancedWeapon;
         public override int Hue => 0x5E5D;
         public override int SpriteW => 180;

@@ -348,7 +348,7 @@ namespace Server.Items
                 }
             }
             else
-                from.SendLocalizedMessage(1061637); // You are not allowed to access 
+                from.SendLocalizedMessage(1061637); // You are not allowed to access
         }
 
         private class InternalAddonComponent : LocalizedAddonComponent

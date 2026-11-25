@@ -90,7 +90,7 @@ namespace Server.Spells.Bushido
 
         public override void OnClearMove(Mobile attacker)
         {
-            PlayerMobile ThePlayer = attacker as PlayerMobile; // this can be deletet if the PlayerMobile parts are moved to Server.Mobile 
+            PlayerMobile ThePlayer = attacker as PlayerMobile; // this can be deletet if the PlayerMobile parts are moved to Server.Mobile
             if (ThePlayer != null)
             {
                 ThePlayer.ExecutesLightningStrike = 0;

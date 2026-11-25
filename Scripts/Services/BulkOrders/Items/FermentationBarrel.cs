@@ -64,7 +64,7 @@ namespace Server.Items
             }
             else if (FermentingEnds > DateTime.UtcNow)
             {
-                from.SendLocalizedMessage(1157230); // You may not open the barrel once fermentation has begun!                
+                from.SendLocalizedMessage(1157230); // You may not open the barrel once fermentation has begun!
             }
             else if (Fermented)
             {
@@ -341,7 +341,7 @@ namespace Server.Items
                 }
                 else
                 {
-                    m_Mobile.SendGump(new ConfirmFermentationGump(m_Mobile as PlayerMobile, 1157234, 1157240, confirm: _Barrel.StartFermentation)); // Are you sure you wish to start the fermentation process? 
+                    m_Mobile.SendGump(new ConfirmFermentationGump(m_Mobile as PlayerMobile, 1157234, 1157240, confirm: _Barrel.StartFermentation)); // Are you sure you wish to start the fermentation process?
                 }
             }
         }
@@ -353,7 +353,7 @@ namespace Server.Items
 
             if (!Fermented && HasFruitAndYeast())
             {
-                m.SendLocalizedMessage(1157239); // The fermentation process has begun.                
+                m.SendLocalizedMessage(1157239); // The fermentation process has begun.
 
                 Year = DateTime.UtcNow.Year.ToString();
                 FermentingEnds = DateTime.UtcNow + TimeSpan.FromHours(24);
@@ -426,7 +426,7 @@ namespace Server.Items
 
             if (Fermenting)
             {
-                m.SendLocalizedMessage(1157236); // You empty the contents of the barrel.                
+                m.SendLocalizedMessage(1157236); // You empty the contents of the barrel.
 
                 BottlesRemaining = 0;
                 Fermenting = false;

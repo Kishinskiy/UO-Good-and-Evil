@@ -18,7 +18,7 @@ namespace Server.Misc
 
 			public override Expansion RequiredExpansion { get; set; } = Expansion.None;
 
-			public override int[] ExclusiveEquipment { get; set; } = 
+			public override int[] ExclusiveEquipment { get; set; } =
 			{
 			};
 

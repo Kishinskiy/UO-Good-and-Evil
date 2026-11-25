@@ -4,8 +4,8 @@ using System;
 namespace Server.Items
 {
     // The projectile will be infused with energy by the attacker causing it to do more damage and stun or dismount the target.
-    // The player infuses their throwing projectile with mystical power. 
-    // The infused projectile will dismount the target if possible; otherwise it will temporarily stun the target. 
+    // The player infuses their throwing projectile with mystical power.
+    // The infused projectile will dismount the target if possible; otherwise it will temporarily stun the target.
     // The target will be hit with chaos damage regardless of whether they were dismounted or paralyzed.
     public class InfusedThrow : WeaponAbility
     {

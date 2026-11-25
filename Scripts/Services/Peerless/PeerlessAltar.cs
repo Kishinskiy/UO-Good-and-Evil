@@ -220,14 +220,14 @@ namespace Server.Items
 
             bool isKey = false;
 
-            // check if item is key	
+            // check if item is key
             for (int i = 0; i < Keys.Length && !isKey; i++)
             {
                 if (Keys[i].IsAssignableFrom(item.GetType()))
                     isKey = true;
             }
 
-            // check if item is already in container			
+            // check if item is already in container
             for (int i = 0; i < Items.Count && isKey; i++)
             {
                 if (Items[i].GetType() == item.GetType())
@@ -285,7 +285,7 @@ namespace Server.Items
             if (m_Helpers != null)
                 writer.WriteMobileList(m_Helpers);
 
-            // version 0			
+            // version 0
             writer.Write(Peerless);
             writer.Write(BossLocation);
             writer.Write(TeleportDest);
@@ -293,10 +293,10 @@ namespace Server.Items
 
             writer.Write(Deadline);
 
-            // serialize master keys						
+            // serialize master keys
             writer.WriteItemList(MasterKeys);
 
-            // serialize fighters							
+            // serialize fighters
             writer.WriteMobileList(Fighters);
         }
 
@@ -502,7 +502,7 @@ namespace Server.Items
             // delete any remaining helpers
             CleanupHelpers();
 
-            // reset summoner, boss		
+            // reset summoner, boss
             Peerless = null;
             Deadline = DateTime.MinValue;
 
@@ -590,7 +590,7 @@ namespace Server.Items
 
                 CleanupHelpers();
 
-                // reset summoner, boss		
+                // reset summoner, boss
                 Peerless = null;
 
                 Deadline = DateTime.MinValue;

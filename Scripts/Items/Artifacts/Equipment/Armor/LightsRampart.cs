@@ -3,7 +3,7 @@ namespace Server.Items
     public class LightsRampart : MetalShield
     {
         public override bool IsArtifact => true;
-        public override int LabelNumber => 1112407;// Light's Rampart 
+        public override int LabelNumber => 1112407;// Light's Rampart
         public override int ArtifactRarity => 11;
         public override int BasePhysicalResistance => 4;
         public override int BaseFireResistance => 5;

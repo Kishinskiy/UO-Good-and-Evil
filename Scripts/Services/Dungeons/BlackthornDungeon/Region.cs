@@ -60,7 +60,7 @@ namespace Server.Engines.Blackthorn
             }
 
             Effects.PlaySound(m.Location, m.Map, 0x231);
-            m.LocalOverheadMessage(Network.MessageType.Regular, 0x22, 500855); // You are enveloped by a noxious gas cloud!                
+            m.LocalOverheadMessage(Network.MessageType.Regular, 0x22, 500855); // You are enveloped by a noxious gas cloud!
             m.ApplyPoison(m, Poison.Lethal);
 
             IPooledEnumerable eable = Map.GetMobilesInRange(m.Location, 12);

@@ -4,8 +4,8 @@ using Server.Network;
 using Server.Spells.Ninjitsu;
 using System;
 
-/*The paladin unleashes a flying fist against a target that does energy damage based on the paladin's chivalry 
- * skill, best weapon skill, and mastery level.  A bonus to damage is provided by high karma as well against undead 
+/*The paladin unleashes a flying fist against a target that does energy damage based on the paladin's chivalry
+ * skill, best weapon skill, and mastery level.  A bonus to damage is provided by high karma as well against undead
  * targets.*/
 
 namespace Server.Spells.SkillMasteries

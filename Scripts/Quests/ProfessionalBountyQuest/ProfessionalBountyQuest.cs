@@ -270,7 +270,7 @@ namespace Server.Engines.Quests
 
             g.AddHtmlObject(160, 70, 330, 16, Title, BaseQuestGump.DarkGreen, false, false);
             g.AddHtmlLocalized(98, 140, 312, 16, 1049073, 0x2710, false, false); // Objective:
-            g.AddHtmlLocalized(98, 156, 312, 16, 1072208, 0x2710, false, false); // All of the following	
+            g.AddHtmlLocalized(98, 156, 312, 16, 1072208, 0x2710, false, false); // All of the following
 
             int offset = 172;
 

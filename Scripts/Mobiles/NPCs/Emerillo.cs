@@ -16,16 +16,16 @@ namespace Server.Engines.Quests
 
         /* Culinary Crisis */
         public override object Title => 1074755;
-        /* You have NO idea how impossible this is.  Simply intolerable!  How can one expect an artiste' like me to 
-        create masterpieces of culinary delight without the best, fresh ingredients?  Ever since this whositwhatsit 
-        started this uproar, my thrice-daily produce deliveries have ended.  I can't survive another hour without 
+        /* You have NO idea how impossible this is.  Simply intolerable!  How can one expect an artiste' like me to
+        create masterpieces of culinary delight without the best, fresh ingredients?  Ever since this whositwhatsit
+        started this uproar, my thrice-daily produce deliveries have ended.  I can't survive another hour without
         produce! */
         public override object Description => 1074756;
         /* You have no artistry in your soul. */
         public override object Refuse => 1074757;
         /* I must have fresh produce and cheese at once! */
         public override object Uncomplete => 1074758;
-        /* Those dates look bruised!  Oh no, and you fetched a soft cheese.  *deep pained sigh*  Well, even I can only 
+        /* Those dates look bruised!  Oh no, and you fetched a soft cheese.  *deep pained sigh*  Well, even I can only
         do so much with inferior ingredients.  BAM! */
         public override object Complete => 1074759;
         public override bool CanOffer()

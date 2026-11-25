@@ -37,7 +37,7 @@ namespace Server.Gumps
 
             AddBackground(0, 0, 560, 720, 0x6DB);
             AddImageTiled(270, 5, 6, 710, 0x6DE);
-            AddHtmlLocalized(5, 5, 270, 18, 1114513, "#1159291", 0x42FF, false, false); // <DIV ALIGN=CENTER>~1_TOKEN~</DIV>            
+            AddHtmlLocalized(5, 5, 270, 18, 1114513, "#1159291", 0x42FF, false, false); // <DIV ALIGN=CENTER>~1_TOKEN~</DIV>
             AddAlphaRegion(5, 5, 550, 710);
 
             AddHtmlLocalized(0, 23, 270, 18, 1114513, string.Format("#{0}", _SameItem.LabelNumber), 0x7FFF, false, false); // <DIV ALIGN=CENTER>~1_TOKEN~</DIV>

@@ -11,11 +11,11 @@ namespace Server.Engines.Quests
         /* A Scholarly Task */
         public override object Title => 1077603;
 
-        /* Head East out of town and go to Old Haven.Use Evaluating Intelligence on all creatures you see there. You can also 
-        cast Magery spells as well to raise Evaluating Intelligence. Do these activities until you have raised your Evaluating 
-        Intelligence skill to 50. Hello. Truly knowing your opponent is essential for landing you offnesive spells with precision. 
-        I can teach you how to enhance the effectiveness of you offensive spells, but first you must learn how to size up your 
-        opponents intellectually. I have a scholarly task for you. Head East out of town and go to Old Haven.Use Evaluating 
+        /* Head East out of town and go to Old Haven.Use Evaluating Intelligence on all creatures you see there. You can also
+        cast Magery spells as well to raise Evaluating Intelligence. Do these activities until you have raised your Evaluating
+        Intelligence skill to 50. Hello. Truly knowing your opponent is essential for landing you offnesive spells with precision.
+        I can teach you how to enhance the effectiveness of you offensive spells, but first you must learn how to size up your
+        opponents intellectually. I have a scholarly task for you. Head East out of town and go to Old Haven.Use Evaluating
         Intelligence on all creatures you see there. You can also cast Magery spells as well to raise Evaluating Intelligence.
         Come back to me once you feel that you are worthy of the rank Apprentice Scholar and i will reward you with a arcane prize. */
         public override object Description => 1077604;
@@ -23,13 +23,13 @@ namespace Server.Engines.Quests
         /* Return to me if you reconsider and wish to become an Apprentice Scholar. */
         public override object Refuse => 1077605;
 
-        /* You have not achived the rank of Apprentice Scholar. Come back to me once you feel that you are worthy of the rank 
+        /* You have not achived the rank of Apprentice Scholar. Come back to me once you feel that you are worthy of the rank
         Apprentice Scholar and i will reward you with a arcane prize. */
         public override object Uncomplete => 1077629;
 
-        /* You have completed the task. Well Done. On behalf of the New Haven Mage Council i wish to present you with this ring. 
-        When worn the Ring of the Savant enhances your inellectual aptitude and increases your mana pool. Your spell castng 
-        abilities will take less time to invoke and recovering from such spell casting will be bastened. I hope the Ring of the 
+        /* You have completed the task. Well Done. On behalf of the New Haven Mage Council i wish to present you with this ring.
+        When worn the Ring of the Savant enhances your inellectual aptitude and increases your mana pool. Your spell castng
+        abilities will take less time to invoke and recovering from such spell casting will be bastened. I hope the Ring of the
         Savant serves you well. */
         public override object Complete => 1077607;
 

@@ -135,20 +135,20 @@ namespace Server.Engines.NewMagincia
                     int newreserve = MaginciaBazaar.GetBidMatching(m_Plot.Owner);
                     winner = m_Plot.Owner;
 
-                    /*You extended your lease on Stall ~1_STALLNAME~ at the ~2_FACET~ New Magincia 
-					 *Bazaar. You matched the top bid of ~3_BIDAMT~gp. That amount has been deducted 
-					 *from your Match Bid of ~4_MATCHAMT~gp. Your Match Bid balance is now 
-					 *~5_NEWMATCH~gp. You may reclaim any additional match bid funds or adjust 
+                    /*You extended your lease on Stall ~1_STALLNAME~ at the ~2_FACET~ New Magincia
+					 *Bazaar. You matched the top bid of ~3_BIDAMT~gp. That amount has been deducted
+					 *from your Match Bid of ~4_MATCHAMT~gp. Your Match Bid balance is now
+					 *~5_NEWMATCH~gp. You may reclaim any additional match bid funds or adjust
 					 *your match bid for next week at the bazaar.*/
                     MaginciaLottoSystem.SendMessageTo(m_Plot.Owner, new NewMaginciaMessage(null, new TextDefinition(1150427), string.Format("@{0}@{1}@{2}@{3}@{4}", m_Plot.PlotDef.ID, m_Plot.PlotDef.Map.ToString(), highest.ToString("N0"), matching.ToString("N0"), newreserve.ToString("N0"))));
                 }
                 else
                 {
-                    /*You lost the bid to extend your lease on Stall ~1_STALLNAME~ at the ~2_FACET~ 
-					 *New Magincia Bazaar. Your match bid amount of ~3_BIDAMT~gp is held in escrow 
-					 *at the Bazaar. You may obtain a full refund there at any time. Your hired 
-					 *merchant, if any, has deposited your proceeds and remaining inventory at the 
-					 *Warehouse in New Magincia. You must retrieve these within one week or they 
+                    /*You lost the bid to extend your lease on Stall ~1_STALLNAME~ at the ~2_FACET~
+					 *New Magincia Bazaar. Your match bid amount of ~3_BIDAMT~gp is held in escrow
+					 *at the Bazaar. You may obtain a full refund there at any time. Your hired
+					 *merchant, if any, has deposited your proceeds and remaining inventory at the
+					 *Warehouse in New Magincia. You must retrieve these within one week or they
 					 *will be destroyed.*/
                     MaginciaLottoSystem.SendMessageTo(m_Plot.Owner, new NewMaginciaMessage(null, new TextDefinition(1150528), string.Format("@{0}@{1}@{2}", m_Plot.PlotDef.ID, m_Plot.PlotDef.Map.ToString(), matching.ToString("N0"))));
                 }

@@ -24,7 +24,7 @@ namespace Server.Guilds
             AddHtmlLocalized(25, 60, 450, 60, 1062940, 0x0, false, false); // As you are not a member of any guild, you can create your own by providing a unique guild name and paying the standard guild registration fee.
             AddHtmlLocalized(25, 135, 120, 25, 1062941, 0x0, false, false); // Registration Fee:
             AddLabel(155, 135, 0x481, Guild.RegistrationFee.ToString());
-            AddHtmlLocalized(25, 165, 120, 25, 1011140, 0x0, false, false); // Enter Guild Name: 
+            AddHtmlLocalized(25, 165, 120, 25, 1011140, 0x0, false, false); // Enter Guild Name:
             AddBackground(155, 160, 320, 26, 0xBB8);
             AddTextEntry(160, 163, 315, 21, 0x481, 5, guildName);
             AddHtmlLocalized(25, 191, 120, 26, 1063035, 0x0, false, false); // Abbreviation:

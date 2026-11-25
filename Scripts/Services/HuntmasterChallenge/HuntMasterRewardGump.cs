@@ -107,7 +107,7 @@ namespace Server.Engines.HuntsmasterChallenge
             new CollectionItem(typeof(RecipeScroll), 0x2831, 1159205, 0, 1.0), // BBQ Dino Ribs Recipe
             new CollectionItem(typeof(RecipeScroll), 0x2831, 1159206, 0, 1.0), // Waku Chicken Recipe
             new CollectionItem(typeof(BakeKitsuneHat), 0xA42B, 1126051, 0, 1.0),
-            new CollectionItem(typeof(HuntmastersRewardTitleDeed), 0x14EF, 0, 0, 1.0),            
+            new CollectionItem(typeof(HuntmastersRewardTitleDeed), 0x14EF, 0, 0, 1.0),
             new CollectionItem(typeof(GargishRangersGuildSash), 0x46B5, 0, 0, 1.0),
             new CollectionItem(typeof(RangersGuildSash), 0x1541, 0, 0, 1.0),
         };

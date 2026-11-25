@@ -10,7 +10,7 @@ namespace Server.Items
         public override int LabelNumber => 1151679;  // Scrolls of Transcendence Book
         public override int BadDropMessage => 1151677;  // This book only holds Scrolls of Transcendence.
         public override int DropMessage => 1151674;     // You add the scroll to your Scrolls of Transcendence book.
-        public override int RemoveMessage => 1151658;   // You remove a Scroll of Transcendence and put it in your pack. 
+        public override int RemoveMessage => 1151658;   // You remove a Scroll of Transcendence and put it in your pack.
         public override int GumpTitle => 1151675;   // Scrolls of Transcendence
 
         [Constructable]

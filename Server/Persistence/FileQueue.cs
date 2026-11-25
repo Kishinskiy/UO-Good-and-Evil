@@ -12,7 +12,7 @@ namespace Server
 	{
 		private static readonly int bufferSize;
 		private static readonly BufferPool bufferPool;
-		
+
 		private readonly object syncRoot;
 		private readonly Chunk[] active;
 		private readonly Queue<Page> pending;
@@ -21,7 +21,7 @@ namespace Server
 		private int activeCount;
 		private ManualResetEvent idle;
 		private long position;
-		
+
 		public long Position => position;
 
 		public FileQueue(int concurrentWrites, FileCommitCallback callback)

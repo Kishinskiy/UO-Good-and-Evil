@@ -84,7 +84,7 @@ namespace Server.Engines.CannedEvil
                 }
             }
         }
-        
+
         private static bool ConsumeElementalRelics(PlayerMobile pm)
         {
             if (pm.Backpack == null)

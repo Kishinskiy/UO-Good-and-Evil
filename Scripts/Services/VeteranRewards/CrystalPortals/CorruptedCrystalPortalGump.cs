@@ -18,7 +18,7 @@ namespace Server.Gumps
             AddHtmlLocalized(40, 160, 150, 16, 1113300, 0, false, false); // by
             AddHtmlLocalized(40, 180, 150, 32, 1113299, 0, false, false); // <center>(unknown)</center>
             AddHtmlLocalized(230, 30, 145, 160, 1150076, 0, false, false); // This corrupted portal allows you to teleport directly to a dungeon.<br><br>For
-            // Trammel ruleset, say "dungeon" followed by the name of the dungeon (e.g. "dungeon shame"). 
+            // Trammel ruleset, say "dungeon" followed by the name of the dungeon (e.g. "dungeon shame").
 
             AddLabel(250, 200, 0, "1"); // todo: get
 
@@ -28,7 +28,7 @@ namespace Server.Gumps
 
             AddHtmlLocalized(40, 35, 150, 160, 1150077, 0, false, false); // For Felucca, say "fel" then same rules as above. So "fel dungeon shame".
 
-            AddHtmlLocalized(230, 30, 145, 160, 1150075, 0, false, false); // DUNGEON NAMES:<br>covetous, deceit, despise, destard, ice, fire, hythloth, 
+            AddHtmlLocalized(230, 30, 145, 160, 1150075, 0, false, false); // DUNGEON NAMES:<br>covetous, deceit, despise, destard, ice, fire, hythloth,
             // orc, shame, wrong, wind, doom, citadel, fandancer, mines, bedlam, labyrinth,
             //underworld, abyss, grove, caves, palace, prism,
 

@@ -311,7 +311,7 @@ namespace Server.Engines.Shadowguard
         [CommandProperty(AccessLevel.GameMaster)]
         public ShadowguardCypressFoilage Foilage { get; set; }
 
-        // 0xD96, 0xD9A, 
+        // 0xD96, 0xD9A,
 
         public ShadowguardCypress(OrchardEncounter encounter, VirtueType type)
             : base(3329)
@@ -747,7 +747,7 @@ namespace Server.Engines.Shadowguard
                 case Direction.South:
                     switch (_Flow)
                     {
-                        case Flow.EastWest: return false; // 
+                        case Flow.EastWest: return false; //
                         case Flow.NorthSouth: return f == Flow.NorthSouth || f == Flow.SouthEastCorner || f == Flow.SouthWestCorner; //
                         case Flow.NorthWestCorner: return f == Flow.NorthSouth || f == Flow.SouthEastCorner || f == Flow.SouthWestCorner; //
                         case Flow.NorthEastCorner: return f == Flow.NorthSouth || f == Flow.SouthEastCorner || f == Flow.SouthWestCorner; //
@@ -760,7 +760,7 @@ namespace Server.Engines.Shadowguard
                     {
                         case Flow.EastWest: return f == Flow.EastWest || f == Flow.NorthEastCorner || f == Flow.SouthEastCorner; //
                         case Flow.NorthSouth: return false; //
-                        case Flow.NorthWestCorner: return f == Flow.EastWest || f == Flow.NorthEastCorner || f == Flow.SouthEastCorner; // 
+                        case Flow.NorthWestCorner: return f == Flow.EastWest || f == Flow.NorthEastCorner || f == Flow.SouthEastCorner; //
                         case Flow.NorthEastCorner: return false; //
                         case Flow.SouthWestCorner: return f == Flow.EastWest || f == Flow.NorthEastCorner || f == Flow.SouthEastCorner; //
                         case Flow.SouthEastCorner: return false; //
@@ -773,7 +773,7 @@ namespace Server.Engines.Shadowguard
                         case Flow.NorthSouth: return false; //
                         case Flow.NorthWestCorner: return false; //
                         case Flow.NorthEastCorner: return f == Flow.EastWest || f == Flow.NorthWestCorner || f == Flow.SouthWestCorner; //
-                        case Flow.SouthWestCorner: return false; // 
+                        case Flow.SouthWestCorner: return false; //
                         case Flow.SouthEastCorner: return f == Flow.EastWest || f == Flow.NorthWestCorner || f == Flow.SouthWestCorner; //
                     }
                     break;
@@ -1015,10 +1015,10 @@ namespace Server.Engines.Shadowguard
 
                 AddHtmlLocalized(40, 45, 330, 200, 1156216, 1, false, true);
                 /*I've finally found...this vile orchard is the key to Minax's enchantments!...
-                 * days I've spent trapped within this tower, I dare not pick the fruit from 
-                 * the foliage for I know not what consequences may...Hunger is building...so 
-                 * hungry I must...Blech! Vile fruit!...What's this? For when I tossed this 
-                 * vile apple from whence it came a horrific beast appeared!...for I hope I 
+                 * days I've spent trapped within this tower, I dare not pick the fruit from
+                 * the foliage for I know not what consequences may...Hunger is building...so
+                 * hungry I must...Blech! Vile fruit!...What's this? For when I tossed this
+                 * vile apple from whence it came a horrific beast appeared!...for I hope I
                  * can fight it...<br>*/
             }
         }

@@ -1007,8 +1007,8 @@
     <IsHomeRangeRelative>True</IsHomeRangeRelative>
     <Objects2>treasureLevel3:MX=1:SB=0:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1:OBJ=treasureLevel4:MX=2:SB=0:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1</Objects2>
   </Points>
-  
-  
+
+
   <Points>
     <Name>destardLvl2Demons</Name>
     <UniqueId>26452bd0-a794-486a-aa46-ff5645dc23ab</UniqueId>

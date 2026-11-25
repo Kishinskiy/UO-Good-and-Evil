@@ -11,25 +11,25 @@ namespace Server.Engines.Quests
         /* Channeling the Supernatural */
         public override object Title => 1078044;
 
-        /* Head East out of town and go to Old Haven. Use Spirit Speak and channel energy from either yourself or nearby corpses 
-        there. You can also cast Necromancy spells as well to raise Spirit Speak. Do these activities until you have raised your 
-        Spirit Speak skill to 50.<br><center>------</center><br>How do you do? Channeling the supernatural through Spirit Speak 
-        allows you heal your wounds. Such channeling expends your mana, so be mindful of this. Spirit Speak enhances the potency 
+        /* Head East out of town and go to Old Haven. Use Spirit Speak and channel energy from either yourself or nearby corpses
+        there. You can also cast Necromancy spells as well to raise Spirit Speak. Do these activities until you have raised your
+        Spirit Speak skill to 50.<br><center>------</center><br>How do you do? Channeling the supernatural through Spirit Speak
+        allows you heal your wounds. Such channeling expends your mana, so be mindful of this. Spirit Speak enhances the potency
         of your Necromancy spells. The channeling powers of a Medium are quite useful when practicing the dark magic of Necromancy.
-        <br><br>It is best to practice Spirit Speak where there are a lot of corpses. Head East out of town and go to Old Haven. 
-        Undead currently reside there. Use Spirit Speak and channel energy from either yourself or nearby corpses. You can also 
-        cast Necromancy spells as well to raise Spirit Speak.<br><br>Come back to me once you feel that you are worthy of the 
+        <br><br>It is best to practice Spirit Speak where there are a lot of corpses. Head East out of town and go to Old Haven.
+        Undead currently reside there. Use Spirit Speak and channel energy from either yourself or nearby corpses. You can also
+        cast Necromancy spells as well to raise Spirit Speak.<br><br>Come back to me once you feel that you are worthy of the
         rank of Apprentice Medium and I will reward you with something useful. */
         public override object Description => 1078047;
 
         /* Channeling the supernatural isn't for everyone. It is a dark art. See me if you ever wish to pursue the life of a Medium. */
         public override object Refuse => 1078048;
 
-        /* Back so soon? You have not achieved the rank of Apprentice Medium. Come back to me once you feel that you are worthy of 
+        /* Back so soon? You have not achieved the rank of Apprentice Medium. Come back to me once you feel that you are worthy of
         the rank of Apprentice Medium and I will reward you with something useful. */
         public override object Uncomplete => 1078049;
 
-        /* Well done! Channeling the supernatural is taxing, indeed. As promised, I will reward you with this bag of Necromancer 
+        /* Well done! Channeling the supernatural is taxing, indeed. As promised, I will reward you with this bag of Necromancer
         reagents. You will need these if you wish to also pursue the dark magic of Necromancy. Good journey to you. */
         public override object Complete => 1078051;
 

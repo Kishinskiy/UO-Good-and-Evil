@@ -84,14 +84,14 @@ namespace Server.Engines.CannedEvil
                 new[] { typeof(LichLord), typeof(RottingCorpse) }// Level 4
             }),
             new ChampionSpawnInfo("Sleeping Dragon", typeof(Serado), new[] { "Rival", "Challenger", "Antagonist" }, new[] // Sleeping Dragon
-            { 
+            {
                 new[] { typeof(DeathwatchBeetleHatchling), typeof(Lizardman) },
                 new[] { typeof(DeathwatchBeetle), typeof(Kappa) },
                 new[] { typeof(LesserHiryu), typeof(RevenantLion) },
                 new[] { typeof(Hiryu), typeof(Oni) }
             }),
             new ChampionSpawnInfo("Glade", typeof(Twaulo), new[] { "Banisher", "Enforcer", "Eradicator" }, new[] // Glade
-            { 
+            {
                 new[] { typeof(Pixie), typeof(ShadowWisp) },
                 new[] { typeof(Centaur), typeof(MLDryad) },
                 new[] { typeof(Satyr), typeof(CuSidhe) },
@@ -107,55 +107,55 @@ namespace Server.Engines.CannedEvil
 
             new ChampionSpawnInfo("Terror", typeof(AbyssalInfernal), new[] { "Banisher", "Enforcer", "Eradicator" }, new[] // Terror
             {
-                new[] { typeof(HordeMinion), typeof(ChaosDaemon) }, 
-                new[] { typeof(StoneHarpy), typeof(ArcaneDaemon) }, 
-                new[] { typeof(PitFiend), typeof(Moloch) }, 
+                new[] { typeof(HordeMinion), typeof(ChaosDaemon) },
+                new[] { typeof(StoneHarpy), typeof(ArcaneDaemon) },
+                new[] { typeof(PitFiend), typeof(Moloch) },
                 new[] { typeof(ArchDaemon), typeof(AbyssalAbomination) }
             }),
             new ChampionSpawnInfo("Infuse", typeof(PrimevalLich), new[] { "Cleanser", "Expunger", "Depurator" }, new[] // Infused
-            { 
+            {
                 new[] { typeof(GoreFiend), typeof(VampireBat) },
-                new[] { typeof(FleshGolem), typeof(DarkWisp) }, 
+                new[] { typeof(FleshGolem), typeof(DarkWisp) },
                 new[] { typeof(UndeadGargoyle), typeof(Wight) },
                 new[] { typeof(SkeletalDrake), typeof(DreamWraith) }
             }),
 
             new ChampionSpawnInfo( "Valley", typeof( DragonTurtle ), new[]{ "Explorer", "Huntsman", "Msafiri" } , new[] // Dragon Turtle
-            {																											
-				new[]{ typeof( MyrmidexDrone ), typeof( MyrmidexLarvae ) }, 
-				new[]{ typeof( SilverbackGorilla ), typeof( WildTiger ) }, 
-				new[]{ typeof( GreaterPhoenix  ), typeof( Infernus ) }, 
-				new[]{ typeof( Dimetrosaur ), typeof( Allosaurus ) }											   
+            {
+				new[]{ typeof( MyrmidexDrone ), typeof( MyrmidexLarvae ) },
+				new[]{ typeof( SilverbackGorilla ), typeof( WildTiger ) },
+				new[]{ typeof( GreaterPhoenix  ), typeof( Infernus ) },
+				new[]{ typeof( Dimetrosaur ), typeof( Allosaurus ) }
 			} ),
 
             new ChampionSpawnInfo( "Khaldun", typeof( KhalAnkur ), new[]{ "Banisher", "Enforcer", "Eradicator" } , new[] // Khal Ankur
-            {																					                        
-				new[]{ typeof( SkelementalKnight ), typeof( KhaldunBlood ) },							
-				new[]{ typeof( SkelementalMage ), typeof( Viscera ) },											   
-				new[]{ typeof( CultistAmbusher  ), typeof( ShadowFiend ) },										
-				new[]{ typeof( KhalAnkurWarriors ) }											                    
+            {
+				new[]{ typeof( SkelementalKnight ), typeof( KhaldunBlood ) },
+				new[]{ typeof( SkelementalMage ), typeof( Viscera ) },
+				new[]{ typeof( CultistAmbusher  ), typeof( ShadowFiend ) },
+				new[]{ typeof( KhalAnkurWarriors ) }
 			} ),
-            
+
             new ChampionSpawnInfo("Avatar Trial", typeof(DarkLord), new string[] { "Искра", "Пламя", "Аватар" }, new Type[][]
-            { 
+            {
 	            // Волна 1: Первые прихвостни Скверны
-	            new Type[] { typeof(GreaterMongbat), typeof(Imp) }, 
+	            new Type[] { typeof(GreaterMongbat), typeof(Imp) },
 	            // Волна 2: Тёмные горгульи и гарпии
-	            new Type[] { typeof(Gargoyle), typeof(Harpy) }, 
+	            new Type[] { typeof(Gargoyle), typeof(Harpy) },
 	            // Волна 3: Проклятые мертвецы и лорды личей
-	            new Type[] { typeof(Lich), typeof(BoneKnight) }, 
+	            new Type[] { typeof(Lich), typeof(BoneKnight) },
 	            // Волна 4: Высшие демоны и суккубы
 	            new Type[] { typeof(Daemon), typeof(Succubus) }
             }),
 
             new ChampionSpawnInfo("Mondain Trial", typeof(SeraphimGuardian), new string[] { "Святость", "Праведность", "Мондейн" }, new Type[][]
-            { 
+            {
 	            // Волна 1: Монахи, послушники и святые огоньки
-	            new Type[] { typeof(Pixie), typeof(Wisp) }, 
+	            new Type[] { typeof(Pixie), typeof(Wisp) },
 	            // Волна 2: Храмовники, кавалерия и воины орденов
-	            new Type[] { typeof(Paladin), typeof(Centaur) }, 
+	            new Type[] { typeof(Paladin), typeof(Centaur) },
 	            // Волна 3: Призванные небесные защитники и кирины
-	            new Type[] { typeof(Kirin), typeof(Unicorn) }, 
+	            new Type[] { typeof(Kirin), typeof(Unicorn) },
 	            // Волна 4: Высшие Архангелы (Единороги/Ангелы в зависимости от сборки, заменим на Серебряных Серпентов и Серых магов)
 	            new Type[]{ typeof( EtherealWarrior ), typeof( SerpentineDragon ) }
             }),

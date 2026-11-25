@@ -17,9 +17,9 @@ namespace Server.Engines.Quests
 
         /* Embracing Humanity */
         public override object Title => 1074349;
-        /* Well, I don't mind saying it -- I'm flabbergasted!  Absolutely astonished.  I just heard that some elves want to 
-        convert themselves to humans through some magical process.  My cousin Nedrick does whatever needs doing.  I guess you 
-        could check it out for yourself if you're curious.  Anyway, I wonder if you'll bring my cousin, Drithen, this here 
+        /* Well, I don't mind saying it -- I'm flabbergasted!  Absolutely astonished.  I just heard that some elves want to
+        convert themselves to humans through some magical process.  My cousin Nedrick does whatever needs doing.  I guess you
+        could check it out for yourself if you're curious.  Anyway, I wonder if you'll bring my cousin, Drithen, this here
         treat my wife baked up for him special. */
         public override object Description => 1074357;
         /* That's okay, I'll find someone else to make the delivery. */

@@ -42,7 +42,7 @@ namespace Server.Items
         {
             if (!beverage.IsFull)
             {
-                thrower.SendLocalizedMessage(1113038);  // It is not full. 
+                thrower.SendLocalizedMessage(1113038);  // It is not full.
             }
             else if (!thrower.InRange(elemental.Location, 5))
             {

@@ -63,8 +63,8 @@ namespace Server.Spells
         // Right now, magic arrow and nether bolt are the only ones that have this functionality
 
         public virtual bool DelayedDamageStacking => true;
-        //In reality, it's ANY delayed Damage spell that can't stack, but, only 
-        //Expo & Magic Arrow have enough delay and a short enough cast time to bring up 
+        //In reality, it's ANY delayed Damage spell that can't stack, but, only
+        //Expo & Magic Arrow have enough delay and a short enough cast time to bring up
         //the possibility of stacking 'em.  Note that a MA & an Explosion will stack, but
         //of course, two MA's won't.
 
@@ -972,10 +972,10 @@ namespace Server.Spells
                 return CastDelayBase; // TODO: Should FC apply to wands?
             }
 
-            // Faster casting cap of 2 (if not using the protection spell) 
-            // Faster casting cap of 0 (if using the protection spell) 
-            // Paladin spells are subject to a faster casting cap of 4 
-            // Paladins with magery of 70.0 or above are subject to a faster casting cap of 2 
+            // Faster casting cap of 2 (if not using the protection spell)
+            // Faster casting cap of 0 (if using the protection spell)
+            // Paladin spells are subject to a faster casting cap of 4
+            // Paladins with magery of 70.0 or above are subject to a faster casting cap of 2
             int fcMax = 4;
 
             if (CastSkill == SkillName.Magery || CastSkill == SkillName.Necromancy || CastSkill == SkillName.Mysticism ||

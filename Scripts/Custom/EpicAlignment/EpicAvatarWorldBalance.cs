@@ -18,14 +18,14 @@ namespace Server.Custom.EpicAlignment
             // Пробегаемся по всем зарегистрированным аккаунтам в базе ServUO
             foreach (Account acc in Accounts.GetAccounts().Cast<Account>())
             {
-                if (acc == null) 
+                if (acc == null)
                     continue;
 
                 // В каждом аккаунте проверяем всех созданных персонажей (до 5 слотов)
                 for (int i = 0; i < acc.Length; ++i)
                 {
                     Mobile m = acc[i];
-                    
+
                     // Если персонаж существует и у него лимит Magery равен 130 — место Аватара занято!
                     if (m != null && !m.Deleted && m.Skills[SkillName.Magery].Cap >= 130.0)
                     {
@@ -74,11 +74,11 @@ namespace Server.Custom.EpicAlignment
                 return 1.00; // Стандартная скорость, если Аватар еще не рожден
 
             string cityName = city.ToString().ToLower();
-            
+
             // Если город является тёмным хабом порчи — Аватар накладывает на него штраф -30%
             if (cityName.Contains("umbra") || cityName.Contains("doom") || cityName.Contains("jhelom"))
             {
-                return 0.70; 
+                return 0.70;
             }
 
             // Всем остальным светлым и классическим городам даруется божественный буст +50% к прогрессу!

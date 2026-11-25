@@ -1,7 +1,7 @@
 using Server.Targeting;
 using System;
 
-/*Target Strength Reduced by up to 32, 20 – 60 Damage (Physical), every 2 seconds, 
+/*Target Strength Reduced by up to 32, 20 – 60 Damage (Physical), every 2 seconds,
 affected by the target's magic resistance. (PvP and specific Mobs only).*/
 
 namespace Server.Spells.SkillMasteries

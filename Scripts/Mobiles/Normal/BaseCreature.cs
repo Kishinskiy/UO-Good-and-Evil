@@ -5448,7 +5448,7 @@ namespace Server.Mobiles
 
             if (IsAmbusher)
                 list.Add(1155480); // Ambusher
-            
+
             if (!Controlled && !Summoned)
             {
 	            int threatRank = Server.Engines.Quests.RankSystemHelper.GetMonsterRank(this);

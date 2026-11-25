@@ -8,7 +8,7 @@ namespace Server.Items
         public override int BaseColdResistance => 21;
         public override int InitMinHits => 255;
         public override int InitMaxHits => 255;
-		
+
         [Constructable]
         public PolarBearMask()
         {

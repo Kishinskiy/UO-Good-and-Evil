@@ -13,7 +13,7 @@ namespace Server.Engines.Quests
         /* The Paladins of Trinsic */
         public override object Title => 1158093;
 
-        /*It seems the Paladins of Trinsic are working hard to see the threats of Shame are kept inside Shame, 
+        /*It seems the Paladins of Trinsic are working hard to see the threats of Shame are kept inside Shame,
          * perhaps it would be a good idea to visit their headquarters in Northeast Trinsic.*/
         public override object Description => 1158114;
 
@@ -73,15 +73,15 @@ namespace Server.Engines.Quests
 
         /*Another who wishes to walk the path of the Paladins of Trinsic? Well you should know the path is not an easy one to walk,
          * and only those with the courage to pursue truth are admitted to the order. If you prove you are honorable, then you shall
-         * join our ranks and gain the prestigious title of Paladin of Trinsic. We are bound by Honor, and thus we stand against 
-         * Shame! To prove yourself you must venture deep within the dungeon Shame and slay the vile within. Succeed in this task 
+         * join our ranks and gain the prestigious title of Paladin of Trinsic. We are bound by Honor, and thus we stand against
+         * Shame! To prove yourself you must venture deep within the dungeon Shame and slay the vile within. Succeed in this task
          * and you will prove your worth, fail and you will bring to your name what you hope to defeat - Shame.*/
         public override object Description => 1158096;
 
         /* The way of the Paladin is not for everyone, I understand your decision but hope you reconsider... */
         public override object Refuse => 1158102;
 
-        /* Go to the dungeon Shame and slay the creatures within, only then will you have the Honor of calling thyself a Paladin of 
+        /* Go to the dungeon Shame and slay the creatures within, only then will you have the Honor of calling thyself a Paladin of
          * Trinsic. */
         public override object Uncomplete => 1158105;
 

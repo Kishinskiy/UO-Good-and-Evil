@@ -224,7 +224,7 @@ namespace Server.Items
 
                             if (--Held == 0)
                             {
-                                from.SendLocalizedMessage(502245); // The keg is now empty.							
+                                from.SendLocalizedMessage(502245); // The keg is now empty.
                             }
                             else
                             {
@@ -281,7 +281,7 @@ namespace Server.Items
                         from.PlaySound(0x240);
 
                         if (--m_Keg.Held == 0)
-                            from.SendLocalizedMessage(502245); // The keg is now empty.							
+                            from.SendLocalizedMessage(502245); // The keg is now empty.
                         else
                             m_Keg.Unknown = false;
 

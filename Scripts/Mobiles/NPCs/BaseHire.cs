@@ -153,16 +153,16 @@ namespace Server.Mobiles
             return owner;
         }
 
-        #endregion 
+        #endregion
 
-        #region [ AddHire ] 
+        #region [ AddHire ]
         public virtual bool AddHire(Mobile m)
         {
             Mobile owner = GetOwner();
 
             if (owner != null)
             {
-                m.SendLocalizedMessage(1043283, owner.Name);// I am following ~1_NAME~. 
+                m.SendLocalizedMessage(1043283, owner.Name);// I am following ~1_NAME~.
                 return false;
             }
 
@@ -176,9 +176,9 @@ namespace Server.Mobiles
             return false;
         }
 
-        #endregion 
+        #endregion
 
-        #region [ PerDayCost ] 
+        #region [ PerDayCost ]
         public int PerDayCost()
         {
             var pay = (int)Skills[SkillName.Anatomy].Value + (int)Skills[SkillName.Tactics].Value;
@@ -192,7 +192,7 @@ namespace Server.Mobiles
             return pay;
         }
 
-        #endregion 
+        #endregion
 
         #region [ OnDragDrop ]
         public override bool OnDragDrop(Mobile from, Item item)
@@ -253,9 +253,9 @@ namespace Server.Mobiles
             return base.OnDragDrop(from, item);
         }
 
-        #endregion 
+        #endregion
 
-        #region [ OnSpeech ] 
+        #region [ OnSpeech ]
         internal void SayHireCost()
         {
             Say(1043256, string.Format("{0}", Pay), 0x3B2);// "I am available for hire for ~1_AMOUNT~ gold coins a day. If thou dost give me gold, I will work for thee."
@@ -286,9 +286,9 @@ namespace Server.Mobiles
             base.OnSpeech(e);
         }
 
-        #endregion	
+        #endregion
 
-        #region [ GetContextMenuEntries ] 
+        #region [ GetContextMenuEntries ]
         public override void GetContextMenuEntries(Mobile from, List<ContextMenuEntry> list)
         {
             if (Deleted)
@@ -341,7 +341,7 @@ namespace Server.Mobiles
                     {
                         hire.GetOwner();
 
-                        hire.Say(503235, 0x3B2);// I regret nothing! 
+                        hire.Say(503235, 0x3B2);// I regret nothing!
                         hire.Delete();
                     }
                     else
@@ -389,7 +389,7 @@ namespace Server.Mobiles
                 }
             }
         }
-        #endregion 
+        #endregion
 
         #region [ Class HireEntry ]
         public class HireEntry : ContextMenuEntry

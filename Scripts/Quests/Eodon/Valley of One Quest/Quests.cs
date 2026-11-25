@@ -15,35 +15,35 @@ namespace Server.Engines.Quests
         public override object Title => 1156512;             /*The Valley of One*/
 
         public override object Description => 1156458;   /*Hawkwind: I'm afraid I have foreseen a most unfortunate timeline of events...
-																		<br><br>Blackthorn: Tell me, what is it that troubles you?<br><br>Hawkwind: I 
-																		brought the Britannians to Shadowguard to aid in the battle against Minax, in 
-																		doing so I fear I may have placed the native peoples in grave peril. The 
-																		Britannians are a curious and brave people, I fear that curiosity has put the 
-																		Valley of Eodon at risk. Britannians seek to take advantage of the natural 
-																		resources in Eodon.<br><br>Blackthorn: Such is the nature of all humans. Surely 
-																		you knew of this risk?<br><br>Hawkwind: Indeed, for every action there is an 
+																		<br><br>Blackthorn: Tell me, what is it that troubles you?<br><br>Hawkwind: I
+																		brought the Britannians to Shadowguard to aid in the battle against Minax, in
+																		doing so I fear I may have placed the native peoples in grave peril. The
+																		Britannians are a curious and brave people, I fear that curiosity has put the
+																		Valley of Eodon at risk. Britannians seek to take advantage of the natural
+																		resources in Eodon.<br><br>Blackthorn: Such is the nature of all humans. Surely
+																		you knew of this risk?<br><br>Hawkwind: Indeed, for every action there is an
 																		equal and opposite reaction. Cause and effect are linked at the most fundamental
-																		levels.<br><br>Blackthorn: And so what is the effect of the Britannian's 
-																		adventurism?<br><br>Hawkwind: Scores of Dragon Turtles lay dead, tiger carcasses 
-																		litter the jungle floor. Native tribes people have been murdered at the hands of 
-																		what they only know as foreign invaders.<br><br>Blackthorn: *Blackthorn looks down 
-																		solemnly* One must ask whether the ends justify the means...<br><br>Hawkwind: We 
-																		could not allow Minax to take hold in Eodon.  As any other threat, I am certain the 
-																		Britannians will answer the call.<br><br>Blackthorn: Tis the very nature of my Kingdom 
-																		and its peoples to rise in a time of need.<br><br>Hawkwind: With so much death the 
-																		Myrmidex have grown increasingly bold. The abundance of carrion has lured them from 
-																		their dark pits to feed and bolster their numbers. The Barrab Tribe has seen this as 
-																		an omen and increased the fervor of their zealotism. If the Myrmidex are not held in 
+																		levels.<br><br>Blackthorn: And so what is the effect of the Britannian's
+																		adventurism?<br><br>Hawkwind: Scores of Dragon Turtles lay dead, tiger carcasses
+																		litter the jungle floor. Native tribes people have been murdered at the hands of
+																		what they only know as foreign invaders.<br><br>Blackthorn: *Blackthorn looks down
+																		solemnly* One must ask whether the ends justify the means...<br><br>Hawkwind: We
+																		could not allow Minax to take hold in Eodon.  As any other threat, I am certain the
+																		Britannians will answer the call.<br><br>Blackthorn: Tis the very nature of my Kingdom
+																		and its peoples to rise in a time of need.<br><br>Hawkwind: With so much death the
+																		Myrmidex have grown increasingly bold. The abundance of carrion has lured them from
+																		their dark pits to feed and bolster their numbers. The Barrab Tribe has seen this as
+																		an omen and increased the fervor of their zealotism. If the Myrmidex are not held in
 																		check, I fear the entire Valley will be overrun.<br><br>Blackthorn: Is there no way to
-																		stop the invasion?<br><br>Hawkwind: There is always another path on the Time Line. 
-																		We must unite the Tribes of Eodon against the Barrab. Only then can they stop the 
-																		Myrmidex invasion.<br><br>Blackthorn: *King Blackthorn smiles at you* Well then!  
-																		Take these orders to Sir Geoffrey at his camp near the Barrab Tribe in the Valley of 
+																		stop the invasion?<br><br>Hawkwind: There is always another path on the Time Line.
+																		We must unite the Tribes of Eodon against the Barrab. Only then can they stop the
+																		Myrmidex invasion.<br><br>Blackthorn: *King Blackthorn smiles at you* Well then!
+																		Take these orders to Sir Geoffrey at his camp near the Barrab Tribe in the Valley of
 																		Eodon.  Godspeed!*/
 
         public override object Refuse => 1156460;            /* Tis unfortunate, in this time of great need we must look to our inner courage... */
 
-        public override object Uncomplete => 1156461;        /*There is little time to delay. Deliver the orders to Sir Geoffrey at his camp near 
+        public override object Uncomplete => 1156461;        /*There is little time to delay. Deliver the orders to Sir Geoffrey at his camp near
 																		the Barrab Tribe in the Valley of Eodon.*/
 
         public override object Complete => 1156462;      /* Ahh, King Blackthorn sent you did he? */
@@ -67,7 +67,7 @@ namespace Server.Engines.Quests
 
             g.AddHtmlObject(160, 70, 330, 16, Title, BaseQuestGump.DarkGreen, false, false);
             g.AddHtmlLocalized(98, 140, 312, 16, 1049073, 0x2710, false, false); // Objective:
-            g.AddHtmlLocalized(98, 156, 312, 16, 1072208, 0x2710, false, false); // All of the following	
+            g.AddHtmlLocalized(98, 156, 312, 16, 1072208, 0x2710, false, false); // All of the following
             g.AddHtmlLocalized(98, 1, 40, 16, 1072207, 0x15F90, false, false); // Deliver
             g.AddHtmlLocalized(143, 172, 300, 16, 1156516, 0xFFFF, false, false); // Orders from King Blackthorn to Sir Geoffrey
 
@@ -96,35 +96,35 @@ namespace Server.Engines.Quests
         public override object Title => 1156463;             /* Uniting the Tribes */
 
         public override object Description => 1156464;   /* *Sir Geoffrey looks up at you* What's this? Ah! Here to join the effort then?
-																		We've been trying for weeks to push through to the Barrab and get them to give 
-																		us the secrets to entering the Myrmidex pits, but alas we have had little luck.  
-																		King Blackthorn seems to think our only hope is to pressure the Barrab via the 
-																		other Eodonian tribes.  We tried to approach them initially but were met with 
-																		aggression.  It wasn't until Professor Rafkin arrived that we were able to peacefully 
-																		communicate with them.  In order for them to join our cause you'll need to gain their 
-																		trust.  The Sakkhra worship these overgrown Lizardmen, "Di-no-saur" is the word they 
-																		use, bunch of rubbish if you ask me, but you should find their High Chief in the 
-																		Sakkhra walled village to the North beyond the rivers.  The Urali worship the 
-																		Dragon Turtle, shucks, to be honest I thought such a creature was myth until one 
-																		came crashing up on a beach during one of our early expeditions.  You can find the 
-																		Urali just north of the beach lined streams that are home to the Dragon Turtles.  The 
-																		Jukari worship the great Volcano.  Nasty bunch too, took out a company of my men with 
-																		pickaxes to the skull.  In any case, they can be found at the base of the Volcano to 
-																		the Southeast.  The Kurak are lightning fast and worship the jungle cats they call 
-																		"Ti-gers"  Cute little things until one rips you apart and drags you back to its den 
-																		*chuckles a bit*  Their tribe is in the lowlands to the Southwest.  The Barako live 
-																		high up in the trees and worship the gorillas that populate that region.  Professor 
-																		Rafkin says something about a mythical giant ape, bunch of baloney if you ask me.  
-																		Their tribe sits in the forest canopy to the East.  Bring me back proof that the 
-																		tribes have agreed to join our cause and you'll be rewarded handsomely.  Or this jungle 
+																		We've been trying for weeks to push through to the Barrab and get them to give
+																		us the secrets to entering the Myrmidex pits, but alas we have had little luck.
+																		King Blackthorn seems to think our only hope is to pressure the Barrab via the
+																		other Eodonian tribes.  We tried to approach them initially but were met with
+																		aggression.  It wasn't until Professor Rafkin arrived that we were able to peacefully
+																		communicate with them.  In order for them to join our cause you'll need to gain their
+																		trust.  The Sakkhra worship these overgrown Lizardmen, "Di-no-saur" is the word they
+																		use, bunch of rubbish if you ask me, but you should find their High Chief in the
+																		Sakkhra walled village to the North beyond the rivers.  The Urali worship the
+																		Dragon Turtle, shucks, to be honest I thought such a creature was myth until one
+																		came crashing up on a beach during one of our early expeditions.  You can find the
+																		Urali just north of the beach lined streams that are home to the Dragon Turtles.  The
+																		Jukari worship the great Volcano.  Nasty bunch too, took out a company of my men with
+																		pickaxes to the skull.  In any case, they can be found at the base of the Volcano to
+																		the Southeast.  The Kurak are lightning fast and worship the jungle cats they call
+																		"Ti-gers"  Cute little things until one rips you apart and drags you back to its den
+																		*chuckles a bit*  Their tribe is in the lowlands to the Southwest.  The Barako live
+																		high up in the trees and worship the gorillas that populate that region.  Professor
+																		Rafkin says something about a mythical giant ape, bunch of baloney if you ask me.
+																		Their tribe sits in the forest canopy to the East.  Bring me back proof that the
+																		tribes have agreed to join our cause and you'll be rewarded handsomely.  Or this jungle
 																		will tear you apart, whichever happens first.  Good luck!*/
 
         public override object Refuse => 1156472;            /* Well then stop wasting my bloody time! Haven't you see we've got a war to win?! */
 
-        public override object Uncomplete => 1156518;        /* These tribes aren't going to unite themselves, best get on with it and visit the Sakkhra, 
+        public override object Uncomplete => 1156518;        /* These tribes aren't going to unite themselves, best get on with it and visit the Sakkhra,
 																		Urali, Jukari, Kurak, and Barako tribes!  We've got a war to win! */
 
-        public override object Complete => 1156519;      /*Well done! I don't know how you managed to pull it off but this is the break we've 
+        public override object Complete => 1156519;      /*Well done! I don't know how you managed to pull it off but this is the break we've
 																		been waiting for! With the support of the other tribes we can begin to plan an offensive
 																		to quell the Myrmidex threat!  It will likely take some time before our troops and the
 																		Tribes are ready.  I will send word when the time to attack comes!*/
@@ -159,10 +159,10 @@ namespace Server.Engines.Quests
     {
         public override object Title => 1156521;             /* The Great Hunt */
 
-        public override object Description => 1156522;   /* *The Sakkhra High Chieftess looks at you apprehensively, 
-																		as the greeting Professor Rafkin's book taught you rolls from your tongue The 
-																		High Chief smiles and warms to you*  Rafkin say you can help Sakkhra.  Sakkhra 
-																		do not trust you.  You want Sakkhra trust, then you fight biggest of all dinosaur, 
+        public override object Description => 1156522;   /* *The Sakkhra High Chieftess looks at you apprehensively,
+																		as the greeting Professor Rafkin's book taught you rolls from your tongue The
+																		High Chief smiles and warms to you*  Rafkin say you can help Sakkhra.  Sakkhra
+																		do not trust you.  You want Sakkhra trust, then you fight biggest of all dinosaur,
 																		T Rex!  You survive the T Rex hunt, then Sakkhra trust you.  *The Chief motions you
 																		west to the nearby dinosaur plains* */
 
@@ -190,7 +190,7 @@ namespace Server.Engines.Quests
 
             g.AddHtmlObject(160, 70, 330, 16, Title, BaseQuestGump.DarkGreen, false, false);
             g.AddHtmlLocalized(98, 140, 312, 16, 1049073, 0x2710, false, false); // Objective:
-            g.AddHtmlLocalized(98, 156, 312, 16, 1072208, 0x2710, false, false); // All of the following	
+            g.AddHtmlLocalized(98, 156, 312, 16, 1072208, 0x2710, false, false); // All of the following
             g.AddHtmlLocalized(98, 172, 300, 16, 1156533, 0xFFFF, false, false); // Slay the Tyrannosaurus Rex
 
             return true;
@@ -215,10 +215,10 @@ namespace Server.Engines.Quests
     {
         public override object Title => 1156523;             /* Empty Nest */
 
-        public override object Description => 1156524;   /* *The Urali High Chieftess looks at you apprehensively, as the greeting Professor 
-																		Rafkin's book taught you rolls from your tongue The Chieftess smiles and warms to you*  
+        public override object Description => 1156524;   /* *The Urali High Chieftess looks at you apprehensively, as the greeting Professor
+																		Rafkin's book taught you rolls from your tongue The Chieftess smiles and warms to you*
 																		Rafkin say you can help Urali.  Urali do not trust you.  You want Urali trust, then you
-																		stop them taking Dragon Turtle Egg.  You stop Dragon Turtle Egg theft, then Urali trust you.  
+																		stop them taking Dragon Turtle Egg.  You stop Dragon Turtle Egg theft, then Urali trust you.
 																		*The Chieftess motions you south towards the nearby nesting beach* */
 
 
@@ -272,7 +272,7 @@ namespace Server.Engines.Quests
 
         public override void OnCompleted()
         {
-            Owner.SendLocalizedMessage(1046258, null, 0x23); // Your quest is complete.												
+            Owner.SendLocalizedMessage(1046258, null, 0x23); // Your quest is complete.
             Owner.PlaySound(CompleteSound);
         }
 
@@ -320,10 +320,10 @@ namespace Server.Engines.Quests
     {
         public override object Title => 1156525;             /* The Great Volcano */
 
-        public override object Description => 1156526;   /* *The Jukari High Chief looks at you apprehensively, as the greeting Professor 
-																		Rafkin's book taught you rolls from your tongue The Chief smiles and warms to you* 
-																		Rafkin say you can help Jukari. Jukari do not trust you. You want Jukari trust, then 
-																		you mine Jukari Lavastone from Volcano.  Volcano no eat you, then Jukari trust you. 
+        public override object Description => 1156526;   /* *The Jukari High Chief looks at you apprehensively, as the greeting Professor
+																		Rafkin's book taught you rolls from your tongue The Chief smiles and warms to you*
+																		Rafkin say you can help Jukari. Jukari do not trust you. You want Jukari trust, then
+																		you mine Jukari Lavastone from Volcano.  Volcano no eat you, then Jukari trust you.
 																		*The chief motions you east toward the Volcano* */
 
 
@@ -502,10 +502,10 @@ namespace Server.Engines.Quests
     {
         public override object Title => 1156527;             /* The Pride of the Ambush */
 
-        public override object Description => 1156528;   /* *The Kurak High Chief looks at you apprehensively, as the greeting Professor 
-																		Rafkin's book taught you rolls from your tongue The Chieftess smiles and warms 
+        public override object Description => 1156528;   /* *The Kurak High Chief looks at you apprehensively, as the greeting Professor
+																		Rafkin's book taught you rolls from your tongue The Chieftess smiles and warms
 																		to you*  Rafkin say you can help Kurak.  Kurak do not trust you.  You want Kurak
-																		trust, then you free cubs from trappers.  You free cubs from trappers, then 
+																		trust, then you free cubs from trappers.  You free cubs from trappers, then
 																		Kurak trust you. *The chieftess motions you south to the lowlands* */
 
 
@@ -533,7 +533,7 @@ namespace Server.Engines.Quests
 
             g.AddHtmlObject(160, 70, 330, 16, Title, BaseQuestGump.DarkGreen, false, false);
             g.AddHtmlLocalized(98, 140, 312, 16, 1049073, 0x2710, false, false); // Objective:
-            g.AddHtmlLocalized(98, 156, 312, 16, 1072208, 0x2710, false, false); // All of the following	
+            g.AddHtmlLocalized(98, 156, 312, 16, 1072208, 0x2710, false, false); // All of the following
             g.AddHtmlLocalized(98, 172, 300, 16, 1156544, 0xFFFF, false, false); // Rescue 5 tiger cubs from the trapper enclosures.
 
             return true;
@@ -561,7 +561,7 @@ namespace Server.Engines.Quests
 
         public override void OnCompleted()
         {
-            Owner.SendLocalizedMessage(1046258, null, 0x23); // Your quest is complete.												
+            Owner.SendLocalizedMessage(1046258, null, 0x23); // Your quest is complete.
             Owner.PlaySound(CompleteSound);
         }
 
@@ -610,8 +610,8 @@ namespace Server.Engines.Quests
     {
         public override object Title => 1156529;             /* The Great Ape */
 
-        public override object Description => 1156530;   /* *The Barako High Chief looks at you apprehensively, as the greeting 
-																		Professor Rafkin's book taught you rolls from your tongue The Chief smiles 
+        public override object Description => 1156530;   /* *The Barako High Chief looks at you apprehensively, as the greeting
+																		Professor Rafkin's book taught you rolls from your tongue The Chief smiles
 																		and warms to you*  Rafkin say you can help Barako.  Barako do not trust you.
 																		You want Barako trust, then you battle Great Ape.  You go to banana cave and
 																		ape no eat you, then Barako trust you.  *The Chief motions you northeast toward
@@ -626,7 +626,7 @@ namespace Server.Engines.Quests
 
         public TheGreatApeQuest() : base()
         {
-            AddObjective(new SlayObjective(typeof(GreatApe), "Defeat the Great Ape", 1)); // Defeat the Great Ape    
+            AddObjective(new SlayObjective(typeof(GreatApe), "Defeat the Great Ape", 1)); // Defeat the Great Ape
             AddReward(new BaseReward(typeof(SkullOfAphazz), 1, 1156555)); // Trust of the Barako Tribe
         }
 
@@ -642,7 +642,7 @@ namespace Server.Engines.Quests
 
             g.AddHtmlObject(160, 70, 330, 16, Title, BaseQuestGump.DarkGreen, false, false);
             g.AddHtmlLocalized(98, 140, 312, 16, 1049073, 0x2710, false, false); // Objective:
-            g.AddHtmlLocalized(98, 156, 312, 16, 1072208, 0x2710, false, false); // All of the following	
+            g.AddHtmlLocalized(98, 156, 312, 16, 1072208, 0x2710, false, false); // All of the following
             g.AddHtmlLocalized(98, 172, 300, 16, 1156547, 0xFFFF, false, false); // Defeat the Great Ape
 
             return true;

@@ -32,7 +32,7 @@ namespace Server
 					Console.WriteLine("Core: Compiling scripts...");
 
 					var path = Path.Combine(Core.BaseDirectory, "Scripts");
-					
+
 					foreach (var proj in Directory.EnumerateFiles(path, "Scripts.csproj"))
 					{
 						try

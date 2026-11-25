@@ -519,7 +519,7 @@ namespace Server.Mobiles
 							}
 							else
 							{
-								// estimate the earliest the next spawn could occur as the first spawn tick after reaching the subgroup nextspawn 
+								// estimate the earliest the next spawn could occur as the first spawn tick after reaching the subgroup nextspawn
 								strnext = (m_Spawner.SpawnObjects[i].NextSpawn - DateTime.UtcNow + m_Spawner.NextSpawn).ToString();
 							}
 						}
@@ -705,7 +705,7 @@ namespace Server.Mobiles
 				spawner.MaxCount++;
 			}
 
-			// refresh the spawner gumps			
+			// refresh the spawner gumps
 			RefreshSpawnerGumps(from);
 		}
 #endif
@@ -714,7 +714,7 @@ namespace Server.Mobiles
 		{
 			var args = (object[])state;
 			var m = (Mobile)args[0];
-			// refresh the spawner gumps			
+			// refresh the spawner gumps
 			RefreshSpawnerGumps(m);
 		}
 
@@ -1013,7 +1013,7 @@ namespace Server.Mobiles
 								grpval = 1;
 							}
 
-							// if this value has changed, then update 
+							// if this value has changed, then update
 							if (grpval != m_Spawner.SpawnObjects[i].PackRange)
 							{
 								m_Spawner.SpawnObjects[i].PackRange = grpval;

@@ -16,22 +16,22 @@ namespace Server.Items
         {
             Locations = new Dictionary<int, Point3D>();
 
-            Locations[1157135] = new Point3D(1156, 1143, -24); // The Village of Lakeshire		
-            Locations[1157619] = new Point3D(644, 854, -56); // The Rat Fort		
-            Locations[1157620] = new Point3D(1363, 1075, -13);  // Reg Volom			
-            Locations[1016410] = new Point3D(1572, 1046, -8); // Twin Oaks Tavern			
-            Locations[1157621] = new Point3D(984, 622, -80); // The Oasis			
-            Locations[1078308] = new Point3D(1746, 1221, -1); // Blood Dungeon		
-            Locations[1111764] = new Point3D(912, 1362, -21); // Cyclops Dungeon			
-            Locations[1111765] = new Point3D(824, 774, -80); // Exodus Dungeon		
-            Locations[1111766] = new Point3D(349, 1434, 16); // The Kirin Passage			
-            Locations[1157622] = new Point3D(971, 303, 54); // Pass of Karnaugh			
-            Locations[1157623] = new Point3D(1033, 1154, -24); // The Rat Cave		
-            Locations[1078315] = new Point3D(541, 466, -72); // Terort Skitas			
-            Locations[1111825] = new Point3D(1450, 1477, -29); // Twisted Weald			
-            Locations[1113002] = new Point3D(642, 1307, -55); // Wisp Dungeon			
-            Locations[1157624] = new Point3D(753, 497, -62); // Gwenno's Memorial			
-            Locations[1157625] = new Point3D(1504, 628, -14); // Desert Gypsy Camp			
+            Locations[1157135] = new Point3D(1156, 1143, -24); // The Village of Lakeshire
+            Locations[1157619] = new Point3D(644, 854, -56); // The Rat Fort
+            Locations[1157620] = new Point3D(1363, 1075, -13);  // Reg Volom
+            Locations[1016410] = new Point3D(1572, 1046, -8); // Twin Oaks Tavern
+            Locations[1157621] = new Point3D(984, 622, -80); // The Oasis
+            Locations[1078308] = new Point3D(1746, 1221, -1); // Blood Dungeon
+            Locations[1111764] = new Point3D(912, 1362, -21); // Cyclops Dungeon
+            Locations[1111765] = new Point3D(824, 774, -80); // Exodus Dungeon
+            Locations[1111766] = new Point3D(349, 1434, 16); // The Kirin Passage
+            Locations[1157622] = new Point3D(971, 303, 54); // Pass of Karnaugh
+            Locations[1157623] = new Point3D(1033, 1154, -24); // The Rat Cave
+            Locations[1078315] = new Point3D(541, 466, -72); // Terort Skitas
+            Locations[1111825] = new Point3D(1450, 1477, -29); // Twisted Weald
+            Locations[1113002] = new Point3D(642, 1307, -55); // Wisp Dungeon
+            Locations[1157624] = new Point3D(753, 497, -62); // Gwenno's Memorial
+            Locations[1157625] = new Point3D(1504, 628, -14); // Desert Gypsy Camp
             Locations[1113000] = new Point3D(1785, 573, 71); // Rock Dungeon
         }
 

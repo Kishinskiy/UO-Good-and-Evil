@@ -44,8 +44,8 @@ namespace Server.Mobiles
             SetWearable(new WoodlandBelt(), dropChance: 1);
 			SetWearable(new WoodlandLegs(), 0x3B2, 1);
 			SetWearable(new WoodlandChest(), 0x3B2, 1);
-			SetWearable(new WoodlandArms(), 0x3B2, 1); 
-			SetWearable(new WingedHelm(), 0x3B2, 1); 
+			SetWearable(new WoodlandArms(), 0x3B2, 1);
+			SetWearable(new WingedHelm(), 0x3B2, 1);
         }
 
         public override void Serialize(GenericWriter writer)

@@ -642,7 +642,7 @@ namespace Server.Engines.Points
             Entries[typeof(EasterEggs)] = 2.0;
             Entries[typeof(JellyBeans)] = 1.0;
 
-            //Miscellaneous            
+            //Miscellaneous
             Entries[typeof(ParrotItem)] = 25.0;
             Entries[typeof(Gold)] = 0.01;
             Entries[typeof(RedScales)] = 0.10;

@@ -2018,7 +2018,7 @@ namespace Server.Items
             percentageBonus -= Block.GetMeleeReduction(defender);
 
             percentageBonus += BattleLust.GetBonus(attacker, defender);
-            
+
             percentageBonus += Server.Custom.KarmaVirtueSystem.KarmaVirtueManager.GetWeaponDamageBonus(attacker, defender);
 
             if (this is BaseThrown)

@@ -65,7 +65,7 @@ namespace Server.Items
             AddHtmlLocalized(42, 121, 323, 174, 1154389, 1, false, true); // <I>*The article left out of this paper is entitled 'Terror on the Seas'.*</I>There have long been pirates along the waterways of Britannia, but none were as prevalent as Captain Silver John. His boat and his men were as feared for their piracy as for their innovation, and the intelligent captain kept a highly skilled crew to assist in his raids. Amidst them were a talented alchemist, an incredibly skilled blacksmith, a once renowned mage, and several former Rangers. Despite the attempts of Admiral Duarte of the Royal Navy, their preying upon the merchant vessels of the lands was not stopped until one of Silver's own crew sold them out. An unnamed member of his crew led Royal Guardsman to a hideout that they had utilized in the city of Skara Brae, and they laid in wait for the return of the crew. The informant was slain in the fight, as was Captain Silver John himself, and most of his crew is now safely behind bars, though some seem to have escaped. All those captured are refusing to talk, so it seems that those who escaped will continue to remain at large...though it remains to be seen whether they will join a new crew or form their own.
         }
 
-        public override void OnResponse(NetState state, RelayInfo info) //Function for GumpButtonType.Reply Buttons 
+        public override void OnResponse(NetState state, RelayInfo info) //Function for GumpButtonType.Reply Buttons
         {
             Mobile from = state.Mobile;
 
@@ -73,7 +73,7 @@ namespace Server.Items
             {
                 case 0:
                     {
-                        //Cancel                        
+                        //Cancel
                         break;
                     }
             }

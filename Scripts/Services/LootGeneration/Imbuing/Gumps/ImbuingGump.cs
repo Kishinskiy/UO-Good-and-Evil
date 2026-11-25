@@ -408,7 +408,7 @@ namespace Server.Gumps
             if (m is PlayerMobile && Imbuing.CanImbueItem(m, item))
             {
                 ImbuingContext context = Imbuing.GetContext(m);
-                
+
                 context.Imbue_Mod = -1; // Re-set when changing targets to prevent exploit with Reimbue Last option.
 		        context.LastImbued = item;
 

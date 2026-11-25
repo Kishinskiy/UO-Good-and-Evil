@@ -71,7 +71,7 @@ namespace Server.Items
         }
 
         /// <summary>
-        /// 24000 is the normalized fame for MaxBaseBudget, ie Balron.  
+        /// 24000 is the normalized fame for MaxBaseBudget, ie Balron.
         /// Called in BaseCreature.cs virtual BaseLootBudget Property
         /// </summary>
         /// <param name="bc">Creature to be evaluated</param>

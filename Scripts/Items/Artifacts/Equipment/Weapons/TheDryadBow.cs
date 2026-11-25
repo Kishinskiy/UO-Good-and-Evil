@@ -7,7 +7,7 @@ namespace Server.Items
         public override int ArtifactRarity => 11;
         public override int InitMinHits => 255;
         public override int InitMaxHits => 255;
-		
+
         private static readonly SkillName[] m_PossibleBonusSkills = new SkillName[]
         {
             SkillName.Archery,

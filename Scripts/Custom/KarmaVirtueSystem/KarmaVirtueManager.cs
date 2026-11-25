@@ -104,8 +104,8 @@ namespace Server.Custom.KarmaVirtueSystem
             }
 
             bool isDark = from.Karma < 0;
-            
-            
+
+
             if (from is PlayerMobile pm)
             {
 	            pm.Shrines |= GetShrineFlag(shrine.Virtue);
@@ -199,7 +199,7 @@ namespace Server.Custom.KarmaVirtueSystem
 
 	        return true;
         }
-        
+
         public static int GetAosAttributeBonus(Mobile mobile, AosAttribute attribute)
         {
             if (mobile == null || !mobile.Player)
@@ -408,7 +408,7 @@ namespace Server.Custom.KarmaVirtueSystem
 	        }
 	        return 0;
         }
-        
+
 
         public static void HandleMonsterLoot(Mobile victim, Container lootContainer)
         {
@@ -540,7 +540,7 @@ namespace Server.Custom.KarmaVirtueSystem
 
             return 1.0; // Базовое значение, если алтарь нейтрален
         }
-        
+
         public static double GetDungeonSpawnCountModifier(Region region)
         {
             if (region == null) return 1.0;
@@ -605,7 +605,7 @@ namespace Server.Custom.KarmaVirtueSystem
 	        }
 	        finally { if (writer != null) writer.Close(); }
         }
-        
+
         public static void Load()
         {
             if (!File.Exists(_savePath) || new FileInfo(_savePath).Length == 0) return;

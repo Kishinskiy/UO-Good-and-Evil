@@ -34,7 +34,7 @@ namespace Server.Bounds
                     bin.Write((ushort)xMax);
                     bin.Write((ushort)yMax);
                 }
-                
+
                 bin.Flush();
                 bin.Close();
 

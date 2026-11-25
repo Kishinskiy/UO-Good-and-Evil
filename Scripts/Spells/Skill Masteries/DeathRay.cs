@@ -5,7 +5,7 @@ namespace Server.Spells.SkillMasteries
 {
     public class DeathRaySpell : SkillMasterySpell
     {
-        /*The mage focuses a death ray on their opponent which snares the mage to their 
+        /*The mage focuses a death ray on their opponent which snares the mage to their
          * location and does damage based on magery skill, evaluating intelligence skill,
          * and mastery level as long as the mage has mana and the target is in range.*/
 

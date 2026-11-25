@@ -199,7 +199,7 @@ namespace Server
                 RemoveBerserk(Mobile);
 
                 Mobile.HueMod = StartHue;
-                Mobile.SendLocalizedMessage(1151535); //Your berserk rage has subsided. 
+                Mobile.SendLocalizedMessage(1151535); //Your berserk rage has subsided.
 
                 foreach (Item item in Mobile.Items.Where(i => i is ISetItem && ((ISetItem)i).SetID == SetItem.Bestial))
                 {

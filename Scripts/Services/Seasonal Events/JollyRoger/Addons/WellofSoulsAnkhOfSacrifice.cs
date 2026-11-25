@@ -139,7 +139,7 @@ namespace Server.Items
                         {
                             if (l.Tabard)
                             {
-                                from.SendLocalizedMessage(1152687); // You've already claimed your reward! 
+                                from.SendLocalizedMessage(1152687); // You've already claimed your reward!
                             }
                             else
                             {

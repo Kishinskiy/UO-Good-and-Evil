@@ -109,8 +109,8 @@ namespace Server.Network.Encryption
 			}
 
 			return (uint)((buffer[0] ^ LFSR2(buffer[1]) ^ LFSR1(buffer[2]) ^ LFSR1(buffer[3])) << 0)
-				 ^ (uint)((LFSR1(buffer[0]) ^ LFSR2(buffer[1]) ^ LFSR2(buffer[2]) ^ buffer[3]) << 8) 
-				 ^ (uint)((LFSR2(buffer[0]) ^ LFSR1(buffer[1]) ^ buffer[2] ^ LFSR2(buffer[3])) << 16) 
+				 ^ (uint)((LFSR1(buffer[0]) ^ LFSR2(buffer[1]) ^ LFSR2(buffer[2]) ^ buffer[3]) << 8)
+				 ^ (uint)((LFSR2(buffer[0]) ^ LFSR1(buffer[1]) ^ buffer[2] ^ LFSR2(buffer[3])) << 16)
 				 ^ (uint)((LFSR2(buffer[0]) ^ buffer[1] ^ LFSR2(buffer[2]) ^ LFSR1(buffer[3])) << 24);
 		}
 

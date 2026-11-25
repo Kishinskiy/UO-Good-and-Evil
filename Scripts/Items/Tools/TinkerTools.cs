@@ -63,7 +63,7 @@ namespace Server.Items
             {
                 if (_Tool.RepairMode)
                 {
-                    _From.SendLocalizedMessage(1157042); // This tool is fully functional. 
+                    _From.SendLocalizedMessage(1157042); // This tool is fully functional.
                     _Tool.RepairMode = false;
                 }
                 else
@@ -134,7 +134,7 @@ namespace Server.Items
             {
                 if (_Tool.RepairMode)
                 {
-                    _From.SendLocalizedMessage(1157042); // This tool is fully functional. 
+                    _From.SendLocalizedMessage(1157042); // This tool is fully functional.
                     _Tool.RepairMode = false;
                 }
                 else

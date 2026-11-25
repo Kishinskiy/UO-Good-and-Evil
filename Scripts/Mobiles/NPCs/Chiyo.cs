@@ -11,23 +11,23 @@ namespace Server.Engines.Quests
         /* Becoming One With The Shadows */
         public override object Title => 1078164;
 
-        /* Practice hiding in the Ninja Dojo until you reach 50 Hiding skill.<br><center>------</center><br>Come closer. 
-        Don't be afraid. The shadows will not harm you. To be a successful Ninja, you must learn to become one with the 
-        shadows. The Ninja Dojo is the ideal place to learn the art of concealment. Practice hiding here.<br><br>Talk to 
+        /* Practice hiding in the Ninja Dojo until you reach 50 Hiding skill.<br><center>------</center><br>Come closer.
+        Don't be afraid. The shadows will not harm you. To be a successful Ninja, you must learn to become one with the
+        shadows. The Ninja Dojo is the ideal place to learn the art of concealment. Practice hiding here.<br><br>Talk to
         me once you have achieved the rank of Apprentice Rogue (for Hiding), and I shall reward you. */
         public override object Description => 1078168;
 
         /* If you wish to become one with the shadows, come back and talk to me. */
         public override object Refuse => 1078169;
 
-        /* You have not achieved the rank of Apprentice Rogue (for Hiding). Talk to me when you feel you have accomplished 
+        /* You have not achieved the rank of Apprentice Rogue (for Hiding). Talk to me when you feel you have accomplished
         this. */
         public override object Uncomplete => 10778170;
 
-        /* Not bad at all. You have learned to control your fear of the dark and you are becoming one with the shadows. If 
-        you haven't already talked to Jun, I advise you do so. Jun can teach you how to stealth undetected. Hiding and 
-        Stealth are essential skills to master when becoming a Ninja.<br><br>As promised, I have a reward for you. Here are 
-        some smokebombs. As long as you are an Apprentice Ninja and have mana available you will be able to use them. They 
+        /* Not bad at all. You have learned to control your fear of the dark and you are becoming one with the shadows. If
+        you haven't already talked to Jun, I advise you do so. Jun can teach you how to stealth undetected. Hiding and
+        Stealth are essential skills to master when becoming a Ninja.<br><br>As promised, I have a reward for you. Here are
+        some smokebombs. As long as you are an Apprentice Ninja and have mana available you will be able to use them. They
         will allow you to hide while in the middle of combat. I hope these serve you well. */
         public override object Complete => 1078172;
 

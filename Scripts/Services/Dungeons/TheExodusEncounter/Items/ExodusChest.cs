@@ -186,7 +186,7 @@ namespace Server.Items
                 return;
 
             m.AddToBackpack(item);
-            m.SendLocalizedMessage(1072223); // An item has been placed in your backpack.           
+            m.SendLocalizedMessage(1072223); // An item has been placed in your backpack.
         }
 
         public override void Serialize(GenericWriter writer)

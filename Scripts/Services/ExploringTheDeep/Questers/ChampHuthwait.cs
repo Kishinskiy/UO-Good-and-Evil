@@ -169,12 +169,12 @@ namespace Server.Gumps
             AddButton(345, 440, 0xF7, 0xF8, 0, GumpButtonType.Reply, 0);//OK
 
             AddPage(4);
-            AddHtmlLocalized(107, 140, 300, 150, 1154309, 0x7FFF, false, true); // They usually hangout just southwest of the City in some old ruins.  Bring me evidence of Mercutio's demise and I will get you the boots you seek. 
+            AddHtmlLocalized(107, 140, 300, 150, 1154309, 0x7FFF, false, true); // They usually hangout just southwest of the City in some old ruins.  Bring me evidence of Mercutio's demise and I will get you the boots you seek.
 
             AddButton(345, 440, 0xF7, 0xF8, 0, GumpButtonType.Reply, 0);//OK
         }
 
-        public override void OnResponse(NetState state, RelayInfo info) //Function for GumpButtonType.Reply Buttons 
+        public override void OnResponse(NetState state, RelayInfo info) //Function for GumpButtonType.Reply Buttons
         {
             Mobile from = state.Mobile;
 
@@ -237,7 +237,7 @@ namespace Server.Gumps
             AddButton(345, 440, 0xF7, 0xF8, 0, GumpButtonType.Reply, 0);//OK
         }
 
-        public override void OnResponse(NetState state, RelayInfo info) //Function for GumpButtonType.Reply Buttons 
+        public override void OnResponse(NetState state, RelayInfo info) //Function for GumpButtonType.Reply Buttons
         {
             Mobile from = state.Mobile;
 

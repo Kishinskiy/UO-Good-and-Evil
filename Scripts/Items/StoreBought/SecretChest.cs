@@ -347,7 +347,7 @@ namespace Server.Items
 
                             if (l.TrialsNumber > 0)
                             {
-                                from.SendLocalizedMessage(1151590); // The number which you have entered is wrong. You still can't open this chest...                                
+                                from.SendLocalizedMessage(1151590); // The number which you have entered is wrong. You still can't open this chest...
                                 from.SendLocalizedMessage(1152346, string.Format("{0}", l.TrialsNumber)); // Number of tries left: ~1_times~
                                 Timer.DelayCall(TimeSpan.FromSeconds(0.2), () => from.SendGump(new SecretChestGump(Chest, TempSecretKey, SetEdit)));
                             }

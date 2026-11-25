@@ -3656,7 +3656,7 @@ namespace Server.Network
 
 			m_Stream.Write((short)1);
 			m_Stream.Write((short)2);
-			
+
 			m_Stream.Write(state);
 		}
 	}

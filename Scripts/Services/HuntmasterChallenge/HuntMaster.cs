@@ -32,15 +32,15 @@ namespace Server.Engines.HuntsmasterChallenge
                 from.CloseGump(typeof(BasicInfoGump));
                 from.SendGump(new BasicInfoGump(1155750, 1155726));
 
-                /*Greetings! Only the most brave Hunters dare take my challenge! To participate, 
-                simply purchase a hunting permit from me for 5,000gp.  When you are ready to to 
-                hunt seek any species of prey represented by the trophies in this hall.  When you 
-                have bested your quarry use the deed on the corpse to document your kill.  Return 
-                to me and hand me the permit and I will process it.  If your kill beats or ties the 
-                current best record for that species, you will be eligible for rewards when the 
-                contest finishes on the first day of the next month!    Return and speak to me on 
-                the first day of the next month to claim your rewards should your record hold up 
-                during the month long contest! You may also use a taxidermy kit, purchasable from a 
+                /*Greetings! Only the most brave Hunters dare take my challenge! To participate,
+                simply purchase a hunting permit from me for 5,000gp.  When you are ready to to
+                hunt seek any species of prey represented by the trophies in this hall.  When you
+                have bested your quarry use the deed on the corpse to document your kill.  Return
+                to me and hand me the permit and I will process it.  If your kill beats or ties the
+                current best record for that species, you will be eligible for rewards when the
+                contest finishes on the first day of the next month!    Return and speak to me on
+                the first day of the next month to claim your rewards should your record hold up
+                during the month long contest! You may also use a taxidermy kit, purchasable from a
                 tanner, to create a trophy of your kill like the ones you see here. Happy Hunting!*/
             }
         }

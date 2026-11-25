@@ -64,8 +64,8 @@ namespace Server.Engines.Quests
         public override object Title => 1075404;
 
         /* You did great work. Thanks to you, my puppies are training harder than ever.
-         * I think they could actually take a mongbat now. I’m still worried they’ll 
-         * slack off, though. What say you to slaying some Imps for me now? Show them 
+         * I think they could actually take a mongbat now. I’m still worried they’ll
+         * slack off, though. What say you to slaying some Imps for me now? Show them
          * how it’s really done? */
         public override object Description => 1075405;
 
@@ -110,7 +110,7 @@ namespace Server.Engines.Quests
         /* Doughty Warriors */
         public override object Title => 1075410;
 
-        /* You’ve really inspired my trainees. They’re working harder than ever. I’ve got 
+        /* You’ve really inspired my trainees. They’re working harder than ever. I’ve got
          * one more request for you, and it’s a big one. Those mongbats didn’t pose a problem.
          * You mowed down the imps with no trouble. But do you dare take on a couple of daemons? */
         public override object Description => 1075411;
@@ -123,7 +123,7 @@ namespace Server.Engines.Quests
         public override object Uncomplete => 1075414;
 
         /* Thanks for helping me out. You’re a real hero to my guards. Valor is its own reward,
-         * but maybe you wouldn’t mind wearing this sash. We don’t give these out to just 
+         * but maybe you wouldn’t mind wearing this sash. We don’t give these out to just
          * anyone, you know! */
         public override object Complete => 1075415;
 

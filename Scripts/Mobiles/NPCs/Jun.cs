@@ -11,13 +11,13 @@ namespace Server.Engines.Quests
         /* Walking Silently */
         public override object Title => 1078174;
 
-        /* Head East out of town and go to Old Haven. While wearing normal clothes, practice Stealth there until you 
-        reach 50 Stealth skill. You there. You're not very quiet in your movements. I can help you with that. Not only 
-        must you learn to become one with the shadows, but also you must learn to quiet your movements. Old Haven is 
-        the ideal place to learn how to Stealth. Head East out of town and go to Old Haven, While wearing normal clothes, 
-        practice Stealth tere. Stealth becomes more difficult as you wear heavier pieces of armor, so for now, only wear 
-        clothes while practicing Stealth. You can only Stealth once you are hidden. If you become visable, use your Hiding 
-        skill, and begin slowing walking. Come back to me once you have achived the rank of Apprentice Rought ( for Stealth), 
+        /* Head East out of town and go to Old Haven. While wearing normal clothes, practice Stealth there until you
+        reach 50 Stealth skill. You there. You're not very quiet in your movements. I can help you with that. Not only
+        must you learn to become one with the shadows, but also you must learn to quiet your movements. Old Haven is
+        the ideal place to learn how to Stealth. Head East out of town and go to Old Haven, While wearing normal clothes,
+        practice Stealth tere. Stealth becomes more difficult as you wear heavier pieces of armor, so for now, only wear
+        clothes while practicing Stealth. You can only Stealth once you are hidden. If you become visable, use your Hiding
+        skill, and begin slowing walking. Come back to me once you have achived the rank of Apprentice Rought ( for Stealth),
         and i will reward you with something useful. */
         public override object Description => 1078178;
 
@@ -27,9 +27,9 @@ namespace Server.Engines.Quests
         /* You have not ahcived the rank of Apprentice Rouge (for Stealth). Talk to me when you feel you have accomplished this. */
         public override object Uncomplete => 1078180;
 
-        /* Good. You have learned to quiet your movements. If you haven't already talked to Chiyo, I advise you do so. Chiyo 
-        can teach you how to become one with the shadows. Hiding and Stealth are essential skills to master when becoming a 
-        Ninja. Here is your reward. This leather Ninja jacket is called " Twilight Jacket". It will offer greater protection 
+        /* Good. You have learned to quiet your movements. If you haven't already talked to Chiyo, I advise you do so. Chiyo
+        can teach you how to become one with the shadows. Hiding and Stealth are essential skills to master when becoming a
+        Ninja. Here is your reward. This leather Ninja jacket is called " Twilight Jacket". It will offer greater protection
         to you. I hope this will server you well. */
         public override object Complete => 1078182;
 

@@ -35,7 +35,7 @@ namespace Server.Events.Halloween
             typeof(Taffy),
             typeof(NougatSwirl)
         };
-  
+
         public static Item RandomGMBeggerItem => (Item)Activator.CreateInstance(m_GMBeggarTreats[Utility.Random(m_GMBeggarTreats.Length)]);
         public static Item RandomTreat => (Item)Activator.CreateInstance(m_Treats[Utility.Random(m_Treats.Length)]);
     }

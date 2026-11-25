@@ -29,7 +29,7 @@ namespace Server.Items
                 chest.DropItem(new MagicalBotanicalArchwaySeed());
                 chest.DropItem(new WeddingShortBuffetTableDeed());
                 chest.DropItem(new WeddingShortBuffetTableDeed());
-                chest.DropItem(new WeddingLongBuffetTableDeed());                
+                chest.DropItem(new WeddingLongBuffetTableDeed());
 
                 var tablebag = new Bag();
                 tablebag.DropItem(new WeddingCocktailTable());

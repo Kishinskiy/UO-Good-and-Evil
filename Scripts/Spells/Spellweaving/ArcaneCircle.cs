@@ -82,7 +82,7 @@ namespace Server.Spells.Spellweaving
 
         private static bool IsValidLocation(Point3D location, Map map)
         {
-            LandTile lt = map.Tiles.GetLandTile(location.X, location.Y);         // Land   Tiles            
+            LandTile lt = map.Tiles.GetLandTile(location.X, location.Y);         // Land   Tiles
 
             if (IsValidTile(lt.ID) && lt.Z == location.Z)
                 return true;

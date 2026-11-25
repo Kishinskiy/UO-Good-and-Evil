@@ -7,7 +7,7 @@ namespace Server.Items
     /// <summary>
     /// Raises your defenses for a short time. Requires Bushido or Ninjitsu skill.
     /// </summary>
-    /// 
+    ///
     // spell/melee
     // 0 parry - 70/80
     // 100 parry - 40/65

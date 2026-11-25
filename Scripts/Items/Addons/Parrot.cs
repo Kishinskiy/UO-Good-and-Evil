@@ -88,7 +88,7 @@ namespace Server.Items
                                 from.SendLocalizedMessage(1072616); //That Parrot Perch already has a Parrot.
                         }
                         else
-                            from.SendLocalizedMessage(1072618); //Parrots can only be placed on Parrot Perches in houses where you are an owner or co-owner.	
+                            from.SendLocalizedMessage(1072618); //Parrots can only be placed on Parrot Perches in houses where you are an owner or co-owner.
                     }
                     else
                         from.SendLocalizedMessage(1072614); //You must place the Parrot on a Parrot Perch.

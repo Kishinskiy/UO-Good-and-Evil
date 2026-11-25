@@ -16,7 +16,7 @@ namespace Server.Engines.Quests
 
         /* Trouble on the Wing */
         public override object Title => 1072371;
-        /* Those gargoyles need to get knocked down a peg or two, if you ask me.  They're always flying 
+        /* Those gargoyles need to get knocked down a peg or two, if you ask me.  They're always flying
         over here and lobbing things at us. What a nuisance.  Drop a dozen of them for me, would you? */
         public override object Description => 1072593;
         /* Don't tell me you're a gargoyle sympathizer?  *spits* */

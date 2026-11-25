@@ -222,7 +222,7 @@ namespace Server.Items
             new int[] { 0, 1, 2, 3, 7, 11, 15 },
             new int[] { 0, 4, 8, 12, 13, 9, 5, 1, 2, 6, 10, 14, 15 },
             new int[] { 0, 4, 5, 1, 2, 3, 7, 6, 10, 14, 15 },
-            new int[] { 0, 4, 8, 12, 13, 14, 10, 6, 2, 3, 7, 11, 15 }, // 
+            new int[] { 0, 4, 8, 12, 13, 14, 10, 6, 2, 3, 7, 11, 15 }, //
             new int[] { 0, 4, 5, 9, 13, 14, 10, 11, 15 },
             new int[] { 0, 4, 5, 1, 2, 6, 10, 9, 13, 14, 15 },
             new int[] { 0, 1, 5, 4, 8, 12, 13, 14, 10, 11, 15 },
@@ -361,7 +361,7 @@ namespace Server.Items
 
                 AddButton(478, 281, 10710, 10711, 2, GumpButtonType.Reply, 0); // right
 
-                AddButton(453, 305, 10720, 10721, 3, GumpButtonType.Reply, 0); // down 
+                AddButton(453, 305, 10720, 10721, 3, GumpButtonType.Reply, 0); // down
 
                 AddButton(413, 281, 10730, 10731, 4, GumpButtonType.Reply, 0); // left
             }
@@ -407,7 +407,7 @@ namespace Server.Items
                         if (Door.Enclosure != null)
                             Door.Enclosure.OnPuzzleCompleted(User);
                     }
-                    else if (pick == next)                                          //Found next 
+                    else if (pick == next)                                          //Found next
                     {
                         Progress.Add(pick);
 

@@ -4,7 +4,7 @@ using Server.Network;
 using System;
 using System.Collections.Generic;
 
-/*The fencer executes a piercing move on their opponent causing stamina drain on the 
+/*The fencer executes a piercing move on their opponent causing stamina drain on the
   victim based on the fencer's fencing and tactics skill, and mastery level.*/
 
 namespace Server.Spells.SkillMasteries

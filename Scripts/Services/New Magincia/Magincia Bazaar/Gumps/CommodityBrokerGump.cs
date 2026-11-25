@@ -249,9 +249,9 @@ namespace Server.Engines.NewMagincia
             AddHtmlLocalized(10, 55, 260, 18, 1114514, "#1150313", BlueColor16, false, false); // Proprietor:
             AddHtml(280, 55, 260, 18, Color(string.Format("{0}", broker.Name), BlueColor), false, false);
 
-            /* Target commodity items or filled commodity deeds in your backpack to add them to the 
-			 * broker's inventory. These items will be retrievable, and the broker will not trade them 
-			 * until you establish prices.<br><br>When done, press the [ESC] key to cancel your targeting 
+            /* Target commodity items or filled commodity deeds in your backpack to add them to the
+			 * broker's inventory. These items will be retrievable, and the broker will not trade them
+			 * until you establish prices.<br><br>When done, press the [ESC] key to cancel your targeting
 			 * cursor, or click the MAIN MENU button below.*/
 
             AddHtmlLocalized(10, 100, 500, 400, 1150209, OrangeColor16, false, false);

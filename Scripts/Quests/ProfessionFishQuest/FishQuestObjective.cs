@@ -51,7 +51,7 @@ namespace Server.Engines.Quests
                         if (IsCompleted && Quest.Owner != null)
                         {
                             CurProgress = 500;
-                            Quest.Owner.SendLocalizedMessage(1072273, null, 0x23); // You've completed a quest!  Don't forget to collect your reward.							
+                            Quest.Owner.SendLocalizedMessage(1072273, null, 0x23); // You've completed a quest!  Don't forget to collect your reward.
                             Quest.Owner.SendSound(Quest.CompleteSound);
                         }
                         else

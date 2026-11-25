@@ -1682,7 +1682,7 @@ namespace Server.Network
 			/* 640x480    5     18   15
              * 800x600    5     18   18
              * 1024x768   5     24   24
-             * 1152x864   5     24   24 
+             * 1152x864   5     24   24
              * 1280x720   5     24   24
              */
 
@@ -2742,7 +2742,7 @@ namespace Server.Network
 		public static void PublicHouseContent(NetState state, PacketReader pvSrc)
 		{
 			int value = pvSrc.ReadByte();
-			
+
 			state.Mobile.PublicHouseContent = Convert.ToBoolean(value);
 		}
 

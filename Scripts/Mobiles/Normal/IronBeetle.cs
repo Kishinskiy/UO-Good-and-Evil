@@ -270,7 +270,7 @@ namespace Server.Mobiles
                 list.Add(new BaseHarvestTool.ToggleMiningStoneEntry(pm, MiningType.OreAndStone, 6177));     // Set To Ore and Stone
             }
         }
-        #endregion        
+        #endregion
 
         public IronBeetle(Serial serial)
             : base(serial)

@@ -101,7 +101,7 @@ namespace Server.Mobiles
 
 		private enum typemodKeyword
 		{
-			// Preparing for removal. 
+			// Preparing for removal.
 		}
 
 		private enum valueKeyword

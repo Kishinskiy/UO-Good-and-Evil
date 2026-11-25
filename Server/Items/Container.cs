@@ -711,7 +711,7 @@ namespace Server.Items
 			return ConsumeTotalGrouped(types, amounts, FindOptions.Default, validator, callback, grouper);
 		}
 
-		public int ConsumeTotalGrouped(Type[][] types, int[] amounts, bool recurse, ResValidator validator, OnItemConsumed callback, CheckItemGroup grouper) 
+		public int ConsumeTotalGrouped(Type[][] types, int[] amounts, bool recurse, ResValidator validator, OnItemConsumed callback, CheckItemGroup grouper)
 		{
 			return ConsumeTotalGrouped(types, amounts, InitFindOptions(recurse), validator, callback, grouper);
 		}
@@ -1072,7 +1072,7 @@ namespace Server.Items
 					if (theirAmount < need)
 					{
 						callback?.Invoke(item, theirAmount);
-						
+
 						item.Delete();
 						need -= theirAmount;
 					}
@@ -1681,7 +1681,7 @@ namespace Server.Items
 					{
 						return item;
 					}
-					
+
 					if (CheckRecurse(item, options))
 					{
 						var check = RecurseFindItemByType(item, types, options);
@@ -1901,7 +1901,7 @@ namespace Server.Items
 			Recursive = 0x1,
 
 			/// <summary>
-			///		Containers that implement <see cref="ILockable"/> and have <see cref="ILockable.Locked"/> 
+			///		Containers that implement <see cref="ILockable"/> and have <see cref="ILockable.Locked"/>
 			///		set to true will have their contents excluded from the search.
 			/// </summary>
 			Unlocked = 0x2,

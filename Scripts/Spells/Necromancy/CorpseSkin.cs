@@ -75,12 +75,12 @@ namespace Server.Spells.Necromancy
             /* Transmogrifies the flesh of the target creature or player to resemble rotted corpse flesh,
                 * making them more vulnerable to Fire and Poison damage,
                 * but increasing their resistance to Physical and Cold damage.
-                * 
+                *
                 * The effect lasts for ((Spirit Speak skill level - target's Resist Magic skill level) / 25 ) + 40 seconds.
-                * 
+                *
                 * NOTE: Algorithm above is fixed point, should be:
                 * ((ss-mr)/2.5) + 40
-                * 
+                *
                 * NOTE: Resistance is not checked if targeting yourself
                 */
 

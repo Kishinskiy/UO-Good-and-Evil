@@ -59,7 +59,7 @@ namespace Server.Items
 
                 if (house == null)
                 {
-                    from.SendLocalizedMessage(503240); // Vendors can only be placed in houses.	
+                    from.SendLocalizedMessage(503240); // Vendors can only be placed in houses.
                 }
                 else if (!house.IsOwner(from))
                 {

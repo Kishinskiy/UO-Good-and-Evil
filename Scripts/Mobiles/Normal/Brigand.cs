@@ -48,7 +48,7 @@ namespace Server.Mobiles
 			SetWearable(new Bandana(), dropChance: 1);
 
 			SetWearable((Item)Activator.CreateInstance(Utility.RandomList(_WeaponsList)), dropChance: 1);
-			
+
             Utility.AssignRandomHair(this);
         }
 

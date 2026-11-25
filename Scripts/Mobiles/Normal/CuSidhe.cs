@@ -111,7 +111,7 @@ namespace Server.Mobiles
                     from.SendLocalizedMessage(1071981); // Your boots allow you to mount the Cu Sidhe.
                 else
                 {
-                    from.SendLocalizedMessage(1072203); // Only Elves may use 
+                    from.SendLocalizedMessage(1072203); // Only Elves may use
                     return;
                 }
             }

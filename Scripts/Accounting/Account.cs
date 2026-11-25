@@ -1397,7 +1397,7 @@ namespace Server.Accounting
 		{
 			return Sovereigns >= amount;
 		}
-		
+
 		#endregion
 	}
 }

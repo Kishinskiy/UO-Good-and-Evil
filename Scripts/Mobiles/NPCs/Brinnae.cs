@@ -16,9 +16,9 @@ namespace Server.Engines.Quests
 
         /* Evil Eye */
         public override object Title => 1073084;
-        /* Kind traveler, hear my plea. You know of the evil orbs? The wrathful eyes? Some call 
-        them gazers? They must be a nest nearby, for they are tormenting us poor folk. We need 
-        to drive back their numbers. But we are not strong enough to face such horrors ourselves, 
+        /* Kind traveler, hear my plea. You know of the evil orbs? The wrathful eyes? Some call
+        them gazers? They must be a nest nearby, for they are tormenting us poor folk. We need
+        to drive back their numbers. But we are not strong enough to face such horrors ourselves,
         we need a true hero. */
         public override object Description => 1073574;
         /* I hope you'll reconsider. Until then, farwell. */
@@ -52,8 +52,8 @@ namespace Server.Engines.Quests
 
         /* Impish Delights */
         public override object Title => 1073077;
-        /* Imps! Do you hear me? Imps! They're everywhere! They're in everything! Oh, don't be fooled 
-        by their size - they vicious little devils! Half-sized evil incarnate, they are! Somebody 
+        /* Imps! Do you hear me? Imps! They're everywhere! They're in everything! Oh, don't be fooled
+        by their size - they vicious little devils! Half-sized evil incarnate, they are! Somebody
         needs to send them back to where they came from, if you know what I mean. */
         public override object Description => 1073567;
         /* I hope you'll reconsider. Until then, farwell. */
@@ -89,8 +89,8 @@ namespace Server.Engines.Quests
         public override bool AllObjectives => false;
         /* Stirring the Nest */
         public override object Title => 1073087;
-        /* Were you the sort of child that enjoyed knocking over anthills? Well, perhaps you'd like 
-        to try something a little bigger? There's a Solen nest nearby and I bet if you killed a queen 
+        /* Were you the sort of child that enjoyed knocking over anthills? Well, perhaps you'd like
+        to try something a little bigger? There's a Solen nest nearby and I bet if you killed a queen
         or two, it would be quite the sight to behold.  I'd even pay to see that - what do you say? */
         public override object Description => 1073577;
         /* I hope you'll reconsider. Until then, farwell. */
@@ -126,8 +126,8 @@ namespace Server.Engines.Quests
         public override bool AllObjectives => false;
         /* Undead Mages */
         public override object Title => 1073080;
-        /* Why must the dead plague the living? With their foul necromancy and dark sorceries, the undead 
-        menace the countryside. I fear what will happen if no one is strong enough to face these nightmare 
+        /* Why must the dead plague the living? With their foul necromancy and dark sorceries, the undead
+        menace the countryside. I fear what will happen if no one is strong enough to face these nightmare
         sorcerers and thin their numbers. */
         public override object Description => 1073570;
         /* I hope you'll reconsider. Until then, farwell. */
@@ -161,8 +161,8 @@ namespace Server.Engines.Quests
 
         /* The Afterlife */
         public override object Title => 1073073;
-        /* Nobody told me about the Mummy's Curse. How was I supposed to know you shouldn't disturb the tombs? 
-        Oh, sure, now all I hear about is the curse of the vengeful dead. I'll tell you what - make a few of 
+        /* Nobody told me about the Mummy's Curse. How was I supposed to know you shouldn't disturb the tombs?
+        Oh, sure, now all I hear about is the curse of the vengeful dead. I'll tell you what - make a few of
         these mummies go away and we'll keep this between you and me. */
         public override object Description => 1073563;
         /* I hope you'll reconsider. Until then, farwell. */
@@ -196,8 +196,8 @@ namespace Server.Engines.Quests
 
         /* Friendly Neighborhood Spider-killer */
         public override object Title => 1073662;
-        /* They aren't called Dread Spiders because they're fluffy and cuddly now, are they? No, there's nothing 
-        appealing about those wretches so I sure wouldn't lose any sleep if you were to exterminate a few. I'd 
+        /* They aren't called Dread Spiders because they're fluffy and cuddly now, are they? No, there's nothing
+        appealing about those wretches so I sure wouldn't lose any sleep if you were to exterminate a few. I'd
         even part with a generous amount of gold, I would. */
         public override object Description => 1073701;
         /* Perhaps you'll change your mind and return at some point. */
@@ -231,8 +231,8 @@ namespace Server.Engines.Quests
 
         /* Gargoyle's Wrath */
         public override object Title => 1073658;
-        /* It is regretable that the Gargoyles insist upon warring with us. Their Enforcers attack men on sight, despite 
-        all efforts at reason. To help maintain order in this region, I have been authorized to encourage bounty hunters 
+        /* It is regretable that the Gargoyles insist upon warring with us. Their Enforcers attack men on sight, despite
+        all efforts at reason. To help maintain order in this region, I have been authorized to encourage bounty hunters
         to reduce their numbers. Eradicate their number and I will reward you handsomely. */
         public override object Description => 1073697;
         /* Perhaps you'll change your mind and return at some point. */
@@ -266,8 +266,8 @@ namespace Server.Engines.Quests
 
         /* Three Wishes */
         public override object Title => 1073660;
-        /* If I had but one wish, it would be to rid myself of these dread Efreet! Fire and ash, they are cunning and 
-        deadly! You look a brave soul - would you be interested in earning a rich reward for slaughtering a few of the 
+        /* If I had but one wish, it would be to rid myself of these dread Efreet! Fire and ash, they are cunning and
+        deadly! You look a brave soul - would you be interested in earning a rich reward for slaughtering a few of the
         smoky devils? */
         public override object Description => 1073699;
         /* Perhaps you'll change your mind and return at some point. */
@@ -303,8 +303,8 @@ namespace Server.Engines.Quests
         public override bool AllObjectives => false;
         /* Forked Tongue */
         public override object Title => 1073655;
-        /* I must implore you, brave traveler, to do battle with the vile reptiles which haunt these parts. Those hideous 
-        abominations, the Ophidians, are a blight across the land. If you were able to put down a host of the scaly 
+        /* I must implore you, brave traveler, to do battle with the vile reptiles which haunt these parts. Those hideous
+        abominations, the Ophidians, are a blight across the land. If you were able to put down a host of the scaly
         warriors, the Knights or the Avengers, I would forever be in your debt. */
         public override object Description => 1073694;
         /* Perhaps you'll change your mind and return at some point. */
@@ -339,8 +339,8 @@ namespace Server.Engines.Quests
 
         /* Mongbat Menace! */
         public override object Title => 1073003;
-        /* I imagine you don't know about the mongbats.  Well, you may think you do, but I know more than just about anyone.  
-        You see they come in two varieties ... the stronger and the weaker.  Either way, they're a menace.  Exterminate ten 
+        /* I imagine you don't know about the mongbats.  Well, you may think you do, but I know more than just about anyone.
+        You see they come in two varieties ... the stronger and the weaker.  Either way, they're a menace.  Exterminate ten
         of the weaker ones and four of the stronger and I'll pay you an honest wage. */
         public override object Description => 1073033;
         /* Well, okay. But if you decide you are up for it after all, c'mon back and see me. */

@@ -123,14 +123,14 @@ namespace Server.Engines.CityLoyalty
                 if (CityLoyaltySystem.CanAddCitizen(User))
                 {
                     AddHtmlLocalized(30, y, 280, 90, 1152885, false, false);
-                    /*Click the gem next to the name of a city to declare your 
+                    /*Click the gem next to the name of a city to declare your
                      * citizenship. You may renounce citizenship, but afterwards
                      * you may not declare new citizenship for one week.*/
                 }
                 else
                 {
                     AddHtmlLocalized(30, y, 285, 80, 1152886, CityLoyaltySystem.NextJoinCity(User).ToString(), 0, false, false);
-                    /*You recently renounced citizenship, so you must wait ~1_COUNT~ 
+                    /*You recently renounced citizenship, so you must wait ~1_COUNT~
                      * more days before you may declare citizenship again.*/
                 }
             }
@@ -184,8 +184,8 @@ namespace Server.Engines.CityLoyalty
             AddHtmlLocalized(30, 40, 285, 200, 1152891, string.Format("#{0}", CityLoyaltySystem.GetCityLocalization(City.City).ToString()), 1, false, true);
             /*If you choose to declare citizenship with ~1_CITY~, you will be granted the "Citizen" title.
              * If your loyalty rating to ~1_CITY~ is high enough, you will be able to receive titles with
-             * that city.<br><br>You may only have citizenship in one city at a time. You may renounce 
-             * citizenship at any time. After renouncing citizenship, you must wait one week before declaring 
+             * that city.<br><br>You may only have citizenship in one city at a time. You may renounce
+             * citizenship at any time. After renouncing citizenship, you must wait one week before declaring
              * citizenship again.<br><br>Note that gaining city titles requires positive loyalty with your city,
              * and you will be required to donate funds to the city's coffers.<br><br>Are you sure you wish to
              * declare citizenship with ~1_CITY~?*/
@@ -415,7 +415,7 @@ namespace Server.Engines.CityLoyalty
                 AddHtmlLocalized(20, 45, 360, 60, 1153898, string.Format("{0}\t{1}\t{2}",
                     City.Definition.Name,
                     City.Governor == null ? "Vacant" : City.Governor.Name,
-                    next.ToString()), 0xFFFF, false, false); // The current Governor of ~1_CITY~ is ~2_PLAYER~.  The next election cycle begins after ~3_DAYS~. 
+                    next.ToString()), 0xFFFF, false, false); // The current Governor of ~1_CITY~ is ~2_PLAYER~.  The next election cycle begins after ~3_DAYS~.
             }
             else
             {
@@ -425,14 +425,14 @@ namespace Server.Engines.CityLoyalty
                 if (City.Election.CanNominate())
                 {
                     AddButton(10, 40, 4002, 4004, 1, GumpButtonType.Reply, 0);
-                    AddHtmlLocalized(45, 40, 250, 20, 1153901, 0xFFFF, false, false); // Nominate Yourself for the Ballot 
+                    AddHtmlLocalized(45, 40, 250, 20, 1153901, 0xFFFF, false, false); // Nominate Yourself for the Ballot
                 }
 
                 AddButton(10, 80, 4005, 4007, 2, GumpButtonType.Reply, 0);
                 AddHtmlLocalized(45, 80, 250, 20, 1153900, 0xFFFF, false, false); // View List of Current Nominees
 
                 AddButton(10, 110, 4005, 4007, 3, GumpButtonType.Reply, 0);
-                AddHtmlLocalized(45, 110, 250, 20, 1153899, 0xFFFF, false, false); // View List of Current Candidates 
+                AddHtmlLocalized(45, 110, 250, 20, 1153899, 0xFFFF, false, false); // View List of Current Candidates
 
                 AddButton(10, 150, 4005, 4007, 0, GumpButtonType.Reply, 0);
                 AddHtmlLocalized(45, 150, 250, 20, 1060675, 0xFFFF, false, false); // CLOSE
@@ -655,8 +655,8 @@ namespace Server.Engines.CityLoyalty
             AddHtmlLocalized(0, 7, 345, 20, 1154645, "#1154103", 0, false, false); // City Loyalty Trade Deal
 
             AddHtmlLocalized(30, 40, 280, 100, 1154030, false, false);
-            /*Which Trade Guild do you wish to make a deal with?  A new trade deal costs 
-             * 2,000,000gp and is valid for one week, at which time you may opt to renew 
+            /*Which Trade Guild do you wish to make a deal with?  A new trade deal costs
+             * 2,000,000gp and is valid for one week, at which time you may opt to renew
              * the deal or choose a different deal.*/
 
             int y = 150;
@@ -732,7 +732,7 @@ namespace Server.Engines.CityLoyalty
             AddBackground(0, 0, 400, 400, 5054);
             AddHtmlLocalized(0, 15, 400, 20, 1154015, false, false); // <CENTER>City Title</CENTER>
 
-            AddHtmlLocalized(15, 45, 370, 80, 1154016, false, false); // What title doth thou wish to bestow upon this citizen?<BR><BR>Note: All City Titles are automatically followed by "of (City Name)" where (City Name) is the name of the city. 
+            AddHtmlLocalized(15, 45, 370, 80, 1154016, false, false); // What title doth thou wish to bestow upon this citizen?<BR><BR>Note: All City Titles are automatically followed by "of (City Name)" where (City Name) is the name of the city.
 
             AddImageTiled(50, 145, 250, 20, 3504);
             AddTextEntry(51, 145, 249, 20, 0, 1, "");
@@ -804,14 +804,14 @@ namespace Server.Engines.CityLoyalty
             AddBackground(0, 0, 600, 600, 9380);
 
             AddHtmlLocalized(50, 50, 500, 400, 1154069, City.Definition.Name, 0, false, false);
-            /*You are about to accept the office of Governor of ~1_CITY~. You will hold this office for 90 days. During your time in office you 
-             * will be expected to:<BR><BR>1. Attend meetings with His Royal Majesty King Blackthorn.<BR>2. Encourage citizens to raise revenue 
+            /*You are about to accept the office of Governor of ~1_CITY~. You will hold this office for 90 days. During your time in office you
+             * will be expected to:<BR><BR>1. Attend meetings with His Royal Majesty King Blackthorn.<BR>2. Encourage citizens to raise revenue
              * for the City Treasury.<BR>3. Address the needs and concerns of your citizens and bring their voice to The King.<BR>4. Negotiate
-             * Trade Deals with various Professional Guilds.<BR>5. Grant titles to those citizens you deem worthy. Any title you bestow that is 
-             * deemed inappropriate will be grounds for removal from office and action being taken against your account.<BR><BR>At any time 
-             * during your administration should you have a negative loyalty with the City, renounce your citizenship, or transfer off this shard 
-             * you will automatically resign your office.<BR><BR>If at any time should you require to take a leave of absence from Britannia or 
-             * otherwise cannot fulfill the duties of your office it is your responsibility to communicate to King Blackthorn so that a replacement 
+             * Trade Deals with various Professional Guilds.<BR>5. Grant titles to those citizens you deem worthy. Any title you bestow that is
+             * deemed inappropriate will be grounds for removal from office and action being taken against your account.<BR><BR>At any time
+             * during your administration should you have a negative loyalty with the City, renounce your citizenship, or transfer off this shard
+             * you will automatically resign your office.<BR><BR>If at any time should you require to take a leave of absence from Britannia or
+             * otherwise cannot fulfill the duties of your office it is your responsibility to communicate to King Blackthorn so that a replacement
              * can be found or he shall do so at his discretion.<BR><BR>Congratulations, Governor.*/
 
             AddButton(50, 548, 4005, 4007, 1, GumpButtonType.Reply, 0);

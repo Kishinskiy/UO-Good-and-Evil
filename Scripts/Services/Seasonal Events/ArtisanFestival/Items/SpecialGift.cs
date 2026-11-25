@@ -24,7 +24,7 @@ namespace Server.Engines.ArtisanFestival
 
         public override void AddNameProperty(ObjectPropertyList list)
         {
-            list.Add(1157163, _Owner != null ? _Owner.Name : "Somebody"); // A Special Gift for ~1_NAME~ 
+            list.Add(1157163, _Owner != null ? _Owner.Name : "Somebody"); // A Special Gift for ~1_NAME~
         }
 
         public override void OnDoubleClick(Mobile from)

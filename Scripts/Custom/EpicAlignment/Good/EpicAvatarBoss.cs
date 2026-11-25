@@ -86,7 +86,7 @@ namespace Server.Mobiles
                 {
                     DoHarmful(m);
                     int damage = Utility.RandomMinMax(30, 50);
-                    
+
                     if (m.Karma > 5000)
                     {
                         damage += 25;

@@ -20,7 +20,7 @@ namespace Server.Items
         {
         }
 
-        public override int LabelNumber => 1073260;// Blackthorn's Kryss - Museum of Vesper Replica	
+        public override int LabelNumber => 1073260;// Blackthorn's Kryss - Museum of Vesper Replica
         public override int InitMinHits => 80;
         public override int InitMaxHits => 80;
         public override void Serialize(GenericWriter writer)
