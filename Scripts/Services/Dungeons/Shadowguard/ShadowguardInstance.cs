@@ -54,9 +54,9 @@ namespace Server.Engines.Shadowguard
                 {
                     if (!Controller.Lobby.Contains(new Point2D(info.Mobile.X, info.Mobile.Y)))
                     {
-                        m.SendLocalizedMessage(1156186); // All members of your party must remain in the lobby of Shadowguard 
-                        // while your encounter is prepared. Make sure all members of your party 
-                        // are in the lobby and try again. 
+                        m.SendLocalizedMessage(1156186); // All members of your party must remain in the lobby of Shadowguard
+                        // while your encounter is prepared. Make sure all members of your party
+                        // are in the lobby and try again.
                         return false;
                     }
                 }

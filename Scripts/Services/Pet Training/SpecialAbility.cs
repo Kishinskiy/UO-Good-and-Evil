@@ -336,7 +336,7 @@ namespace Server.Mobiles
             defender.FixedParticles(0x3709, 10, 30, 5052, EffectLayer.LeftFoot);
             defender.PlaySound(0x208);
 
-            defender.SendLocalizedMessage(1070823); // The creature hits you with its Angry Fire.    
+            defender.SendLocalizedMessage(1070823); // The creature hits you with its Angry Fire.
         }
     }
 

@@ -169,10 +169,10 @@ namespace Server.Engines.Khaldun
                 AddHtmlLocalized(5, 365, 390, 200, 1158626, BaseGump.C32216(0x0D0D0D), false, true);
 
                 /**You approach Inspector Jasper and relay to him what Sage Humbolt told you...he remains expressionless*
-                 * This is much more sinister than any of us could have ever imagined. I had little doubt your investigatory 
+                 * This is much more sinister than any of us could have ever imagined. I had little doubt your investigatory
                  * skills would yield anything but a major revelation - but this? Who could have thought. I have dispatched
                  * a team to the location Sage Humbolt spoke of. It is up to everyone now to prevent this coming evil. Here
-                 * you go, you've earned this. Wear this title proudly. This official credential identifies you as a member 
+                 * you go, you've earned this. Wear this title proudly. This official credential identifies you as a member
                  * of the RBG Detective Branch and will allow you past the guards at the site Sage Humbolt spoke of near
                  * 57o 7'S, 5o 20'E in the Lost Lands.*/
             }

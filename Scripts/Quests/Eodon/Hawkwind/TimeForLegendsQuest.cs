@@ -9,10 +9,10 @@ namespace Server.Engines.Quests.TimeLord
     public class TimeForLegendsQuest : QuestSystem
     {
         public override object Name => 1156338;  		// A Time For Legends
-        public override object OfferMessage => 1156339; 	/*Greetings Brave Traveler!<br><br>Throughout my travels in time I have forever 
-																		  encountered those who've reached the pinnacle of their profession.  These Legends 
+        public override object OfferMessage => 1156339; 	/*Greetings Brave Traveler!<br><br>Throughout my travels in time I have forever
+																		  encountered those who've reached the pinnacle of their profession.  These Legends
 																		  are told of in our most cherished tales and are the fabric by which heroes are born.
-																		  I offer you now a chance to walk the path of these Legends.  Complete my task and 
+																		  I offer you now a chance to walk the path of these Legends.  Complete my task and
 																		  you too shall know the secrets of the Master.*/
 
         public override TimeSpan RestartDelay => TimeSpan.Zero;

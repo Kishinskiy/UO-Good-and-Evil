@@ -197,7 +197,7 @@ namespace Server.Engines.VendorSearching
             {
                 if (!VendorSearch.CanSearch(User))
                 {
-                    User.SendLocalizedMessage(1154680); //Before using vendor search, you must be in a justice region or a safe log-out location (such as an inn or a house which has you on its Owner, Co-owner, or Friends list). 
+                    User.SendLocalizedMessage(1154680); //Before using vendor search, you must be in a justice region or a safe log-out location (such as an inn or a house which has you on its Owner, Co-owner, or Friends list).
                     return;
                 }
 
@@ -233,7 +233,7 @@ namespace Server.Engines.VendorSearching
 
                                 if (results == null || results.Count == 0)
                                 {
-                                    SendGump(new VendorSearchGump(User, 1154587)); // No items matched your search.                                     
+                                    SendGump(new VendorSearchGump(User, 1154587)); // No items matched your search.
                                 }
                                 else
                                 {
@@ -255,7 +255,7 @@ namespace Server.Engines.VendorSearching
                         Refresh();
                         break;
                     }
-                case 4: // Nothing, resend gump                    
+                case 4: // Nothing, resend gump
                     Refresh();
                     break;
                 case 7: // remove item name
@@ -564,7 +564,7 @@ namespace Server.Engines.VendorSearching
                         }
                         else if (VendorMap.SetLocation == Point3D.Zero && !VendorSearch.CanSearch(User))
                         {
-                            User.SendLocalizedMessage(1154680); //Before using vendor search, you must be in a justice region or a safe log-out location (such as an inn or a house which has you on its Owner, Co-owner, or Friends list). 
+                            User.SendLocalizedMessage(1154680); //Before using vendor search, you must be in a justice region or a safe log-out location (such as an inn or a house which has you on its Owner, Co-owner, or Friends list).
                         }
                         else if (VendorMap.SetLocation == Point3D.Zero && !VendorSearch.CanSearch(User))
                         {

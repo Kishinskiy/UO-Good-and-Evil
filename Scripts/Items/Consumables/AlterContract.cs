@@ -107,7 +107,7 @@ namespace Server.Items
         {
             base.Serialize(writer);
 
-            writer.Write(0); // version 
+            writer.Write(0); // version
 
             writer.Write((int)m_Type);
             writer.Write(m_CrafterName);

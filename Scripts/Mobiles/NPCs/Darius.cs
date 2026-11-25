@@ -51,9 +51,9 @@ namespace Server.Engines.Quests
             Objectives.Add(1074001); // The most basic lessons of our Sosaria are taught by her humblest children.  Seek Maul, the great bear, who understands instictively the seasons.
 
             Story.Add(1074004); // You have carved a path in history, sought to understand the way from our sage companions.
-            Story.Add(1074005); // And now you have returned full circle to the place of your origin within the arms of Mother Sosaria. There is but one thing left to do if you truly wish to embrace your elven heritage. 
+            Story.Add(1074005); // And now you have returned full circle to the place of your origin within the arms of Mother Sosaria. There is but one thing left to do if you truly wish to embrace your elven heritage.
             Story.Add(1074006); // To be born once more an elf, you must strip of all worldly possessions. Nothing of man or beast much touch your skin.
-            Story.Add(1074007); // Then you may step forth into history.	
+            Story.Add(1074007); // Then you may step forth into history.
         }
 
         public override void Serialize(GenericWriter writer)

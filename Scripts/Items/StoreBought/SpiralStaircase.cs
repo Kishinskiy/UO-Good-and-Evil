@@ -194,7 +194,7 @@ namespace Server.Items
                 from.SendGump(new AddonOptionGump(this, 1159430, 300, 180)); // Choose an option:
             }
             else
-                from.SendLocalizedMessage(1062334); // This item must be in your backpack to be used.       	
+                from.SendLocalizedMessage(1062334); // This item must be in your backpack to be used.
         }
 
         public SpiralStaircaseDeed(Serial serial)

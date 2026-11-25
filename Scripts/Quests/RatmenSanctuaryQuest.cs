@@ -10,14 +10,14 @@ namespace Server.Engines.Quests
         public override object Title => 1072373;
 
         /*Mangy, lice encrusted furballs!  Those filthy ratmen have been sneaking into camp again,
-          the signs are obvious.  They've fouled the water stores again and stolen what they  
+          the signs are obvious.  They've fouled the water stores again and stolen what they
           couldn't eat.  Are you up to cleaning up the rat warrens?   */
         public override object Description => 1072674;
 
         /* I understand.  The stench in those tunnels is unbearable. */
         public override object Refuse => 1072684;
 
-        /* The ratmen have holes all over the place that lead to their warrens.  Sometimes they're 
+        /* The ratmen have holes all over the place that lead to their warrens.  Sometimes they're
            loitering around on the surface too.  Either way, they're not hard to find. */
         public override object Uncomplete => 1072685;
 
@@ -53,7 +53,7 @@ namespace Server.Engines.Quests
         /* Cowards! */
         public override object Title => 1072689;
 
-        /* When you were exterminating those untidy vermin, you must have noticed the archers amongst them? 
+        /* When you were exterminating those untidy vermin, you must have noticed the archers amongst them?
            Those cowardly rats have been peppering us with arrows and then running away before we can retaliate.
            Can I count on you to handle this for me? */
         public override object Description => 1072697;
@@ -61,7 +61,7 @@ namespace Server.Engines.Quests
         /* I understand.  The stench in those tunnels is unbearable. */
         public override object Refuse => 1072684;
 
-        /* The ratmen have holes all over the place that lead to their warrens.  Sometimes they're 
+        /* The ratmen have holes all over the place that lead to their warrens.  Sometimes they're
            loitering around on the surface too.  Either way, they're not hard to find. */
         public override object Uncomplete => 1072685;
 

@@ -152,7 +152,7 @@ namespace Server.Spells.SkillMasteries
 
                 BuffInfo.AddBuff(Caster, new BuffInfo(BuffIcon.Bodyguard, 1155924, 1156061, TimeSpan.FromSeconds(90), Caster, string.Format("{0}\t{1}\t{2}\t{3}", Caster.Name, ((int)(_Block + 5)).ToString(), toGuard.Name, ((int)_Block).ToString())));
                 BuffInfo.AddBuff(toGuard, new BuffInfo(BuffIcon.Bodyguard, 1155924, 1156061, TimeSpan.FromSeconds(90), toGuard, string.Format("{0}\t{1}\t{2}\t{3}", Caster.Name, ((int)(_Block + 5)).ToString(), toGuard.Name, ((int)_Block).ToString())));
-                //~1_NAME~ receives ~2_DAMAGE~% of all damage dealt to ~3_NAME~. All damage dealt to ~3_NAME~ will be reduced by ~4_DAMAGE~%. Body guard must be within 2 tiles. 
+                //~1_NAME~ receives ~2_DAMAGE~% of all damage dealt to ~3_NAME~. All damage dealt to ~3_NAME~ will be reduced by ~4_DAMAGE~%. Body guard must be within 2 tiles.
             }
 
             FinishSequence();

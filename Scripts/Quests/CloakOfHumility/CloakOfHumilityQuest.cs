@@ -22,7 +22,7 @@ namespace Server.Engines.Quests
 
         /*Greetings my friend! My name is Gareth, and I represent a group of citizens who wish to rejuvenate interest in our
          * kingdom's noble heritage. 'Tis our belief that one of Britannia's greatest triumphs was the institution of the Virtues,
-         * neglected though they be now. To that end I have a set of tasks prepared for one who would follow a truly Humble path. 
+         * neglected though they be now. To that end I have a set of tasks prepared for one who would follow a truly Humble path.
          * Art thou interested in joining our effort?*/
         public override object Description => 1075675;
 
@@ -32,14 +32,14 @@ namespace Server.Engines.Quests
         //Wonderful! First, let us see if thou art reading from the same roll of parchment as we are. *smiles*
         public override object Uncomplete => 1075676;
 
-        /*Very good! I can see that ye hath more than just a passing interest in our work. There are many trials before thee, but 
+        /*Very good! I can see that ye hath more than just a passing interest in our work. There are many trials before thee, but
          * I have every hope that ye shall have the diligence and fortitude to carry on to the very end. Before we begin, please
-         * prepare thyself by thinking about the virtue of Humility. Ponder not only its symbols, but also its meanings. Once ye 
+         * prepare thyself by thinking about the virtue of Humility. Ponder not only its symbols, but also its meanings. Once ye
          * believe that thou art ready, speak with me again.*/
         public override object Complete => 1075714;
 
-        /*Ah... no, that is not quite right. Truly, Humility is something that takes time and experience to understand. I wish to 
-         * challenge thee to seek out more knowledge concerning this virtue, and tomorrow let us speak again about what thou hast 
+        /*Ah... no, that is not quite right. Truly, Humility is something that takes time and experience to understand. I wish to
+         * challenge thee to seek out more knowledge concerning this virtue, and tomorrow let us speak again about what thou hast
          * learned.<br>*/
         public override object FailedMsg => 1075713;
 
@@ -56,7 +56,7 @@ namespace Server.Engines.Quests
             g.AddHtmlObject(160, 70, 200, 40, Title, BaseQuestGump.DarkGreen, false, false);
             g.AddHtmlLocalized(98, 140, 312, 16, 1049073, 0x2710, false, false); // Objective:
 
-            g.AddHtmlLocalized(98, 156, 312, 16, 1072208, 0x2710, false, false); // All of the following	
+            g.AddHtmlLocalized(98, 156, 312, 16, 1072208, 0x2710, false, false); // All of the following
 
             int offset = 172;
             string str;
@@ -203,14 +203,14 @@ namespace Server.Engines.Quests
         //Community Service – Zoo
         public override object Title => 1075722;
 
-        /*Now, go on and donate to the Moonglow Zoo. Givest thou enough to receive a 'For the Life of Britannia' sash. Once ye have it, 
+        /*Now, go on and donate to the Moonglow Zoo. Givest thou enough to receive a 'For the Life of Britannia' sash. Once ye have it,
          * return it to me. Wilt thou continue?*/
         public override object Description => 1075723;
 
         //I wish that thou wouldest reconsider.
         public override object Refuse => 1075725;
 
-        //Hello again. The zoo lies a short ways south of Moonglow. Close to the entrance thou wilt discover a small donation chest. 
+        //Hello again. The zoo lies a short ways south of Moonglow. Close to the entrance thou wilt discover a small donation chest.
         //That is where thou shouldest leave thy donation.
         public override object Uncomplete => 1075726;
 
@@ -246,18 +246,18 @@ namespace Server.Engines.Quests
         //Community Service – Library
         public override object Title => 1075728;
 
-        /*I have one more charity for thee, my diligent friend. Go forth and donate to the Britain Library and do that which is necessary to receive 
+        /*I have one more charity for thee, my diligent friend. Go forth and donate to the Britain Library and do that which is necessary to receive
          * a special printing of ‘Virtue’, by Lord British. Once in hand, bring the book back with ye. Art thou ready?*/
         public override object Description => 1075729;
 
         //I wish that thou wouldest reconsider.
         public override object Refuse => 1075731;
 
-        //Art thou having trouble? The Library lieth north of Castle British's gates. I believe the representatives in charge of the 
+        //Art thou having trouble? The Library lieth north of Castle British's gates. I believe the representatives in charge of the
         //donations are easy enough to find. They await thy visit, amongst the many tomes of knowledge.
         public override object Uncomplete => 1075732;
 
-        /*Very good! The library is of great import to the people of Britannia. Thou hath done a worthy deed and this is thy last 
+        /*Very good! The library is of great import to the people of Britannia. Thou hath done a worthy deed and this is thy last
          * required donation. I encourage thee to continue contributing to thine community, beyond the obligations of this endeavor.*/
         public override object Complete => 1075733;
 
@@ -298,8 +298,8 @@ namespace Server.Engines.Quests
         //Who's Most Humble
         public override object Title => 1075734;
 
-        /*Thou art challenged to find seven citizens spread out among the towns of Britannia: Skara Brae, Minoc, Britain, and 
-         * one of the towns upon an isle at sea. Each citizen wilt reveal some thought concerning Humility. But who doth best 
+        /*Thou art challenged to find seven citizens spread out among the towns of Britannia: Skara Brae, Minoc, Britain, and
+         * one of the towns upon an isle at sea. Each citizen wilt reveal some thought concerning Humility. But who doth best
          * exemplify the virtue? Here, thou needeth wear this plain grey cloak, for they wilt know ye by it. Wilt thou continue?*/
         public override object Description => 1075735;
 
@@ -307,8 +307,8 @@ namespace Server.Engines.Quests
         public override object Refuse => 1075737;
 
         /*There art no less than seven 'humble citizens' spread across the Britannia proper. I know that they can be found in the
-         * towns of Minoc, Skara Brae and Britain. Another may be upon an island at sea, the name of which escapes me at the moment. 
-         * Thou needeth visit all seven to solve the puzzle. Be diligent, for they have a tendency to wander about.<BR><BR><br>Dost 
+         * towns of Minoc, Skara Brae and Britain. Another may be upon an island at sea, the name of which escapes me at the moment.
+         * Thou needeth visit all seven to solve the puzzle. Be diligent, for they have a tendency to wander about.<BR><BR><br>Dost
          * thou wear the plain grey cloak?*/
         public override object Uncomplete => 1075738;
 

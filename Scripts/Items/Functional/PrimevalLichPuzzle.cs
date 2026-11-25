@@ -4,12 +4,12 @@ using System;
 using System.Collections.Generic;
 
 //
-// This implements the Primeval Lich Lever Puzzle for SA.  
-// 
+// This implements the Primeval Lich Lever Puzzle for SA.
+//
 // To install, copy this file anywhere into the scripts directory tree.  Next edit
 // ChampionSpawn.cs and add the following line of code at the end of the Start() and Stop()
 // methods in the ChampionSpawn.cs file:
-// 
+//
 //          PrimevalLichPuzzle.Update(this);
 //
 // Next compile and be sure that the Primeval Lich championSpawn is created. Then you can
@@ -102,7 +102,7 @@ namespace Server.Engines.CannedEvil
             new int[] { 7009, 977, -15, 1275 }, // purple
             new int[] { 7012, 977, -15, 1272 }, // green
             new int[] { 7015, 977, -15, 1260 }, // gold
-            new int[] { 7018, 977, -15, 1166 }, // pink 
+            new int[] { 7018, 977, -15, 1166 }, // pink
         };
 
         // these are serialized

@@ -124,7 +124,7 @@ namespace Server.Gumps
             if (Page > 1)
             {
                 AddButton(150, 335, 0x15E3, 0x15E7, 0, GumpButtonType.Page, Page - 1);
-                AddHtmlLocalized(170, 335, 60, 20, 1074880, 0x1, false, false); // Previous			
+                AddHtmlLocalized(170, 335, 60, 20, 1074880, 0x1, false, false); // Previous
             }
 
             Page++;

@@ -18,7 +18,7 @@ namespace Server.Items
 
             g.AddBackground(0, 0, 404, 325, 9380);
 
-            /*You unfurl the parchment, it appears to be a handwritten note*<br><br>Taking up delivery of goods fer 
+            /*You unfurl the parchment, it appears to be a handwritten note*<br><br>Taking up delivery of goods fer
              * the crown are ya? Well...maybe yer interested in a bit of something fer yerself?  Look fer me in Felucca...
              * the taverns of Ocllo, Nujelm, & Serpent's Hold if ye want to fence yer goods.<br><br>-A Friend*/
 

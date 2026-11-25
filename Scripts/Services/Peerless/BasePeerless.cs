@@ -150,7 +150,7 @@ namespace Server.Mobiles
             m_Altar = reader.ReadItem() as PeerlessAltar;
         }
 
-        #region Helpers		
+        #region Helpers
         public virtual bool CanSpawnHelpers => false;
         public virtual int MaxHelpersWaves => 0;
         public virtual double SpawnHelpersChance => 0.05;

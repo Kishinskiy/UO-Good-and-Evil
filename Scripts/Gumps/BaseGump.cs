@@ -139,7 +139,7 @@ namespace Server.Gumps
                 AddGumpLayout();
             }
 
-            /*Children.ForEach(child => 
+            /*Children.ForEach(child =>
                 {
                     if(child.Open)
                         child.Refresh(recompile, close);

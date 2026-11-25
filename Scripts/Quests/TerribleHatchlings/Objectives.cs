@@ -41,7 +41,7 @@ namespace Server.Engines.Quests.Zento
     {
         public override object Message =>
                 /* Great job! One less terrible hatchling in the Waste!<BR><BR>
-* 
+*
 * Once you've killed 10 of the Deathwatch Beetle Hatchlings,
 * return to Ansella for your reward!
 */

@@ -77,7 +77,7 @@ namespace Server.Items
 
             if (!allowableSpecial)
             {
-                system = CraftSystem.GetSystem(item.GetType());                
+                system = CraftSystem.GetSystem(item.GetType());
             }
             else
             {
@@ -1307,10 +1307,10 @@ namespace Server.Items
                         new NamedInfoCol(AosWeaponAttribute.DurabilityBonus, DurabilityTable), //
                         new NamedInfoCol(AosWeaponAttribute.LowerStatReq, LowerStatReqTable), //
                         new NamedInfoCol("Slayer", 1), //
-                        new NamedInfoCol(AosWeaponAttribute.MageWeapon, MageWeaponTable), // 
+                        new NamedInfoCol(AosWeaponAttribute.MageWeapon, MageWeaponTable), //
                         new NamedInfoCol(AosAttribute.SpellChanneling, 1), //
                         new NamedInfoCol(AosAttribute.BalancedWeapon, 1), //
-                        new NamedInfoCol("WeaponVelocity", WeaponVelocityTable), // 
+                        new NamedInfoCol("WeaponVelocity", WeaponVelocityTable), //
                         new NamedInfoCol("ElementalDamage", ElementalDamageTable), //
                     },
                     new NamedInfoCol[] // armor
@@ -1887,7 +1887,7 @@ namespace Server.Items
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="item">item to mutate</param>
         /// <param name="killer">who killed the monster, if applicable</param>

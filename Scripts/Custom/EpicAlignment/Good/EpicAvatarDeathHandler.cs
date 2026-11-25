@@ -39,7 +39,7 @@ namespace Server.Custom.EpicAlignment
             if (killedByPlayer)
             {
                 pm.SendMessage(0x22, "Ваша материальная оболочка разорвана клинком смертного! Изгнание духа в Чистилище...");
-                
+
                 // Выдаем ловец эссенций в сумку призрака, если его там нет
                 // (Замените Candle на ваш кастомный класс PurgatoryEssenceCatcher, если он готов)
                 if (pm.Backpack != null && pm.Backpack.FindItemByType(typeof(Candle)) == null)
@@ -55,7 +55,7 @@ namespace Server.Custom.EpicAlignment
                 pm.SendMessage(0x35, "Высшие силы Добродетелей спасают твой дух от забвения! Телепортация в Цитадель Света...");
 
                 // Мгновенно переносим призрака на безопасные координаты крепости Света
-                Timer.DelayCall(TimeSpan.FromMilliseconds(100), () => 
+                Timer.DelayCall(TimeSpan.FromMilliseconds(100), () =>
                 {
                     if (pm != null && !pm.Alive)
                     {

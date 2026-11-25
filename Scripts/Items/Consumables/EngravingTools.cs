@@ -86,7 +86,7 @@ namespace Server.Items
         public virtual int OutOfChargesMessage => 1076163;  // There are no charges left on this engraving tool.
         public virtual int NotAccessibleMessage => 1072310;  // The selected item is not accessible to engrave.
         public virtual int CannotEngraveMessage => 1072309;  // The selected item cannot be engraved by this engraving tool.
-        public virtual int ObjectWasNotMessage => 1072363;  // The object was not engraved.        
+        public virtual int ObjectWasNotMessage => 1072363;  // The object was not engraved.
 
         public virtual bool CheckType(IEntity entity)
         {

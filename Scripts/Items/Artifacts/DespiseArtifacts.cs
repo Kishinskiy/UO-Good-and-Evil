@@ -38,7 +38,7 @@ namespace Server.Items
     public class UnicornManeWovenSandals : Sandals
     {
         public override bool IsArtifact => true;
-        public override int LabelNumber => 1153289;  // Unicorn Mane Woven Sandals 
+        public override int LabelNumber => 1153289;  // Unicorn Mane Woven Sandals
 
         [Constructable]
         public UnicornManeWovenSandals()
@@ -163,7 +163,7 @@ namespace Server.Items
     public class UnforgivenVeil : GargishLeatherWingArmor
     {
         public override bool IsArtifact => true;
-        public override int LabelNumber => 1153291;  // Unforgiven Veil 
+        public override int LabelNumber => 1153291;  // Unforgiven Veil
 
         public override int InitMinHits => 255;
         public override int InitMaxHits => 255;

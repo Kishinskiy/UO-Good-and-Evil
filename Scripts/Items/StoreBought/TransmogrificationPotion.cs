@@ -9,7 +9,7 @@ namespace Server.Items
     public class TransmogrificationPotion : Item
     {
         public override int LabelNumber => 1159501;  // Transmogrification Potion
-        
+
         [CommandProperty(AccessLevel.GameMaster)]
         public Item SourceObject { get; set; }
 

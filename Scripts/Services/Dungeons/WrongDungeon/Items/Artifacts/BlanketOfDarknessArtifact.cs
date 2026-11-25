@@ -8,7 +8,7 @@ namespace Server.Items
     public class BlanketOfDarkness : Item
     {
         public override bool IsArtifact => true;
-        public override int LabelNumber => 1152304;  // Blanket Of Darkness	
+        public override int LabelNumber => 1152304;  // Blanket Of Darkness
 
         [Constructable]
         public BlanketOfDarkness()

@@ -1,4 +1,4 @@
-/*Poison resistance increase(not the stat), Mortal, Bleed, Curse effect Durations decreased, 
+/*Poison resistance increase(not the stat), Mortal, Bleed, Curse effect Durations decreased,
 Hp regen bonus 2-11, mana regen bonus 2-11, stamina regen bonus 2-11.*/
 
 namespace Server.Spells.SkillMasteries
@@ -84,7 +84,7 @@ namespace Server.Spells.SkillMasteries
         }
 
         /*Notes:
-         * Poison Resist 25% flat rate in spell is active - TODO: Get OSI Rate??? 
+         * Poison Resist 25% flat rate in spell is active - TODO: Get OSI Rate???
          * Bleed, Mortal and Curse cuts time by 1/2
          * Reference PlayerMobile, BleedAttack, MortalStrike and CurseSpell
          */

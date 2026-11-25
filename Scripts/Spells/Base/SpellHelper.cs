@@ -117,7 +117,7 @@ namespace Server.Spells
 
             return sdiBonus;
         }
-        #endregion 
+        #endregion
 
         private static readonly TimeSpan AosDamageDelay = TimeSpan.FromSeconds(1.0);
         private static readonly TimeSpan OldDamageDelay = TimeSpan.FromSeconds(0.5);

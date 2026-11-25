@@ -14,7 +14,7 @@ namespace Server.Engines.Khaldun
 
         /*You've heard rumblings of Pagan Cultists causing petty crimes in the more upscale sections of Britannia's cities,
          * but to your understanding these are sympathizers taking advantage of fear to make some easy coin. Still, if the
-         * Crown is rolling out a new division of the RBG to investigate...something...you bet there's an opportunity for 
+         * Crown is rolling out a new division of the RBG to investigate...something...you bet there's an opportunity for
          * you! You should find Inspector Jasper and inquire further.*/
         public override object Description => 1158589;
 
@@ -87,12 +87,12 @@ namespace Server.Engines.Khaldun
         /* Going Gumshoe */
         public override object Title => 1158588;
 
-        /*You can drop the coffee pods with the investigators outside...*looks up*...oh, you aren't here for the delivery? I warned 
-         * them talking with reporters was a terrible idea - we've been getting walk-ins like you since the article broke, lads 
+        /*You can drop the coffee pods with the investigators outside...*looks up*...oh, you aren't here for the delivery? I warned
+         * them talking with reporters was a terrible idea - we've been getting walk-ins like you since the article broke, lads
          * and ladies thinking they can become renowned detectives - Ha! Think you've got the intellect? The cunning and wisdom
-         * to sniff a case where it leads you? Well I guess we'll see about that. I've got bigger cases to deal with, you can 
+         * to sniff a case where it leads you? Well I guess we'll see about that. I've got bigger cases to deal with, you can
          * take this one. Something about vandalism and a funeral at the Britain Cemetery. Report back to me if you find anything
-         * worthwhile - and I do mean worthwhile! Don't come back to me with half baked theories and bogus evidence. I need facts! 
+         * worthwhile - and I do mean worthwhile! Don't come back to me with half baked theories and bogus evidence. I need facts!
          * Oh - and read this, you'll need it if you even hope to break a single case.*/
         public override object Description => 1158592;
 
@@ -241,8 +241,8 @@ namespace Server.Engines.Khaldun
         public override object Title => 1158588;
 
         /**You approach Inspector Jasper and show him the evidence you have discovered as well as your report
-         * on the state of your investigation* Would you look at that, I suspect you aren't as useless as you 
-         * look. With a little luck you may even crack this case wide open! It looks like these notes are encrypted 
+         * on the state of your investigation* Would you look at that, I suspect you aren't as useless as you
+         * look. With a little luck you may even crack this case wide open! It looks like these notes are encrypted
          * - we need to find out what they say. There's a cryptologist at the Lycaeum who I've worked with in the
          * past. Get his help and we should be a step closer to figuring out what all this means.*/
         public override object Description => 1158595;
@@ -374,7 +374,7 @@ namespace Server.Engines.Khaldun
 
         private class InternalObjective : BaseObjective
         {
-            /* Go to the Lycaeum in Moonglow and enlist the assistance of the Cryptologist to help decode the evidence. Return to Inspector Jasper 
+            /* Go to the Lycaeum in Moonglow and enlist the assistance of the Cryptologist to help decode the evidence. Return to Inspector Jasper
              * when you have more to report. */
             public override object ObjectiveDescription => 1158596;
 
@@ -427,7 +427,7 @@ namespace Server.Engines.Khaldun
 
                         if (rec.Contains(quest.BookCase) && CanGiveMessage(m))
                         {
-                            //m.PrivateOverheadMessage(Server.Network.MessageType.Regular, 0x47E, 1158714, m.NetState); 
+                            //m.PrivateOverheadMessage(Server.Network.MessageType.Regular, 0x47E, 1158714, m.NetState);
                             m.SendLocalizedMessage(1158714);
                             // *Your keen senses detect the books in this library have been recently disturbed...*
 
@@ -476,7 +476,7 @@ namespace Server.Engines.Khaldun
 
         /*I must say, you've done fine work. The Cryptologist's courier arrived shortly before you did, and thanks to
          * him we know what this is all about. There's one final piece of the puzzle, and hopefully for us whoever
-         * is at the bottom of this won't have known to look for a dead man. There is a Sage called Humbolt that 
+         * is at the bottom of this won't have known to look for a dead man. There is a Sage called Humbolt that
          * once lived in Papua. Tragically his life was taken from us too soon, but his spirit still wanders around
          * his old home. If anyone can put all the pieces together, it's him. Go to Papua and find him.*/
         public override object Description => 1158634;

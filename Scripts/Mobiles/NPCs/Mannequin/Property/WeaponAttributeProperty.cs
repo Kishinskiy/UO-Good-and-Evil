@@ -168,7 +168,7 @@ namespace Server.Mobiles.MannequinProperty
     {
         public override Catalog Catalog => Catalog.HitEffects;
         public override int LabelNumber => 1079693;  // Hit Cold Area
-        public override int Description => 1152422;  // This property provides a chance to deal additional splash damage.  The hit area property provides a chance to deal additional (physical, fire, cold, poison or energy) damage based on half of the weapon damage inflicted to the primary target.  The splash damage is not inflicted to the original target, but is inflicted to legally attackable targets near the original target.  This property can be found on all weapons. 
+        public override int Description => 1152422;  // This property provides a chance to deal additional splash damage.  The hit area property provides a chance to deal additional (physical, fire, cold, poison or energy) damage based on half of the weapon damage inflicted to the primary target.  The splash damage is not inflicted to the original target, but is inflicted to legally attackable targets near the original target.  This property can be found on all weapons.
         public override AosWeaponAttribute Attribute => AosWeaponAttribute.HitColdArea;
         public override int Hue => 0x43FF;
         public override int SpriteW => 120;
@@ -179,7 +179,7 @@ namespace Server.Mobiles.MannequinProperty
     {
         public override Catalog Catalog => Catalog.HitEffects;
         public override int LabelNumber => 1079695;  // Hit Fire Area
-        public override int Description => 1152422;  // This property provides a chance to deal additional splash damage.  The hit area property provides a chance to deal additional (physical, fire, cold, poison or energy) damage based on half of the weapon damage inflicted to the primary target.  The splash damage is not inflicted to the original target, but is inflicted to legally attackable targets near the original target.  This property can be found on all weapons. 
+        public override int Description => 1152422;  // This property provides a chance to deal additional splash damage.  The hit area property provides a chance to deal additional (physical, fire, cold, poison or energy) damage based on half of the weapon damage inflicted to the primary target.  The splash damage is not inflicted to the original target, but is inflicted to legally attackable targets near the original target.  This property can be found on all weapons.
         public override AosWeaponAttribute Attribute => AosWeaponAttribute.HitFireArea;
         public override int Hue => 0x43FF;
         public override int SpriteW => 90;
@@ -201,7 +201,7 @@ namespace Server.Mobiles.MannequinProperty
     {
         public override Catalog Catalog => Catalog.HitEffects;
         public override int LabelNumber => 1079694;  // Hit Energy Area
-        public override int Description => 1152422;  // This property provides a chance to deal additional splash damage.  The hit area property provides a chance to deal additional (physical, fire, cold, poison or energy) damage based on half of the weapon damage inflicted to the primary target.  The splash damage is not inflicted to the original target, but is inflicted to legally attackable targets near the original target.  This property can be found on all weapons. 
+        public override int Description => 1152422;  // This property provides a chance to deal additional splash damage.  The hit area property provides a chance to deal additional (physical, fire, cold, poison or energy) damage based on half of the weapon damage inflicted to the primary target.  The splash damage is not inflicted to the original target, but is inflicted to legally attackable targets near the original target.  This property can be found on all weapons.
         public override AosWeaponAttribute Attribute => AosWeaponAttribute.HitEnergyArea;
         public override int Hue => 0x43FF;
         public override int SpriteW => 180;
@@ -212,7 +212,7 @@ namespace Server.Mobiles.MannequinProperty
     {
         public override Catalog Catalog => Catalog.HitEffects;
         public override int LabelNumber => 1079696;  // Hit Physical Area
-        public override int Description => 1152422;  // This property provides a chance to deal additional splash damage.  The hit area property provides a chance to deal additional (physical, fire, cold, poison or energy) damage based on half of the weapon damage inflicted to the primary target.  The splash damage is not inflicted to the original target, but is inflicted to legally attackable targets near the original target.  This property can be found on all weapons. 
+        public override int Description => 1152422;  // This property provides a chance to deal additional splash damage.  The hit area property provides a chance to deal additional (physical, fire, cold, poison or energy) damage based on half of the weapon damage inflicted to the primary target.  The splash damage is not inflicted to the original target, but is inflicted to legally attackable targets near the original target.  This property can be found on all weapons.
         public override AosWeaponAttribute Attribute => AosWeaponAttribute.HitPhysicalArea;
         public override int Hue => 0x43FF;
         public override int SpriteW => 60;

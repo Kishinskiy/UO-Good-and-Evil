@@ -99,7 +99,7 @@ namespace Server.Engines.Help
 
             m_Timer = null;
         }
-    
+
         public PageEntry(Mobile sender, string message, PageType type)
         {
             m_Sender = sender;
@@ -138,7 +138,7 @@ namespace Server.Engines.Help
                 if (m_Entry.Sender.NetState != null && index != -1)
                 {
                     m_Entry.Sender.SendLocalizedMessage(1008077, true, (index + 1).ToString());
-                    // Thank you for paging. Queue status : 
+                    // Thank you for paging. Queue status :
                     if (SupportEmail == null || SupportWebsite == null)
                     {
                         m_Entry.Sender.SendLocalizedMessage(1008084);
@@ -431,7 +431,7 @@ namespace Server.Engines.Help
             {
                 Mobile m = ns.Mobile;
 
-                #region Page In Queue Gump 
+                #region Page In Queue Gump
                 if (m != null && m.IsStaff() && m.AutoPageNotify && !IsHandling(m))
                 {
                     m.CloseGump(typeof(PageInQueueGump));

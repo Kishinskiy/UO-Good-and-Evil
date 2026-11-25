@@ -16,13 +16,13 @@ namespace Server.Engines.Quests
         public override bool ForceRemember => true;
         /* Ingenuity */
         public override object Title => 1074350;
-        /* The best thing about my job is that I do a little bit of everything, every day.  It's what we're good 
-        at really.  Just picking up something and making it do something else.  Listen, I'm really low on parts.  
+        /* The best thing about my job is that I do a little bit of everything, every day.  It's what we're good
+        at really.  Just picking up something and making it do something else.  Listen, I'm really low on parts.
         Are you interested in fetching me some supplies? */
         public override object Description => 1074462;
         /* Okay.  Best of luck with your other endeavors. */
         public override object Refuse => 1074508;
-        /* Lord overseers are the best source I know for power crystals of the type I need.  Iron golems too, 
+        /* Lord overseers are the best source I know for power crystals of the type I need.  Iron golems too,
         can have them but they're harder to find. */
         public override object Uncomplete => 1074509;
         /* Do you have those power crystals?  I'm ready to put the finishing touches on my latest experiment. */
@@ -62,9 +62,9 @@ namespace Server.Engines.Quests
         public override bool ForceRemember => true;
         /* Heave Ho! */
         public override object Title => 1074351;
-        /* Ho there!  There's nothing quite like a day's honest labor to make you appreciate being alive.  Hey, 
-        maybe you'd like to help out with this project?  These crates need to be delivered to Sledge.  The only 
-        thing is -- it's a bit of a rush job and if you don't make it in time, he won't take them.  Can I trust 
+        /* Ho there!  There's nothing quite like a day's honest labor to make you appreciate being alive.  Hey,
+        maybe you'd like to help out with this project?  These crates need to be delivered to Sledge.  The only
+        thing is -- it's a bit of a rush job and if you don't make it in time, he won't take them.  Can I trust
         you to help out? */
         public override object Description => 1074519;
         /* Oh yah, if you're too busy, no problem. */
@@ -108,13 +108,13 @@ namespace Server.Engines.Quests
         public override bool ForceRemember => true;
         /* Responsibility */
         public override object Title => 1074352;
-        /* Oh!  I just don't know what to do.  My mother is away and my father told me not to talk to strangers ... 
-        *worried frown*  But my grandfather has sent word that he has been hurt and needs me to tend his wounds.  
+        /* Oh!  I just don't know what to do.  My mother is away and my father told me not to talk to strangers ...
+        *worried frown*  But my grandfather has sent word that he has been hurt and needs me to tend his wounds.
         He has a small farm southeast of here.  Would you ... could you ... escort me there safely? */
         public override object Description => 1074524;
         /* I hope my grandfather will be alright. */
         public override object Refuse => 1074525;
-        /* Grandfather's farm is a ways west of the Shrine of Spirituality. So, we're not quite there yet.  Thank 
+        /* Grandfather's farm is a ways west of the Shrine of Spirituality. So, we're not quite there yet.  Thank
         you again for keeping me safe. */
         public override object Uncomplete => 1074526;
         public override void GiveRewards()
@@ -153,8 +153,8 @@ namespace Server.Engines.Quests
         public override bool ForceRemember => true;
         /* All Season Adventurer */
         public override object Title => 1074353;
-        /* It's all about hardship, suffering, struggle and pain.  Without challenges, you've got nothing to test 
-        yourself against -- and that's what life is all about.  Self improvement!  Honing your body and mind!  
+        /* It's all about hardship, suffering, struggle and pain.  Without challenges, you've got nothing to test
+        yourself against -- and that's what life is all about.  Self improvement!  Honing your body and mind!
         Overcoming obstacles ... You'll see what I mean if you take on my challenge. */
         public override object Description => 1074527;
         /* My way of life isn't for everyone, that's true enough. */

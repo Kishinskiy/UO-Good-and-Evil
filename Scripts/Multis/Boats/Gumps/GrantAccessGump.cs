@@ -31,7 +31,7 @@ namespace Server.Gumps
             SecurityLevel level = m_Entry.GetEffectiveLevel(player);
 
             //Player Info
-            AddHtmlLocalized(10, 79, 125, 18, 1149763, LabelColor, false, false); // Player: 
+            AddHtmlLocalized(10, 79, 125, 18, 1149763, LabelColor, false, false); // Player:
             AddLabel(140, 79, 0x30, player.Name);
 
             AddHtmlLocalized(10, 97, 125, 18, 1149768, LabelColor, false, false); // Effective Level:
@@ -166,7 +166,7 @@ namespace Server.Gumps
                 case 5: // OFFICER
                     m_Entry.AddToManifest(m_Player, SecurityLevel.Officer);
                     break;
-                case 6: // CAPTAIN	
+                case 6: // CAPTAIN
                     m_Entry.AddToManifest(m_Player, SecurityLevel.Captain);
                     break;
                 case 7: // MAIN MENU

@@ -102,7 +102,7 @@ namespace Server.Mobiles
             return base.HandlesOnSpeech(from);
         }
 
-        // Temporary 
+        // Temporary
         public override void OnSpeech(SpeechEventArgs e)
         {
             base.OnSpeech(e);

@@ -42,14 +42,14 @@ namespace Server.Custom.EpicAlignment
 
 	        return base.CanEquip(from);
         }
-        
+
         // Кастомное свойство: Массовая АоЕ Вспышка Исцеления и Урона при ударе
         public override void OnHit(Mobile attacker, IDamageable defender, double damageBonus)
         {
             base.OnHit(attacker, defender, damageBonus);
 
             Mobile target = defender as Mobile;
-            if (attacker == null || target == null || attacker.Deleted || !attacker.Alive) 
+            if (attacker == null || target == null || attacker.Deleted || !attacker.Alive)
                 return;
 
             // 20% шанс срабатывания Сияния Порядка

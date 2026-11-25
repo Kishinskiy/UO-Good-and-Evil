@@ -253,13 +253,13 @@ namespace Server.Engines.Khaldun
                 from.SendGump(new BasicInfoGump(1158700, null, 300, 500));
                 /*You must be the Gumshoe who cracked this case wide open? Wow, to think we would still be worrying about these cultist
                  * miscreants after all this time? No matter, thanks to your instincts we may stand a fighting chance against this prophecy.
-                 * I have to admit, I was skeptical at first, but after hearing what Sage Humbolt's had to say and seeing this, what do 
-                 * they call it - a meteorite? - was all the convincing I needed! Seems the good news is, despite numbers the cultist 
-                 * armies have and the big bad evil pulling the strings we've been keeping them inside the dungeon. It seems that once 
+                 * I have to admit, I was skeptical at first, but after hearing what Sage Humbolt's had to say and seeing this, what do
+                 * they call it - a meteorite? - was all the convincing I needed! Seems the good news is, despite numbers the cultist
+                 * armies have and the big bad evil pulling the strings we've been keeping them inside the dungeon. It seems that once
                  * the meteorite impacted the lands here, it spread a material the smiths are calling "Caddellite" in everything - rocks,
                  * trees, fish - you name it. The artisans were clever enough to fashion weapons, spellbooks, and treats to get past the
                  * magics protecting the creatures in Khaldun. One thing though - seems the Caddellite is too strong for typical Britannian
-                 * crafting tools save for those made by Krett the Tinker over there. Can't say I really blame him for making some coin 
+                 * crafting tools save for those made by Krett the Tinker over there. Can't say I really blame him for making some coin
                  * on the situation. Lucky dog!*/
             }
         }

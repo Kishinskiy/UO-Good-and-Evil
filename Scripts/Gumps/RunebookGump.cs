@@ -132,8 +132,8 @@ namespace Server.Gumps
                 AddButton(xOffset, 187, gumpID, gumpID, 0, GumpButtonType.Page, 6 + i);
 
             // Charges
-            AddHtmlIntern(140, 40, 80, 18, 0, false, false);    // Charges:	
-            AddHtmlIntern(300, 40, 100, 18, 1, false, false);   // Max Charges:	
+            AddHtmlIntern(140, 40, 80, 18, 0, false, false);    // Charges:
+            AddHtmlIntern(300, 40, 100, 18, 1, false, false);   // Max Charges:
 
             AddHtmlIntern(220, 40, 30, 18, 18, false, false);   // Charges
             AddHtmlIntern(400, 40, 30, 18, 19, false, false);   // Max charges

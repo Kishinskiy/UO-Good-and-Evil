@@ -31,7 +31,7 @@ namespace Server.Items
 
     public class UpholsteredChairDeed : BaseAddonDeed
     {
-        public override int LabelNumber => 1154173;  // Upholstered Chair       
+        public override int LabelNumber => 1154173;  // Upholstered Chair
 
         [Constructable]
         public UpholsteredChairDeed()

@@ -11,15 +11,15 @@ namespace Server.Engines.Quests
         /* The Art of Stealth */
         public override object Title => 1078154;
 
-        /* Head East out of town and go to Old Haven. While wielding your fencing weapon, battle monsters with focus attack 
-        and summon mirror images up to 40 Ninjitsu skill, and continue practicing focus attack on monsters until 50 Ninjitsu 
-        skill. Welcome, young one. You seek to learn Ninjitsu. With it, and the book of Ninjitsu, a Ninja can envoke a number 
-        of special abilites including transforming into a variety of creatures that give unique bonuses, using stealth to 
-        attack unsuspecting opponents or just plain disappear into thin air! If you do not have a book of Ninjitsu , you can 
-        purchase one from me. I have an assignment for you. Head East out of town and go to Old Haven. While wielding your 
-        fencing weapon, battle monsters with focus attack and summon mirror images up to the Novice rank, and continue focusing 
-        your attack for greater damage on monsters until you become an Apprentice Ninja. Each image will absorb one attack. The 
-        art of deception is a strong defense. Use it wisely. Come back to me once you have ahcived the rank of Apprentice Ninja, 
+        /* Head East out of town and go to Old Haven. While wielding your fencing weapon, battle monsters with focus attack
+        and summon mirror images up to 40 Ninjitsu skill, and continue practicing focus attack on monsters until 50 Ninjitsu
+        skill. Welcome, young one. You seek to learn Ninjitsu. With it, and the book of Ninjitsu, a Ninja can envoke a number
+        of special abilites including transforming into a variety of creatures that give unique bonuses, using stealth to
+        attack unsuspecting opponents or just plain disappear into thin air! If you do not have a book of Ninjitsu , you can
+        purchase one from me. I have an assignment for you. Head East out of town and go to Old Haven. While wielding your
+        fencing weapon, battle monsters with focus attack and summon mirror images up to the Novice rank, and continue focusing
+        your attack for greater damage on monsters until you become an Apprentice Ninja. Each image will absorb one attack. The
+        art of deception is a strong defense. Use it wisely. Come back to me once you have ahcived the rank of Apprentice Ninja,
         and i shall reward you with something useful. */
         public override object Description => 1078158;
 
@@ -29,7 +29,7 @@ namespace Server.Engines.Quests
         /* You have not ahcived the rank of Apprentice Ninja. Come back to me once you have done so. */
         public override object Uncomplete => 1078160;
 
-        /* You have done well, young one. Please accept this kryss as a gift. It is called the "silver Serpant Blade". With it, 
+        /* You have done well, young one. Please accept this kryss as a gift. It is called the "silver Serpant Blade". With it,
         you will strike with precision and power. This should aid you in your journey as a Ninja. Farewell. */
         public override object Complete => 1078162;
 

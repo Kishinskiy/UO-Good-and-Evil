@@ -16,8 +16,8 @@ namespace Server.Engines.Quests
 
         /* Squishy */
         public override object Title => 1072998;
-        /* Have you ever seen what a slime can do to good gear?  Well, it's not pretty, let me tell 
-        you!  If you take on my task to destroy twelve of them, bear that in mind.  They'll corrode 
+        /* Have you ever seen what a slime can do to good gear?  Well, it's not pretty, let me tell
+        you!  If you take on my task to destroy twelve of them, bear that in mind.  They'll corrode
         your equipment faster than anything. */
         public override object Description => 1073031;
         /* Well, okay. But if you decide you are up for it after all, c'mon back and see me. */
@@ -52,7 +52,7 @@ namespace Server.Engines.Quests
 
         /* A Big Job */
         public override object Title => 1072988;
-        /* It's a big job but you look to be just the adventurer to do it! I'm so glad you came by ... 
+        /* It's a big job but you look to be just the adventurer to do it! I'm so glad you came by ...
         I'm paying well for the death of five ogres and five ettins.  Hop to it, if you're so inclined. */
         public override object Description => 1073017;
         /* Well, okay. But if you decide you are up for it after all, c'mon back and see me. */
@@ -86,7 +86,7 @@ namespace Server.Engines.Quests
 
         /* Trolling for Trolls */
         public override object Title => 1072985;
-        /* They may not be bright, but they're incredibly destructive. Kill off ten trolls and I'll 
+        /* They may not be bright, but they're incredibly destructive. Kill off ten trolls and I'll
         consider it a favor done for me. */
         public override object Description => 1073014;
         /* Well, okay. But if you decide you are up for it after all, c'mon back and see me. */
@@ -121,8 +121,8 @@ namespace Server.Engines.Quests
 
         /* Orc Slaying */
         public override object Title => 1072986;
-        /* Those green-skinned freaks have run off with more of my livestock.  I want an orc scout 
-        killed for each sheep I lost and an orc for each chicken.  So that's four orc scouts and 
+        /* Those green-skinned freaks have run off with more of my livestock.  I want an orc scout
+        killed for each sheep I lost and an orc for each chicken.  So that's four orc scouts and
         eight orcs I'll pay you to slay. */
         public override object Description => 1073015;
         /* Well, okay. But if you decide you are up for it after all, c'mon back and see me. */
@@ -157,7 +157,7 @@ namespace Server.Engines.Quests
 
         /* Cold Hearted */
         public override object Title => 1072991;
-        /* It's a big job but you look to be just the adventurer to do it! I'm so glad you came by ... I'm paying 
+        /* It's a big job but you look to be just the adventurer to do it! I'm so glad you came by ... I'm paying
         well for the death of six giant ice serpents and six frost spiders.  Hop to it, if you're so inclined. */
         public override object Description => 1073027;
         /* Well, okay. But if you decide you are up for it after all, c'mon back and see me. */
@@ -191,7 +191,7 @@ namespace Server.Engines.Quests
 
         /* Forked Tongues */
         public override object Title => 1072984;
-        /* You can't trust them, you know.  Lizardmen I mean.  They have forked tongues ... and you know 
+        /* You can't trust them, you know.  Lizardmen I mean.  They have forked tongues ... and you know
         what that means.  Exterminate ten of them and I'll reward you. */
         public override object Description => 1073013;
         /* Well, okay. But if you decide you are up for it after all, c'mon back and see me. */

@@ -17,9 +17,9 @@ namespace Server.Engines.Quests
         public override Type NextQuest => typeof(BureaucraticDelayQuest);
         /* Friends of the Library */
         public override object Title => 1072716;
-        /* Shhh!  *angry whisper*  This is a library, not some bawdy house!  If you wish to become a friend of the library 
-        you'll learn to moderate your volume.  And, of course, you'll take this application and have it notarized by Sarakki 
-        the Notary.  Until you've become an official friend of the library, I can't allow you to make donations.  It wouldn't 
+        /* Shhh!  *angry whisper*  This is a library, not some bawdy house!  If you wish to become a friend of the library
+        you'll learn to moderate your volume.  And, of course, you'll take this application and have it notarized by Sarakki
+        the Notary.  Until you've become an official friend of the library, I can't allow you to make donations.  It wouldn't
         be proper. */
         public override object Description => 1072720;
         /* Hrmph! */
@@ -62,8 +62,8 @@ namespace Server.Engines.Quests
         public override Type NextQuest => typeof(TheSecretIngredientQuest);
         /* Bureaucratic Delay */
         public override object Title => 1072717;
-        /* What do you have there?  Oh.  *look of dismay*  It seems everyone is interested in helping the library -- but 
-        no one warned me to stock up on sealing wax.  I'm afraid I'm out of the mixture we use to notarize offical documents.  
+        /* What do you have there?  Oh.  *look of dismay*  It seems everyone is interested in helping the library -- but
+        no one warned me to stock up on sealing wax.  I'm afraid I'm out of the mixture we use to notarize offical documents.
         There will be a delay ... unless you'd like to take matters into your own hands and retrieve more for me from Petrus? */
         public override object Description => 1072724;
         /* I do apologize for being unprepared. Perhaps when you return later I'll have more wax in stock. */
@@ -106,13 +106,13 @@ namespace Server.Engines.Quests
         public override Type NextQuest => typeof(SpecialDeliveryQuest);
         /* The Secret Ingredient */
         public override object Title => 1072718;
-        /* What's this?  Sealing wax ... Sarakki ... official documents ... Oh, I see.  Can do, can do.  You will need to get me the poison 
-        sacs of course.  They are so volatile they aren't viable after an hour or so ... yes, yes.  Right, well off you go, speckled scorpions 
+        /* What's this?  Sealing wax ... Sarakki ... official documents ... Oh, I see.  Can do, can do.  You will need to get me the poison
+        sacs of course.  They are so volatile they aren't viable after an hour or so ... yes, yes.  Right, well off you go, speckled scorpions
         are the only critters that have the right poison.  They live in the desert near here. */
         public override object Description => 1072727;
         /* I see. I see.  Well good luck to you. */
         public override object Refuse => 1072728;
-        /* Hello, hello!  Speckled, that's what they are.  All covered with spots and speckles when you look very closely.  Speckled scorpion 
+        /* Hello, hello!  Speckled, that's what they are.  All covered with spots and speckles when you look very closely.  Speckled scorpion
         poison sacs will do the trick. */
         public override object Uncomplete => 1072729;
         /* Fine, fine.  Do you have them? */
@@ -192,11 +192,11 @@ namespace Server.Engines.Quests
         public override QuestChain ChainID => QuestChain.LibraryFriends;
         /* Access to the Stacks */
         public override object Title => 1072723;
-        /* There you are!  *pleased smile*  Don't you just love when a form is all filled in like that?  All of the sections are complete, 
-        everything is neat and tidy and the official seal is perfectly formed and in exactly the right spot.  It's comforting.  Here you are.  
+        /* There you are!  *pleased smile*  Don't you just love when a form is all filled in like that?  All of the sections are complete,
+        everything is neat and tidy and the official seal is perfectly formed and in exactly the right spot.  It's comforting.  Here you are.
         All you need to do now is return the form to Librarian Verity.  Have a nice day! */
         public override object Description => 1072748;
-        /* Oh dear!  You've changed your mind?  *looks flustered*  I'll file your notarized application then, in case you decide at a future 
+        /* Oh dear!  You've changed your mind?  *looks flustered*  I'll file your notarized application then, in case you decide at a future
         date to become a friend of the library. */
         public override object Refuse => 1072750;
         /* The librarian can always be found in the Library.  *admiring tone*  She's got a really strong work ethic. */

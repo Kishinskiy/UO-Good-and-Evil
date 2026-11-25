@@ -62,10 +62,10 @@ namespace Server.Items
             AddBackground(6, 11, 390, 324, 9380);
             AddHtmlLocalized(170, 61, 250, 24, 1154394, 1062086, false, false); // Letter
             AddHtmlLocalized(150, 90, 250, 24, 1154466, 1062086, false, false); // Madeline Harte
-            AddHtmlLocalized(42, 121, 323, 174, 1154399, 1, false, true); // I've been successful in business, in training, in innovation, in invention...in every aspect of my life save for the one I really care about, the relationship with my children. I have lost one to the earth and the other I've effectively lost to the sea. Willem...if only you hadn't been so eager to try and prove yourself to your father. We had enough money to get by, and I would rather live in the street with you than to have had my baby boy die in such a manner. Love is not a commodity worth trading for any amount of gold in the world. 
+            AddHtmlLocalized(42, 121, 323, 174, 1154399, 1, false, true); // I've been successful in business, in training, in innovation, in invention...in every aspect of my life save for the one I really care about, the relationship with my children. I have lost one to the earth and the other I've effectively lost to the sea. Willem...if only you hadn't been so eager to try and prove yourself to your father. We had enough money to get by, and I would rather live in the street with you than to have had my baby boy die in such a manner. Love is not a commodity worth trading for any amount of gold in the world.
         }
 
-        public override void OnResponse(NetState state, RelayInfo info) //Function for GumpButtonType.Reply Buttons 
+        public override void OnResponse(NetState state, RelayInfo info) //Function for GumpButtonType.Reply Buttons
         {
             Mobile from = state.Mobile;
 
@@ -73,7 +73,7 @@ namespace Server.Items
             {
                 case 0:
                     {
-                        //Cancel                        
+                        //Cancel
                         break;
                     }
             }

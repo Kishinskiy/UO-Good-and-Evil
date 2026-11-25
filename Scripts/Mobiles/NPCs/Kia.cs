@@ -15,13 +15,13 @@ namespace Server.Engines.Quests
 
         /* Momento! */
         public override object Title => 1074750;
-        /* I was going to march right out there and get it myself, but no ... Master Gnosos won't let me.  But you 
-        see, that bridle means so much to me.  A momento of happier, less-dead ... well undead horseback riding.  
+        /* I was going to march right out there and get it myself, but no ... Master Gnosos won't let me.  But you
+        see, that bridle means so much to me.  A momento of happier, less-dead ... well undead horseback riding.
         Could you fetch it for me?  I think my horse, formerly known as 'Resolve', may still be wearing it. */
         public override object Description => 1074751;
         /* Hrmph. */
         public override object Refuse => 1074752;
-        /* The bridle would be hard to miss on him now ... since he's skeletal.  Please do what you need to do to 
+        /* The bridle would be hard to miss on him now ... since he's skeletal.  Please do what you need to do to
         retreive it for me. */
         public override object Uncomplete => 1074753;
         /* I'd know that jingling sound anywhere!  You have recovered my bridle.  Thank you. */

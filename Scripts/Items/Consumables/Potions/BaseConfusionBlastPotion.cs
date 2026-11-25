@@ -172,7 +172,7 @@ namespace Server.Items
             }
         }
 
-        #endregion		
+        #endregion
 
         private class ThrowTarget : Target
         {

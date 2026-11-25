@@ -896,7 +896,7 @@ namespace Server.Items
 
             if (!string.IsNullOrEmpty(m_EngravedText))
             {
-                list.Add(1158847, Utility.FixHtml(m_EngravedText)); // Embroidered: ~1_MESSAGE~	
+                list.Add(1158847, Utility.FixHtml(m_EngravedText)); // Embroidered: ~1_MESSAGE~
             }
         }
 
@@ -1090,7 +1090,7 @@ namespace Server.Items
                 list.Add(1060408, prop.ToString()); // defense chance increase ~1_val~%
 
             if ((prop = m_AosAttributes.CastRecovery) != 0)
-                list.Add(1060412, prop.ToString()); // faster cast recovery ~1_val~		
+                list.Add(1060412, prop.ToString()); // faster cast recovery ~1_val~
 
             if ((prop = m_AosAttributes.CastSpeed) != 0)
                 list.Add(1060413, prop.ToString()); // faster casting ~1_val~
@@ -1129,7 +1129,7 @@ namespace Server.Items
 
             if (IsSetItem && !m_SetEquipped)
             {
-                list.Add(1072378); // <br>Only when full set is present:				
+                list.Add(1072378); // <br>Only when full set is present:
                 GetSetProperties(list);
             }
         }
@@ -1973,7 +1973,7 @@ namespace Server.Items
                     list.Add(1072385, m_SetPoisonBonus.ToString()); // poison resist +~1_val~%
 
                 if (m_SetEnergyBonus != 0)
-                    list.Add(1072386, m_SetEnergyBonus.ToString()); // energy resist +~1_val~%			
+                    list.Add(1072386, m_SetEnergyBonus.ToString()); // energy resist +~1_val~%
             }
             else if (m_SetEquipped && SetHelper.ResistsBonusPerPiece(this) && RootParent is Mobile m)
             {
@@ -1994,7 +1994,7 @@ namespace Server.Items
             }
 
             if ((prop = m_SetSelfRepair) != 0)
-                list.Add(1060450, prop.ToString()); // self repair ~1_val~		
+                list.Add(1060450, prop.ToString()); // self repair ~1_val~
 
             SetHelper.GetSetProperties(list, this);
         }

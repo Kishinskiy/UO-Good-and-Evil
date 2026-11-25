@@ -134,7 +134,7 @@ namespace Server.Items
             AddPage(0);
 
             AddImage(0, 0, 0x9CCA);
-            AddHtmlLocalized(40, 2, 500, 20, 1114513, "#1157694", 0x7FF0, false, false); // <DIV ALIGN=CENTER>~1_TOKEN~</DIV>   
+            AddHtmlLocalized(40, 2, 500, 20, 1114513, "#1157694", 0x7FF0, false, false); // <DIV ALIGN=CENTER>~1_TOKEN~</DIV>
 
             AddHtmlLocalized(50, 30, 100, 20, 1157695, 0x7FF0, false, false); // Select Filter:
 
@@ -165,7 +165,7 @@ namespace Server.Items
             AddButton(356, 353, 0x15E3, 0x15E7, 11, GumpButtonType.Reply, 0); // First page
             AddButton(376, 350, 0xFAE, 0xFB0, 1, GumpButtonType.Reply, 0); // Previous page
 
-            AddButton(526, 350, 0xFA5, 0xFA7, 2, GumpButtonType.Reply, 0); // Next Page         
+            AddButton(526, 350, 0xFA5, 0xFA7, 2, GumpButtonType.Reply, 0); // Next Page
             AddButton(560, 353, 0x15E1, 0x15E5, 12, GumpButtonType.Reply, 0); // Last page
 
             AddHtmlLocalized(270, 385, 100, 20, 1157696, LabelColor, false, false); // ADD JEWELRY

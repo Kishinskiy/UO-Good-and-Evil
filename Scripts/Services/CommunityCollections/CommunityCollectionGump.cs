@@ -189,7 +189,7 @@ namespace Server.Gumps
             if (m_Page > 1)
             {
                 AddButton(150, 335, 0x15E3, 0x15E7, (int)Buttons.Next, GumpButtonType.Page, m_Page - 1);
-                AddHtmlLocalized(170, 335, 60, 20, 1074880, 0x1, false, false); // Previous			
+                AddHtmlLocalized(170, 335, 60, 20, 1074880, 0x1, false, false); // Previous
             }
 
             m_Page += 1;
@@ -261,7 +261,7 @@ namespace Server.Gumps
             if (m_Page > 1)
             {
                 AddButton(150, 335, 0x15E3, 0x15E7, (int)Buttons.Next, GumpButtonType.Page, m_Page - 1);
-                AddHtmlLocalized(170, 335, 60, 20, 1074880, 0x1, false, false); // Previous			
+                AddHtmlLocalized(170, 335, 60, 20, 1074880, 0x1, false, false); // Previous
             }
 
             m_Page += 1;
@@ -305,7 +305,7 @@ namespace Server.Gumps
 
             m_Page += 1;
 
-            // buttons			
+            // buttons
             AddButton(50, 335, 0x15E3, 0x15E7, (int)Buttons.Rewards, GumpButtonType.Reply, 0);
             AddHtmlLocalized(75, 335, 100, 20, 1072842, 0x1, false, false); // Rewards
 

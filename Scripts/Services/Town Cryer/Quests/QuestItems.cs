@@ -12,12 +12,12 @@ namespace Server.Engines.Quests
         public override TextDefinition Title => 1158159;  // Royal Britannian Guard Orders
         public override TextDefinition Body => 1158160;
         /*ROYAL BRITANNIAN GUARD<br>MINISTRY OF PRISONS DETACHMENT<br><br>ORIGINAL ORDERS<br>ROYAL BRITANNIAN GUARD<br>WRONG PRISON
-         * DIVISION<br><br>From: COMMAND, RBG Yew<br>To: Lieutenant Bennet Yardley, RBG Yew<br><br>Subject: Wrong Prison Treasure 
-         * Expedition<br><br>1. RBG Intelligence has indicated the presence of highly prized cache of weapons stashed within the 
-         * deepest confinements of the Prison Dungeon Wrong. Intelligence indicates these weapons were confiscated at the time of 
+         * DIVISION<br><br>From: COMMAND, RBG Yew<br>To: Lieutenant Bennet Yardley, RBG Yew<br><br>Subject: Wrong Prison Treasure
+         * Expedition<br><br>1. RBG Intelligence has indicated the presence of highly prized cache of weapons stashed within the
+         * deepest confinements of the Prison Dungeon Wrong. Intelligence indicates these weapons were confiscated at the time of
          * various assassination attempts among the prisoners before the prison was lost.<br><br>2. Official cover story remains in
          * place - no outside interference expected and only official RBG personnel are permitted entry.<br><br>3. Interview with
-         * former prison officials indicate weapons under heavy lock and key, suggest specialist assignment of lock picking skills 
+         * former prison officials indicate weapons under heavy lock and key, suggest specialist assignment of lock picking skills
          * and tools.<br><br>*The remainder of the document is illegible**/
 
         public override int LabelNumber => 1158171;  // orders
@@ -246,12 +246,12 @@ namespace Server.Engines.Quests
                          * in ancient runes and marks the location of another treasure hoard. You carefully furl the map and
                          * set off on your next adventure!*/
 
-                        from.SendLocalizedMessage(1158245, "", 0x23); // You have found the first zealot treasure! As you dig up the chest a leather bound case appears to contain an additional map. You place it in your backpack for later examination. 
+                        from.SendLocalizedMessage(1158245, "", 0x23); // You have found the first zealot treasure! As you dig up the chest a leather bound case appears to contain an additional map. You place it in your backpack for later examination.
                         chest.DropItem(new BuriedRichesTreasureMap(1));
                     }
                     else
                     {
-                        from.SendLocalizedMessage(1158246, "", 0x23); // You have found the second zealot treasure! As you dig up the chest a leather bound case appears to contain an additional map. You place it in your backpack for later examination. 
+                        from.SendLocalizedMessage(1158246, "", 0x23); // You have found the second zealot treasure! As you dig up the chest a leather bound case appears to contain an additional map. You place it in your backpack for later examination.
                         quest.CompleteQuest();
                     }
                 }
@@ -322,11 +322,11 @@ namespace Server.Engines.Quests
                 AddHtmlLocalized(177, 53, 235, 20, CenterLoc, "#1158240", C32216(0xA52A2A), false, false); // A Mysterious Treasure Map
                 AddHtmlLocalized(177, 80, 235, 40, CenterLoc, Map.Level == 0 ? "#1158241" : "#1158250", C32216(0xA52A2A), false, false); // Given to you by the Master Cartographer
 
-                /*The Cartographer has given you a mysterious treasure map and offered you some tips on how to go about 
+                /*The Cartographer has given you a mysterious treasure map and offered you some tips on how to go about
                  * recovering the treasure. As the Cartographer leaned in and handed you the furled parchment, she told
-                 * you of the origins of this mysterious document. "Legend has it..." she tells you, "this map is the 
-                 * lost treasure of an ancient Sosarian Order of Zealots. I'm told over the centuries they would bury 
-                 * small portions of their treasure throughout the Britannian countryside in an effort to thwart any 
+                 * you of the origins of this mysterious document. "Legend has it..." she tells you, "this map is the
+                 * lost treasure of an ancient Sosarian Order of Zealots. I'm told over the centuries they would bury
+                 * small portions of their treasure throughout the Britannian countryside in an effort to thwart any
                  * attempts to recover the hoard in its entirety." Your eyes widen at the thought of a massive treasure
                  * hoard and you can't wait to find it!*/
                 AddHtmlLocalized(177, 122, 235, 228, 1158242, true, true);
@@ -548,16 +548,16 @@ namespace Server.Engines.Quests
 
         public override TextDefinition Title => null;
         public override TextDefinition Body => 1158138;
-        /**the text is mostly a journal chronicling the adventures of a man who wished to join the Paladins of Trinsic.  
+        /**the text is mostly a journal chronicling the adventures of a man who wished to join the Paladins of Trinsic.
          * Of particular note is the final entry...*<br><br>This is the most shameful entry I will write...for I have fallen
-         * short of my goal. My only hope is my failures will serve to assist those who come after me with the courage to 
-         * pursue the truth, and with my notes they will find success. I have found strange crystals on the corpses of the 
-         * creatures I slay here. When I touch the crystal, I can feel it absorbed into my being. A growing voice inside me 
-         * compels me to altars located throughout the dungeon. When the voice within grew loud enough I could no longer 
+         * short of my goal. My only hope is my failures will serve to assist those who come after me with the courage to
+         * pursue the truth, and with my notes they will find success. I have found strange crystals on the corpses of the
+         * creatures I slay here. When I touch the crystal, I can feel it absorbed into my being. A growing voice inside me
+         * compels me to altars located throughout the dungeon. When the voice within grew loud enough I could no longer
          * ignore it, I touched my hand to the altar and before me a grand champion stood! I was quick to react to the
-         * crushing blow my newly summoned opponent sought to deliver, and I was victorious! Alas, the deeper into the 
-         * dungeon I explored, the more powerful the altar champions become and now I find myself in this dire situation.... 
-         * To anyone who reads this...do me the honor and defeat the three champions and slay the unbound energy vortexes that 
+         * crushing blow my newly summoned opponent sought to deliver, and I was victorious! Alas, the deeper into the
+         * dungeon I explored, the more powerful the altar champions become and now I find myself in this dire situation....
+         * To anyone who reads this...do me the honor and defeat the three champions and slay the unbound energy vortexes that
          * inhabit the deepest depths of this place...for I feel my time here is shor...*/
 
         public WouldBePaladinChronicles()

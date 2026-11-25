@@ -177,7 +177,7 @@ namespace Server.Commands
 				{
 					ring = new StaffRing();
 				}
-				
+
 				EquipItem(m, ring);
 			}
 

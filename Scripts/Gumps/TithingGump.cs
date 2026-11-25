@@ -32,7 +32,7 @@ namespace Server.Gumps
             AddButton(205, 321, 0xFB7, 0xFB8, 2, GumpButtonType.Reply, 0); // OK
 
             AddButton(15, 326, 0x845, 0x846, 1, GumpButtonType.Reply, 0);
-            AddHtmlLocalized(35, 323, 200, 18, 1159139, 0x7FFF, false, false); // Tithe Maximum            
+            AddHtmlLocalized(35, 323, 200, 18, 1159139, 0x7FFF, false, false); // Tithe Maximum
         }
 
         public override void OnResponse(NetState sender, RelayInfo info)

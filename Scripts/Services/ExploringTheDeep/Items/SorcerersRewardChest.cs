@@ -41,7 +41,7 @@ namespace Server.Items
 
     public class StrongboxKey : BaseDecayingItem
     {
-        public override int LabelNumber => 1154227;  // Strongbox Key        
+        public override int LabelNumber => 1154227;  // Strongbox Key
 
         [Constructable]
         public StrongboxKey() : base(0x410A)

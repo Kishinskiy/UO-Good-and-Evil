@@ -479,7 +479,7 @@ namespace Server.Multis
                 if (percentWorn >= 77) // 7.7% worn
                     return 1043011; // This structure is slightly worn.
 
-                // else 
+                // else
                 return 1043010; // This structure is like new.
             }
         }
@@ -1728,7 +1728,7 @@ namespace Server.Multis
                     hold.ConsumeTotal(typeof(UncutCloth), toConsume);
                 }
 
-                from.SendLocalizedMessage(1116592, ts.TotalMinutes.ToString()); // Your ship is underway with emergency repairs holding for an estimated ~1_TIME~ more minutes.                
+                from.SendLocalizedMessage(1116592, ts.TotalMinutes.ToString()); // Your ship is underway with emergency repairs holding for an estimated ~1_TIME~ more minutes.
                 m_EmergencyRepairTimer = new EmergencyRepairDamageTimer(this, ts);
 
                 return true;
@@ -3051,7 +3051,7 @@ namespace Server.Multis
         }
 
         #endregion
-         
+
         public void CheckExit(object o)
         {
             if (o is CorgulRegion)

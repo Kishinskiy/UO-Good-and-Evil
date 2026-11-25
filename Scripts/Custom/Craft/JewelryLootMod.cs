@@ -13,7 +13,7 @@ namespace Server.Custom.JewelryCrafting
         {
             // Подписываемся на глобальное событие смерти существ в ServUO
             EventSink.CreatureDeath += OnCreatureDeath;
-            
+
             // Хукаем появление сундуков сокровищ при раскопках (нативно через ItemCreated)
             EventSink.ItemCreated += OnItemCreated;
         }
@@ -33,8 +33,8 @@ namespace Server.Custom.JewelryCrafting
             if (isBoss)
             {
                 // Случайно выбираем один из продвинутых/мистических рецептов (ID 1101 - 1201 или 1301+)
-                int[] epicRecipes = new int[] 
-                { 
+                int[] epicRecipes = new int[]
+                {
                     (int)JewelryRecipes.RubyDI, (int)JewelryRecipes.StarSapphireResist,
                     (int)JewelryRecipes.PerfectEmeraldHPI, (int)JewelryRecipes.DarkSapphireMana,
                     (int)JewelryRecipes.BlueDiamondCasting, (int)JewelryRecipes.TurquoiseCrit,
@@ -48,7 +48,7 @@ namespace Server.Custom.JewelryCrafting
                 };
 
                 int randomRecipeID = epicRecipes[Utility.Random(epicRecipes.Length)];
-                
+
                 // Спавним нативный свиток рецепта в труп босса
                 RecipeScroll scroll = new RecipeScroll(randomRecipeID);
                 bc.Backpack.DropItem(scroll);
@@ -61,12 +61,12 @@ namespace Server.Custom.JewelryCrafting
                 // Шанс выпадения базового рецепта из обычных мобов — 2%
                 if (Utility.RandomDouble() < 0.02)
                 {
-                    int[] baseRecipes = new int[] 
-                    { 
-                        (int)JewelryRecipes.SapphireSSI, (int)JewelryRecipes.EmeraldHCI, 
-                        (int)JewelryRecipes.DiamondDCI, (int)JewelryRecipes.CitrineRegen, 
-                        (int)JewelryRecipes.AmethystLMC, (int)JewelryRecipes.TourmalineMR, 
-                        (int)JewelryRecipes.AmberLRC 
+                    int[] baseRecipes = new int[]
+                    {
+                        (int)JewelryRecipes.SapphireSSI, (int)JewelryRecipes.EmeraldHCI,
+                        (int)JewelryRecipes.DiamondDCI, (int)JewelryRecipes.CitrineRegen,
+                        (int)JewelryRecipes.AmethystLMC, (int)JewelryRecipes.TourmalineMR,
+                        (int)JewelryRecipes.AmberLRC
                     };
 
                     int randomRecipeID = baseRecipes[Utility.Random(baseRecipes.Length)];

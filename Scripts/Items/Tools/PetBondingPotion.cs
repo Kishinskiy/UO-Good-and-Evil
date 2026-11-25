@@ -15,11 +15,11 @@ namespace Server.Items
             Hue = 2629;
         }
 
-        public override void OnDoubleClick(Mobile from) // Override double click of the deed to call our target 
+        public override void OnDoubleClick(Mobile from) // Override double click of the deed to call our target
         {
             if (!IsChildOf(from.Backpack))
             {
-                from.SendLocalizedMessage(1042001); // That must be in your pack for you to use it. 
+                from.SendLocalizedMessage(1042001); // That must be in your pack for you to use it.
             }
             else
             {
@@ -35,7 +35,7 @@ namespace Server.Items
         public override void Serialize(GenericWriter writer)
         {
             base.Serialize(writer);
-            writer.Write(0); // version 
+            writer.Write(0); // version
         }
 
         public override void Deserialize(GenericReader reader)

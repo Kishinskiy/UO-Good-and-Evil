@@ -190,7 +190,7 @@ namespace Server.Items
 
                         trap.MoveToWorld(p, from.Map);
                         from.SendLocalizedMessage(1113294);  // You carefully arm the goblin trap.
-                        from.SendLocalizedMessage(1113297);  // You hide the trap to the best of your ability.            
+                        from.SendLocalizedMessage(1113297);  // You hide the trap to the best of your ability.
 
                         m_Kit.Consume();
                     }

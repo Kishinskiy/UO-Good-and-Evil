@@ -198,7 +198,7 @@ namespace Server.Engines.Auction
                     AddToHistory(m, bidTotal);
                 }
 
-                m.SendLocalizedMessage(1156433); // Your bid has been placed.               
+                m.SendLocalizedMessage(1156433); // Your bid has been placed.
 
                 AuctionMap map = new AuctionMap(Safe);
 
@@ -271,7 +271,7 @@ namespace Server.Engines.Auction
                                                     name,
                                                     CurrentPlatBid.ToString("N0", CultureInfo.GetCultureInfo("en-US")),
                                                     CurrentGoldBid.ToString("N0", CultureInfo.GetCultureInfo("en-US"))));
-            /*  You have been out bid in an auction for ~1_ITEMNAME~. The current winning bid amount is 
+            /*  You have been out bid in an auction for ~1_ITEMNAME~. The current winning bid amount is
              * ~2_BIDAMT~plat and ~3_BIDAMT~gp.*/
             MaginciaLottoSystem.SendMessageTo(to, message);
         }
@@ -319,7 +319,7 @@ namespace Server.Engines.Auction
                                                         name,
                                                         CurrentPlatBid.ToString("N0", CultureInfo.GetCultureInfo("en-US")),
                                                         CurrentGoldBid.ToString("N0", CultureInfo.GetCultureInfo("en-US"))));
-                /*  You have won an auction for ~1_ITEMNAME~! Your bid amount of ~2_BIDAMT~plat and ~3_BIDAMT~gp won the auction. 
+                /*  You have won an auction for ~1_ITEMNAME~! Your bid amount of ~2_BIDAMT~plat and ~3_BIDAMT~gp won the auction.
                  *  You have 3 days from the end of the auction to claim your item or it will be lost.*/
 
                 MaginciaLottoSystem.SendMessageTo(HighestBid.Mobile, message);
@@ -345,7 +345,7 @@ namespace Server.Engines.Auction
                                                             name,
                                                             CurrentPlatBid.ToString("N0", CultureInfo.GetCultureInfo("en-US")),
                                                             CurrentGoldBid.ToString("N0", CultureInfo.GetCultureInfo("en-US"))));
-                    /*Your auction for ~1_ITEMNAME~ has ended with a winning bid of ~2_BIDAMT~plat and ~3_BIDAMT~gp. The winning bid has 
+                    /*Your auction for ~1_ITEMNAME~ has ended with a winning bid of ~2_BIDAMT~plat and ~3_BIDAMT~gp. The winning bid has
                      *been deposited into your currency account.*/
                     MaginciaLottoSystem.SendMessageTo(Owner, message);
                 }

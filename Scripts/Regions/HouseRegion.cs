@@ -13,7 +13,7 @@ namespace Server.Regions
     {
         public static readonly int HousePriority = DefaultPriority + 1;
         public static TimeSpan CombatHeatDelay = TimeSpan.FromSeconds(30.0);
-		
+
         private bool m_Recursion;
 
         public HouseRegion(BaseHouse house)
@@ -108,7 +108,7 @@ namespace Server.Regions
             if (item is Container)
                 item.SendLocalizedMessageTo(from, 501647); // That is secure.
             else
-                item.SendLocalizedMessageTo(from, 1061637); // You are not allowed to access 
+                item.SendLocalizedMessageTo(from, 1061637); // You are not allowed to access
 
             return true;
         }
@@ -145,7 +145,7 @@ namespace Server.Regions
             else if (House.IsCombatRestricted(m) && House.IsInside(m) && !House.IsInside(oldLocation, 16))
             {
                 m.Location = House.BanLocation;
-                m.SendLocalizedMessage(1061637); // You are not allowed to access 
+                m.SendLocalizedMessage(1061637); // You are not allowed to access
             }
             else if (House is HouseFoundation)
             {
@@ -200,7 +200,7 @@ namespace Server.Regions
             }
             else if (House.IsCombatRestricted(from) && !House.IsInside(oldLocation, 16) && House.IsInside(newLocation, 16))
             {
-                from.SendLocalizedMessage(1061637); // You are not allowed to access 
+                from.SendLocalizedMessage(1061637); // You are not allowed to access
                 return false;
             }
             else if (House is HouseFoundation)
@@ -307,7 +307,7 @@ namespace Server.Regions
                 }
                 else
                 {
-                    from.SendLocalizedMessage(501320); // Only the house owner may do 
+                    from.SendLocalizedMessage(501320); // Only the house owner may do
                 }
             }
 
@@ -350,7 +350,7 @@ namespace Server.Regions
                 }
                 else
                 {
-                    from.SendLocalizedMessage(502094); // You must be in your house to do this. 
+                    from.SendLocalizedMessage(502094); // You must be in your house to do this.
                 }
             }
             else if (e.HasKeyword(0x26)) // I wish to unsecure this
@@ -362,7 +362,7 @@ namespace Server.Regions
                 }
                 else
                 {
-                    from.SendLocalizedMessage(502094); // You must be in your house to do this. 
+                    from.SendLocalizedMessage(502094); // You must be in your house to do this.
                 }
             }
             else if (e.HasKeyword(0x27)) // I wish to place a strongbox

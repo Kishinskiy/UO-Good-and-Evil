@@ -6,8 +6,8 @@ using System.Collections.Generic;
 
 // Check: Wrestling, poisoning and parry masteries.  In but not tested.
 
-/*The wrestler attempts to continually hit their opponent where with each successful hit the wrestler receives a 
-  bonus to hit point regeneration, stamina regeneration, casting focus, and swing speed increase based on mastery level.  
+/*The wrestler attempts to continually hit their opponent where with each successful hit the wrestler receives a
+  bonus to hit point regeneration, stamina regeneration, casting focus, and swing speed increase based on mastery level.
   The effect is lost if the wrestler misses, the wrestler's opponent parries the attack, or fails to cast a spell.*/
 
 namespace Server.Spells.SkillMasteries

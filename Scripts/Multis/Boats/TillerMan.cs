@@ -43,7 +43,7 @@ namespace Server.Items
                 return;
 
             list.Add(Boat.Status);
-            list.Add(1116580 + (int)Boat.DamageTaken); //State: Prisine            
+            list.Add(1116580 + (int)Boat.DamageTaken); //State: Prisine
         }
 
         public virtual void Say(int number)

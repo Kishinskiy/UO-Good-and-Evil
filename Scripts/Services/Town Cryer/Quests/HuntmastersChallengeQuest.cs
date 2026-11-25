@@ -8,7 +8,7 @@ namespace Server.Engines.Quests
         /* Huntmaster's Challenge */
         public override object Title => 1155726;
 
-        /*Each month the Ranger's Guild in Skara Brae hosts a contest to see who can hunt Britannia's 
+        /*Each month the Ranger's Guild in Skara Brae hosts a contest to see who can hunt Britannia's
          * largest creatures! Visit the Skara Brae Ranger's Guild to learn more!*/
         public override object Description => 1158132;
 
@@ -18,8 +18,8 @@ namespace Server.Engines.Quests
         /* Visit the Skara Brae Ranger's Guild and participate in the Huntmaster's Challenge */
         public override object Uncomplete => 1158133;
 
-        /* You have braved the wilds of Britannia and slayed a mighty beast! You have meticulously documented your kill 
-         * and submitted it to the Ranger's Guild for evaluation. If luck was on your side you may indeed have 
+        /* You have braved the wilds of Britannia and slayed a mighty beast! You have meticulously documented your kill
+         * and submitted it to the Ranger's Guild for evaluation. If luck was on your side you may indeed have
          * the largest quarry for the month...or maybe not. Alas, your bravery has earned you the well deserved title
          * of Hunter! May you go fearlessly into the wilderness in search of your next big kill! Well done! */
         public override object Complete => 1158378;

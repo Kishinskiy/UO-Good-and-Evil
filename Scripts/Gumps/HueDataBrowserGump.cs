@@ -304,7 +304,7 @@ namespace Server.Gumps
 						}
 						else if (targeted is IEntity ent)
 						{
-							hue = ent.Hue; 
+							hue = ent.Hue;
 							page = hue / EntriesPerPage;
 						}
 
@@ -327,7 +327,7 @@ namespace Server.Gumps
 							int? value = null;
 
 							if (Insensitive.StartsWith(search, "0x"))
-							{ 
+							{
 								if (Int32.TryParse(search.Substring(2), NumberStyles.HexNumber, null, out var i))
 								{
 									value = i;

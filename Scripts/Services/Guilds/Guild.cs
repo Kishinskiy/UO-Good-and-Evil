@@ -1436,7 +1436,7 @@ namespace Server.Guilds
             alliance = Alliance; //CheckLeader could possibly change the value of this.Alliance
 
             if (alliance != null && !alliance.IsMember(this) && !alliance.IsPendingMember(this))
-            //This block is there to fix a bug in the code in an older version.  
+            //This block is there to fix a bug in the code in an older version.
             {
                 Alliance = null;
                 //Will call Alliance.RemoveGuild which will set it null & perform all the pertient checks as far as alliacne disbanding

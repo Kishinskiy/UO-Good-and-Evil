@@ -15,10 +15,10 @@ namespace Server.Engines.Quests
 
         /* Lost and Found */
         public override object Title => 1072370;
-        /* The battered, old bucket is inscribed with barely legible writing that indicates it 
+        /* The battered, old bucket is inscribed with barely legible writing that indicates it
         belongs to someone named "Dallid".  Maybe they'd pay for its return? */
         public override object Description => 1072589;
-        /* You're right, who cares if Dallid might pay for his battered old bucket back.  
+        /* You're right, who cares if Dallid might pay for his battered old bucket back.
         This way you can carry it around with you! */
         public override object Refuse => 1072590;
         /* Whoever this "Dallid" might be, he's probably looking for his bucket. */

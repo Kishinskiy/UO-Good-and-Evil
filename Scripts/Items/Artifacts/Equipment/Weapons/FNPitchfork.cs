@@ -4,7 +4,7 @@ namespace Server.Items
     public class FNPitchfork : BaseSpear
     {
         public override bool IsArtifact => true;
-        public override int LabelNumber => 1113498; // Farmer Nash's Pitchfork		
+        public override int LabelNumber => 1113498; // Farmer Nash's Pitchfork
 
         [Constructable]
         public FNPitchfork()

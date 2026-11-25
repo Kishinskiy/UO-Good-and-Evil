@@ -102,7 +102,7 @@ namespace Server.Items
 
 			return true;
 		}
-		
+
 		[Constructable]
         public Gold()
             : this(1)
@@ -134,10 +134,10 @@ namespace Server.Items
         {
             if (Amount <= 1)
                 return 0x2E4;
-            
+
 			if (Amount <= 5)
                 return 0x2E5;
-            
+
 			return 0x2E6;
         }
 
@@ -175,7 +175,7 @@ namespace Server.Items
         public override void Deserialize(GenericReader reader)
         {
             base.Deserialize(reader);
-			
+
 			reader.ReadInt();
         }
 

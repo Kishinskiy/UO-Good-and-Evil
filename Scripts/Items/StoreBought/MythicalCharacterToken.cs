@@ -25,7 +25,7 @@ namespace Server.Items
             {
                 if (m.Skills.Total > 2000)
                 {
-                    m.SendLocalizedMessage(1152368); // You cannot use this token on this character because you have over 200 skill points. If you 
+                    m.SendLocalizedMessage(1152368); // You cannot use this token on this character because you have over 200 skill points. If you
                     // don’t have a way to lower your skill point total, you will have to use this Mythic Character
                     // Token on another character.
                 }
@@ -155,11 +155,11 @@ namespace Server.Items
                 if (HasAllFive)
                 {
                     AddHtmlLocalized(Width / 3, 65, ((Width / 3) * 2) - 15, Height - 100, 1152358, LightGreen, false, false);
-                    /*Please confirm that you wish to set your attributes as indicated in the upper left area of this window. 
-                    If you wish to change these values, edit them and click the EDIT button below.<br><br>Please confirm that 
-                    you wish to set the five skills selected on the left to 90.0 skill. If you wish to make changes, click the 
+                    /*Please confirm that you wish to set your attributes as indicated in the upper left area of this window.
+                    If you wish to change these values, edit them and click the EDIT button below.<br><br>Please confirm that
+                    you wish to set the five skills selected on the left to 90.0 skill. If you wish to make changes, click the
                     [X] button next to a skill name to remove it from the list.<br><br>If are sure you wish to apply the selected
-                    skills and attributes, click the CONTINUE button below.<br><br>If you wish to abort the application of the 
+                    skills and attributes, click the CONTINUE button below.<br><br>If you wish to abort the application of the
                     Mythic Character Token, click the CANCEL button below.*/
 
                     AddButton(Width / 3, Height - 100, 4005, 4007, 2500, GumpButtonType.Reply, 0);
@@ -228,9 +228,9 @@ namespace Server.Items
                         SetStats(info);
                         if ((Str + Dex + Int) != User.StatCap)
                         {
-                            User.SendLocalizedMessage(1152359); // Your Strength, Dexterity, and Intelligence values do not add up to the total indicated in 
-                            // the upper left area of this window. Before continuing, you must adjust these values so 
-                            // their total adds up to exactly the displayed value. Please edit your desired attribute 
+                            User.SendLocalizedMessage(1152359); // Your Strength, Dexterity, and Intelligence values do not add up to the total indicated in
+                            // the upper left area of this window. Before continuing, you must adjust these values so
+                            // their total adds up to exactly the displayed value. Please edit your desired attribute
                             // values and click the EDIT button below to continue.
                         }
                         else

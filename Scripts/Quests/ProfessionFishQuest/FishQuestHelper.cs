@@ -30,7 +30,7 @@ namespace Server.Engines.Quests
             typeof(GraySnapper),     typeof(Haddock),           typeof(MahiMahi),
             typeof(RedDrum),         typeof(RedGrouper),        typeof(RedSnook),
             typeof(Shad),            typeof(Tarpon),            typeof(YellowfinTuna),
-  
+
 	        //skill elvel to 120.0 for dungeon index to 53
 
 	        typeof(CragSnapper),     typeof(CutThroatTrout),    typeof(DarkFish),
@@ -62,7 +62,7 @@ namespace Server.Engines.Quests
             1116399,     1116394,      1116401,
             1116410,     1116407,      1116398,
             1116403,     1116397,      1116404,
-  
+
 	        //skill elvel to 120.0 for dungeon index to 53
 
 	        1116432,     1116427,      1116431,

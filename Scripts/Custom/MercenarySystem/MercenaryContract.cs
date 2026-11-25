@@ -50,7 +50,7 @@ namespace Server.Custom.MercenarySystem
             m_TargetClass = mClass;
             TargetLevel = level;
             Weight = 1.0;
-            
+
             // Раскрашиваем свитки под новые архетипы
             switch(mClass)
             {
@@ -64,7 +64,7 @@ namespace Server.Custom.MercenarySystem
                 case MercenaryClass.Samurai: Hue = 2211; break;
                 default: Hue = 0; break;
             }
-            
+
             Name = $"Контракт: Наёмник ({mClass}), уровень {m_TargetLevel}";
         }
 
@@ -76,7 +76,7 @@ namespace Server.Custom.MercenarySystem
         {
             if (!IsChildOf(from.Backpack))
             {
-                from.SendLocalizedMessage(1042001); 
+                from.SendLocalizedMessage(1042001);
                 return;
             }
 
@@ -98,10 +98,10 @@ namespace Server.Custom.MercenarySystem
             merc.ControlTarget = pm;
             merc.ControlOrder = OrderType.Follow;
 
-            pm.PlaySound(0x5BC); 
+            pm.PlaySound(0x5BC);
             pm.SendMessage(0x35, $"Вы успешно активировали контракт! К вам присоединился наёмник {merc.Name} {merc.Title}.");
 
-            this.Delete(); 
+            this.Delete();
         }
 
         public MercenaryContract(Serial s) : base(s) { }

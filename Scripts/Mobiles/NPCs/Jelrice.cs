@@ -16,7 +16,7 @@ namespace Server.Engines.Quests
 
         /* Something to Wail About */
         public override object Title => 1073071;
-        /* Can you hear them? The never-ending howling? The incessant wailing? These banshees, they never cease! Never! They haunt 
+        /* Can you hear them? The never-ending howling? The incessant wailing? These banshees, they never cease! Never! They haunt
         my nights. Please, I beg you -- will you silence them? I would be ever so grateful. */
         public override object Description => 1073561;
         /* I hope you'll reconsider. Until then, farwell. */
@@ -50,7 +50,7 @@ namespace Server.Engines.Quests
 
         /* Runaways! */
         public override object Title => 1072993;
-        /* You've got to help me out! Those wild ostards have been causing absolute havok around here.  Kill them 
+        /* You've got to help me out! Those wild ostards have been causing absolute havok around here.  Kill them
         off before they destroy my land.  There are around twelve of them. */
         public override object Description => 1073026;
         /* Well, okay. But if you decide you are up for it after all, c'mon back and see me. */
@@ -84,7 +84,7 @@ namespace Server.Engines.Quests
 
         /* Vicious Predator */
         public override object Title => 1072994;
-        /* You've got to help me out! Those dire wolves have been causing absolute havok around here.  Kill them off 
+        /* You've got to help me out! Those dire wolves have been causing absolute havok around here.  Kill them off
         before they destroy my land.  They run around in a pack of around ten.<br> */
         public override object Description => 1073028;
         /* Well, okay. But if you decide you are up for it after all, c'mon back and see me. */

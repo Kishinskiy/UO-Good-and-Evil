@@ -21,7 +21,7 @@ namespace Server.Items
 
     public class PotionOfGloriousFortune : Item
     {
-        public override int LabelNumber => 1158688;  // Potion of Glorious Fortune        
+        public override int LabelNumber => 1158688;  // Potion of Glorious Fortune
 
         [CommandProperty(AccessLevel.GameMaster)]
         public PotionEventType _Type { get; set; }
@@ -236,7 +236,7 @@ namespace Server.Items
                             }
                         }
                     }
-                });            
+                });
         }
 
         public static void OldLoad(GenericReader reader)

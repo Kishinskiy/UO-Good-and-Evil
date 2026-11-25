@@ -531,8 +531,8 @@ namespace Server.Engines.ResortAndCasino
             base.AddGumpLayout();
 
             AddHtmlLocalized(15, 50, Width - 30, 90, 1153393, Yellow, false, true);
-            /*Place a bet on Low, Middle, High, or Outside. The dealer rolls 3 dice. The house always wins on 3-of-a-kind. 
-             * High Bets win on a total of 11 or more. Low Bets win on a total of 10 or less. Middle Bets win on a total of 
+            /*Place a bet on Low, Middle, High, or Outside. The dealer rolls 3 dice. The house always wins on 3-of-a-kind.
+             * High Bets win on a total of 11 or more. Low Bets win on a total of 10 or less. Middle Bets win on a total of
              * 9, 10, 11, or 12. Bets for Low, Middle, and High pay even money. Outside Bets win on totals of 4, 5, 6, 15, 16, or 17 and pay 5:1.*/
         }
 
@@ -685,7 +685,7 @@ namespace Server.Engines.ResortAndCasino
                 return;
 
             AddHtmlLocalized(15, 50, Width - 30, 90, 1154645, "#1153614", Yellow, false, true);
-            /*HOW TO PLAY<br><br>Place three equal-size bets. Enter the amount you want a single bet to be. Your initial bet will be 3x 
+            /*HOW TO PLAY<br><br>Place three equal-size bets. Enter the amount you want a single bet to be. Your initial bet will be 3x
              * that amount. The dealer will then roll three dice. You may then choose to pull back one of your bets, or to "let it ride".
              * The dealer rolls a fourth die. You may then choose to pull back a second bet. Finally, the dealer rolls a fifth die.
              * <br><br>Your payout depends on the results of your roll:<br>Five of a kind pays 80-to-1<br>Four of a kind pays 3-to-1<br>

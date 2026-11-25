@@ -498,7 +498,7 @@ namespace Server.Multis
                     Map map = target.Map;
 
                     BaseCreature.TeleportPets(m, p, map);
-                    m.MoveToWorld(p, map);                   
+                    m.MoveToWorld(p, map);
 
                     if (!m.Hidden || m.IsPlayer())
                     {

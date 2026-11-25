@@ -22,7 +22,7 @@ namespace Server.Engines.Points
 
         public override void SendMessage(PlayerMobile from, double old, double points, bool quest)
         {
-            from.SendLocalizedMessage(1154518, ((int)points).ToString()); // You have turned in ~1_COUNT~ artifacts bearing the crest of Minax.            
+            from.SendLocalizedMessage(1154518, ((int)points).ToString()); // You have turned in ~1_COUNT~ artifacts bearing the crest of Minax.
         }
 
         public override void ProcessKill(Mobile victim, Mobile damager)

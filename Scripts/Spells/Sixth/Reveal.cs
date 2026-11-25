@@ -70,10 +70,10 @@ namespace Server.Spells.Sixth
             FinishSequence();
         }
 
-        // Reveal uses magery and detect hidden vs. hide and stealth 
+        // Reveal uses magery and detect hidden vs. hide and stealth
         private static bool CheckDifficulty(Mobile from, Mobile m)
         {
-            // Reveal always reveals vs. invisibility spell 
+            // Reveal always reveals vs. invisibility spell
             if (InvisibilitySpell.HasTimer(m))
                 return true;
 

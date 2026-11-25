@@ -76,7 +76,7 @@ namespace Server.Mobiles
             else
 				SetWearable(new ShortPants(), Utility.RandomNeutralHue(), 1);
 
-            // hair, facial hair			
+            // hair, facial hair
             HairItemID = Race.RandomHair(Female);
             HairHue = Race.RandomHairHue();
 

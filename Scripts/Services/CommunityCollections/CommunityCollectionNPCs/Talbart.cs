@@ -78,7 +78,7 @@ namespace Server.Items
             Rewards.Add(new CollectionHuedItem(typeof(MercenaryJustinQuotes), 0xFBD, 1073317, 0x1C2, 350000.0, hues));
             Rewards.Add(new CollectionHuedItem(typeof(HeigelOfMoonglowQuotes), 0xFBD, 1073327, 0x1C2, 350000.0, hues));
             Rewards.Add(new CollectionHuedItem(typeof(TraderHoraceQuotes), 0xFBD, 1073338, 0x1C2, 350000.0, hues));
-            Rewards.Add(new CollectionTitle(1073343, 1073861, 350000.0)); // Honored Library Contributor			
+            Rewards.Add(new CollectionTitle(1073343, 1073861, 350000.0)); // Honored Library Contributor
             Rewards.Add(new CollectionItem(typeof(TreatiseonAlchemyTalisman), 0x2F58, 1073353, 0x0, 550000.0));
             Rewards.Add(new CollectionItem(typeof(PrimerOnArmsTalisman), 0x2F59, 1073354, 0x0, 550000.0));
             Rewards.Add(new CollectionItem(typeof(MyBookTalisman), 0x2F5A, 1073355, 0x0, 550000.0));
@@ -96,7 +96,7 @@ namespace Server.Items
             bool can = player.LibraryFriend;
 
             if (!can)
-                player.SendLocalizedMessage(1074273); // You must speak with Librarian Verity before you can donate to this collection. 
+                player.SendLocalizedMessage(1074273); // You must speak with Librarian Verity before you can donate to this collection.
 
             return can;
         }
@@ -116,7 +116,7 @@ namespace Server.Items
                     c.MoveToWorld(new Point3D(1409, 1610, 30), Map);
                     list.Add(c);
 
-                    // cannon					
+                    // cannon
                     c = new Static(0xE94);
                     c.MoveToWorld(new Point3D(1409, 1610, 30), Map);
                     list.Add(c);

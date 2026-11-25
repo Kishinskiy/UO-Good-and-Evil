@@ -142,7 +142,7 @@ namespace Server.Gumps
                 new Point3D(2236, 1224, 0),
                 new Point3D(2273, 1231, 0)
             }),
-            
+
             // Papua
             new StormLevelEntry(1011057, new Point3D[]
             {

@@ -128,7 +128,7 @@ namespace Server.Engines.CityLoyalty
                         {
                             continue;
                         }
-                        
+
                         int amount = Utility.RandomList(5, 10, 15, 20);
                         entry.Details.Add(new TradeEntry.TradeDetails(t, worth, amount, name));
                     }

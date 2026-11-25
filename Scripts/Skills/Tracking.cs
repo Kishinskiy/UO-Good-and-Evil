@@ -192,7 +192,7 @@ namespace Server.SkillHandlers
 
             foreach (Mobile m in eable)
             {
-                // Ghosts can no longer be tracked 
+                // Ghosts can no longer be tracked
                 if (m != from && m.Alive && (!m.Hidden || m.IsPlayer() || from.AccessLevel > m.AccessLevel) && check(m) && CheckDifficulty(from, m))
                     list.Add(m);
             }
@@ -230,7 +230,7 @@ namespace Server.SkillHandlers
             }
         }
 
-        // Tracking players uses tracking and detect hidden vs. hiding and stealth 
+        // Tracking players uses tracking and detect hidden vs. hiding and stealth
         private static bool CheckDifficulty(Mobile from, Mobile m)
         {
             if (!m.Player)
@@ -246,7 +246,7 @@ namespace Server.SkillHandlers
             int stealth = m.Skills[SkillName.Stealth].Fixed;
             int divisor = hiding + stealth;
 
-            // Necromancy forms affect tracking difficulty 
+            // Necromancy forms affect tracking difficulty
             if (TransformationSpellHelper.UnderTransformation(m, typeof(HorrificBeastSpell)))
                 divisor -= 200;
             else if (TransformationSpellHelper.UnderTransformation(m, typeof(VampiricEmbraceSpell)) && divisor < 500)

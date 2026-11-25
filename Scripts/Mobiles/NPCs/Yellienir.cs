@@ -59,8 +59,8 @@ namespace Server.Mobiles
 
                 if (range >= 0 && InRange(m, range) && !InRange(oldLocation, range) && DateTime.UtcNow >= m_Spoken + TimeSpan.FromMinutes(1))
                 {
-                    /* Human.  Do you crave the chance to denounce your humanity and prove your elven ancestry.  
-                    Do you yearn to accept the responsibilities of a caretaker of our beloved Sosaria and so 
+                    /* Human.  Do you crave the chance to denounce your humanity and prove your elven ancestry.
+                    Do you yearn to accept the responsibilities of a caretaker of our beloved Sosaria and so
                     redeem yourself.  Then human, seek out Darius the Wise in Moonglow. */
                     Say(1072801);
 

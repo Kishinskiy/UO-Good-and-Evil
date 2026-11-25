@@ -622,7 +622,7 @@ namespace Server.Mobiles
             AddHtmlLocalized(45, 72, 180, 18, 1072256, _Mannequin.Race == Race.Elf ? 0x1CFF : 0x7FFF, false, false); // Elf
             AddButton(10, 70, 0xFA5, 0xFA7, 2, GumpButtonType.Reply, 0);
 
-            AddHtmlLocalized(45, 92, 180, 18, 1029613, _Mannequin.Race == Race.Gargoyle ? 0x1CFF : 0x7FFF, false, false); // Gargoyle 
+            AddHtmlLocalized(45, 92, 180, 18, 1029613, _Mannequin.Race == Race.Gargoyle ? 0x1CFF : 0x7FFF, false, false); // Gargoyle
             AddButton(10, 90, 0xFA5, 0xFA7, 3, GumpButtonType.Reply, 0);
 
             AddHtmlLocalized(205, 52, 180, 18, 1015327, _Mannequin.Female ? 0x7FFF : 0x1CFF, false, false); // Male

@@ -43,7 +43,7 @@ namespace Server.Items
         }
 
         /* Armor internals work differently now (Jun 19 2003)
-        * 
+        *
         * The attributes defined below default to -1.
         * If the value is -1, the corresponding virtual 'Aos/Old' property is used.
         * If not, the attribute value itself is used. Here's the list:
@@ -2208,7 +2208,7 @@ namespace Server.Items
             base.AddNameProperties(list);
 
             if (m_GorgonLenseCharges > 0)
-                list.Add(1112590, m_GorgonLenseCharges.ToString()); //Gorgon Lens Charges: ~1_val~         
+                list.Add(1112590, m_GorgonLenseCharges.ToString()); //Gorgon Lens Charges: ~1_val~
 
             if (IsSetItem)
             {
@@ -2436,7 +2436,7 @@ namespace Server.Items
 
             if (IsSetItem && !m_SetEquipped)
             {
-                list.Add(1072378); // <br>Only when full set is present:				
+                list.Add(1072378); // <br>Only when full set is present:
                 GetSetProperties(list);
             }
         }
@@ -2862,7 +2862,7 @@ namespace Server.Items
                     list.Add(1072385, m_SetPoisonBonus.ToString()); // poison resist +~1_val~%
 
                 if (m_SetEnergyBonus != 0)
-                    list.Add(1072386, m_SetEnergyBonus.ToString()); // energy resist +~1_val~%		
+                    list.Add(1072386, m_SetEnergyBonus.ToString()); // energy resist +~1_val~%
             }
             else if (m_SetEquipped && SetHelper.ResistsBonusPerPiece(this) && RootParent is Mobile)
             {

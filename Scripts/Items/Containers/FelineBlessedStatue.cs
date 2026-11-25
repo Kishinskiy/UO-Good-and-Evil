@@ -30,7 +30,7 @@ namespace Server.Items
         public FelineBlessedStatue()
             : base(0x1947)
         {
-            Weight = 12;            
+            Weight = 12;
             LootType = LootType.Blessed;
         }
 
@@ -69,7 +69,7 @@ namespace Server.Items
                 else
                 {
                     base.OnDoubleClick(from);
-                }                
+                }
             }
             else
             {
@@ -139,7 +139,7 @@ namespace Server.Items
         public override void OnLockDownChange()
         {
             if (!World.Loading && IsLockedDown)
-            {                
+            {
                 StartTimer();
             }
         }
@@ -151,7 +151,7 @@ namespace Server.Items
                 if (ItemID == 0x1949 || ItemID == 0x194A)
                 {
                     ItemID -= 2;
-                }                
+                }
             }
             else
             {
@@ -163,8 +163,8 @@ namespace Server.Items
         }
 
         private void DropResource()
-        {            
-            var item = Activator.CreateInstance(m_ResourceTypes[Utility.Random(m_ResourceTypes.Length)]) as Item;           
+        {
+            var item = Activator.CreateInstance(m_ResourceTypes[Utility.Random(m_ResourceTypes.Length)]) as Item;
 
             if (item != null)
             {
@@ -179,7 +179,7 @@ namespace Server.Items
                 {
                     DropItemStacked(item);
 
-                    CheckContainer();                    
+                    CheckContainer();
                 }
             }
         }

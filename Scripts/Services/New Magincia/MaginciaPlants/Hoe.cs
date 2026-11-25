@@ -83,7 +83,7 @@ namespace Server.Items
                             {
                                 m_Hoe.UsesRemaining--;
 
-                                from.LocalOverheadMessage(MessageType.Regular, 0x3B2, 1150492); // You till a small area to plant.                                
+                                from.LocalOverheadMessage(MessageType.Regular, 0x3B2, 1150492); // You till a small area to plant.
                                 from.Animate(AnimationType.Attack, 3);
 
                                 MaginciaPlantItem dirt = new MaginciaPlantItem

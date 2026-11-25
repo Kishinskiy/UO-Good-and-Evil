@@ -101,7 +101,7 @@ namespace Server.Engines.UOStore
 
             Register<AbyssalHairDye>(1149822, 1156676, 0, 0x9C7A, 0, 400, cat);
             Register<SpecialHairDye>(new TextDefinition[] { 1071387, 1071439 }, 1156676, 0, 0x9C78, 0, 400, cat, ConstructHairDye); // Lemon Lime
-            Register<SpecialHairDye>(new TextDefinition[] { 1071387, 1071470 }, 1156676, 0, 0x9C6D, 0, 400, cat, ConstructHairDye); // Yew Brown 
+            Register<SpecialHairDye>(new TextDefinition[] { 1071387, 1071470 }, 1156676, 0, 0x9C6D, 0, 400, cat, ConstructHairDye); // Yew Brown
             Register<SpecialHairDye>(new TextDefinition[] { 1071387, 1071471 }, 1156676, 0, 0x9C6E, 0, 400, cat, ConstructHairDye); // Bloodwood Red
             Register<SpecialHairDye>(new TextDefinition[] { 1071387, 1071438 }, 1156676, 0, 0x9C6F, 0, 400, cat, ConstructHairDye); // Vivid Blue
             Register<SpecialHairDye>(new TextDefinition[] { 1071387, 1071469 }, 1156676, 0, 0x9C71, 0, 400, cat, ConstructHairDye); // Ash Blonde
@@ -165,7 +165,7 @@ namespace Server.Engines.UOStore
             Register<HaochisPigment>(new TextDefinition[] { 1071249, 1023856 }, 1156671, 0, 0x9C7F, 0, 400, cat, ConstructHaochisPigment); // Emerald
             Register<HaochisPigment>(new TextDefinition[] { 1071249, 1115467 }, 1156671, 0, 0x9C82, 0, 400, cat, ConstructHaochisPigment); // Smoky Gold
             Register<HaochisPigment>(new TextDefinition[] { 1071249, 1115468 }, 1156671, 0, 0x9C7E, 0, 400, cat, ConstructHaochisPigment); // Ghost's Grey
-            Register<HaochisPigment>(new TextDefinition[] { 1071249, 1115471 }, 1156671, 0, 0x9C84, 0, 400, cat, ConstructHaochisPigment); // Ocean Blue   
+            Register<HaochisPigment>(new TextDefinition[] { 1071249, 1115471 }, 1156671, 0, 0x9C84, 0, 400, cat, ConstructHaochisPigment); // Ocean Blue
 
             Register<SmugglersEdge>(1071499, 1156664, 0, 0x9C63, 0, 400, cat);
             Register<UndertakersStaff>(1071498, 1156663, 0x13F8, 0, 0, 500, cat);
@@ -336,7 +336,7 @@ namespace Server.Engines.UOStore
             Register<WeddingChest>(1157895, 1157896, 0, 0x9CCC, 0, 500, cat);
             Register<BagOfBulkOrderCovers>(1071116, 1157603, 0, 0x9CC6, 0, 200, cat, ConstructBOBCoverOne);
 
-            //TODO: TotemOfChromaticFortune, 
+            //TODO: TotemOfChromaticFortune,
 
             Register<PetBrandingIron>(1157314, 1157372, 0, 0x9CC3, 0, 600, cat);
             Register<WeddingPackageAddonToken>(1157342, 1157371, 0, 0x9CC5, 0, 900, cat);

@@ -72,7 +72,7 @@ namespace Server.Items
 
             if (house != null && (house.Public ? house.IsBanned(m) : !house.HasAccess(m)))
             {
-                m.SendLocalizedMessage(1115577); // You cannot teleport from here to the destination because you do not have the correct house permissions. 
+                m.SendLocalizedMessage(1115577); // You cannot teleport from here to the destination because you do not have the correct house permissions.
                 return false;
             }
 

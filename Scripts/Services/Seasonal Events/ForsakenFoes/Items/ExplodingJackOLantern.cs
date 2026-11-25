@@ -57,7 +57,7 @@ namespace Server.Items
 
                     Effects.SendPacket(from, from.Map, new HuedEffect(EffectType.Moving, from.Serial, m.Serial, 0xA407, from, m, 10, 0, false, false, 0, 0));
                     from.SendLocalizedMessage(1159219); // You hit your target!
-                    m.SendLocalizedMessage(1159218); // You have just been hit by a Jack o' Lantern!!!	
+                    m.SendLocalizedMessage(1159218); // You have just been hit by a Jack o' Lantern!!!
                     m.PlaySound(519);
                 }
             }

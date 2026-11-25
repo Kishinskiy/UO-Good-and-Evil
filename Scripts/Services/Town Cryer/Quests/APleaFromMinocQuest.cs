@@ -10,8 +10,8 @@ namespace Server.Engines.Quests
         /* A Plea from Minoc */
         public override object Title => 1158259;
 
-        /*The Governor of Minoc has made a plea to any and all of those willing and able to come to defense of the City. 
-         * Cora the Sorcerers has overtaken the Dungeon Covetous and corrupted the creatures that reside within. You hear 
+        /*The Governor of Minoc has made a plea to any and all of those willing and able to come to defense of the City.
+         * Cora the Sorcerers has overtaken the Dungeon Covetous and corrupted the creatures that reside within. You hear
          * rumors the Governor has authorized the Sheriff of Minoc to bestow great fortune and fame to those who sacrifice
          * in the name of the city.*/
         public override object Description => 1158260;
@@ -22,8 +22,8 @@ namespace Server.Engines.Quests
         /* Visit the Skara Brae Ranger's Guild and participate in the Huntmaster's Challenge */
         public override object Uncomplete => 1158261;
 
-        /* You have braved the wilds of Britannia and slayed a mighty beast! You have meticulously documented your kill 
-         * and submitted it to the Ranger's Guild for evaluation. If luck was on your side you may indeed have 
+        /* You have braved the wilds of Britannia and slayed a mighty beast! You have meticulously documented your kill
+         * and submitted it to the Ranger's Guild for evaluation. If luck was on your side you may indeed have
          * the largest quarry for the month...or maybe not. Alas, your bravery has earned you the well deserved title
          * of Hunter! May you go fearlessly into the wilderness in search of your next big kill! Well done! */
         public override object Complete => 1158378;
@@ -79,12 +79,12 @@ namespace Server.Engines.Quests
         public override object Title => 1158263;
 
         /*That's right, I'm the Sheriff of Minoc, what can I help you with citizen? What you read in the Town Cryer is true,
-         * Covetous has become quite dangerous. It seems a vile Sorcerers called Cora has overtaken the dungeon and corrupted 
-         * the creatures within, binding them to her cruel rule. The Lycaeum had been trying to contain her magics within 
-         * the dungeon with something called the "Void Pool" but the mage they sent has not been seen in quite some time. 
-         * The place is dangerous to say the least and requires skilled combatants who will encounter greater success if 
+         * Covetous has become quite dangerous. It seems a vile Sorcerers called Cora has overtaken the dungeon and corrupted
+         * the creatures within, binding them to her cruel rule. The Lycaeum had been trying to contain her magics within
+         * the dungeon with something called the "Void Pool" but the mage they sent has not been seen in quite some time.
+         * The place is dangerous to say the least and requires skilled combatants who will encounter greater success if
          * they pool their resources. None the less, the Governor has authorized me to deputize any and all who sacrifice
-         * on behalf of Minoc and attempt to cleanse Covetous. As you know the mountain is a key strategic resource to 
+         * on behalf of Minoc and attempt to cleanse Covetous. As you know the mountain is a key strategic resource to
          * valuable ore that is vital to Minoc's economy. Prove yourself to the City and you shall not soon be forgotten...*/
         public override object Description => 1158264;
 
@@ -94,15 +94,15 @@ namespace Server.Engines.Quests
         /* Go to the dungeon Covetous Level 1 and defeat the creatures within! */
         public override object Uncomplete => 1158266;
 
-        /* Indeed, you have proven yourself, and with your clearing of the creatures in the upper levels of Covetous Mountain our 
-         * miners can once again return to their normal operations, ensuring the lifeblood of our city is one again flowing. You 
+        /* Indeed, you have proven yourself, and with your clearing of the creatures in the upper levels of Covetous Mountain our
+         * miners can once again return to their normal operations, ensuring the lifeblood of our city is one again flowing. You
          * are no doubt brave and strong, but your next task will test your endurance no doubt. As I said, the Lycaeum is keeping
-         * Cora's power at bay with something called the Void Pool. The magics prevent Cora herself from destroying it, but her 
-         * minions are not bound by that restriction. Only blade and spell can defeat her forces as they try to destroy the Void 
+         * Cora's power at bay with something called the Void Pool. The magics prevent Cora herself from destroying it, but her
+         * minions are not bound by that restriction. Only blade and spell can defeat her forces as they try to destroy the Void
          * Pool. Defend the Void Pool at all costs and sacrifice for Minoc. Do this and you will no doubt be remembered a hero. */
         //public override object Complete { get { return 1158268; } }
 
-        public override int CompleteMessage => 1158267;  // You've cleared enough creatures to allow the miners of 
+        public override int CompleteMessage => 1158267;  // You've cleared enough creatures to allow the miners of
                                                          // Minoc to return to their mining operations. Return to the Sheriff and report the news.
 
         public override int AcceptSound => 0x2E8;
@@ -139,11 +139,11 @@ namespace Server.Engines.Quests
         /* A Forced Sacrifice */
         public override object Title => 1158271;
 
-        /* Indeed, you have proven yourself, and with your clearing of the creatures in the upper levels of Covetous Mountain our 
-         * miners can once again return to their normal operations, ensuring the lifeblood of our city is one again flowing. You 
+        /* Indeed, you have proven yourself, and with your clearing of the creatures in the upper levels of Covetous Mountain our
+         * miners can once again return to their normal operations, ensuring the lifeblood of our city is one again flowing. You
          * are no doubt brave and strong, but your next task will test your endurance no doubt. As I said, the Lycaeum is keeping
-         * Cora's power at bay with something called the Void Pool. The magics prevent Cora herself from destroying it, but her 
-         * minions are not bound by that restriction. Only blade and spell can defeat her forces as they try to destroy the Void 
+         * Cora's power at bay with something called the Void Pool. The magics prevent Cora herself from destroying it, but her
+         * minions are not bound by that restriction. Only blade and spell can defeat her forces as they try to destroy the Void
          * Pool. Defend the Void Pool at all costs and sacrifice for Minoc. Do this and you will no doubt be remembered a hero. */
         public override object Description => 1158268;
 
@@ -210,7 +210,7 @@ namespace Server.Engines.Quests
         /* Despite your failure in protecting the void pool, your efforts have allowed the mages of the Lycaeum to use their
          * magics and bind the void pool in an infinite time loop, forever sealing Cora within the dungeon. This is only a
          * stopgap measure, however, and Cora cannot be allowed to continue her twisted craft. Now comes the ultimate test,
-         * you must venture to the deepest level of Dungeon Covetous and slay Cora. It is the only way. Take this, it is all 
+         * you must venture to the deepest level of Dungeon Covetous and slay Cora. It is the only way. Take this, it is all
          * the city can offer you in an effort to slay Cora. The City is counting on you. */
         public override object Description => 1158272;
 
@@ -221,7 +221,7 @@ namespace Server.Engines.Quests
         public override object Uncomplete => 1158273;
 
         /*You have slayed the vile sorceress Cora! A powerful mage as she was, her armies will no doubt attempt
-        * to resurrect their general - for now though Minoc is safe. The economic future of Minoc has been 
+        * to resurrect their general - for now though Minoc is safe. The economic future of Minoc has been
         * secured and for your efforts you are hereby bestowed a great honor!*/
         public override object Complete => 1158281;
 

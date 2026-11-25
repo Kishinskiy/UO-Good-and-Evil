@@ -24,7 +24,7 @@ namespace Server.Misc
                     mob.SendLocalizedMessage(1159512); // Happy Anniversary! We have placed a gift for you in your backpack.
                     break;
                 case GiftResult.BankBox:
-                    mob.SendLocalizedMessage(1159513); // Happy Anniversary! We have placed a gift for you in your bank box. 
+                    mob.SendLocalizedMessage(1159513); // Happy Anniversary! We have placed a gift for you in your bank box.
                     break;
             }
         }

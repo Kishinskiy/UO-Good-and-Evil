@@ -83,7 +83,7 @@ namespace Server.Items
                 return false;
 
             if (FacingEast)
-                return BaseAddon.IsWall(p.X - 1, p.Y, p.Z, map); // west wall                
+                return BaseAddon.IsWall(p.X - 1, p.Y, p.Z, map); // west wall
             else
                 return BaseAddon.IsWall(p.X, p.Y - 1, p.Z, map); // north wall
         }
@@ -119,7 +119,7 @@ namespace Server.Items
                 from.SendGump(new InternalGump(this));
             }
             else
-                from.SendLocalizedMessage(1042038); // You must have the object in your backpack to use it.          	
+                from.SendLocalizedMessage(1042038); // You must have the object in your backpack to use it.
         }
 
         public override void Serialize(GenericWriter writer)
@@ -273,19 +273,19 @@ namespace Server.Items
                                     m_Shield.Delete();
                                 }
                                 else
-                                    from.SendLocalizedMessage(1049781); // This decoration must be placed next to a wall.		
+                                    from.SendLocalizedMessage(1049781); // This decoration must be placed next to a wall.
                             }
                             else
                                 from.SendLocalizedMessage(1042036); // That location is not in your house.
                         }
                         else
-                            from.SendLocalizedMessage(500269); // You cannot build that there.		
+                            from.SendLocalizedMessage(500269); // You cannot build that there.
                     }
                     else
                         from.SendLocalizedMessage(502092); // You must be in your house to do this.
                 }
                 else
-                    from.SendLocalizedMessage(1042038); // You must have the object in your backpack to use it.    
+                    from.SendLocalizedMessage(1042038); // You must have the object in your backpack to use it.
             }
 
             private class FacingGump : Gump

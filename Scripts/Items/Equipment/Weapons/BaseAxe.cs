@@ -46,7 +46,7 @@ namespace Server.Items
             }
             else if (!IsAccessibleTo(from))
             {
-                PublicOverheadMessage(Network.MessageType.Regular, 0x3E9, 1061637); // You are not allowed to access 
+                PublicOverheadMessage(Network.MessageType.Regular, 0x3E9, 1061637); // You are not allowed to access
                 return;
             }
 

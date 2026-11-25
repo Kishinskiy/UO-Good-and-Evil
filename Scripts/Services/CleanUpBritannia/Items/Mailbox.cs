@@ -167,7 +167,7 @@ namespace Server.Items
 				{
 					if (IsSecure)
 					{
-						SendLocalizedMessageTo(from, 1010563); // This container is secure.                    
+						SendLocalizedMessageTo(from, 1010563); // This container is secure.
 						return;
 					}
 

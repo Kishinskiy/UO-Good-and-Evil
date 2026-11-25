@@ -15,8 +15,8 @@ namespace Server.Engines.Quests
 
         /* Stop Harping on Me */
         public override object Title => 1073881;
-        /* Humans artistry can be a remarkable thing. For instance, I have heard of a wonderful 
-        instrument which creates the most melodious of music. A lap harp. I would be ever so 
+        /* Humans artistry can be a remarkable thing. For instance, I have heard of a wonderful
+        instrument which creates the most melodious of music. A lap harp. I would be ever so
         grateful if I could examine one in person. */
         public override object Description => 1074071;
         /* I will patiently await your reconsideration. */
@@ -52,7 +52,7 @@ namespace Server.Engines.Quests
 
         /* The Far Eye */
         public override object Title => 1073908;
-        /* The wonders of human invention! Turning sand and metal into a far-seeing eye! This is 
+        /* The wonders of human invention! Turning sand and metal into a far-seeing eye! This is
         something I must experience for myself. Bring me some of these spyglasses friend human. */
         public override object Description => 1074098;
         /* I will patiently await your reconsideration. */

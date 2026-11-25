@@ -185,7 +185,7 @@ namespace Server
 		/// <summary>
 		/// Unused, using this layer makes you invisible to other players. Strange.
 		/// </summary>
-		/// 
+		///
 		Reserved_x1E = 0x1E,
 
 		/// <summary>
@@ -1073,15 +1073,15 @@ namespace Server
 				return;
 			}
 
-			var isValid = info.m_Name != null 
-					   || info.m_Items != null 
-					   || info.m_Bounce != null 
-					   || info.m_HeldBy != null 
-					   || info.m_BlessedFor != null 
-					   || info.m_Spawner != null 
-					   || info.m_TempFlags != 0 
-					   || info.m_SavedFlags != 0 
-					   || info.m_Weight != -1 
+			var isValid = info.m_Name != null
+					   || info.m_Items != null
+					   || info.m_Bounce != null
+					   || info.m_HeldBy != null
+					   || info.m_BlessedFor != null
+					   || info.m_Spawner != null
+					   || info.m_TempFlags != 0
+					   || info.m_SavedFlags != 0
+					   || info.m_Weight != -1
 					   || info.m_VisibilityList != null
 					   ;
 
@@ -1825,7 +1825,7 @@ namespace Server
 		/// 	{
 		/// 		if ( from.Int &gt;= 100 )
 		/// 			return true;
-		/// 		
+		///
 		/// 		return base.AllowEquipedCast( from );
 		///  }</code>
 		///     When placed in an Item script, the item may be cast when equiped if the <paramref name="from" /> has 100 or more intelligence. Otherwise, it will drop to their backpack.
@@ -4302,7 +4302,7 @@ namespace Server
 			}
 		}
 
-		public bool ParentsContain<T>() 
+		public bool ParentsContain<T>()
 		{
 			return ParentsContain<T>(out _);
 		}
@@ -4952,7 +4952,7 @@ namespace Server
 		public virtual void OnAfterDuped(Item newItem)
 		{
 			newItem.m_Light = m_Light;
-			
+
 			newItem.Insured = false;
 			newItem.PayedInsurance = false;
 

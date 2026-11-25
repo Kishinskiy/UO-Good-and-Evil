@@ -110,7 +110,7 @@ namespace Server.Multis
 					case 6: number = 502263; break; // Canst thou aid me?!
 					case 7: number = 502265; break; // Help! Please!
 					case 8: number = 502267; break; // Go and get some help!
-					case 9: number = 502268; break; // Quickly, I beg thee! Unlock my chains! If thou dost look at me close thou canst see them.	 
+					case 9: number = 502268; break; // Quickly, I beg thee! Unlock my chains! If thou dost look at me close thou canst see them.
 				}
 
 				Prisoner.Yell(number);

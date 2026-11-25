@@ -180,7 +180,7 @@ namespace Server.Guilds
             }
             else
             {
-                AddButtonAndBackground(20, 260, 2, 1062990); // Request Alliance 
+                AddButtonAndBackground(20, 260, 2, 1062990); // Request Alliance
                 AddButtonAndBackground(20, 290, 1, 1062989); // Declare War!
             }
 

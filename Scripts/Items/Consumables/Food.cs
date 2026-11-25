@@ -1510,7 +1510,7 @@ namespace Server.Items
             }
         }
 
-        public override int LabelNumber => 1098235;  // A Three Tiered Cake 
+        public override int LabelNumber => 1098235;  // A Three Tiered Cake
 
         [Constructable]
         public ThreeTieredCake()

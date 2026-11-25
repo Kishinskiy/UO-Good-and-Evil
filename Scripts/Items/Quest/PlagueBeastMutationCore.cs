@@ -46,7 +46,7 @@ namespace Server.Items
                 Movable = true;
 
                 from.AddToBackpack(this);
-                from.LocalOverheadMessage(MessageType.Regular, 0x34, 1071906); // * You remove the plague mutation core from the plague beast, causing it to dissolve into a pile of goo *				
+                from.LocalOverheadMessage(MessageType.Regular, 0x34, 1071906); // * You remove the plague mutation core from the plague beast, causing it to dissolve into a pile of goo *
 
                 if (owner != null)
                     Timer.DelayCall(TimeSpan.FromSeconds(1), KillParent, owner);

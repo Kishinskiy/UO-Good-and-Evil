@@ -9,10 +9,10 @@ namespace Server
     /* We need to add:
      * MondainQuesters when alive, so on MapChange
      * MondainQuesters are displayed on EA by subserver, so we'll have to do it by map
-     * 
+     *
      * Corpse, when dead
      * Healers, when dead
-     * 
+     *
      * Remove: healers when rezzed
      * Questers when you leave their map
      */
@@ -184,7 +184,7 @@ namespace Server
             m_Stream.Write((ushort)x);
             m_Stream.Write((ushort)y);
             m_Stream.Write((sbyte)z);
-            m_Stream.Write((byte)mapID); //map 
+            m_Stream.Write((byte)mapID); //map
 
             m_Stream.Write((ushort)type);
 
@@ -197,7 +197,7 @@ namespace Server
 
             m_Stream.WriteLittleUniNull(name);
 
-            m_Stream.Write((short)0); // terminate 
+            m_Stream.Write((short)0); // terminate
         }
     }
 

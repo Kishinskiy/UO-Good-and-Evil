@@ -373,7 +373,7 @@ namespace Server.Items
                             {
                                 InterstellarObject = AstronomySystem.GetRandomInterstellarObject();
 
-                                User.SendLocalizedMessage(InterstellarObject.Item2, "", 0xBF); // 
+                                User.SendLocalizedMessage(InterstellarObject.Item2, "", 0xBF); //
                                 User.SendSound(User.Female ? 0x32B : 0x43D);
                             }
                             else

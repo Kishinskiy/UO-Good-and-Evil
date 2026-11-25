@@ -100,7 +100,7 @@ namespace Server.Items
             }
             else
             {
-                from.SendLocalizedMessage(1019045); // I can't reach that.            
+                from.SendLocalizedMessage(1019045); // I can't reach that.
             }
         }
 

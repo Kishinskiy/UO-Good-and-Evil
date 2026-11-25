@@ -20,7 +20,7 @@ namespace Server
 			{
 				return;
 			}
-			
+
 			while (m_SliceQueue.Count > 0)
 			{
 				m_SliceQueue.Dequeue()();

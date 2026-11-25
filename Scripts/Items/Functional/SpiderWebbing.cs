@@ -42,7 +42,7 @@ namespace Server.Items
         public static void RemoveEffects(Mobile m)
         {
             m.Frozen = false;
-            m.SendLocalizedMessage(1113248); // You escape the spider's web!           
+            m.SendLocalizedMessage(1113248); // You escape the spider's web!
             BuffInfo.RemoveBuff(m, BuffIcon.Webbing);
             m_WebVictims.Remove(m);
         }

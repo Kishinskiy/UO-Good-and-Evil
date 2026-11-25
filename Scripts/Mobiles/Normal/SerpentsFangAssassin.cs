@@ -25,7 +25,7 @@ namespace Server.Mobiles
 			SetWearable(new StuddedGloves(), 0x2A, 1);
 			SetWearable(new LeatherNinjaPants(), 0x51D, 1);
 			SetWearable(new LightPlateJingasa(), 0x51D, 1);
-			SetWearable(new Sai(), 0x51D, 1); 
+			SetWearable(new Sai(), 0x51D, 1);
 
             SetStr(440, 460);
             SetDex(160, 175);

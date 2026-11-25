@@ -15,8 +15,8 @@ namespace Server.Engines.Quests
 
         /* The Song of the Wind */
         public override object Title => 1073910;
-        /* To give voice to the passing wind, this is an idea worthy of an elf! Friend, bring me some of the amazing fancy 
-        wind chimes so that I may listen to the song of the passing breeze. Do this, and I will share with you treasured 
+        /* To give voice to the passing wind, this is an idea worthy of an elf! Friend, bring me some of the amazing fancy
+        wind chimes so that I may listen to the song of the passing breeze. Do this, and I will share with you treasured
         elven secrets. */
         public override object Description => 1074100;
         /* I will patiently await your reconsideration. */
@@ -52,8 +52,8 @@ namespace Server.Engines.Quests
 
         /* Beer Goggles */
         public override object Title => 1073895;
-        /* Oh, the deviltry! Why would humans lock their precious liquors inside a wooden coffin? I understand I need a "keg tap" 
-        to access the golden brew within such a wooden abomination. Perhaps, if you could bring me such a tap, we could share a 
+        /* Oh, the deviltry! Why would humans lock their precious liquors inside a wooden coffin? I understand I need a "keg tap"
+        to access the golden brew within such a wooden abomination. Perhaps, if you could bring me such a tap, we could share a
         drink and I could teach you. */
         public override object Description => 1074085;
         /* I will patiently await your reconsideration. */
@@ -89,7 +89,7 @@ namespace Server.Engines.Quests
 
         /* Message in a Bottle */
         public override object Title => 1073894;
-        /* We elves are interested in trading our wines with humans but we understand human usually trade such brew in strange transparent 
+        /* We elves are interested in trading our wines with humans but we understand human usually trade such brew in strange transparent
         bottles. If you could provide some of these empty glass bottles, I might engage in a bit of elven winemaking. */
         public override object Description => 1074084;
         /* I will patiently await your reconsideration. */

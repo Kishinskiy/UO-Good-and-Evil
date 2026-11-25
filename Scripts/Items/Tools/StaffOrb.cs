@@ -8,7 +8,7 @@ namespace Server.Items
     /// David O'Hara
     /// 08-13-2004
     /// Version 3.0
-    /// This orb allows staff to switch between a Player access level and their current staff level. 
+    /// This orb allows staff to switch between a Player access level and their current staff level.
     /// It also sets the mortality as appropriate for staff.
     /// A home location can be set/used thru the context menu.
     /// Will auto resurrect it's owner on death.

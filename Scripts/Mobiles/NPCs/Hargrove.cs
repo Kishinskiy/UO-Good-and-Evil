@@ -16,8 +16,8 @@ namespace Server.Engines.Quests
         public override TimeSpan RestartDelay => TimeSpan.FromMinutes(3);
         /* Chop Chop, On The Double! */
         public override object Title => 1075537;
-        /* That's right, move it! I need sixty logs on the double, and they need to be freshly cut! If you can get them to 
-        me fast I'll have your payment in your hands before you have the scent of pine out from beneath your nostrils. Just 
+        /* That's right, move it! I need sixty logs on the double, and they need to be freshly cut! If you can get them to
+        me fast I'll have your payment in your hands before you have the scent of pine out from beneath your nostrils. Just
         get a sharp axe and hack away at some of the trees in the land and your lumberjacking skill will rise in no time. */
         public override object Description => 1075538;
         /* Or perhaps you'd rather not. */

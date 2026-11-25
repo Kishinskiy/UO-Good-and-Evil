@@ -45,7 +45,7 @@ namespace Server.Engines.Quests
             SetWearable(new ShortPants(), 0x651, 1);
             SetWearable(new MagicalShortbow(), dropChance: 1);
 			SetWearable(new HideChest(), 0x27B, 1);
-			SetWearable(new HidePauldrons(), 0x27E, 1); 
+			SetWearable(new HidePauldrons(), 0x27E, 1);
         }
 
         public override void Serialize(GenericWriter writer)

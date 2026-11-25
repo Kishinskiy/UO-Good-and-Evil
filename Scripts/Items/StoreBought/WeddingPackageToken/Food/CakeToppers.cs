@@ -29,7 +29,7 @@ namespace Server.Items
             reader.ReadInt();
         }
     }
-	
+
 	[Flipable(0x9EC3, 0x9EC4)]
     public class FemaleTopper : Item
     {

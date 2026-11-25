@@ -133,7 +133,7 @@ namespace Server.Items
             if (SetLocation == Point3D.Zero)
                 list.Add(1154639, string.Format("{0}\t{1}", coord[0], coord[1])); //  Vendor Located at ~1_loc~ (~2_facet~)
             else
-                list.Add(1154638, string.Format("{0}\t{1}", coord[0], coord[1])); //  Return to ~1_loc~ (~2_facet~)                
+                list.Add(1154638, string.Format("{0}\t{1}", coord[0], coord[1])); //  Return to ~1_loc~ (~2_facet~)
 
             if (!IsSale())
             {

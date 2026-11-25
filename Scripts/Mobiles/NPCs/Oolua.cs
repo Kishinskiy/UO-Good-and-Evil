@@ -16,8 +16,8 @@ namespace Server.Engines.Quests
 
         /* Pixie dust to dust */
         public override object Title => 1073661;
-        /* Is there anything more foul than a pixie? They have cruel eyes and a mind for mischief, I say. I don't 
-        care if some think they're cute -- I say kill them and let the Avatar sort them out. In fact, if you were 
+        /* Is there anything more foul than a pixie? They have cruel eyes and a mind for mischief, I say. I don't
+        care if some think they're cute -- I say kill them and let the Avatar sort them out. In fact, if you were
         to kill a few pixies, I'd make sure you had a few coins to rub together, if you get my meaning. */
         public override object Description => 1073700;
         /* Perhaps you'll change your mind and return at some point. */

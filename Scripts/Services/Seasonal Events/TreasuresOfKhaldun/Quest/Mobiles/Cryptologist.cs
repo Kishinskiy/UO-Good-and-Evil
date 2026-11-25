@@ -99,11 +99,11 @@ namespace Server.Engines.Khaldun
                 AddImage(0, 0, 1744);
                 AddHtmlLocalized(300, 25, 408, 250, cliloc, false, false);
 
-                /*Shhh! Can't you see the students are...*the Cryptologist pauses as you explain the reason for your visit* 
+                /*Shhh! Can't you see the students are...*the Cryptologist pauses as you explain the reason for your visit*
                  * Oh, Inspector Jasper sent you did he? Well my service to the RBG is something I hold in -very- high regard.
                  * What can I assist you with? *You show the Cryptologist your copies of the encrypted notes* Yes...yes...a
                  * masterful cipher if I have ever seen one, but one that can easily be cracked! The only thing we need is the
-                 * cipher text - but just as it were a number of our texts have been hidden by some students having a bit of 
+                 * cipher text - but just as it were a number of our texts have been hidden by some students having a bit of
                  * fun with the season. I've already searched the dormitories out back, but I'm certain it's somewhere in the
                  * Lycaeum bookcases, if you find it, I'll be happy to assist you in decrypting the texts.  */
 

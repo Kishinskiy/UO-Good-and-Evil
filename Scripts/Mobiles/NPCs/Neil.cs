@@ -17,8 +17,8 @@ namespace Server.Engines.Quests
 
         /* Crystalline Fragments */
         public override object Title => 1073054;
-        /* You look strong and brave, my friend.  Are you strong and brave?  I only ask because I am known 
-        to be too generous to those that find for me interesting -- things -- to use in my smithing.  What 
+        /* You look strong and brave, my friend.  Are you strong and brave?  I only ask because I am known
+        to be too generous to those that find for me interesting -- things -- to use in my smithing.  What
         do you say? */
         public override object Description => 1074662;
         /* *nods* */
@@ -54,8 +54,8 @@ namespace Server.Engines.Quests
 
         /* Protector's Essence */
         public override object Title => 1073052;
-        /* You look strong and brave, my friend.  Are you strong and brave?  I only ask because I am known 
-        to be too generous to those that find for me interesting -- things -- to use in my smithing.  What 
+        /* You look strong and brave, my friend.  Are you strong and brave?  I only ask because I am known
+        to be too generous to those that find for me interesting -- things -- to use in my smithing.  What
         do you say? */
         public override object Description => 1074662;
         /* *nods* */
@@ -91,8 +91,8 @@ namespace Server.Engines.Quests
 
         /* Heart of Ice */
         public override object Title => 1073056;
-        /* You look strong and brave, my friend.  Are you strong and brave?  I only ask because I am known 
-        to be too generous to those that find for me interesting -- things -- to use in my smithing.  What 
+        /* You look strong and brave, my friend.  Are you strong and brave?  I only ask because I am known
+        to be too generous to those that find for me interesting -- things -- to use in my smithing.  What
         do you say? */
         public override object Description => 1074662;
         /* *nods* */

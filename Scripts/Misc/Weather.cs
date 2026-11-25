@@ -134,7 +134,7 @@ namespace Server.Misc
             m_Facets = new Map[] { Map.Felucca, Map.Trammel };
 
             /* Static weather:
-            * 
+            *
             * Format:
             *   AddWeather( temperature, chanceOfPercipitation, chanceOfExtremeTemperature, <area ...> );
             */
@@ -149,7 +149,7 @@ namespace Server.Misc
             AddWeather(+15, 50, 5, new Rectangle2D(1245, 1045, 250, 250));
 
             /* Dynamic weather:
-            * 
+            *
             * Format:
             *   AddDynamicWeather( temperature, chanceOfPercipitation, chanceOfExtremeTemperature, moveSpeed, width, height, bounds );
             */

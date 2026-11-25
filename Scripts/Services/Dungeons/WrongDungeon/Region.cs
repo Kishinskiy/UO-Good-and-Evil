@@ -32,7 +32,7 @@ namespace Server.Engines.Blackthorn
                     DeathList.Remove(m);
                 }
 
-                Timer.DelayCall(TimeSpan.FromSeconds(2), () => m.LocalOverheadMessage(MessageType.Regular, 0x3B2, 1152076)); // You are captured by the jailor and returned to your cell.                       
+                Timer.DelayCall(TimeSpan.FromSeconds(2), () => m.LocalOverheadMessage(MessageType.Regular, 0x3B2, 1152076)); // You are captured by the jailor and returned to your cell.
             }
         }
 

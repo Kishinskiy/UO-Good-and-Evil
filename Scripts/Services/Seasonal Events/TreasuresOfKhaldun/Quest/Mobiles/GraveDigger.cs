@@ -70,8 +70,8 @@ namespace Server.Engines.Khaldun
 
                 if (quest != null)
                 {
-                    m.SendLocalizedMessage(1158606, null, 0x23); /* You've spoken to the Grave Digger and have paid your respects to those who 
-                                                                    perished in the fight against the titans. How someone could defile a grave 
+                    m.SendLocalizedMessage(1158606, null, 0x23); /* You've spoken to the Grave Digger and have paid your respects to those who
+                                                                    perished in the fight against the titans. How someone could defile a grave
                                                                     stone, you have no idea. You decide to take a closer look... */
 
                     m.PlaySound(quest.UpdateSound);
@@ -93,7 +93,7 @@ namespace Server.Engines.Khaldun
                 /*Solemn job you know, but someone has to do it. Been pretty busy since the invasions, hardly a day goes by we don't
                  * have the kin of someone who embraced Sacrifice and gave themselves in defense of the realm against the Titans.
                  * Ah well, makes me feel good knowing me shovel gives em a good final resting place. Worst part ya know though -
-                 * plenty of people been in and out of the cemetery for sure, but I don't know why they insist on messing up the 
+                 * plenty of people been in and out of the cemetery for sure, but I don't know why they insist on messing up the
                  * headstones!? To think, some people have no Shame!*/
             }
         }

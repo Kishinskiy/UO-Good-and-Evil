@@ -192,7 +192,7 @@ namespace Server.Engines.CityLoyalty
                     _GovernorElect = null;
 
                 if (value != null && value != _Governor)
-                    HeraldMessage(1154070, value.Name); // Hear Ye! Hear Ye! ~1_NAME~ hath accepted the Office of Governor! King Blackthorn congratulates Governor ~1_NAME~! 
+                    HeraldMessage(1154070, value.Name); // Hear Ye! Hear Ye! ~1_NAME~ hath accepted the Office of Governor! King Blackthorn congratulates Governor ~1_NAME~!
 
                 _PendingGovernor = false;
                 _Governor = value;

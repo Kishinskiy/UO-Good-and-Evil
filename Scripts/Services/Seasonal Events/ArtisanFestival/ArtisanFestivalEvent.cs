@@ -519,7 +519,7 @@ namespace Server.Engines.ArtisanFestival
                 }
                 else if (perc < .90)
                 {
-                    loc = 1159275; // The tree is about a three-quarters of the way before it will grow!	
+                    loc = 1159275; // The tree is about a three-quarters of the way before it will grow!
                 }
                 else
                 {

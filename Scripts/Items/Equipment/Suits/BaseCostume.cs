@@ -49,7 +49,7 @@ namespace Server.Items
 
         private bool EnMask(Mobile from)
         {
-            if (from.Mounted || from.Flying) // You cannot use this while mounted or flying. 
+            if (from.Mounted || from.Flying) // You cannot use this while mounted or flying.
             {
                 from.SendLocalizedMessage(1010097);
             }

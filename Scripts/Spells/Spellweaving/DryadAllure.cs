@@ -52,7 +52,7 @@ namespace Server.Spells.Spellweaving
             }
             else if (bc.Allured)
             {
-                Caster.SendLocalizedMessage(1074380); // This humanoid is already controlled by someone else.				
+                Caster.SendLocalizedMessage(1074380); // This humanoid is already controlled by someone else.
             }
             else if (CheckSequence())
             {

@@ -20,8 +20,8 @@ namespace Server.Engines.Quests
         /* Kodar's Rescue */
         public override object Title => 1073066;
 
-        /* Please, please I beg of you ... help out of here. I was trying to find one of my sheep 
-           that went missing and I fell down this hole.  Then these ... *hysterical weeping*.  
+        /* Please, please I beg of you ... help out of here. I was trying to find one of my sheep
+           that went missing and I fell down this hole.  Then these ... *hysterical weeping*.
            Please, get me out of here!
         */
         public override object Description => 1074704;
@@ -29,7 +29,7 @@ namespace Server.Engines.Quests
         /* Please!  PLEASE!  Don't let me die here. */
         public override object Refuse => 1074705;
 
-        /* *whimper* Please ... hurry.  I am a good climber and could get out the way you came in, 
+        /* *whimper* Please ... hurry.  I am a good climber and could get out the way you came in,
            if you can just get me there.
         */
         public override object Uncomplete => 1074706;

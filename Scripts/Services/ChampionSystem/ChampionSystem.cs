@@ -18,7 +18,7 @@ namespace Server.Engines.CannedEvil
 
 		private static readonly int[] m_DefaultRankRedSkulls = new[] { 5, 10, 13 };
 		private static readonly int[] m_DefaultRankMaxKills = new[] { 256, 128, 64, 32 };
-		
+
 
 		private static bool m_Initialized;
 
@@ -444,5 +444,5 @@ namespace Server.Engines.CannedEvil
 			}
 		}
 	}
-	
+
 }

@@ -6,8 +6,8 @@ namespace Server.Items
         public override int LabelNumber => 1113927;  // Mailbox
         public override int DefaultGumpID => 0x9D39;
         public override int SouthMailBoxID => 0xA3F5;
-        public override int SouthEmptyMailBoxID => 0xA3F6;	
-        public override int EastMailBoxID => 0xA3F3;	
+        public override int SouthEmptyMailBoxID => 0xA3F6;
+        public override int EastMailBoxID => 0xA3F3;
         public override int EastEmptyMailBoxID => 0xA3F4;
 
         [Constructable]

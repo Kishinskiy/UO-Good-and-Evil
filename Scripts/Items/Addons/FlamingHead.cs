@@ -179,7 +179,7 @@ namespace Server.Items
                     from.SendLocalizedMessage(502115); // You must be in your house to do this.
             }
             else
-                from.SendLocalizedMessage(1042038); // You must have the object in your backpack to use it.          	
+                from.SendLocalizedMessage(1042038); // You must have the object in your backpack to use it.
         }
 
         public override void Serialize(GenericWriter writer)
@@ -263,13 +263,13 @@ namespace Server.Items
                                 from.SendLocalizedMessage(1042266); // The head must be placed next to a wall.
                         }
                         else
-                            from.SendLocalizedMessage(1042036); // That location is not in your house.			
+                            from.SendLocalizedMessage(1042036); // That location is not in your house.
                     }
                     else
                         from.SendLocalizedMessage(502115); // You must be in your house to do this.
                 }
                 else
-                    from.SendLocalizedMessage(1042038); // You must have the object in your backpack to use it.     
+                    from.SendLocalizedMessage(1042038); // You must have the object in your backpack to use it.
             }
         }
     }

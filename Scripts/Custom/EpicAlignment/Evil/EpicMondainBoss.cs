@@ -58,23 +58,23 @@ namespace Server.Mobiles
         }
 
         // Реальные артефакты из сборки ServUO
-        public override Type[] UniqueList => new Type[] 
-        { 
-            typeof(Aegis), 
-            typeof(HolyKnightsBreastplate), 
+        public override Type[] UniqueList => new Type[]
+        {
+            typeof(Aegis),
+            typeof(HolyKnightsBreastplate),
             typeof(CrimsonCincture),
         };
 
-        public override Type[] SharedList => new Type[] 
-        { 
- 
+        public override Type[] SharedList => new Type[]
+        {
+
             typeof(LieutenantOfTheBritannianRoyalGuard),
             typeof(EmbroideredOakLeafCloak)
         };
 
-        public override Type[] DecorativeList => new Type[] 
-        { 
-            typeof(MonsterStatuette), 
+        public override Type[] DecorativeList => new Type[]
+        {
+            typeof(MonsterStatuette),
         };
 
         public override MonsterStatuetteType[] StatueTypes => new MonsterStatuetteType[] { MonsterStatuetteType.ArchDemon };

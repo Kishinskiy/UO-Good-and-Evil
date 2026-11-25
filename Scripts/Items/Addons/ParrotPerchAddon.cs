@@ -102,7 +102,7 @@ namespace Server.Items
         {
         }
 
-        public override int LabelNumber => 1072619;// A deed for a Parrot Perch		
+        public override int LabelNumber => 1072619;// A deed for a Parrot Perch
         public override BaseAddon Addon => new ParrotPerchAddon(m_Parrot);
         [CommandProperty(AccessLevel.GameMaster)]
         public PetParrot Parrot

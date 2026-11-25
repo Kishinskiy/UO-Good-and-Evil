@@ -25,9 +25,9 @@ namespace Server.Engines.VvV
             else
             {
                 AddHtmlLocalized(10, 55, 340, 210, 1155566, 0xFFFF, false, false);
-                /*Greetings! You are about to join Vice vs Virtue! VvV is an exhilarating Player vs Player 
-                 * experience that you can have fun with whether you have hours or only a few minutes to 
-                 * jump into the action!  Be forewarned, once you join VvV you will be freely attackable 
+                /*Greetings! You are about to join Vice vs Virtue! VvV is an exhilarating Player vs Player
+                 * experience that you can have fun with whether you have hours or only a few minutes to
+                 * jump into the action!  Be forewarned, once you join VvV you will be freely attackable
                  * by other VvV participants in non-consensual PvP facets.<br><br>Will you answer the call
                  * and lead your guild to victory?*/
             }

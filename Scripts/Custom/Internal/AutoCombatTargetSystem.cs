@@ -16,7 +16,7 @@ namespace Server.Custom.AutoCombat
         {
             // Хукаем смерть существ для авто-переключения на следующего врага
             EventSink.CreatureDeath += new CreatureDeathEventHandler(OnCreatureDeath);
-            
+
             // Хукаем движение игроков, чтобы активировать интеллектуальный радар боя
             EventSink.Movement += new MovementEventHandler(OnPlayerMovement);
         }

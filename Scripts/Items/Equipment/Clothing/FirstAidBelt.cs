@@ -216,7 +216,7 @@ namespace Server.Items
                 list.Add(1060433, prop.ToString()); // lower mana cost ~1_val~%
 
             if ((prop = m_Attributes.LowerRegCost) != 0)
-                list.Add(1060434, prop.ToString()); // lower reagent cost ~1_val~%	
+                list.Add(1060434, prop.ToString()); // lower reagent cost ~1_val~%
 
             if ((prop = m_Attributes.Luck) != 0)
                 list.Add(1060436, prop.ToString()); // luck ~1_val~

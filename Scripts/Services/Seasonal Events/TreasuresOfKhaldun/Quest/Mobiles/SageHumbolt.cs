@@ -67,7 +67,7 @@ namespace Server.Engines.Khaldun
 
                 if (quest != null && !quest.IsComplete)
                 {
-                    /*You have successfully found Sage Humbolt who has opened you eyes to the entire conspiracy, and the danger that looms ahead 
+                    /*You have successfully found Sage Humbolt who has opened you eyes to the entire conspiracy, and the danger that looms ahead
                      * if no steps are taken to alter the current course of events. Return to Inspector Jasper to report your findings.*/
                     m.SendLocalizedMessage(1158636, null, 0x23);
                     m.SendGump(new InternalGump());
@@ -93,24 +93,24 @@ namespace Server.Engines.Khaldun
                 AddHtmlLocalized(0, 340, 400, 20, 1154645, "#1158623", 0x0, false, false); // The Prophecy
                 AddHtmlLocalized(5, 365, 390, 200, 1158622, BaseGump.C32216(0x0D0D0D), false, true);
 
-                /**The ghostly figure looks at you with disappointment* You've brought the cheese haven't you? Gah, 
+                /**The ghostly figure looks at you with disappointment* You've brought the cheese haven't you? Gah,
                  * I can never find it! *the ghost goes back to waving its hands through the barrels* You explain
-                 * who you are, and the circumstances that have lead you to this moment. With each word the ghost 
+                 * who you are, and the circumstances that have lead you to this moment. With each word the ghost
                  * becomes increasingly alarmed, yet an expression of expectation and satisfaction is apparent from
                  * their reaction. The ghost nods and begins to speak in a tongue you can understand,<br><br> "That's
                  * right. I am Sage Humbolt, or I was. What you speak of is especially concerning. The events you
                  * describe - the invasion by otherworldly cultist, the titans, all of it - it was something foretold
                  * long ago. But these most recent revelations, I was hopeful that, like most prophecies, this was a
-                 * bit of embellishment by sages through the millenia. Alas, it seems this prophecy has come full 
+                 * bit of embellishment by sages through the millenia. Alas, it seems this prophecy has come full
                  * circle.<br><br>Long ago, a great warrior named Khal Ankur lead a cult devoted to death and sacrifice
-                 * . Like most zealots of such a twisted dogma, Khal Ankur met his end and was sealed inside a tomb deep 
-                 * in the Lost Lands. Not until four explorers uncovered the tomb did we even know for sure it existed. 
-                 * The prophecy tells of a fallen star that would allow Khal Ankur to rise again and lead an army of 
+                 * . Like most zealots of such a twisted dogma, Khal Ankur met his end and was sealed inside a tomb deep
+                 * in the Lost Lands. Not until four explorers uncovered the tomb did we even know for sure it existed.
+                 * The prophecy tells of a fallen star that would allow Khal Ankur to rise again and lead an army of
                  * zealots against those who imprisoned him. With the strength of this fallen star Khal Ankur would be
                  * impossible to kill, save for with the very power the fallen star gives to Khal Ankur. You must never
                  * allow Khal Ankur to rise again, lest the cultists may use their power to recall the Titans to this
                  * world! The fallen star is rich with a material called Caddellite, which gives Khal Ankur unmatched
-                 * power. I hope you know a good tinker, as Caddellite is a fiercely strong material that is otherwise 
+                 * power. I hope you know a good tinker, as Caddellite is a fiercely strong material that is otherwise
                  * impossible to harvest. With Caddellite infused resources you will be able to supply an army of the
                  * willing with weapons, arcana, and provisions to dispatch this threat once and for all. Go now, there
                  * is little time to lose. Now I've got to get back to my cheese, what a new and exciting place Papua is...  */

@@ -15,8 +15,8 @@ namespace Server.Engines.Quests
 
         /* Watch Your Step */
         public override object Title => 1074454;
-        /* You won't be able to get into the sinkhole with any normal rope.  It's a big drop, sure, but the real problem is the acid 
-        and poison gas.  See, most ropes can't stand up to that kind of treatment, even for a short period of time.  So you'll need 
+        /* You won't be able to get into the sinkhole with any normal rope.  It's a big drop, sure, but the real problem is the acid
+        and poison gas.  See, most ropes can't stand up to that kind of treatment, even for a short period of time.  So you'll need
         a special rope -- a magical rope. Like these ones I happen to have available here for a mere 5,000 gold each. */
         public override object Description => 1074455;
         /* I sure don't want to go down there either.  You won't hear me chiding you. In fact, I commend your intellect. */

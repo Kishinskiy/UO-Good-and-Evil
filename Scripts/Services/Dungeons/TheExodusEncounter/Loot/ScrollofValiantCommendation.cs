@@ -25,7 +25,7 @@ namespace Server.Items
 
             if (string.IsNullOrEmpty(Owner))
             {
-                list.Add(1152708); // Double click to permanently gain +5 to your maximum stats 
+                list.Add(1152708); // Double click to permanently gain +5 to your maximum stats
             }
             else
             {

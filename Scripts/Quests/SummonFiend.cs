@@ -18,8 +18,8 @@ namespace Server.Engines.Quests
         public override Type NextQuest => typeof(CrackingTheWhipQuest);
         /* Fiendish Friends */
         public override object Title => 1074283;
-        /* It is true that a skilled arcanist can summon and dominate an imp to serve at their pleasure.  To do such 
-        at thing though, you must master the miserable little fiends utterly by demonstrating your superiority.  Rough 
+        /* It is true that a skilled arcanist can summon and dominate an imp to serve at their pleasure.  To do such
+        at thing though, you must master the miserable little fiends utterly by demonstrating your superiority.  Rough
         them up some - kill a few.  That will do the trick. */
         public override object Description => 1074285;
         /* You're probably right.  They're not worth the effort. */
@@ -60,7 +60,7 @@ namespace Server.Engines.Quests
         public override Type NextQuest => typeof(IronWillQuest);
         /* Cracking the Whip */
         public override object Title => 1074295;
-        /* Now that you've shown those mini pests your might, you should collect suitable implements to 
+        /* Now that you've shown those mini pests your might, you should collect suitable implements to
         use to train your summoned pet.  I suggest a stout whip. */
         public override object Description => 1074300;
         /* Heh. Changed your mind, eh? */
@@ -103,7 +103,7 @@ namespace Server.Engines.Quests
         public override Type NextQuest => typeof(TheBrainsOfTheOperationQuest);
         /* Iron Will */
         public override object Title => 1074296;
-        /* Now you just need to make the little buggers fear you -- if you can slay an arcane daemon, 
+        /* Now you just need to make the little buggers fear you -- if you can slay an arcane daemon,
         you'll earn their subservience. */
         public override object Description => 1074302;
         /* If you're not up for it, so be it. */
@@ -117,7 +117,7 @@ namespace Server.Engines.Quests
 
         public override void GiveRewards()
         {
-            /* You've demonstrated your strength, got a means of control, and taught the imps to fear 
+            /* You've demonstrated your strength, got a means of control, and taught the imps to fear
             you.  You're ready now to summon them. */
             Owner.SendLocalizedMessage(1074322, null, 0x2A);
 

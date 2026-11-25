@@ -5,7 +5,7 @@ namespace Server.Items
 {
     public class KeypunchReader : OrnateWoodenChest
     {
-        public override int LabelNumber => 1153868;  // Keypunch Reader  
+        public override int LabelNumber => 1153868;  // Keypunch Reader
 
         [Constructable]
         public KeypunchReader()
@@ -32,7 +32,7 @@ namespace Server.Items
 
             if (dropped is PunchCard)
             {
-                from.SendLocalizedMessage(1152375); // You feed the punch card into the machine but nothing happens. 
+                from.SendLocalizedMessage(1152375); // You feed the punch card into the machine but nothing happens.
             }
 
             return true;
@@ -50,7 +50,7 @@ namespace Server.Items
 
             if (item is PunchCard)
             {
-                from.SendLocalizedMessage(1152375); // You feed the punch card into the machine but nothing happens. 
+                from.SendLocalizedMessage(1152375); // You feed the punch card into the machine but nothing happens.
             }
 
             return true;
@@ -68,7 +68,7 @@ namespace Server.Items
                 punch.ToList().ForEach(f => f.Delete());
 
                 DropItem(new NexusAddonDeed());
-                m.SendLocalizedMessage(1152376); // As you feed the punch card into the machine it turns on! 
+                m.SendLocalizedMessage(1152376); // As you feed the punch card into the machine it turns on!
             }
         }
 

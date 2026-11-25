@@ -32,7 +32,7 @@ namespace Server.Items
                 if ((m_Ore1.Amount > 499) && (m_Ore1.Amount < 501))
                 {
                     m_Ore1.Delete();
-                    from.SendLocalizedMessage(1113048); // You've successfully converted the metal.                   
+                    from.SendLocalizedMessage(1113048); // You've successfully converted the metal.
                     from.AddToBackpack(new AgapiteIngot(500));
                     Delete();
                 }

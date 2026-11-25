@@ -83,7 +83,7 @@ namespace Server.Mobiles
                 SetSkill(SkillName.Tactics, 70.0, 85.0);
                 SetSkill(SkillName.MagicResist, 70.0, 85.0);
             }
-            else // Archer 
+            else // Archer
             {
                 SetStr(100, 130);
                 SetDex(100, 130);

@@ -74,7 +74,7 @@ namespace Server.Items
             int diff = pm.ManaMax - pm.Mana;
             if (diff == 0)
             {
-                pm.SendLocalizedMessage(1095127); //You are already at full mana 
+                pm.SendLocalizedMessage(1095127); //You are already at full mana
                 return;
             }
             toHeal = Math.Min(toHeal, diff);

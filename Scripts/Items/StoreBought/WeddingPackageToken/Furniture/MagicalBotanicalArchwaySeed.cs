@@ -71,7 +71,7 @@ namespace Server.Items
             Mobile from = sender.Mobile;
 
             if (_Item == null || _Item.Deleted)
-                return;            
+                return;
 
             switch (info.ButtonID)
             {

@@ -15,17 +15,17 @@ namespace Server.Engines.Quests
 
         /* Last Words */
         public override object Title => 1073046;
-        /* You have discovered a blood-stained journal that details the adventures of Lord Denthe.  
-        The pages make for fascinating reading, telling the tale of the great man's efforts to 
-        uncover the secrets of the Prism of Light.  Will you donate the journal to a library so 
+        /* You have discovered a blood-stained journal that details the adventures of Lord Denthe.
+        The pages make for fascinating reading, telling the tale of the great man's efforts to
+        uncover the secrets of the Prism of Light.  Will you donate the journal to a library so
         others may hear the tale of Lord Denthe's final expedition? */
         public override object Description => 1074650;
         /* Or, you could keep the journal for your private library. */
         public override object Refuse => 1074651;
         /* The librarian in Britain would be glad of your donation of Lord Denthe's journal. */
         public override object Uncomplete => 1074652;
-        /* Shhhh!  What have YOU done to that book?  It's covered in ... is that blood?  *furious glare*  
-        Let me see that.  Oh.  Oh, I see.  Do you realize how important this journal is?  Here, take this 
+        /* Shhhh!  What have YOU done to that book?  It's covered in ... is that blood?  *furious glare*
+        Let me see that.  Oh.  Oh, I see.  Do you realize how important this journal is?  Here, take this
         for your trouble. */
         public override object Complete => 1074653;
         public override void Serialize(GenericWriter writer)

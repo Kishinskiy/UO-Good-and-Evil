@@ -535,7 +535,7 @@ namespace Server.Items
 
                     // m_Patient.Heal((int)toHeal, m_Healer, false);
                     Server.Custom.KarmaVirtueSystem.KarmaVirtueManager.HealByBandage(m_Patient, m_Healer, (int)toHeal);
-                    
+
                 }
                 else
                 {

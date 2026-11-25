@@ -22,7 +22,7 @@ namespace Server.Engines.VendorSearching
             new SearchCriteriaCategory(Category.PriceRange, 2, 1154512, new SearchCriterionEntry[] { /* Price Range */
             }),
             new SearchCriteriaCategory(Category.Equipment, 3, 1154531, new[] // Equipment
-            { 
+            {
 				new SearchCriterionEntry(Layer.Shoes, 1154602),
                 new SearchCriterionEntry(Layer.Pants, 1154603),
                 new SearchCriterionEntry(Layer.Shirt, 1154604),
@@ -42,7 +42,7 @@ namespace Server.Engines.VendorSearching
                 new SearchCriterionEntry(Layer.OuterLegs, 1154622),
             }),
             new SearchCriteriaCategory(Category.Combat, 4, 1154541, new[] // Combat
-            { 
+            {
 				new SearchCriterionEntry(AosAttribute.WeaponDamage, 1079760, 1060401),
                 new SearchCriterionEntry(AosAttribute.DefendChance, 1075620, 1060408),
                 new SearchCriterionEntry(AosAttribute.AttackChance, 1075616, 1060415),
@@ -64,7 +64,7 @@ namespace Server.Engines.VendorSearching
                 new SearchCriterionEntry(SAAbsorptionAttribute.EaterDamage, 1154667, 1113598),
             }),
             new SearchCriteriaCategory(Category.Casting, 5, 1154538, new[] // Casting
-            { 
+            {
 				new SearchCriterionEntry(SAAbsorptionAttribute.ResonanceFire, 1154655, 1113691),
                 new SearchCriterionEntry(SAAbsorptionAttribute.ResonanceCold, 1154656, 1113692),
                 new SearchCriterionEntry(SAAbsorptionAttribute.ResonancePoison, 1154657, 1113693),

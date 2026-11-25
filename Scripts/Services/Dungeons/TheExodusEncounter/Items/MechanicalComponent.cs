@@ -30,7 +30,7 @@ namespace Server.Items
             }
             else
             {
-                from.SendLocalizedMessage(1152370); // Only an Adept Tinker would know what to do with this. 
+                from.SendLocalizedMessage(1152370); // Only an Adept Tinker would know what to do with this.
             }
         }
 

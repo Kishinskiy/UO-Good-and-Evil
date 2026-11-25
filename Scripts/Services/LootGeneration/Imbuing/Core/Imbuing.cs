@@ -331,7 +331,7 @@ namespace Server.SkillHandlers
                 (from.Backpack == null || from.Backpack.GetAmount(gem) < gemAmount ||
                 from.Backpack.GetAmount(primary) < primResAmount ||
                 from.Backpack.GetAmount(special) < specResAmount))
-                from.SendLocalizedMessage(1079773); //You do not have enough resources to imbue this item.     
+                from.SendLocalizedMessage(1079773); //You do not have enough resources to imbue this item.
             else
             {
                 int maxWeight = GetMaxWeight(i);
@@ -1439,7 +1439,7 @@ namespace Server.SkillHandlers
         {
             int[] resists;
 
-            // Special items base resist don't count as a property or weight. Once that resist is imbued, 
+            // Special items base resist don't count as a property or weight. Once that resist is imbued,
             // it then uses the base class resistance as the base resistance. EA is stupid.
             if (item is IImbuableEquipement && IsSpecialImbuable(item))
             {

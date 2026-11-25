@@ -16,9 +16,9 @@ namespace Server.Engines.Quests
 
         /* Daemonic Prism */
         public override object Title => 1073053;
-        /* Good, you're here.  The presence of a twisted creature deep under the earth near Nu'Jelm has 
-        corrupted the natural growth of crystals in that region.  They've become infused with the 
-        twisting energy - they've come to a sort of life.  This is an abomination that festers within 
+        /* Good, you're here.  The presence of a twisted creature deep under the earth near Nu'Jelm has
+        corrupted the natural growth of crystals in that region.  They've become infused with the
+        twisting energy - they've come to a sort of life.  This is an abomination that festers within
         Sosaria. You must eradicate the crystal daemons. */
         public override object Description => 1074668;
         /* These abominations must not be permitted to fester! */
@@ -59,9 +59,9 @@ namespace Server.Engines.Quests
 
         /* How Many Heads? */
         public override object Title => 1073050;
-        /* Good, you're here.  The presence of a twisted creature deep under the earth near Nu'Jelm has 
-        corrupted the natural growth of crystals in that region.  They've become infused with the twisting 
-        energy - they've come to a sort of life.  This is an abomination that festers within Sosaria. You 
+        /* Good, you're here.  The presence of a twisted creature deep under the earth near Nu'Jelm has
+        corrupted the natural growth of crystals in that region.  They've become infused with the twisting
+        energy - they've come to a sort of life.  This is an abomination that festers within Sosaria. You
         must eradicate the crystal hydras. */
         public override object Description => 1074674;
         /* These abominations must not be permitted to fester! */
@@ -102,9 +102,9 @@ namespace Server.Engines.Quests
 
         /* Glassy Foe */
         public override object Title => 1073055;
-        /* Good, you're here.  The presence of a twisted creature deep under the earth near Nu'Jelm has 
-        corrupted the natural growth of crystals in that region.  They've become infused with the twisting 
-        energy - they've come to a sort of life.  This is an abomination that festers within Sosaria.  You 
+        /* Good, you're here.  The presence of a twisted creature deep under the earth near Nu'Jelm has
+        corrupted the natural growth of crystals in that region.  They've become infused with the twisting
+        energy - they've come to a sort of life.  This is an abomination that festers within Sosaria.  You
         must eradicate the crystal lattice seekers. */
         public override object Description => 1074669;
         /* These abominations must not be permitted to fester! */
@@ -145,9 +145,9 @@ namespace Server.Engines.Quests
 
         /* Hailstorm */
         public override object Title => 1073057;
-        /* Good, you're here.  The presence of a twisted creature deep under the earth near Nu'Jelm has corrupted 
-        the natural growth of crystals in that region.  They've become infused with the twisting energy - they've 
-        come to a sort of life.  This is an abomination that festers within Sosaria.  You must eradicate the 
+        /* Good, you're here.  The presence of a twisted creature deep under the earth near Nu'Jelm has corrupted
+        the natural growth of crystals in that region.  They've become infused with the twisting energy - they've
+        come to a sort of life.  This is an abomination that festers within Sosaria.  You must eradicate the
         crystal vortices. */
         public override object Description => 1074670;
         /* These abominations must not be permitted to fester! */

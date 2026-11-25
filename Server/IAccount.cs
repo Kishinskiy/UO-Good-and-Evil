@@ -126,7 +126,7 @@ namespace Server.Accounting
 
 		/// <summary>
 		/// Attempts to deposit the given amount of Gold into this account.
-		/// If the given amount is greater than the CurrencyThreshold, 
+		/// If the given amount is greater than the CurrencyThreshold,
 		/// Platinum will be deposited to offset the difference.
 		/// </summary>
 		/// <param name="amount">Amount to deposit.</param>
@@ -135,7 +135,7 @@ namespace Server.Accounting
 
 		/// <summary>
 		/// Attempts to deposit the given amount of Gold into this account.
-		/// If the given amount is greater than the CurrencyThreshold, 
+		/// If the given amount is greater than the CurrencyThreshold,
 		/// Platinum will be deposited to offset the difference.
 		/// </summary>
 		/// <param name="amount">Amount to deposit.</param>
@@ -165,7 +165,7 @@ namespace Server.Accounting
 
 		/// <summary>
 		/// Attempts to withdraw the given amount of Gold from this account.
-		/// If the given amount is greater than the CurrencyThreshold, 
+		/// If the given amount is greater than the CurrencyThreshold,
 		/// Platinum will be withdrawn to offset the difference.
 		/// </summary>
 		/// <param name="amount">Amount to withdraw.</param>
@@ -174,7 +174,7 @@ namespace Server.Accounting
 
 		/// <summary>
 		/// Attempts to withdraw the given amount of Gold from this account.
-		/// If the given amount is greater than the CurrencyThreshold, 
+		/// If the given amount is greater than the CurrencyThreshold,
 		/// Platinum will be withdrawn to offset the difference.
 		/// </summary>
 		/// <param name="amount">Amount to withdraw.</param>

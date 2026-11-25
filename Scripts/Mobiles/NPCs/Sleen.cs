@@ -15,8 +15,8 @@ namespace Server.Engines.Quests
 
         /* Necessity's Mother */
         public override object Title => 1073906;
-        /* What a thing, this human need to tinker. It seems there is no end to what might be produced with a set of 
-        Tinker's Tools. Who knows what an elf might build with some? Could you obtain some tinker's tools and bring 
+        /* What a thing, this human need to tinker. It seems there is no end to what might be produced with a set of
+        Tinker's Tools. Who knows what an elf might build with some? Could you obtain some tinker's tools and bring
         them to me? In exchange, I offer you elven lore and knowledge.  */
         public override object Description => 1074096;
         /* I will patiently await your reconsideration. */
@@ -52,8 +52,8 @@ namespace Server.Engines.Quests
 
         /* Tick Tock */
         public override object Title => 1073907;
-        /* Elves find it remarkable the human preoccupation with the passage of time. To have built instruments to try and 
-        capture time -- it is a fascinating notion. I would like to see how a clock is put together. Maybe you could provide 
+        /* Elves find it remarkable the human preoccupation with the passage of time. To have built instruments to try and
+        capture time -- it is a fascinating notion. I would like to see how a clock is put together. Maybe you could provide
         some clocks for my experimentation? */
         public override object Description => 1074097;
         /* I will patiently await your reconsideration. */
@@ -89,8 +89,8 @@ namespace Server.Engines.Quests
 
         /* Reptilian Dentist */
         public override object Title => 1074280;
-        /* I'm working on a striking necklace -- something really unique -- and I know just what I need to finish it up.  
-        A huge fang!  Won't that catch the eye?  I would like to employ you to find me such an item, perhaps a snake would 
+        /* I'm working on a striking necklace -- something really unique -- and I know just what I need to finish it up.
+        A huge fang!  Won't that catch the eye?  I would like to employ you to find me such an item, perhaps a snake would
         make the ideal donor.  I'll make it worth your while, of course. */
         public override object Description => 1074710;
         /* I understand.  I don't like snakes much either.  They're so creepy. */

@@ -340,21 +340,21 @@ namespace Server.Engines.NewMagincia
         public int GetLabelID(CommodityBrokerEntry entry)
         {
             /*Item[] items = BuyPack.FindItemsByType(typeof(CommodityDeed));
-			
+
 			foreach(Item item in items)
 			{
 				if(item is CommodityDeed)
 				{
 					CommodityDeed deed = (CommodityDeed)item;
-					
+
 					if(deed.Commodity != null && deed.Commodity.GetType() == entry.CommodityType)
 						return deed.Commodity.ItemID;
 				}
 			}
-			
+
 			Item item = Loot.Construct(entry.CommodityType);
 			int id = 0;
-			
+
 			if(item != null)
 			{
 				id = item.ItemID;

@@ -313,7 +313,7 @@ namespace Server.Items
             }
 
             BaseCreature.TeleportPets(m, p, map);
-            m.MoveToWorld(p, map);                     
+            m.MoveToWorld(p, map);
 
             if (m_DestEffect && sendEffect)
             {
@@ -1433,7 +1433,7 @@ namespace Server.Items
         public override void Serialize(GenericWriter writer)
         {
             base.Serialize(writer);
-            writer.Write(0); // version           
+            writer.Write(0); // version
         }
 
         public override void Deserialize(GenericReader reader)

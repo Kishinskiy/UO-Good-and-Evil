@@ -10,7 +10,7 @@ namespace Server.Engines.Quests
         /*Wishes of Wisps*/
         public override object Title => 1158296;
 
-        /*The story of the brothers Andros and Adrian is troubling, yet fascinates you. You have heard rumor of items 
+        /*The story of the brothers Andros and Adrian is troubling, yet fascinates you. You have heard rumor of items
          * traded by the mysterious wisps. Despite the dangers you decide you should venture to the dungeon Despise.*/
         public override object Description => 1158318;
 
@@ -115,7 +115,7 @@ namespace Server.Engines.Quests
             g.AddHtmlObject(160, 70, 200, 40, Title, BaseQuestGump.DarkGreen, false, false);
             g.AddHtmlLocalized(98, 140, 312, 16, 1049073, 0x2710, false, false); // Objective:
 
-            g.AddHtmlLocalized(98, 156, 312, 16, 1072208, 0x2710, false, false); // All of the following	
+            g.AddHtmlLocalized(98, 156, 312, 16, 1072208, 0x2710, false, false); // All of the following
 
             g.AddHtmlLocalized(98, 172, 312, 83, 1158302, BaseQuestGump.LightGreen, false, false);
             /* Enter the appropriate level of despise based on your karma. Once inside, find and use an ankh.*/

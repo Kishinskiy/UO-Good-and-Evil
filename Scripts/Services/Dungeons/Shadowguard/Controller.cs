@@ -239,7 +239,7 @@ namespace Server.Engines.Shadowguard
                     {
                         if (Table == null || !Table.ContainsKey(info.Mobile) || (Table[info.Mobile] & EncounterType.Required) != EncounterType.Required)
                         {
-                            m.SendLocalizedMessage(1156249); // All members of your party must complete each of the Shadowguard Towers before attempting the finale. 
+                            m.SendLocalizedMessage(1156249); // All members of your party must complete each of the Shadowguard Towers before attempting the finale.
                             return false;
                         }
                     }
@@ -374,7 +374,7 @@ namespace Server.Engines.Shadowguard
             int order = Array.IndexOf(Queue.Keys.ToArray(), m) + 1;
 
             m.SendLocalizedMessage(1156182, order > 1 ? order.ToString() : "next");
-            /* The fortress is currently full right now. You are currently ~1_NUM~ in the queue.  
+            /* The fortress is currently full right now. You are currently ~1_NUM~ in the queue.
             You will be messaged when an encounter is available.  You must remain in the lobby in
             order to be able to join.*/
         }
@@ -460,7 +460,7 @@ namespace Server.Engines.Shadowguard
 
                     if (p != null)
                         p.Members.ForEach(info => info.Mobile.SendLocalizedMessage(1156190, i + 1 > 1 ? i.ToString() : "next"));
-                    //A Shadowguard encounter has opened. You are currently ~1_NUM~ in the 
+                    //A Shadowguard encounter has opened. You are currently ~1_NUM~ in the
                     //queue. If you are next, you may proceed to the entry stone to join.
                     else
                         mob.SendLocalizedMessage(1156190, i + 1 > 1 ? i.ToString() : "next");

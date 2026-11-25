@@ -198,7 +198,7 @@ namespace Server.Items
 
                 IncreaseStage();
             }
-            else if (m_TotalIncubationTime >= TimeSpan.FromHours(72) && m_Stage == EggStage.Stage2)  //from stage 2 to mature egg 
+            else if (m_TotalIncubationTime >= TimeSpan.FromHours(72) && m_Stage == EggStage.Stage2)  //from stage 2 to mature egg
             {
                 if (Dryness >= Dryness.Parched)
                 {

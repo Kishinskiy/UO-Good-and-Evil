@@ -49,7 +49,7 @@ namespace Server.Engines.NewMagincia
 			if(from.InRange(this.Location, 3) && from.Backpack != null)
 			{
 				WarehouseContainer container = MaginciaBazaar.ClaimContainer(from);
-				
+
 				if(container != null)
 					TryTransferItems(from, container);
 			}
@@ -233,12 +233,12 @@ namespace Server.Engines.NewMagincia
         /*private bool TransferItems(Mobile from, WarehouseContainer c)
 		{
 			List<Item> items = new List<Item>(c.Items);
-			
+
 			foreach(Item item in items)
 			{
 				from.Backpack.TryDropItem(from, item, false);
 			}
-			
+
 			return c.Items.Count == 0;
 		}*/
 

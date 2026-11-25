@@ -130,7 +130,7 @@ namespace Server.Mobiles
                 }
                 else
                 {
-                    PublicOverheadMessage(MessageType.Regular, 0x3B2, 501550); // I am not interested in 
+                    PublicOverheadMessage(MessageType.Regular, 0x3B2, 501550); // I am not interested in
                 }
             }
             return false;

@@ -24,7 +24,7 @@ namespace Server.Items
         {
             base.AddNameProperties(list);
 
-            list.Add(1153525); // 15% Bandage Healing Bonus 
+            list.Add(1153525); // 15% Bandage Healing Bonus
         }
 
         public override void Serialize(GenericWriter writer)

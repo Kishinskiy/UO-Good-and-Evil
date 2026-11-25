@@ -1005,7 +1005,7 @@ namespace Server.Multis
 
         public static int[][] CannonIDs => m_CannonIDs;
         private static readonly int[][] m_CannonIDs = new int[][]
-        { 
+        {
                       //Light  Heavy, Blunder, Pumpkin
             new int[] { 16918, 16922, 41664, 41979 }, //South
             new int[] { 16919, 16923, 41665, 41980 }, //West

@@ -419,7 +419,7 @@ namespace Server.Items
                 list.Add(1060435, m_LowerStatReq.ToString()); // lower requirements ~1_val~%
 
             if ((prop = m_AosAttributes.SpellChanneling) != 0)
-                list.Add(1060482); // spell channeling	
+                list.Add(1060482); // spell channeling
 
             if (!CraftResources.IsStandard(m_Resource))
                 list.Add(CraftResources.GetName(m_Resource));

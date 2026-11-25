@@ -2,7 +2,7 @@ namespace Server.Items
 {
     public class KrampusMinionEarrings : BaseArmor
     {
-        public override int LabelNumber => 1125645;  // krampus minion earrings        
+        public override int LabelNumber => 1125645;  // krampus minion earrings
 
         [Constructable]
         public KrampusMinionEarrings()

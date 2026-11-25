@@ -1,6 +1,6 @@
 using System;
 
-/*Toggle ability that grants the poisoner a reduction to 
+/*Toggle ability that grants the poisoner a reduction to
   poison level when poisoned at a stamina cost based on mastery level.*/
 
 namespace Server.Spells.SkillMasteries

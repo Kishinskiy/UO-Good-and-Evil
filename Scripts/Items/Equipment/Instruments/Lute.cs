@@ -63,9 +63,9 @@ namespace Server.Items
 
                 if (box != null)
                 {
-                    from.FixedParticles(0x376A, 1, 72, 0x13B5, EffectLayer.Waist);                    
+                    from.FixedParticles(0x376A, 1, 72, 0x13B5, EffectLayer.Waist);
                     from.PlaySound(1666);
-                    
+
                     LuteTunedToStones = true;
 
                     var neck = from.FindItemOnLayer(Layer.Neck);

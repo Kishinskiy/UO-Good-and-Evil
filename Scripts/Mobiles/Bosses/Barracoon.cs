@@ -241,7 +241,7 @@ namespace Server.Mobiles
         {
             private readonly Mobile m_Owner;
             public ExpirePolymorphTimer(Mobile owner)
-                : base(TimeSpan.FromMinutes(3.0)) 
+                : base(TimeSpan.FromMinutes(3.0))
             {
                 m_Owner = owner;
 

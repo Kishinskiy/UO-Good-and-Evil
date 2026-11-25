@@ -18,9 +18,9 @@ namespace Server.Engines.Quests
         public override Type NextQuest => typeof(NeedsOfTheManySanctuaryQuest);
         /* Discipline */
         public override object Title => 1072752;
-        /* Learning to weave spells and control the forces of nature requires sacrifice, discipline, focus, and an unwavering dedication 
-        to Sosaria herself.  We do not teach the unworthy.  They do not comprehend the lessons nor the dedication required.  If you would 
-        walk the path of the Arcanist, then you must do as I require without hesitation or question.  Your first task is to rid our home 
+        /* Learning to weave spells and control the forces of nature requires sacrifice, discipline, focus, and an unwavering dedication
+        to Sosaria herself.  We do not teach the unworthy.  They do not comprehend the lessons nor the dedication required.  If you would
+        walk the path of the Arcanist, then you must do as I require without hesitation or question.  Your first task is to rid our home
         of rats ... 50 of them in the next hour. */
         public override object Description => 1072761;
         /* *nods* Not everyone has the temperment to undertake the way of the Arcanist. */
@@ -61,8 +61,8 @@ namespace Server.Engines.Quests
         public override Type NextQuest => typeof(MakingContributionSanctuaryQuest);
         /* Needs of the Many - Sanctuary */
         public override object Title => 1072754;
-        /* The way of the Arcanist involves cooperation with others and a strong committment to the community of your 
-        people.  We have run low on the cotton we use to pack wounds and our people have need.  Bring 10 bales of 
+        /* The way of the Arcanist involves cooperation with others and a strong committment to the community of your
+        people.  We have run low on the cotton we use to pack wounds and our people have need.  Bring 10 bales of
         cotton to me. */
         public override object Description => 1072763;
         /* You endanger your progress along the path with your unwillingness. */
@@ -107,7 +107,7 @@ namespace Server.Engines.Quests
         public override object Title => 1072755;
         /* We must look to the defense of our people! Bring boards for new arrows. */
         public override object Description => 1072764;
-        /* The people have need of these items.  You are proving yourself inadequate 
+        /* The people have need of these items.  You are proving yourself inadequate
         to the demands of a member of this community. */
         public override object Refuse => 1072769;
         /* The requirements are simple -- 250 boards. */
@@ -150,10 +150,10 @@ namespace Server.Engines.Quests
         public override Type NextQuest => typeof(TheHumanBlightQuest);
         /* Supplies for Sanctuary */
         public override object Title => 1072756;
-        /* With health and defense assured, we need look to the need of the community 
-        for food and drink.  We will feast on fish steaks, sweets, and wine.  You 
-        will supply the ingredients, the cooks will prepare the meal.  As a Arcanist 
-        relies upon others to build focus and lend their power to her workings, the 
+        /* With health and defense assured, we need look to the need of the community
+        for food and drink.  We will feast on fish steaks, sweets, and wine.  You
+        will supply the ingredients, the cooks will prepare the meal.  As a Arcanist
+        relies upon others to build focus and lend their power to her workings, the
         community needs the effort of all to survive. */
         public override object Description => 1072765;
         /* Do not falter now.  You have begun to show promise. */
@@ -189,7 +189,7 @@ namespace Server.Engines.Quests
         {
             AddObjective(new ObtainObjective(typeof(SeveredHumanEars), "severed human ears", 30, 0x312F));
 
-            AddReward(new BaseReward(typeof(ArcaneCircleScroll), 1071026)); // Arcane Circle			
+            AddReward(new BaseReward(typeof(ArcaneCircleScroll), 1071026)); // Arcane Circle
             AddReward(new BaseReward(typeof(GiftOfRenewalScroll), 1071027)); // Gift of Renewal
             AddReward(new BaseReward(typeof(SpellweavingBook), 1031600)); // Spellweaving Spellbook
         }
@@ -197,12 +197,12 @@ namespace Server.Engines.Quests
         public override QuestChain ChainID => QuestChain.SpellweavingS;
         /* The Human Blight */
         public override object Title => 1072757;
-        /* You have proven your desire to contribute to the community and serve the people.  Now you must 
-        demonstrate your willingness to defend Sosaria from the greatest blight that plagues her.  The 
-        human vermin that have spread as a disease, despoiling the land are the greatest blight we face.  
+        /* You have proven your desire to contribute to the community and serve the people.  Now you must
+        demonstrate your willingness to defend Sosaria from the greatest blight that plagues her.  The
+        human vermin that have spread as a disease, despoiling the land are the greatest blight we face.
         Kill humans and return to me the proof of your actions. Bring me 30 human ears. */
         public override object Description => 1072766;
-        /* You must serve Sosaria with all your heart and strength.  Your unwillingness does not reflect 
+        /* You must serve Sosaria with all your heart and strength.  Your unwillingness does not reflect
         favorably upon you. */
         public override object Refuse => 1072771;
         /* Why do you delay?  The human blight must be averted. */

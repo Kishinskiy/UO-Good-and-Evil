@@ -240,9 +240,9 @@ namespace Server.Engines.NewMagincia
                     {
                         toRemove.Add(m);
 
-                        /*Your broker inventory and/or funds in storage at the New Magincia Warehouse 
-                         *have been donated to charity, because these items remained unclaimed for a 
-                         *full week. These items may no longer be recovered, but the orphans will 
+                        /*Your broker inventory and/or funds in storage at the New Magincia Warehouse
+                         *have been donated to charity, because these items remained unclaimed for a
+                         *full week. These items may no longer be recovered, but the orphans will
                          *appreciate a nice hot meal.*/
 
                         MaginciaLottoSystem.SendMessageTo(m, new NewMaginciaMessage(new TextDefinition(1150676), new TextDefinition(1150673), null));
@@ -414,8 +414,8 @@ namespace Server.Engines.NewMagincia
                 //new owner
                 if (current == null && winner != plot.Owner)
                 {
-                    /*You won a lease on Stall ~1_STALLNAME~ at the ~2_FACET~ New Magincia Bazaar. 
-                     *Your bid amount of ~3_BIDAMT~gp won the auction and has been remitted. Your 
+                    /*You won a lease on Stall ~1_STALLNAME~ at the ~2_FACET~ New Magincia Bazaar.
+                     *Your bid amount of ~3_BIDAMT~gp won the auction and has been remitted. Your
                      *lease begins immediately and will continue for 7 days.*/
                     MaginciaLottoSystem.SendMessageTo(winner, new NewMaginciaMessage(null, new TextDefinition(1150426), string.Format("{0}\t{1}\t{2}", plot.PlotDef.ID, plot.PlotDef.Map.ToString(), highest.ToString("###,###,###"))));
                 }
@@ -425,9 +425,9 @@ namespace Server.Engines.NewMagincia
                 //Transfer to new plot
                 if (current != null)
                 {
-                    /*You won a lease and moved to Stall ~1_STALLNAME~ at the ~2_FACET~ New Magincia 
-                     *Bazaar. The lease on your previous stall has been terminated. Your hired 
-                     *merchant, if any, has relocated your stall and goods to the new lot. Your 
+                    /*You won a lease and moved to Stall ~1_STALLNAME~ at the ~2_FACET~ New Magincia
+                     *Bazaar. The lease on your previous stall has been terminated. Your hired
+                     *merchant, if any, has relocated your stall and goods to the new lot. Your
                      *bid amount of ~3_BIDAMT~gp has been remitted.*/
                     MaginciaLottoSystem.SendMessageTo(winner, new NewMaginciaMessage(null, new TextDefinition(1150428), string.Format("{0}\t{1}\t{2}", plot.PlotDef.ID, plot.PlotDef.Map, highest.ToString("###,###,###"))));
 
@@ -504,15 +504,15 @@ namespace Server.Engines.NewMagincia
             if (entry != null)
             {
                 m_WarehouseStorage[owner] = entry;
-                /*Your hired broker has transferred any remaining inventory and funds from 
-                 *your stall at the New Magincia Bazaar into storage at the New Magincia 
-                 *Warehouse. You must reclaim these items or they will be destroyed! To reclaim 
-                 *these items, see the Warehouse Superintendent in New Magincia.<br><br>This 
-                 *service is provided free of charge. If you owed your broker any back fees, 
-                 *those fees must be paid before you can reclaim your belongings. The storage 
-                 *period lasts 7 days starting with the expiration of your lease at the New 
-                 *Magincia Bazaar, and this storage period cannot be extended. Claim your 
-                 *possessions and gold without delay!<br><br>The expiration time of this 
+                /*Your hired broker has transferred any remaining inventory and funds from
+                 *your stall at the New Magincia Bazaar into storage at the New Magincia
+                 *Warehouse. You must reclaim these items or they will be destroyed! To reclaim
+                 *these items, see the Warehouse Superintendent in New Magincia.<br><br>This
+                 *service is provided free of charge. If you owed your broker any back fees,
+                 *those fees must be paid before you can reclaim your belongings. The storage
+                 *period lasts 7 days starting with the expiration of your lease at the New
+                 *Magincia Bazaar, and this storage period cannot be extended. Claim your
+                 *possessions and gold without delay!<br><br>The expiration time of this
                  *message coincides with the expiration time of your Warehouse storage.*/
 
                 MaginciaLottoSystem.SendMessageTo(owner, new NewMaginciaMessage(1150676, new TextDefinition(1150674), null));

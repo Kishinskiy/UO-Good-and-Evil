@@ -82,7 +82,7 @@ namespace Server.Items
                         if (pmc != null && obs != null && mb != null)
                         {
                             m_Mobile.PlaySound(0x21E);
-                            m_Mobile.SendLocalizedMessage(1055143); // You add the required ingredients and activate the contraption. It rumbles and smokes and then falls silent. The water shines for a brief moment, and you feel confident that it is now much less tainted then before. 
+                            m_Mobile.SendLocalizedMessage(1055143); // You add the required ingredients and activate the contraption. It rumbles and smokes and then falls silent. The water shines for a brief moment, and you feel confident that it is now much less tainted then before.
                             m_Mobile.Karma += 500;
 
                             pmc.Delete();
@@ -128,7 +128,7 @@ namespace Server.Items
             {
                 StrangeContraptionAddon item = new StrangeContraptionAddon();
                 item.MoveToWorld(new Point3D(5668, 1925, 0), Map.Trammel);
-				InstanceTram = item; 
+				InstanceTram = item;
             }
 
             if (InstanceFel == null)

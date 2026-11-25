@@ -226,7 +226,7 @@ namespace Server.Mobiles
                 Timer.DelayCall(TimeSpan.FromMilliseconds(250), () =>
                     {
                         Effects.SendLocationEffect(target.Location, Map, 40136, 120);
-                        target.PrivateOverheadMessage(MessageType.Regular, 0x21, 1156835, target.NetState); // *Crunch Crunch Crunch* 
+                        target.PrivateOverheadMessage(MessageType.Regular, 0x21, 1156835, target.NetState); // *Crunch Crunch Crunch*
                     });
 
                 AOS.Damage(target, this, Utility.RandomMinMax(80, 100), 100, 0, 0, 0, 0);

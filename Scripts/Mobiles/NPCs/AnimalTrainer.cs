@@ -260,7 +260,7 @@ namespace Server.Mobiles
                 return;
             }
 
-            /* 
+            /*
 			 * I charge 30 gold per pet for a real week's stable time.
 			 * I will withdraw it from thy bank account.
 			 * Which animal wouldst thou like to stable here?

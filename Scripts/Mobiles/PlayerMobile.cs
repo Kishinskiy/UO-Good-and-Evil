@@ -92,7 +92,7 @@ namespace Server.Mobiles
         VoidPool = 0x00000008,
         DisabledPvpWarning = 0x00000010,
     }
-    
+
     [Flags]
     public enum ActivatedShrines
     {
@@ -142,7 +142,7 @@ namespace Server.Mobiles
         {
             Instances = new List<PlayerMobile>(0x1000);
         }
-        
+
         private ActivatedShrines m_ActivatedShrines;
 
         [CommandProperty(AccessLevel.GameMaster)]
@@ -511,15 +511,15 @@ namespace Server.Mobiles
         #region PlayerFlags
         public PlayerFlag Flags { get { return m_Flags; } set { m_Flags = value; } }
         public ExtendedPlayerFlag ExtendedFlags { get { return m_ExtendedFlags; } set { m_ExtendedFlags = value; } }
-        
+
         [CommandProperty(AccessLevel.GameMaster)]
         public bool IsDemigod
         {
 	        get { return GetFlag(ExtendedPlayerFlag.IsDemigod); }
-	        set 
-	        { 
-		        SetFlag(ExtendedPlayerFlag.IsDemigod, value); 
-		        InvalidateProperties(); 
+	        set
+	        {
+		        SetFlag(ExtendedPlayerFlag.IsDemigod, value);
+		        InvalidateProperties();
 	        }
         }
 
@@ -1987,10 +1987,10 @@ namespace Server.Mobiles
         public bool EpicGood
         {
 	        get { return GetFlag(PlayerFlag.EpicGood); }
-	        set 
-	        { 
-		        SetFlag(PlayerFlag.EpicGood, value); 
-		        InvalidateProperties(); 
+	        set
+	        {
+		        SetFlag(PlayerFlag.EpicGood, value);
+		        InvalidateProperties();
 	        }
         }
 
@@ -1998,15 +1998,15 @@ namespace Server.Mobiles
         public bool EpicEvil
         {
 	        get { return GetFlag(PlayerFlag.EpicEvil); }
-	        set 
-	        { 
-		        SetFlag(PlayerFlag.EpicEvil, value); 
-		        InvalidateProperties(); 
+	        set
+	        {
+		        SetFlag(PlayerFlag.EpicEvil, value);
+		        InvalidateProperties();
 	        }
         }
         #endregion
-        
-        
+
+
         #region [Stats]Max
         [CommandProperty(AccessLevel.GameMaster)]
         public override int HitsMax
@@ -2415,7 +2415,7 @@ namespace Server.Mobiles
                     list.Add(new CallbackEntry(6207, LeaveHouse));
                 }
 
-                list.Add(new CallbackEntry(RefuseTrades ? 1154112 : 1154113, ToggleTrades)); // Allow Trades / Refuse Trades				
+                list.Add(new CallbackEntry(RefuseTrades ? 1154112 : 1154113, ToggleTrades)); // Allow Trades / Refuse Trades
 
                 if (m_JusticeProtectors.Count > 0)
                 {
@@ -3254,7 +3254,7 @@ namespace Server.Mobiles
                 }
                 else if (to.Backpack == null || !to.Backpack.CheckHold(to, item, false, checkItems, checkWeight, plusItems, plusWeight))
                 {
-                    msgNum = 1004039; // The recipient of this trade would not be able to carry 
+                    msgNum = 1004039; // The recipient of this trade would not be able to carry
                 }
                 else
                 {
@@ -4364,6 +4364,9 @@ namespace Server.Mobiles
 
             switch (version)
             {
+	            case 44:
+		            m_QuestGuildRank = reader.ReadInt();
+		            goto case 43;
 	            case 43:
 		            m_ActivatedShrines = (ActivatedShrines)reader.ReadInt();
 		            goto case 42;
@@ -4835,8 +4838,10 @@ namespace Server.Mobiles
 
             base.Serialize(writer);
 
-            writer.Write(43); // version
-            
+            writer.Write(44); // version
+
+            writer.Write(m_QuestGuildRank);
+
             writer.Write((int)m_ActivatedShrines);
 
             writer.Write(NextGemOfSalvationUse);
@@ -4957,7 +4962,7 @@ namespace Server.Mobiles
                     writer.Write(restartInfo.RestartTime);
                 }
             }
-			
+
 			writer.WriteEncodedInt((int)m_Profession);
 
             writer.WriteDeltaTime(m_LastCompassionLoss);
@@ -5132,12 +5137,12 @@ namespace Server.Mobiles
         public override void GetProperties(ObjectPropertyList list)
         {
             base.GetProperties(list);
-            
+
             if (IsDemigod)
             {
 	            list.Add(1060658, "Статус\tПолубог");
             }
-            
+
             if (EpicGood)
             {
 	            list.Add(1060658, "Статус\tАватар Света (Good)");
@@ -5146,6 +5151,8 @@ namespace Server.Mobiles
             {
 	            list.Add(1060658, "Статус\tВладыка Тьмы (Evil)");
             }
+
+            list.Add(1060658, $"Ранг гильдии\t{GetGuildRankTitle()}");
 
             Engines.JollyRoger.JollyRogerData.DisplayTitle(this, list);
 

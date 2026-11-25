@@ -15,9 +15,9 @@ namespace Server.Engines.Quests
 
         /* More Ore Please */
         public override object Title => 1075530;
-        /* Have a pickaxe? My supplier is late and I need some iron ore so I can complete a bulk order for another 
-        merchant. If you can get me some soon I'll pay you double what it's worth on the market. Just find a cave 
-        or mountainside and try to use your pickaxe there, maybe you'll strike a good vein! 5 large pieces should 
+        /* Have a pickaxe? My supplier is late and I need some iron ore so I can complete a bulk order for another
+        merchant. If you can get me some soon I'll pay you double what it's worth on the market. Just find a cave
+        or mountainside and try to use your pickaxe there, maybe you'll strike a good vein! 5 large pieces should
         do it. */
         public override object Description => 1075529;
         /* Not feeling strong enough today? Its alright, I didn't need a bucket of rocks anyway. */

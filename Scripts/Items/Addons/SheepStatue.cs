@@ -143,7 +143,7 @@ namespace Server.Items
                     from.SendLocalizedMessage(1094725); // There are no more ResourceCounts available at this time.
             }
             else
-                from.SendLocalizedMessage(1061637); // You are not allowed to access 
+                from.SendLocalizedMessage(1061637); // You are not allowed to access
         }
 
         private class InternalAddonComponent : AddonComponent

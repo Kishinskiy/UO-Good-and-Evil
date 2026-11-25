@@ -27,7 +27,7 @@ namespace Server.Items
         }
 
         public override int LabelNumber => 1079525;  // Ankh Pendant
-        
+
         private ActivatedShrines m_ChargedShrines;
         private bool m_IsAwakened;
 
@@ -187,7 +187,7 @@ namespace Server.Items
             {
 	            ItemPower = ItemPower.Minor;        // Minor Magic Item (1/8)
             }
-            
+
             InvalidateProperties();
         }
 
@@ -447,7 +447,7 @@ namespace Server.Items
             from.Delta(MobileDelta.WeaponDamage);
 
             if (from.NetState != null)
-                from.SendLocalizedMessage(1079553); //The effects of meditating at the shrine have worn off.	
+                from.SendLocalizedMessage(1079553); //The effects of meditating at the shrine have worn off.
 
             m_Cooldown[from] = DateTime.UtcNow + TimeSpan.FromHours(24);
         }

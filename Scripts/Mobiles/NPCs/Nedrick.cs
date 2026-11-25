@@ -16,7 +16,7 @@ namespace Server.Engines.Quests
         }
 
         public override object ConfirmMessage => 1073643;// Are you sure you wish to embrace your humanity?
-        public override object IncompleteMessage => 1074412;// You have made a good start but have more yet to do.	
+        public override object IncompleteMessage => 1074412;// You have made a good start but have more yet to do.
         public override void InitBody()
         {
             Female = false;
@@ -55,9 +55,9 @@ namespace Server.Engines.Quests
             Objectives.Add(1074411); // Or turn away and embrace your heritage.  It matters not to me.
 
             Story.Add(1074004); // You have carved a path in history, sought to understand the way from our sage companions.
-            Story.Add(1074005); // And now you have returned full circle to the place of your origin within the arms of Mother Sosaria. There is but one thing left to do if you truly wish to embrace your elven heritage. 
+            Story.Add(1074005); // And now you have returned full circle to the place of your origin within the arms of Mother Sosaria. There is but one thing left to do if you truly wish to embrace your elven heritage.
             Story.Add(1074006); // To be born once more an elf, you must strip of all worldly possessions. Nothing of man or beast much touch your skin.
-            Story.Add(1074007); // Then you may step forth into history.	
+            Story.Add(1074007); // Then you may step forth into history.
         }
 
         public override void Serialize(GenericWriter writer)

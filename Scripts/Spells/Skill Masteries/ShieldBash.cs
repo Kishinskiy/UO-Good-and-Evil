@@ -3,7 +3,7 @@ using Server.Mobiles;
 using Server.Network;
 using System;
 
-/*When activated the shield user will execute a shield bash on successfully hitting or parrying their opponent 
+/*When activated the shield user will execute a shield bash on successfully hitting or parrying their opponent
   causing physical damage and paralyzing their opponent based on parry skill, best weapon skill, and mastery level.*/
 
 namespace Server.Spells.SkillMasteries

@@ -2,7 +2,7 @@ namespace Server.Items
 {
     public class TortureRackComponent : AddonComponent, IArtifact
     {
-        public override int LabelNumber => 1152307;  // Torture Rack	
+        public override int LabelNumber => 1152307;  // Torture Rack
         public virtual bool ShowArtifactRarity => true;
 
         public TortureRackComponent(int itemID)

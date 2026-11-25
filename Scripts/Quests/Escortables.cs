@@ -16,7 +16,7 @@ namespace Server.Engines.Quests
 
         /* An escort to Yew */
         public override object Title => 1072275;
-        /* I seek a worthy escort.  I can offer some small pay to any able bodied adventurer who can assist me.  
+        /* I seek a worthy escort.  I can offer some small pay to any able bodied adventurer who can assist me.
         * It is imperative that I reach my destination. */
         public override object Description => 1072287;
         /* I wish you would reconsider my offer.  I'll be waiting right here for someone brave enough to assist me. */
@@ -49,7 +49,7 @@ namespace Server.Engines.Quests
 
         /* An escort to Vesper */
         public override object Title => 1072276;
-        /* I seek a worthy escort.  I can offer some small pay to any able bodied adventurer who can assist me.  
+        /* I seek a worthy escort.  I can offer some small pay to any able bodied adventurer who can assist me.
         * It is imperative that I reach my destination. */
         public override object Description => 1072287;
         /* I wish you would reconsider my offer.  I'll be waiting right here for someone brave enough to assist me. */
@@ -82,7 +82,7 @@ namespace Server.Engines.Quests
 
         /* An escort to Trinsic */
         public override object Title => 1072277;
-        /* I seek a worthy escort.  I can offer some small pay to any able bodied adventurer who can assist me.  
+        /* I seek a worthy escort.  I can offer some small pay to any able bodied adventurer who can assist me.
         * It is imperative that I reach my destination. */
         public override object Description => 1072287;
         /* I wish you would reconsider my offer.  I'll be waiting right here for someone brave enough to assist me. */
@@ -115,7 +115,7 @@ namespace Server.Engines.Quests
 
         /* An escort to Skara */
         public override object Title => 1072278;
-        /* I seek a worthy escort.  I can offer some small pay to any able bodied adventurer who can assist me.  
+        /* I seek a worthy escort.  I can offer some small pay to any able bodied adventurer who can assist me.
         * It is imperative that I reach my destination. */
         public override object Description => 1072287;
         /* I wish you would reconsider my offer.  I'll be waiting right here for someone brave enough to assist me. */
@@ -148,7 +148,7 @@ namespace Server.Engines.Quests
 
         /* An escort to Serpent's Hold */
         public override object Title => 1072279;
-        /* I seek a worthy escort.  I can offer some small pay to any able bodied adventurer who can assist me.  
+        /* I seek a worthy escort.  I can offer some small pay to any able bodied adventurer who can assist me.
         * It is imperative that I reach my destination. */
         public override object Description => 1072287;
         /* I wish you would reconsider my offer.  I'll be waiting right here for someone brave enough to assist me. */
@@ -181,7 +181,7 @@ namespace Server.Engines.Quests
 
         /* An escort to Nujel'm */
         public override object Title => 1072280;
-        /* I seek a worthy escort.  I can offer some small pay to any able bodied adventurer who can assist me.  
+        /* I seek a worthy escort.  I can offer some small pay to any able bodied adventurer who can assist me.
         * It is imperative that I reach my destination. */
         public override object Description => 1072287;
         /* I wish you would reconsider my offer.  I'll be waiting right here for someone brave enough to assist me. */
@@ -214,7 +214,7 @@ namespace Server.Engines.Quests
 
         /* An escort to Moonglow */
         public override object Title => 1072281;
-        /* I seek a worthy escort.  I can offer some small pay to any able bodied adventurer who can assist me.  
+        /* I seek a worthy escort.  I can offer some small pay to any able bodied adventurer who can assist me.
         * It is imperative that I reach my destination. */
         public override object Description => 1072287;
         /* I wish you would reconsider my offer.  I'll be waiting right here for someone brave enough to assist me. */
@@ -247,7 +247,7 @@ namespace Server.Engines.Quests
 
         /* An escort to Minoc */
         public override object Title => 1072282;
-        /* I seek a worthy escort.  I can offer some small pay to any able bodied adventurer who can assist me.  
+        /* I seek a worthy escort.  I can offer some small pay to any able bodied adventurer who can assist me.
         * It is imperative that I reach my destination. */
         public override object Description => 1072287;
         /* I wish you would reconsider my offer.  I'll be waiting right here for someone brave enough to assist me. */
@@ -280,7 +280,7 @@ namespace Server.Engines.Quests
 
         /* An escort to Magincia */
         public override object Title => 1072283;
-        /* I seek a worthy escort.  I can offer some small pay to any able bodied adventurer who can assist me.  
+        /* I seek a worthy escort.  I can offer some small pay to any able bodied adventurer who can assist me.
         * It is imperative that I reach my destination. */
         public override object Description => 1072287;
         /* I wish you would reconsider my offer.  I'll be waiting right here for someone brave enough to assist me. */
@@ -313,7 +313,7 @@ namespace Server.Engines.Quests
 
         /* An escort to Jhelom */
         public override object Title => 1072284;
-        /* I seek a worthy escort.  I can offer some small pay to any able bodied adventurer who can assist me.  
+        /* I seek a worthy escort.  I can offer some small pay to any able bodied adventurer who can assist me.
         * It is imperative that I reach my destination. */
         public override object Description => 1072287;
         /* I wish you would reconsider my offer.  I'll be waiting right here for someone brave enough to assist me. */
@@ -346,7 +346,7 @@ namespace Server.Engines.Quests
 
         /* An escort to Cove */
         public override object Title => 1072285;
-        /* I seek a worthy escort.  I can offer some small pay to any able bodied adventurer who can assist me.  
+        /* I seek a worthy escort.  I can offer some small pay to any able bodied adventurer who can assist me.
         * It is imperative that I reach my destination. */
         public override object Description => 1072287;
         /* I wish you would reconsider my offer.  I'll be waiting right here for someone brave enough to assist me. */
@@ -379,7 +379,7 @@ namespace Server.Engines.Quests
 
         /* An escort to Britain */
         public override object Title => 1072286;
-        /* I seek a worthy escort.  I can offer some small pay to any able bodied adventurer who can assist me.  
+        /* I seek a worthy escort.  I can offer some small pay to any able bodied adventurer who can assist me.
         * It is imperative that I reach my destination. */
         public override object Description => 1072287;
         /* I wish you would reconsider my offer.  I'll be waiting right here for someone brave enough to assist me. */
@@ -854,7 +854,7 @@ namespace Server.Engines.Quests
 				SetWearable(new Shoes(), lowHue, 1);
 			}
 
-			SetWearable(new ShortPants(), lowHue, 1);			
+			SetWearable(new ShortPants(), lowHue, 1);
 
             Utility.AssignRandomHair(this);
 

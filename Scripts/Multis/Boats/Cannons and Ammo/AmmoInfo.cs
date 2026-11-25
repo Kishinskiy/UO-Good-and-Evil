@@ -141,7 +141,7 @@ namespace Server.Items
 
             if (info == null)
             {
-                return 1116033; // None 
+                return 1116033; // None
             }
 
             return info.Name;

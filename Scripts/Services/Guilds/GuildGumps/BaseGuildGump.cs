@@ -134,7 +134,7 @@ namespace Server.Guilds
 			if (text.Number > 0)
                 AddHtmlLocalized(x, y, width, height, text.Number, back, scroll);
             else if (text.String != null)
-                AddHtml(x, y, width, height, text.String, back, scroll);            
+                AddHtml(x, y, width, height, text.String, back, scroll);
         }
     }
 }

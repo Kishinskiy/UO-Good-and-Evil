@@ -216,7 +216,7 @@ namespace Server.Services.Virtues
                 1049365,
                 0x7FFF,
                 false,
-                false); // Another player is offering you their <a href="?ForceTopic88">protection</a>: 
+                false); // Another player is offering you their <a href="?ForceTopic88">protection</a>:
             AddLabel(90, 55, 1153, protector.Name);
 
             AddImage(50, 45, 9005);

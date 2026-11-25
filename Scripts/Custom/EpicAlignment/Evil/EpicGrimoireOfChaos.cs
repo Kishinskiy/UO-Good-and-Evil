@@ -24,7 +24,7 @@ namespace Server.Custom.EpicAlignment
         {
             Name = "Книга Скверны: Эпический Гримуар Мондейна";
             Weight = 1.0;
-            LootType = LootType.Blessed; 
+            LootType = LootType.Blessed;
             Hue = 1175;
 
             m_NextUndeadSummon = DateTime.UtcNow;

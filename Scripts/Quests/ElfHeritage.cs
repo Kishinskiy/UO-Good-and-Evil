@@ -16,8 +16,8 @@ namespace Server.Engines.Quests
         public override bool ForceRemember => true;
         /* The Joys of Life */
         public override object Title => 1072787;
-        /* *giggle*  So serious, so grim!  *tickle*  Enjoy life!  Have fun!  Laugh!  Be merry!  *giggle*  Find three 
-        of my baubles ... *giggle* I hid them! *giggles hysterically*  Hid them!  La la la!  Bring them quickly!  They 
+        /* *giggle*  So serious, so grim!  *tickle*  Enjoy life!  Have fun!  Laugh!  Be merry!  *giggle*  Find three
+        of my baubles ... *giggle* I hid them! *giggles hysterically*  Hid them!  La la la!  Bring them quickly!  They
         are magical and will hide themselves again if you are too slow. */
         public override object Description => 1072832;
         /* *giggle* Too serious.  Too thinky! */
@@ -61,7 +61,7 @@ namespace Server.Engines.Quests
         public override bool ForceRemember => true;
         /* Defending the Herd */
         public override object Title => 1072785;
-        /* *snort* ... guard-mates ... guard-herd *hoof stomp* ... defend-with-hoof-and-horn ... thirsty-drink.  
+        /* *snort* ... guard-mates ... guard-herd *hoof stomp* ... defend-with-hoof-and-horn ... thirsty-drink.
         *proud head-toss* */
         public override object Description => 1072825;
         /* *snort* */
@@ -103,8 +103,8 @@ namespace Server.Engines.Quests
         public override bool ForceRemember => true;
         /* Caretaker of the Land */
         public override object Title => 1072783;
-        /* Hrrrrr.  Hurrrr.  Huuuman.  *creaking branches*  Suuun on baaark, roooooots diiig deeeeeep, wiiind caaaresses 
-        leeeaves … Hrrrrr.  Saaap of Sooosaria feeeeeeds us.  Hrrrrr.  Huuuman leeearn.  Caaaretaker of plaaants … teeend 
+        /* Hrrrrr.  Hurrrr.  Huuuman.  *creaking branches*  Suuun on baaark, roooooots diiig deeeeeep, wiiind caaaresses
+        leeeaves … Hrrrrr.  Saaap of Sooosaria feeeeeeds us.  Hrrrrr.  Huuuman leeearn.  Caaaretaker of plaaants … teeend
         … prooove.<br> */
         public override object Description => 1072812;
         /* Hrrrrr.  Hrrrrr.  Huuuman. */
@@ -148,7 +148,7 @@ namespace Server.Engines.Quests
         public override bool ForceRemember => true;
         /* Seasons */
         public override object Title => 1072782;
-        /* *rumbling growl* *sniff* ... not-smell ... seek-fight ... not-smell ... fear-stench ... *rumble* ... cold-soon-time 
+        /* *rumbling growl* *sniff* ... not-smell ... seek-fight ... not-smell ... fear-stench ... *rumble* ... cold-soon-time
         comes ... hungry ... eat-fish ... sleep-soon-time ... *deep fang-filled yawn* ... much-fish. */
         public override object Description => 1072802;
         /* *yawn* ... cold-soon-time ... *growl* */
@@ -192,8 +192,8 @@ namespace Server.Engines.Quests
         public override bool ForceRemember => true;
         /* The Balance of Nature */
         public override object Title => 1072786;
-        /* Ho, there human.  Why do you seek out the Huntsman?  The hunter serves the land by culling both predators and prey.  The hunter 
-        maintains the essential balance of life and does not kill for sport or glory.  If you seek my favor, human, then demonstrate you 
+        /* Ho, there human.  Why do you seek out the Huntsman?  The hunter serves the land by culling both predators and prey.  The hunter
+        maintains the essential balance of life and does not kill for sport or glory.  If you seek my favor, human, then demonstrate you
         are capable of the duty.  Cull the wolves nearby. */
         public override object Description => 1072829;
         /* Then begone. I have no time to waste on you, human. */
@@ -235,13 +235,13 @@ namespace Server.Engines.Quests
         public override bool ForceRemember => true;
         /* Wisdom of the Sphynx */
         public override object Title => 1072784;
-        /* I greet thee human and divine my boon thou seek.  Convey hence the object of my riddle and I shall reward thee 
+        /* I greet thee human and divine my boon thou seek.  Convey hence the object of my riddle and I shall reward thee
         with thy desire.<br><br>Three lives have I.<br>Gentle enough to soothe the skin,<br>Light enough to caress the sky,
         <br>Hard enough to crack rocks<br>What am I? */
         public override object Description => 1072822;
         /* As thou wish, human. */
         public override object Refuse => 1072823;
-        /* I give thee a hint then human.  The answer to my riddle must be held carefully or it cannot be contained at all.  
+        /* I give thee a hint then human.  The answer to my riddle must be held carefully or it cannot be contained at all.
         Bring this elusive item to me in a suitable container. */
         public override object Uncomplete => 1072824;
         /* Ah, thus it ends. */

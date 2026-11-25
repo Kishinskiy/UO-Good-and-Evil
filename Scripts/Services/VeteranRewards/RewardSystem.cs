@@ -212,7 +212,7 @@ namespace Server.Engines.VeteranRewards
                         {
                             if (i > 0 && !HasAccess(from, list, out ts))
                             {
-                                from.SendLocalizedMessage(1008126, true, Math.Ceiling(ts.TotalDays / 30.0).ToString()); // Your account is not old enough to use this item. Months until you can use this item : 
+                                from.SendLocalizedMessage(1008126, true, Math.Ceiling(ts.TotalDays / 30.0).ToString()); // Your account is not old enough to use this item. Months until you can use this item :
                                 return false;
                             }
 
@@ -230,7 +230,7 @@ namespace Server.Engines.VeteranRewards
                             {
                                 if (i > 0 && !HasAccess(from, list, out ts))
                                 {
-                                    from.SendLocalizedMessage(1008126, true, Math.Ceiling(ts.TotalDays / 30.0).ToString()); // Your account is not old enough to use this item. Months until you can use this item : 
+                                    from.SendLocalizedMessage(1008126, true, Math.Ceiling(ts.TotalDays / 30.0).ToString()); // Your account is not old enough to use this item. Months until you can use this item :
                                     return false;
                                 }
 

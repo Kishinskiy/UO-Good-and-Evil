@@ -25,7 +25,7 @@ namespace Server.Items
                     return base.OnMoveOver(m);
                 }
 
-                player.SendLocalizedMessage(1112226); // Thou must be on a Sacred Quest to pass through.	
+                player.SendLocalizedMessage(1112226); // Thou must be on a Sacred Quest to pass through.
             }
 
             return true;

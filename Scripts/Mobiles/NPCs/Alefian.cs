@@ -11,38 +11,38 @@ namespace Server.Engines.Quests
         /* Defying the Arcane */
         public override object Title => 1077621;
 
-        /* Head East out of town and go to Old Haven. Battle spell casting monsters there until you have raised your 
-        Resisting Spells skill to 50.<br><center>------</center><br>Hail and well met! To become a true master of 
-        the arcane art of Magery, I suggest learning the complementary skill known as Resisting Spells. While the 
-        name of this skill may suggest that it helps with resisting all spells, this is not the case. This skill 
-        helps you lessen the severity of spells that lower your stats or ones that last for a specific duration of 
-        time. It does not lessen damage from spells such as Energy Bolt or Flamestrike.<BR><BR>The Magery spells that 
-        can be resisted are Clumsy, Curse, Feeblemind, Mana Drain, Mana Vampire, Paralyze, Paralyze Field, Poison, 
-        Poison Field, and Weaken.<BR><BR>The Necromancy spells that can be resisted are Blood Oath, Corpse Skin, Mind 
-        Rot, and Pain Spike.<BR><BR>At higher ranks, the Resisting Spells skill also benefits you by adding a bonus to 
-        your minimum elemental resists. This bonus is only applied after all other resist modifications - such as from 
-        equipment - has been calculated. It's also not cumulative. It compares the number of your minimum resists to 
-        the calculated value of your modifications and uses the higher of the two values.<BR><BR>As you can see, 
-        Resisting Spells is a difficult skill to understand, and even more difficult to master. This is because in 
+        /* Head East out of town and go to Old Haven. Battle spell casting monsters there until you have raised your
+        Resisting Spells skill to 50.<br><center>------</center><br>Hail and well met! To become a true master of
+        the arcane art of Magery, I suggest learning the complementary skill known as Resisting Spells. While the
+        name of this skill may suggest that it helps with resisting all spells, this is not the case. This skill
+        helps you lessen the severity of spells that lower your stats or ones that last for a specific duration of
+        time. It does not lessen damage from spells such as Energy Bolt or Flamestrike.<BR><BR>The Magery spells that
+        can be resisted are Clumsy, Curse, Feeblemind, Mana Drain, Mana Vampire, Paralyze, Paralyze Field, Poison,
+        Poison Field, and Weaken.<BR><BR>The Necromancy spells that can be resisted are Blood Oath, Corpse Skin, Mind
+        Rot, and Pain Spike.<BR><BR>At higher ranks, the Resisting Spells skill also benefits you by adding a bonus to
+        your minimum elemental resists. This bonus is only applied after all other resist modifications - such as from
+        equipment - has been calculated. It's also not cumulative. It compares the number of your minimum resists to
+        the calculated value of your modifications and uses the higher of the two values.<BR><BR>As you can see,
+        Resisting Spells is a difficult skill to understand, and even more difficult to master. This is because in
         order to improve it, you will have to put yourself in harm's way - as in the path of one of the above spells.
-        <BR><BR>Undead have plagued the town of Old Haven. We need your assistance in cleansing the town of this evil 
+        <BR><BR>Undead have plagued the town of Old Haven. We need your assistance in cleansing the town of this evil
         influence. Old Haven is located east of here. Battle the undead spell casters that inhabit there.<BR><BR>Come
-        back to me once you feel that you are worthy of the rank of Apprentice Mage and I will reward you with an 
+        back to me once you feel that you are worthy of the rank of Apprentice Mage and I will reward you with an
         arcane prize. */
         public override object Description => 1077623;
 
-        /* The ability to resist powerful spells is a taxing experience. I understand your resistance in wanting to 
-        pursue it. If you wish to reconsider, feel free to return to me for Resisting Spells training. Good journey 
+        /* The ability to resist powerful spells is a taxing experience. I understand your resistance in wanting to
+        pursue it. If you wish to reconsider, feel free to return to me for Resisting Spells training. Good journey
         to you! */
         public override object Refuse => 1077624;
 
-        /* You have not achieved the rank of Apprentice Mage. Come back to me once you feel that you are worthy of the 
+        /* You have not achieved the rank of Apprentice Mage. Come back to me once you feel that you are worthy of the
         rank of Apprentice Mage and I will reward you with an arcane prize. */
         public override object Uncomplete => 1077632;
 
-        /* You have successfully begun your journey in becoming a true master of Magery. On behalf of the New Haven Mage 
-        Council I wish to present you with this bracelet. When worn, the Bracelet of Resilience will enhance your resistances 
-        vs. the elements, physical, and poison harm. The Bracelet of Resilience also magically enhances your ability fend 
+        /* You have successfully begun your journey in becoming a true master of Magery. On behalf of the New Haven Mage
+        Council I wish to present you with this bracelet. When worn, the Bracelet of Resilience will enhance your resistances
+        vs. the elements, physical, and poison harm. The Bracelet of Resilience also magically enhances your ability fend
         off ranged and melee attacks. I hope it serves you well.*/
         public override object Complete => 1077626;
 

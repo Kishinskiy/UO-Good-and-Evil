@@ -146,7 +146,7 @@ namespace Server.Gumps
             AddPage(1);
             AddHtmlLocalized(107, 140, 300, 150, 1154311, 0x7FFF, false, true); // Hello zere my darling - looking for something shiny? Zalia has just vhat you are looking for!
 
-            AddHtmlLocalized(145, 300, 250, 24, 1154312, 0x7FFF, false, false); // I'm looking for a special pendant...            
+            AddHtmlLocalized(145, 300, 250, 24, 1154312, 0x7FFF, false, false); // I'm looking for a special pendant...
             AddButton(115, 300, 0x26B0, 0x26B1, 0, GumpButtonType.Page, 2);
 
             AddButton(345, 440, 0xF7, 0xF8, 0, GumpButtonType.Reply, 0);//OK

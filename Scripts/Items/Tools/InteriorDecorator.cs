@@ -93,7 +93,7 @@ namespace Server.Items
                 if (!InHouse(from))
                 {
                     AddButton(40, 36, (decorator.Command == DecorateCommand.GetHue ? 2154 : 2152), 2154, 4, GumpButtonType.Reply, 0);
-                    AddHtmlLocalized(80, 41, 100, 20, 1158863, false, false); // Get Hue   
+                    AddHtmlLocalized(80, 41, 100, 20, 1158863, false, false); // Get Hue
                 }
                 else
                 {
@@ -107,7 +107,7 @@ namespace Server.Items
                     AddHtmlLocalized(80, 141, 100, 20, 1018325, false, false); // Down
 
                     AddButton(40, 186, (decorator.Command == DecorateCommand.GetHue ? 2154 : 2152), 2154, 4, GumpButtonType.Reply, 0);
-                    AddHtmlLocalized(80, 191, 100, 20, 1158863, false, false); // Get Hue                    
+                    AddHtmlLocalized(80, 191, 100, 20, 1158863, false, false); // Get Hue
                 }
 
                 AddHtmlLocalized(0, 0, 0, 0, 4, false, false);
@@ -265,7 +265,7 @@ namespace Server.Items
 
                     if (house == null || !house.IsCoOwner(from))
                     {
-                        from.SendLocalizedMessage(502092); // You must be in your house to do 
+                        from.SendLocalizedMessage(502092); // You must be in your house to do
                     }
                     else if (item.Parent != null || !house.IsInside(item))
                     {

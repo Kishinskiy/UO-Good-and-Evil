@@ -1,7 +1,7 @@
 using Server.Network;
 using System;
 
-/*Toggle ability that provides increased physical attack damage and decreases targets physical attack damage based on 
+/*Toggle ability that provides increased physical attack damage and decreases targets physical attack damage based on
   the mastery level of the fencer.  This ability consumes mana while active. This ability does not stack with the special move Feint.*/
 
 namespace Server.Spells.SkillMasteries

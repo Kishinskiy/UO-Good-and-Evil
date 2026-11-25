@@ -300,13 +300,13 @@ namespace Server.Items
                         if (allow && Utility.InRange(new Point3D(p), m_Cannon.Location, 14))
                             m_Cannon.DoFireEffect(p);
                         else
-                            from.SendLocalizedMessage(1076203); // Target out of range.							
+                            from.SendLocalizedMessage(1076203); // Target out of range.
                     }
                     else
                         from.SendLocalizedMessage(1076215); // Cannon must be aimed farther away.
                 }
                 else
-                    from.SendLocalizedMessage(1049630); // You cannot see that target!		
+                    from.SendLocalizedMessage(1049630); // You cannot see that target!
             }
 
             protected override void OnTargetOutOfRange(Mobile from, object targeted)
@@ -438,7 +438,7 @@ namespace Server.Items
                 from.SendGump(new RewardOptionGump(this));
             }
             else
-                from.SendLocalizedMessage(1042038); // You must have the object in your backpack to use it.          	
+                from.SendLocalizedMessage(1042038); // You must have the object in your backpack to use it.
         }
 
         public override void Serialize(GenericWriter writer)

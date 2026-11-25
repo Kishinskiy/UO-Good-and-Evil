@@ -234,7 +234,7 @@ namespace Server.Items
                     }
                     else if (m_Ore == ore)
                     {
-                        from.SendLocalizedMessage(501972); // Select another pile or ore with which to combine 
+                        from.SendLocalizedMessage(501972); // Select another pile or ore with which to combine
                         from.Target = new InternalTarget(ore);
                         return;
                     }

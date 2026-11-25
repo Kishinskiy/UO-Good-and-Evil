@@ -18,9 +18,9 @@ namespace Server.Engines.Quests
         public override object Title => 1095032;
         /*Kill Bloodworms and Blood Elementals to fill Jaacar's barrel.
         Return to Jaacar with the filled barrel for your reward
-        Will friend help Jaacar with small errand for big friend?  
-        Jaacar need big barrel full of blood.  Can friend do that?  
-        Best place to get blood is blood elementals and bloodworms nearby.  
+        Will friend help Jaacar with small errand for big friend?
+        Jaacar need big barrel full of blood.  Can friend do that?
+        Best place to get blood is blood elementals and bloodworms nearby.
         If you do, Jaacar give to you special present!  More special than favorite recipe!*/
         public override object Description => 1095034;
         /*Filling barrel not gross!  Filling barrel helps friend!  You think and then come back and help.  Yes, friend is big help!*/
@@ -29,7 +29,7 @@ namespace Server.Engines.Quests
         public override object Uncomplete => 1095036;
         public override void OnCompleted()
         {
-            Owner.SendLocalizedMessage(1095038, null, 0x23); // Jaacar's barrel is completely full. Return to Jaacar for your reward.							
+            Owner.SendLocalizedMessage(1095038, null, 0x23); // Jaacar's barrel is completely full. Return to Jaacar for your reward.
             Owner.PlaySound(CompleteSound);
         }
 

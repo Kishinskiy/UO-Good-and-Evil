@@ -179,7 +179,7 @@ namespace Server.Items
             AddHtmlLocalized(60, 9, 147, 22, 1011296, false, false); //Charges:
             AddHtml(110, 9, 97, 22, string.Format("{0} / {1}", Atlas.CurCharges, Atlas.MaxCharges), false, false);
 
-            AddHtmlLocalized(264, 9, 144, 18, 1011299, false, false); // rename book 
+            AddHtmlLocalized(264, 9, 144, 18, 1011299, false, false); // rename book
             AddButton(248, 14, 2103, 2103, 1, GumpButtonType.Reply, 0);
 
             int startIndex = Page * 16;
@@ -221,7 +221,7 @@ namespace Server.Items
 
             AddHtml(25, 254, 182, 18, string.Format("<center>{0}</center>", coords), false, false);
 
-            AddHtmlLocalized(62, 290, 144, 18, 1011300, false, false); // Set default                        
+            AddHtmlLocalized(62, 290, 144, 18, 1011300, false, false); // Set default
             AddButton(46, 295, 2103, 2103, 2, GumpButtonType.Reply, 0);
 
             AddHtmlLocalized(62, 310, 144, 18, 1011298, false, false); // Drop rune

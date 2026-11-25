@@ -54,7 +54,7 @@ namespace Server.Items.MusicBox
             new TrackInfo(35, 1075157,  MusicName.Wind, TrackRarity.Common),
             new TrackInfo(60, 1075158,  MusicName.Yew, TrackRarity.Common),
             new TrackInfo(148, 1075178, MusicName.Zento, TrackRarity.Common),
- 			
+
             // There are currently 12 Uncommon Music Box Gears
             new TrackInfo(106, 1075131,    MusicName.GwennoConversation,   TrackRarity.UnCommon),
             new TrackInfo(120, 1075181, MusicName.DreadHornArea, TrackRarity.UnCommon),
@@ -68,7 +68,7 @@ namespace Server.Items.MusicBox
             new TrackInfo(68, 1075136,  MusicName.MinocNegative, TrackRarity.UnCommon),
             new TrackInfo(120, 1075184, MusicName.ParoxysmusLair, TrackRarity.UnCommon),
             new TrackInfo(114, 1075137, MusicName.Paws, TrackRarity.UnCommon),
- 			
+
             // There are currently 4 Rare Music Box Gears.
             // "The Wanderer" was only available during the "Book of Truth" quest in early spring 2007.
             // So there are only 3 TrackInfo

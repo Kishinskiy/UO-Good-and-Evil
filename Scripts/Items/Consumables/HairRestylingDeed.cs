@@ -49,8 +49,8 @@ namespace Server.Items
         {
             private readonly Mobile m_From;
             private readonly HairRestylingDeed m_Deed;
-            /* 
-            gump data: bgX, bgY, htmlX, htmlY, imgX, imgY, butX, butY 
+            /*
+            gump data: bgX, bgY, htmlX, htmlY, imgX, imgY, butX, butY
             */
             readonly int[][] LayoutArray =
             {
@@ -72,7 +72,7 @@ namespace Server.Items
             readonly int[][] HumanArray =
             {
                 new int[] { 0 },
-                new int[] { 1011064, 1011064, 0, 0, 0, 0 }, // bald 
+                new int[] { 1011064, 1011064, 0, 0, 0, 0 }, // bald
                 new int[] { 1011052, 1011052, 0x203B, 0x203B, 0xed1c, 0xC60C }, // Short
                 new int[] { 1011053, 1011053, 0x203C, 0x203C, 0xed1d, 0xc60d }, // Long
                 new int[] { 1011054, 1011054, 0x203D, 0x203D, 0xed1e, 0xc60e }, // Ponytail

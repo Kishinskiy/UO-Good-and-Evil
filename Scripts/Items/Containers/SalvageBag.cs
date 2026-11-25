@@ -68,7 +68,7 @@ namespace Server.Items
             return Items.Any(i => (i != null) && (!i.Deleted) && (i is IScissorable) && (i is Item));
         }
 
-        #endregion	
+        #endregion
 
         #region Resmelt.cs
         private bool Resmelt(Mobile from, Item item, CraftResource resource)

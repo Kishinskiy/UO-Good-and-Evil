@@ -123,7 +123,7 @@ namespace Server.Items
                 from.SendGump(new RewardOptionGump(this));
             }
             else
-                from.SendLocalizedMessage(1062334); // This item must be in your backpack to be used.       	
+                from.SendLocalizedMessage(1062334); // This item must be in your backpack to be used.
         }
 
         public DragonHeadAddonDeed(Serial serial)
@@ -233,7 +233,7 @@ namespace Server.Items
                 return false;
 
             if (FacingEast)
-                return BaseAddon.IsWall(p.X - 1, p.Y, p.Z, map); // west wall                
+                return BaseAddon.IsWall(p.X - 1, p.Y, p.Z, map); // west wall
             else
                 return BaseAddon.IsWall(p.X, p.Y - 1, p.Z, map); // north wall
         }

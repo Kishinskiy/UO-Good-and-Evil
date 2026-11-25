@@ -34,13 +34,13 @@ namespace Server.Custom.KarmaVirtueSystem
                 Effects.SendLocationEffect(from.Location, from.Map, 0x376A, 9, 32, 0, 0);
 
                 // ТОЧКА НАЗНАЧЕНИЯ: Координаты вашего финального босса (измените под себя)
-                Point3D targetLoc = new Point3D(5123, 1234, 0); 
+                Point3D targetLoc = new Point3D(5123, 1234, 0);
                 Map targetMap = Map.Felucca;
 
                 from.MoveToWorld(targetLoc, targetMap);
                 return true;
             }
-            
+
             // Если игрок не Аватар — бьем звуком провала и отбрасываем назад
             from.PlaySound(0x5C3);
             from.SendMessage(0x22, "Магическая сила врат отталкивает вас!");

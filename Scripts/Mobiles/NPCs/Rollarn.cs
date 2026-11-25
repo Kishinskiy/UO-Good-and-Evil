@@ -16,7 +16,7 @@ namespace Server.Engines.Quests
         public override bool DoneOnce => true;
         /* Brotherly Love */
         public override object Title => 1072369;
-        /* *looks around nervously*  Do you travel to The Heartwood?  I have an urgent letter that must be delivered 
+        /* *looks around nervously*  Do you travel to The Heartwood?  I have an urgent letter that must be delivered
         there in the next 30 minutes - to Ahie the Cloth Weaver.  Will you undertake this journey? */
         public override object Description => 1072585;
         /* *looks disappointed* Let me know if you change your mind. */

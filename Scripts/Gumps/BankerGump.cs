@@ -43,15 +43,15 @@ namespace Server.Gumps
 
 			AddHtmlLocalized(60, 150, 360, 16, 1156064, TextColor, false, false); // Deposit Gold into Character Transfer Account
 			AddButton(20, 150, 4005, 4006, 1, GumpButtonType.Reply, 0);
-			AddTooltip(1156070); // Transfers gold from the bank to the character transfer account; capped at 1 billion gold. Any currency that 
-								 // a players wishes to transfer to another shard must be placed in character transfer account. Upon transferring 
+			AddTooltip(1156070); // Transfers gold from the bank to the character transfer account; capped at 1 billion gold. Any currency that
+								 // a players wishes to transfer to another shard must be placed in character transfer account. Upon transferring
 								 // the currency will be added to player's account on the shard.
 
 			AddHtmlLocalized(60, 180, 300, 16, 1156065, TextColor, false, false); // Deposit Platinum into Character Transfer Account
 			AddButton(20, 180, 4005, 4006, 2, GumpButtonType.Reply, 0);
-			AddTooltip(1156071); // Transfers platinum from the bank to the character transfer account; capped at 2 billion platinum. Any currency 
-								 // that a players wishes to transfer to another shard must be placed in character transfer account. Upon transferring 
-								 // the currency will be added to player's account on the shard. 
+			AddTooltip(1156071); // Transfers platinum from the bank to the character transfer account; capped at 2 billion platinum. Any currency
+								 // that a players wishes to transfer to another shard must be placed in character transfer account. Upon transferring
+								 // the currency will be added to player's account on the shard.
 
 			AddHtmlLocalized(60, 210, 300, 16, 1156066, TextColor, false, false); // Withdraw Gold from Character Transfer Account
 			AddButton(20, 210, 4005, 4006, 3, GumpButtonType.Reply, 0);
@@ -63,7 +63,7 @@ namespace Server.Gumps
 
 			AddHtmlLocalized(60, 270, 300, 16, 1156068, TextColor, false, false); // Deposit Gold into Secure Account
 			AddButton(20, 270, 4005, 4006, 5, GumpButtonType.Reply, 0);
-			AddTooltip(1156074); // Transfers gold from the bank to the player's secure account; capped at 100,000,000 gold. Only funds added 
+			AddTooltip(1156074); // Transfers gold from the bank to the player's secure account; capped at 100,000,000 gold. Only funds added
 								 // to the secure account can be added to the wall safe account.
 
 			AddHtmlLocalized(60, 300, 300, 16, 1156069, TextColor, false, false); // Withdraw Gold from Secure Account

@@ -1209,7 +1209,7 @@ namespace Server.Mobiles
 						break;
 					}
 
-					// On EA, you have to choose the reward before you get the gold/fame reward.  IF you right click the gump, you lose 
+					// On EA, you have to choose the reward before you get the gold/fame reward.  IF you right click the gump, you lose
 					// the gold/fame for that bod.
 
 					Banker.Deposit(from, gold, true);
@@ -1769,7 +1769,7 @@ namespace Server.Mobiles
 
 			if (!bought)
 			{
-				// ? Begging thy pardon, but thy bank account lacks these funds. 
+				// ? Begging thy pardon, but thy bank account lacks these funds.
 				// : Begging thy pardon, but thou casnt afford that.
 				SayTo(buyer, totalCost >= 2000 ? 500191 : 500192, 0x3B2);
 

@@ -18,7 +18,7 @@ namespace Server.Items
                     return 1156199; // Moon Dial
 
                 return 1123890; // Sun Dial
-                //return 1077186; 
+                //return 1077186;
             }
         }
 

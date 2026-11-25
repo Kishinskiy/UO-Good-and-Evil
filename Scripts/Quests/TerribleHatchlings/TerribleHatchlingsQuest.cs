@@ -24,7 +24,7 @@ namespace Server.Engines.Quests.Zento
 * hatchlings. If you kill 10 of them, you will be rewarded.
 * The Deathwatch Beetle Hatchlings live in The Waste -
 * the desert close to this city.<BR><BR>
-* 
+*
 * Will you accept this challenge?
 */
                 1063315;

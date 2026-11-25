@@ -59,7 +59,7 @@ namespace Server.Items
         {
             if (!IsChildOf(from.Backpack))
             {
-                from.SendLocalizedMessage(1060640); // The item must be in your backpack to use it.                
+                from.SendLocalizedMessage(1060640); // The item must be in your backpack to use it.
             }
             else
             {
@@ -100,7 +100,7 @@ namespace Server.Items
         {
             if (from.Mounted || from.Flying)
             {
-                from.SendLocalizedMessage(1010097); // You cannot use this while mounted or flying. 
+                from.SendLocalizedMessage(1010097); // You cannot use this while mounted or flying.
             }
             else if (from.IsBodyMod || from.HueMod > -1)
             {

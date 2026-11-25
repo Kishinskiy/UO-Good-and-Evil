@@ -65,7 +65,7 @@ namespace Server.Items
             AddHtmlLocalized(42, 121, 323, 174, 1154393, 1, false, true); // <I>*A hastily composed note seems scratched out on a shred of a scroll, with a few abstract equations and drawings near the periphery.*</I><BR>Close to breakthrough, require reforged shadow iron ringmail suit(10), power crystal (5), miniaturized clockwork assembly (20), valorite keg (20), and six more verite toolkits of the usual kind. Expect delivery in three days. Usual payment protocol.<BR><I>*At the end, there seems to be a note added on as if in afterthought.*</I><BR>Have reconsidered previous offer and will pay 95% asking price for withheld schematics.
         }
 
-        public override void OnResponse(NetState state, RelayInfo info) //Function for GumpButtonType.Reply Buttons 
+        public override void OnResponse(NetState state, RelayInfo info) //Function for GumpButtonType.Reply Buttons
         {
             Mobile from = state.Mobile;
 
@@ -73,7 +73,7 @@ namespace Server.Items
             {
                 case 0:
                     {
-                        //Cancel                        
+                        //Cancel
                         break;
                     }
             }

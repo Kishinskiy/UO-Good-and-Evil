@@ -55,7 +55,7 @@ namespace Server.Items
             else
                 attacker.SendLocalizedMessage(1156095); // Your mastery of poisoning allows you to use your poison charge without consuming it.
 
-            // Infectious strike special move now uses poisoning skill to help determine potency 
+            // Infectious strike special move now uses poisoning skill to help determine potency
             int maxLevel = 0;
             if (p == Poison.DarkGlow)
             {
@@ -103,7 +103,7 @@ namespace Server.Items
 
             if (defender.ApplyPoison(attacker, p) != ApplyPoisonResult.Immune)
             {
-                attacker.SendLocalizedMessage(1008096, true, defender.Name); // You have poisoned your target : 
+                attacker.SendLocalizedMessage(1008096, true, defender.Name); // You have poisoned your target :
                 defender.SendLocalizedMessage(1008097, false, attacker.Name); //  : poisoned you!
             }
         }

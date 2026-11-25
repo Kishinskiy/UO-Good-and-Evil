@@ -279,7 +279,7 @@ namespace Server.Items
         {
             base.AddWeightProperty(list);
             list.Add(1158775);  // * Magically Chops Logs into Boards *
-            list.Add(1060741, _Charges.ToString()); // charges: 
+            list.Add(1060741, _Charges.ToString()); // charges:
         }
 
         public HarvestersAxe(Serial serial)
@@ -323,7 +323,7 @@ namespace Server.Items
         {
             base.AddWeightProperty(list);
             list.Add(1158775);  // * Magically Chops Logs into Boards *
-            list.Add(1060741, _Charges.ToString()); // charges: 
+            list.Add(1060741, _Charges.ToString()); // charges:
         }
 
         public GargishHarvestersAxe(Serial serial)

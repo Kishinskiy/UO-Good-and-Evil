@@ -54,7 +54,7 @@ namespace Server.Mobiles
 
                     AddHtml(162, 285, 50, 18, FormatDouble(progress, false, true), false, false);
                     AddButton(215, 288, 0x15E1, 0x15E5, 1, GumpButtonType.Reply, 0);
-                    AddTooltip(1157568); // View real-time training progress. 
+                    AddTooltip(1157568); // View real-time training progress.
 
                     if (trainProfile.CanApplyOptions)
                     {
@@ -395,7 +395,7 @@ namespace Server.Mobiles
 
                             TextDefinition[] loc = PetTrainingHelper.GetLocalization(profile.Advancements[i]);
                             int tooltip = PetTrainingHelper.GetCategoryLocalization(profile.Advancements[i]);
-                            bool skill = profile.Advancements[i] is SkillName;                            
+                            bool skill = profile.Advancements[i] is SkillName;
 
                             if (!loc[0].IsEmpty)
                             {
@@ -1588,11 +1588,11 @@ namespace Server.Mobiles
                     }
                     else if (TrainingPoint.TrainPoint is SkillName && !CheckPowerScroll((SkillName)TrainingPoint.TrainPoint, Value, ref scroll))
                     {
-                        User.SendLocalizedMessage(1157499); // You are unable to train your pet. The required powerscroll was not found in your main backpack. 
+                        User.SendLocalizedMessage(1157499); // You are unable to train your pet. The required powerscroll was not found in your main backpack.
                     }
                     else if (StartValue >= Value)
                     {
-                        User.SendLocalizedMessage(1157501); // Your pet looks to have already completed that training. 
+                        User.SendLocalizedMessage(1157501); // Your pet looks to have already completed that training.
                     }
                     else if (PetTrainingHelper.CanControl(User, Creature, profile))
                     {
@@ -1731,7 +1731,7 @@ namespace Server.Mobiles
             AddButton(275, 35, 0x9CC8, 0x9CC7, 1, GumpButtonType.Reply, 0);
             AddHtml(275, 38, 126, 20, Center(profile.TrainingMode == TrainingMode.Planning ? "DISABLE" : "ENABLE"), false, false);
 
-            AddHtmlLocalized(0, 11, 654, 18, CenterLoc, "#1157591", 0xF424E5, false, false); // Pet Training Planning 
+            AddHtmlLocalized(0, 11, 654, 18, CenterLoc, "#1157591", 0xF424E5, false, false); // Pet Training Planning
             AddHtmlLocalized(60, 60, 216, 18, 1044010, 0, false, false); // <CENTER>CATEGORIES</CENTER>
             AddHtmlLocalized(275, 60, 216, 18, 1044011, 0, false, false); // <CENTER>SELECTIONS</CENTER>
             AddHtmlLocalized(510, 60, 150, 18, 1113586, 0, false, false); // Property Weight:

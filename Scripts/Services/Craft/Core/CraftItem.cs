@@ -33,8 +33,8 @@ namespace Server.Engines.Craft
     public class CraftItem
     {
         /// <summary>
-        /// this delegate will handle all crafting functions, 
-        /// such as resource check, actual crafting, etc. 
+        /// this delegate will handle all crafting functions,
+        /// such as resource check, actual crafting, etc.
         /// For use for abnormal crafting, ie combine cloth, etc.
         /// </summary>
         public Action<Mobile, CraftItem, ITool> TryCraft { get; set; }
@@ -335,7 +335,7 @@ namespace Server.Engines.Craft
 			0x398C, 0x399F, // Fire field
 			0x2DDB, 0x2DDC, //Elven stove
 			0x19AA, 0x19BB, // Veteran Reward Brazier
-			0x197A, 0x19A9, // Large Forge 
+			0x197A, 0x19A9, // Large Forge
 			0x0FB1, 0x0FB1, // Small Forge
 			0x2DD8, 0x2DD8, // Elven Forge
             0xA2A4, 0xA2A5, 0xA2A8, 0xA2A9 // Wood Stove
@@ -1866,7 +1866,7 @@ namespace Server.Engines.Craft
                         PlayerMobile px = from as PlayerMobile;
 
                         if (!QuestHelper.CheckItem(px, item))
-                            from.SendLocalizedMessage(1072355, null, 0x23); // That item does not match any of your quest criteria	
+                            from.SendLocalizedMessage(1072355, null, 0x23); // That item does not match any of your quest criteria
                     }
 
                     context.RequiredPigmentHue = PlantPigmentHue.None;

@@ -750,7 +750,7 @@ namespace Server.Spells.SkillMasteries
             }
 
             IEnumerable<SkillMasterySpell> e = t == null ? entry : entry.Where(s => s.GetType() == t);
-            
+
             foreach (SkillMasterySpell spell in e)
             {
                 yield return spell;

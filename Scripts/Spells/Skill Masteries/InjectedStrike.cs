@@ -227,7 +227,7 @@ namespace Server.Spells.SkillMasteries
 
             if (defender.ApplyPoison(Caster, p) != ApplyPoisonResult.Immune)
             {
-                Caster.SendLocalizedMessage(1008096, true, defender.Name); // You have poisoned your target : 
+                Caster.SendLocalizedMessage(1008096, true, defender.Name); // You have poisoned your target :
                 defender.SendLocalizedMessage(1008097, false, Caster.Name); //  : poisoned you!
             }
 

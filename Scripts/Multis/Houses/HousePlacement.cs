@@ -86,7 +86,7 @@ namespace Server.Multis
             List<Point2D> yard = new List<Point2D>(), borders = new List<Point2D>();
 
             /* RULES:
-            * 
+            *
             * 1) All tiles which are around the -outside- of the foundation must not have anything impassable.
             * 2) No impassable object or land tile may come in direct contact with any part of the house.
             * 3) Five tiles from the front and back of the house must be completely clear of all house tiles.

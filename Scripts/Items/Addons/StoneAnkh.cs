@@ -203,7 +203,7 @@ namespace Server.Items
                 from.SendGump(new InternalGump(this));
             }
             else
-                from.SendLocalizedMessage(1042038); // You must have the object in your backpack to use it.    
+                from.SendLocalizedMessage(1042038); // You must have the object in your backpack to use it.
         }
 
         public override void GetProperties(ObjectPropertyList list)

@@ -2,8 +2,8 @@ using Server.Items;
 using System;
 using System.Collections.Generic;
 
-/*The wrestler attempts to land three hits in rapid succession to the next target that damages you within a 2 tile radius. 
-  If successful the third hit will deal direct damage based on the wrestler's mastery level. The duration of this ability 
+/*The wrestler attempts to land three hits in rapid succession to the next target that damages you within a 2 tile radius.
+  If successful the third hit will deal direct damage based on the wrestler's mastery level. The duration of this ability
   is based on wrestling skill and anatomy skill or evaluating intelligence skill.*/
 
 // Add OnCasterDamaged virutal in SkillMagerySpell and point to it in CheckDisruption(...) method

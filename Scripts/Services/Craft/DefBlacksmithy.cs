@@ -55,7 +55,7 @@ namespace Server.Engines.Craft
         LuminousRuneBlade = 353,
         ShardTrasher = 354, //good
 
-        // doom 
+        // doom
         BritchesOfWarding = 355,
         GlovesOfFeudalGrip = 356,
     }

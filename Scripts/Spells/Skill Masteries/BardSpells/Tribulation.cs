@@ -1,10 +1,10 @@
 using Server.Targeting;
 using System;
 
-/*Target Hit Chance reduced by up to 33%, Spell Damaged reduced by 33%, Damage 
- Taken can trigger additional damage between 20-60% of the damage taken as 
- physical once per second. (Discordance Based) (Chance to Trigger damage 
- Musicianship Based) affected by the target's magic resistance. (PvP and 
+/*Target Hit Chance reduced by up to 33%, Spell Damaged reduced by 33%, Damage
+ Taken can trigger additional damage between 20-60% of the damage taken as
+ physical once per second. (Discordance Based) (Chance to Trigger damage
+ Musicianship Based) affected by the target's magic resistance. (PvP and
  specific Mobs only)*/
 
 namespace Server.Spells.SkillMasteries

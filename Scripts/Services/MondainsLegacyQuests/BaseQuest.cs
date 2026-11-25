@@ -190,7 +190,7 @@ namespace Server.Engines.Quests
             m_Owner.SendLocalizedMessage(1049019); // You have accepted the Quest.
             m_Owner.Quests.Add(this);
 
-            // give items if any		
+            // give items if any
             for (int i = 0; i < m_Objectives.Count; i++)
             {
                 BaseObjective objective = m_Objectives[i];
@@ -274,7 +274,7 @@ namespace Server.Engines.Quests
 
         public virtual void OnCompleted()
         {
-            m_Owner.SendLocalizedMessage(CompleteMessage, null, 0x23); // You've completed a quest!  Don't forget to collect your reward.							
+            m_Owner.SendLocalizedMessage(CompleteMessage, null, 0x23); // You've completed a quest!  Don't forget to collect your reward.
             m_Owner.PlaySound(CompleteSound);
         }
 
@@ -438,7 +438,7 @@ namespace Server.Engines.Quests
 
         public virtual void Serialize(GenericWriter writer)
         {
-            writer.WriteEncodedInt(1); // version	
+            writer.WriteEncodedInt(1); // version
 
             writer.Write(m_QuesterType == null ? null : m_QuesterType.Name);
 

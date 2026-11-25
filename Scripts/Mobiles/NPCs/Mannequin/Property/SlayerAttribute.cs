@@ -60,7 +60,7 @@ namespace Server.Mobiles.MannequinProperty
 
     public class ReptileSlayerProperty : SlayerProperty
     {
-        public override int LabelNumber => 1079751;  // Reptile Slayer        
+        public override int LabelNumber => 1079751;  // Reptile Slayer
         public override SlayerName Slayer => SlayerName.ReptilianDeath;
     }
 

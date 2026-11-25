@@ -273,14 +273,14 @@ namespace Server.Engines.VeteranRewards
         {
             base.GetProperties(list);
 
-            list.Add(1076224); // 8th Year Veteran Reward	
+            list.Add(1076224); // 8th Year Veteran Reward
 
             list.Add(1153648, Entries.Count.ToString()); // ~1_COUNT~ maps
         }
 
         public void GetOptions(RewardOptionList list)
         {
-            list.Add(0, 1153587); // Long edge facing south 
+            list.Add(0, 1153587); // Long edge facing south
             list.Add(1, 1153588); // Long edge facing east
         }
 

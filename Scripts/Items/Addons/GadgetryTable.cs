@@ -269,7 +269,7 @@ namespace Server.Engines.VeteranRewards
             base.GetProperties(list);
 
             if (m_IsRewardItem)
-                list.Add(1076224); // 8th Year Veteran Reward		
+                list.Add(1076224); // 8th Year Veteran Reward
         }
 
         public override void OnDoubleClick(Mobile from)

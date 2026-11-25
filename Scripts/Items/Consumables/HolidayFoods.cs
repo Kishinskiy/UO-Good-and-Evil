@@ -138,7 +138,7 @@ namespace Server.Items
                     return;
                 }
 
-                /* 
+                /*
 				* ARRGH! My tooth hurts sooo much!
 				* You just can't find a good Britannian dentist these days...
 				* My teeth!

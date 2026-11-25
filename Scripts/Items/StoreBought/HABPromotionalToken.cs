@@ -178,7 +178,7 @@ namespace Server.Items
                 AddImageTiled(5, 31, 280, 40, 0xA40);
                 AddHtmlLocalized(9, 35, 272, 40, 1158651, 0x7FFF, false, false); // Are you absolutely sure you wish to change your character's hairstyle?
                 AddButton(125, 73, 0xFB7, 0xFB8, 1, GumpButtonType.Reply, 0);
-                AddHtmlLocalized(160, 75, 155, 20, 1158654, 0x7FFF, false, false); // Make me fabulous! 
+                AddHtmlLocalized(160, 75, 155, 20, 1158654, 0x7FFF, false, false); // Make me fabulous!
                 AddButton(5, 73, 0xFB1, 0xFB2, 0, GumpButtonType.Reply, 0);
                 AddHtmlLocalized(40, 75, 100, 20, 1060051, 0x7FFF, false, false); // CANCEL
             }

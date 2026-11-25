@@ -13,7 +13,7 @@ namespace Server.Items
         {
         }
 
-        public override int LabelNumber => 1073826;// A Speckled Crab 
+        public override int LabelNumber => 1073826;// A Speckled Crab
         public override void Serialize(GenericWriter writer)
         {
             base.Serialize(writer);

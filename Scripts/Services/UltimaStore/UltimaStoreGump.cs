@@ -649,7 +649,7 @@ namespace Server.Engines.UOStore
                         else
                         {
                             User.SendLocalizedMessage(1150315); // That text is unacceptable.
-                            //User.SendLocalizedMessage(1156836); // You can't exceed 125 items per purchase. 
+                            //User.SendLocalizedMessage(1156836); // You can't exceed 125 items per purchase.
                         }
 
                         Gump.Refresh();

@@ -197,7 +197,7 @@ namespace Server.Mobiles
             SetHits(50, 200);
             SetStam(50, 200);
 
-            /* 
+            /*
             On OSI, all stats are random 50-200, but
             str is never less than hits, and dex is never
             less than stam.

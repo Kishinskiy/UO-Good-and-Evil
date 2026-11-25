@@ -43,9 +43,9 @@ namespace Server.Network.Encryption
 
 			for (var i = 0; i < 4; i++)
 			{
-				keys[i] = (uint)(inputBuffer[i * 4 + 3 + inputOffset] << 24) 
-						| (uint)(inputBuffer[i * 4 + 2 + inputOffset] << 16) 
-						| (uint)(inputBuffer[i * 4 + 1 + inputOffset] << 8) 
+				keys[i] = (uint)(inputBuffer[i * 4 + 3 + inputOffset] << 24)
+						| (uint)(inputBuffer[i * 4 + 2 + inputOffset] << 16)
+						| (uint)(inputBuffer[i * 4 + 1 + inputOffset] << 8)
 						| inputBuffer[i * 4 + 0 + inputOffset];
 			}
 

@@ -16,9 +16,9 @@ namespace Server.Engines.Quests
         public override TimeSpan RestartDelay => TimeSpan.FromMinutes(3);
         /* A clockwork puzzle */
         public override object Title => 1075535;
-        /* 'Tis a riddle, you see! "What kind of clock is only right twice per day? A broken one!" *laughs heartily* 
-        Ah, yes *wipes eye*, that's one of my favorites! Ah... to business. Could you fashion me some clock parts? 
-        I wish my own clocks to be right all the day long! You'll need some tinker's tools and some iron ingots, I 
+        /* 'Tis a riddle, you see! "What kind of clock is only right twice per day? A broken one!" *laughs heartily*
+        Ah, yes *wipes eye*, that's one of my favorites! Ah... to business. Could you fashion me some clock parts?
+        I wish my own clocks to be right all the day long! You'll need some tinker's tools and some iron ingots, I
         think, but from there it should be just a matter of working the metal. */
         public override object Description => 1075534;
         /* Or perhaps you'd rather not. */

@@ -37,7 +37,7 @@ namespace Server.Multis
 		public static int MaxBans { get => Config.Get("Housing.MaxBans", 140); set => Config.Set("Housing.MaxBans", value); }
 
 		[ConfigProperty("Housing.DecayEnabled")]
-		public static bool DecayEnabled { get => Config.Get("Housing.DecayEnabled", true); set => Config.Set("Housing.DecayEnabled", value); }	
+		public static bool DecayEnabled { get => Config.Get("Housing.DecayEnabled", true); set => Config.Set("Housing.DecayEnabled", value); }
 
 		private static readonly Dictionary<Mobile, HashSet<BaseHouse>> m_Table = new Dictionary<Mobile, HashSet<BaseHouse>>();
 
@@ -2348,8 +2348,8 @@ namespace Server.Multis
                 string name = Sign == null || Sign.Name == null ? "An Unnamed House" : Sign.Name;
 
                 NewMaginciaMessage message = new NewMaginciaMessage(null, new TextDefinition(1154338), string.Format("{0}\t{1}", vendor.ShopName, name));
-                /* Your rental vendor named ~1_VENDOR~ located in house: ~2_HOUSE~ is in danger of deletion. 
-                 * This house has been condemned and you should remove everything on your vendor AS SOON AS 
+                /* Your rental vendor named ~1_VENDOR~ located in house: ~2_HOUSE~ is in danger of deletion.
+                 * This house has been condemned and you should remove everything on your vendor AS SOON AS
                  * POSSIBLE or risk possible deletion.*/
 
                 MaginciaLottoSystem.SendMessageTo(vendor.Owner, message);
@@ -2473,7 +2473,7 @@ namespace Server.Multis
                 // Mondain's Legacy mod
                 else if (!(item is BaseAddonContainer) && !item.Movable)
                 {
-                    m.SendLocalizedMessage(1010424); // You cannot secure 
+                    m.SendLocalizedMessage(1010424); // You cannot secure
                 }
                 else if (!CheckAosLockdowns(1))
                 {
@@ -4349,7 +4349,7 @@ namespace Server.Multis
                     #endregion
                     else if (item.Parent is Container)
                     {
-                        from.SendLocalizedMessage(1080387); // You may not release this while it is in a container. 
+                        from.SendLocalizedMessage(1080387); // You may not release this while it is in a container.
                     }
                     else
                     {

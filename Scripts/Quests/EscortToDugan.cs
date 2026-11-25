@@ -19,7 +19,7 @@ namespace Server.Engines.Quests
 
         /* Escort Neville Brightwhistle to Elder Dugan. After Neville is safe, speak
 		 * to Elder Dugan for your reward.
-		 * 
+		 *
 		 * I was separated from my brothers when the goblins attacked. I am a member
 		 * of the Society of Ariel Haven, come to colonize these halls that we had
 		 * though abandoned. I must get out of here and warn Elder Dugan that these
@@ -35,7 +35,7 @@ namespace Server.Engines.Quests
         /* You have done me and my people a great service, traveler. I had assumed
 		 * the worst had befallen Neville and I do not doubt it would have soon if
 		 * you had not intervened.
-		 * 
+		 *
 		 * The goblins are a creature of legend; it was thought that they had all
 		 * been killed. They are not as strong as they are evil, but their blight
 		 * can become a plague. Take this talisman, it was worn by those sent to

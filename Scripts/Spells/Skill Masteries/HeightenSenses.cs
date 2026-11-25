@@ -1,7 +1,7 @@
 using Server.Items;
 using System;
 
-/*Toggle ability that provides the Parrying Master with increased chance to parry based on parry skill, 
+/*Toggle ability that provides the Parrying Master with increased chance to parry based on parry skill,
   best weapon skill and mastery level that consumes mana while active.*/
 
 namespace Server.Spells.SkillMasteries
@@ -51,7 +51,7 @@ namespace Server.Spells.SkillMasteries
                 Caster.FixedParticles(0x376A, 9, 32, 5030, 1168, 0, EffectLayer.Waist, 0);
                 Caster.PlaySound(0x5BC);
 
-                Caster.SendLocalizedMessage(1156023); // Your senses heighten! 
+                Caster.SendLocalizedMessage(1156023); // Your senses heighten!
 
                 BeginTimer();
 

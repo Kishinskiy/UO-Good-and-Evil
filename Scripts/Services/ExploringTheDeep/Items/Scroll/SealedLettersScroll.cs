@@ -65,7 +65,7 @@ namespace Server.Items
             AddHtmlLocalized(42, 121, 323, 174, 1154406, 1, false, true); // <I>*The letters are sealed in tubes capped with wax to make them waterproof and hidden away. Written on the outside is “Open only on the occasion of the death of Champ Huthwait, to be delivered to the Britain Bugle, the Trinsic Tribune, and the Sosarian Scout.”*</I>
         }
 
-        public override void OnResponse(NetState state, RelayInfo info) //Function for GumpButtonType.Reply Buttons 
+        public override void OnResponse(NetState state, RelayInfo info) //Function for GumpButtonType.Reply Buttons
         {
             Mobile from = state.Mobile;
 
@@ -73,7 +73,7 @@ namespace Server.Items
             {
                 case 0:
                     {
-                        //Cancel                        
+                        //Cancel
                         break;
                     }
             }

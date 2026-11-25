@@ -78,7 +78,7 @@ namespace Server.Items
             Rewards.Add(new CollectionHuedItem(typeof(NystulsWizardsHat), 0x1718, 1073255, 0x453, 550000.0, hues));
             Rewards.Add(new CollectionHuedItem(typeof(JesterHatOfChuckles), 0x171C, 1073256, 0x453, 550000.0, hues));
             Rewards.Add(new CollectionItem(typeof(KeeoneansChainMail), 0x13BF, 1073264, 0x84E, 550000.0));
-            Rewards.Add(new CollectionTitle(1073238, 1073640, 550000.0)); // Prominent Vesper Museum Contributor	
+            Rewards.Add(new CollectionTitle(1073238, 1073640, 550000.0)); // Prominent Vesper Museum Contributor
             Rewards.Add(new CollectionItem(typeof(ClaininsSpellbook), 0xEFA, 1073262, 0x84D, 800000.0));
             Rewards.Add(new CollectionItem(typeof(VesperOrderShield), 0x1BC4, 1073258, 0x835, 800000.0));
             Rewards.Add(new CollectionItem(typeof(VesperChaosShield), 0x1BC3, 1073259, 0xFA, 800000.0));

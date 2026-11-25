@@ -231,7 +231,7 @@ namespace Server.Items
 
                         pet.IsStabled = false;
 
-                        pet.Loyalty = BaseCreature.MaxLoyalty; // Wonderfully Happy  
+                        pet.Loyalty = BaseCreature.MaxLoyalty; // Wonderfully Happy
 
                         from.Stabled.Remove(pet);
                         claimed = true;
@@ -251,7 +251,7 @@ namespace Server.Items
                 from.SendLocalizedMessage(1042559); // Here you go... and good day to you!
             }
             else if (stabled == 0)
-                from.SendLocalizedMessage(502671); // But I have no animals stabled with me at the moment!            
+                from.SendLocalizedMessage(502671); // But I have no animals stabled with me at the moment!
         }
 
         public void BeginClaimList(Mobile from)

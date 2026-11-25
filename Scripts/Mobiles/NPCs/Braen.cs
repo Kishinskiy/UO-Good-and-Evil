@@ -16,8 +16,8 @@ namespace Server.Engines.Quests
 
         /* Unholy Construct */
         public override object Title => 1073666;
-        /* They're unholy, I say. Golems, a walking mockery of all life, born of 
-        blackest magic. They're not truly alive, so destroying them isn't a crime, 
+        /* They're unholy, I say. Golems, a walking mockery of all life, born of
+        blackest magic. They're not truly alive, so destroying them isn't a crime,
         it's a service. A service I will gladly pay for. */
         public override object Description => 1073705;
         /* Perhaps you'll change your mind and return at some point. */

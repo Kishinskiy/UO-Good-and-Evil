@@ -4,7 +4,7 @@ using Server.Network;
 using System;
 using System.Linq;
 
-/*The animal tamer attempts to guide their pet on the path of skill gain, increasing the pet's skill gains based on the tamer's 
+/*The animal tamer attempts to guide their pet on the path of skill gain, increasing the pet's skill gains based on the tamer's
   animal taming skill, animal lore skill, and mastery level.  This ability functions similarly to a scroll of alacrity.*/
 
 namespace Server.Spells.SkillMasteries

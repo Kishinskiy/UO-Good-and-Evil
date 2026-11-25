@@ -15,8 +15,8 @@ namespace Server.Engines.Quests
 
         /* Pointy Ears */
         public override object Title => 1074640;
-        /* I've heard ... there's some that will pay a good bounty for pointed ears, much like we used to pay for each 
-        wolf skin.  I've got nothing personal against these elves.  It's just business.  You want in on this?  I'm not 
+        /* I've heard ... there's some that will pay a good bounty for pointed ears, much like we used to pay for each
+        wolf skin.  I've got nothing personal against these elves.  It's just business.  You want in on this?  I'm not
         fussy who I work with. */
         public override object Description => 1074641;
         /* Suit yourself. */

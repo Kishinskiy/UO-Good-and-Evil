@@ -79,7 +79,7 @@ namespace Server.Engines.NewMagincia
             AddBackground(0, 0, 314 + width, 241 + width, 0x24B8);
             AddButton(7, 7, 0x1523, 0x1523, 0, GumpButtonType.Reply, 0);
             AddButton(290 + width, 7, buttonid, buttonid, 1, GumpButtonType.Reply, 0);
-            AddHtmlLocalized(47, 7, Widescreen ? 460 : 194, 18, 1150425, string.Format("{0}", Messages.Count), GreenColor, false, false); // ~1_COUNT~ Messages   
+            AddHtmlLocalized(47, 7, Widescreen ? 460 : 194, 18, 1150425, string.Format("{0}", Messages.Count), GreenColor, false, false); // ~1_COUNT~ Messages
 
             int page = 1;
             int y = 0;

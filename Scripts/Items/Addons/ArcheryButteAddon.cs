@@ -143,7 +143,7 @@ namespace Server.Items
 
             if (ranged == null)
             {
-                SendLocalizedMessageTo(from, 500593); // You must practice with ranged weapons on 
+                SendLocalizedMessageTo(from, 500593); // You must practice with ranged weapons on
                 return;
             }
 
@@ -202,7 +202,7 @@ namespace Server.Items
                     else if (isBolt)
                         from.LocalOverheadMessage(MessageType.Regular, 0x3B2, 500595); // You do not have any crossbow bolts with which to practice.
                     else
-                        SendLocalizedMessageTo(from, 500593); // You must practice with ranged weapons on 
+                        SendLocalizedMessageTo(from, 500593); // You must practice with ranged weapons on
 
                     return;
                 }
@@ -442,7 +442,7 @@ namespace Server.Items
                 from.SendGump(new RewardOptionGump(this));
             }
             else
-                from.SendLocalizedMessage(1062334); // This item must be in your backpack to be used.       	
+                from.SendLocalizedMessage(1062334); // This item must be in your backpack to be used.
         }
 
         public override void Serialize(GenericWriter writer)

@@ -43,7 +43,7 @@ namespace Server.Items
                 if (delay.TotalMinutes > 0)
                     m.SendLocalizedMessage(1079265, Math.Round(delay.TotalMinutes).ToString()); // You must wait ~1_minutes~ minutes before you can use this item.
                 else
-                    m.SendLocalizedMessage(1079263, Math.Round(delay.TotalSeconds).ToString()); // You must wait ~1_seconds~ seconds before you can use this item.		
+                    m.SendLocalizedMessage(1079263, Math.Round(delay.TotalSeconds).ToString()); // You must wait ~1_seconds~ seconds before you can use this item.
             }
             else
             {
@@ -297,7 +297,7 @@ namespace Server.Items
                 from.SendGump(new RewardOptionGump(this));
             }
             else
-                from.SendLocalizedMessage(1062334); // This item must be in your backpack to be used.   
+                from.SendLocalizedMessage(1062334); // This item must be in your backpack to be used.
         }
 
         public override void GetProperties(ObjectPropertyList list)

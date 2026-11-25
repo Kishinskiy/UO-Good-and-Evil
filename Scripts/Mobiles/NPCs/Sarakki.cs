@@ -17,12 +17,12 @@ namespace Server.Engines.Quests
 
         /* Black Order Badges */
         public override object Title => 1072903;
-        /* What's that? *alarmed gasp*  Do not speak of the Black Order so loudly, they might hear and take offense.  *whispers*  
+        /* What's that? *alarmed gasp*  Do not speak of the Black Order so loudly, they might hear and take offense.  *whispers*
         I collect the badges of their sects, if you wish to seek them out and slay them.  Bring five of each and I will reward you. */
         public override object Description => 1072962;
         /* *whisper* It's a very dangerous task.  Let me know if you change your mind. */
         public override object Refuse => 1072971;
-        /* *whisper* The Citadel entrance is disguised as a fishing village.  The magical portal into the stronghold itself is 
+        /* *whisper* The Citadel entrance is disguised as a fishing village.  The magical portal into the stronghold itself is
         moved frequently.  You'll need to search for it. */
         public override object Uncomplete => 1072972;
         public override bool CanOffer()
@@ -57,12 +57,12 @@ namespace Server.Engines.Quests
 
         /* Evidence */
         public override object Title => 1072906;
-        /* We believe the Black Order has fallen under the sway of Minax, somehow.  Seek evidence that proves our theory 
+        /* We believe the Black Order has fallen under the sway of Minax, somehow.  Seek evidence that proves our theory
         by piercing the secrets of the Citadel. */
         public override object Description => 1072964;
         /* Many fear to tangle with the wicked sorceress.  I understand and appreciate your concerns. */
         public override object Refuse => 1072975;
-        /* I don't know where inside The Citadel such evidence could be found.  Perhaps the most guarded sanctum is 
+        /* I don't know where inside The Citadel such evidence could be found.  Perhaps the most guarded sanctum is
         the place to look. */
         public override object Uncomplete => 1072976;
         public override bool CanOffer()

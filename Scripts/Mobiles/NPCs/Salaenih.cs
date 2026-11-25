@@ -18,8 +18,8 @@ namespace Server.Engines.Quests
         public override bool AllObjectives => false;
         /* Shaking Things Up */
         public override object Title => 1073083;
-        /* A Solen hive is a fascinating piece of ecology. It's put together like a finely crafted clock. Who knows 
-        what happens if you remove something? So let's find out. Exterminate a few of the warriors and I'll make it 
+        /* A Solen hive is a fascinating piece of ecology. It's put together like a finely crafted clock. Who knows
+        what happens if you remove something? So let's find out. Exterminate a few of the warriors and I'll make it
         worth your while. */
         public override object Description => 1073573;
         /* I hope you'll reconsider. Until then, farwell. */
@@ -53,8 +53,8 @@ namespace Server.Engines.Quests
 
         /* Arachnophobia */
         public override object Title => 1073079;
-        /* I've seen them hiding in their webs among the woods. Glassy eyes, spindly legs, poisonous fangs. Monsters, 
-        I say! Deadly horrors, these black widows. Someone must exterminate the abominations! If only I could find a 
+        /* I've seen them hiding in their webs among the woods. Glassy eyes, spindly legs, poisonous fangs. Monsters,
+        I say! Deadly horrors, these black widows. Someone must exterminate the abominations! If only I could find a
         worthy hero for such a task, then I could give them this considerable reward. */
         public override object Description => 1073569;
         /* I hope you'll reconsider. Until then, farwell. */
@@ -88,7 +88,7 @@ namespace Server.Engines.Quests
 
         /* Mini Swamp Thing */
         public override object Title => 1073072;
-        /* Some say killing a boggling brings good luck. I don't place much stock in old wives' tales, but I can say a few 
+        /* Some say killing a boggling brings good luck. I don't place much stock in old wives' tales, but I can say a few
         dead bogglings would certainly be lucky for me! Help me out and I can reward you for your efforts.  */
         public override object Description => 1073562;
         /* I hope you'll reconsider. Until then, farwell. */

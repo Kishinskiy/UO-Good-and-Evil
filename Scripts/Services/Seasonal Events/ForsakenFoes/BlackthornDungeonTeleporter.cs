@@ -41,7 +41,7 @@ namespace Server.Items
                 }
                 else
                 {
-                    m.SendLocalizedMessage(1159235); // You may not pass.                    
+                    m.SendLocalizedMessage(1159235); // You may not pass.
                 }
             }
 

@@ -729,7 +729,7 @@ namespace Server.Items
             base.GetProperties(list);
 
             if (Attributes.Brittle > 0)
-                list.Add(1116209); // Brittle           
+                list.Add(1116209); // Brittle
 
             if (Parent is Mobile && m_MaxChargeTime > 0)
             {
@@ -842,10 +842,10 @@ namespace Server.Items
                 list.Add(1060431, prop.ToString()); // hit point increase ~1_val~
 
             if ((prop = m_AosAttributes.BonusInt) != 0)
-                list.Add(1060432, prop.ToString()); // intelligence bonus ~1_val~                                
+                list.Add(1060432, prop.ToString()); // intelligence bonus ~1_val~
 
             if ((prop = m_AosAttributes.BonusMana) != 0)
-                list.Add(1060439, prop.ToString()); // mana increase ~1_val~           
+                list.Add(1060439, prop.ToString()); // mana increase ~1_val~
 
             if ((prop = m_AosAttributes.NightSight) != 0)
                 list.Add(1060441); // night sight
@@ -881,10 +881,10 @@ namespace Server.Items
                 list.Add(1060434, prop.ToString()); // lower reagent cost ~1_val~%
 
             if ((prop = m_AosAttributes.DefendChance) != 0)
-                list.Add(1060408, prop.ToString()); // defense chance increase ~1_val~%        
+                list.Add(1060408, prop.ToString()); // defense chance increase ~1_val~%
 
             if ((prop = m_AosAttributes.BonusStam) != 0)
-                list.Add(1060484, prop.ToString()); // stamina increase ~1_val~          
+                list.Add(1060484, prop.ToString()); // stamina increase ~1_val~
 
             if ((prop = m_AosAttributes.WeaponSpeed) != 0)
                 list.Add(1060486, prop.ToString()); // swing speed increase ~1_val~%
@@ -893,7 +893,7 @@ namespace Server.Items
                 list.Add(1060401, prop.ToString()); // damage increase ~1_val~%
 
             if ((prop = m_AosAttributes.IncreasedKarmaLoss) != 0)
-                list.Add(1075210, prop.ToString()); // Increased Karma Loss ~1val~%                
+                list.Add(1075210, prop.ToString()); // Increased Karma Loss ~1val~%
 
             base.AddResistanceProperties(list);
 

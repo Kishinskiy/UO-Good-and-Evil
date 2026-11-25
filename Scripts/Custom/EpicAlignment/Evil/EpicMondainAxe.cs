@@ -18,7 +18,7 @@ namespace Server.Custom.EpicAlignment
         {
             Name = "Жатва Бездны: Проклятый Клинок Мондейна [Эпический Артефакт]";
             Hue = 1175; // Ядовито-зеленое свечение Хаоса
-            LootType = LootType.Blessed; 
+            LootType = LootType.Blessed;
             ItemPower = ItemPower.LegendaryArtifact;
 
             Attributes.WeaponDamage = 60;
@@ -30,7 +30,7 @@ namespace Server.Custom.EpicAlignment
             WeaponAttributes.HitPoisonArea = 35; // 35% шанс отравить всех врагов вокруг
             Slayer = SlayerName.Fey;             // Вшитый урон против эльфов, пикси и сил Света
         }
-        
+
         // Проверка: надеть может только Владыка Тьмы (EpicEvil)
         public override bool CanEquip(Mobile from)
         {
@@ -49,7 +49,7 @@ namespace Server.Custom.EpicAlignment
             base.OnHit(attacker, defender, damageBonus);
 
             Mobile target = defender as Mobile;
-            if (attacker == null || target == null || attacker.Deleted || !attacker.Alive) 
+            if (attacker == null || target == null || attacker.Deleted || !attacker.Alive)
                 return;
 
             // 20% шанс украсть здоровье у цели
@@ -60,7 +60,7 @@ namespace Server.Custom.EpicAlignment
 
                 int stolenHp = Utility.RandomMinMax(15, 25);
                 target.Damage(stolenHp, attacker);
-                
+
                 // Исцеляем чернокнижника
                 attacker.Hits = Math.Min(attacker.HitsMax, attacker.Hits + stolenHp);
                 attacker.SendMessage(0x22, "[Оружие] Жатва Бездны выпивает кровь врага, исцеляя вас!");

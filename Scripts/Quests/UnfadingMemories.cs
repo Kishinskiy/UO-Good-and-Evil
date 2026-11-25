@@ -18,9 +18,9 @@ namespace Server.Engines.Quests
         public override bool DoneOnce => true;
         /* Unfading Memories */
         public override object Title => 1075355;
-        /* Aargh! It’s just not right! It doesn’t capture the unique color of her hair at all! If only I had some Prismatic 
-        Amber. That would be perfect. They used to mine it in Malas, but alas, those veins ran dry some time ago. I hear it 
-        may have been found in the Prism of Light. Oh, if only there were a bold adventurer within earshot who would go to 
+        /* Aargh! It’s just not right! It doesn’t capture the unique color of her hair at all! If only I had some Prismatic
+        Amber. That would be perfect. They used to mine it in Malas, but alas, those veins ran dry some time ago. I hear it
+        may have been found in the Prism of Light. Oh, if only there were a bold adventurer within earshot who would go to
         the Prism of Light and retrieve some for me! */
         public override object Description => 1075356;
         /* Is there no one who can help a humble artist pursue his Muse? */
@@ -59,13 +59,13 @@ namespace Server.Engines.Quests
         public override bool DoneOnce => true;
         /* Unfading Memories */
         public override object Title => 1075367;
-        /* Finished! With the pigment I was able to create from the Prismatic Amber you brought me, I was able to complete 
-        my humble work. I should explain. Once, I loved a noble lady of gentleness and refinement, who possessed such beauty 
-        that I have found myself unable to love another to this day. But it was from afar that I admired her, for it is not 
-        for one so lowly as I to pay court to the likes of her. You have heard of the fair Thalia, Lady of Nujel'm? No? Well, 
-        she was my Muse, my inspiration, and when I heard she was to be married, I lost whatever pitiful talent I possessed. 
-        I felt I must compose a portrait of her, my masterpiece, or I would never be able to paint again. You, my friend, have 
-        helped me complete my work. Now I ask another favor of you. Will you take it to her as a wedding gift? She will probably 
+        /* Finished! With the pigment I was able to create from the Prismatic Amber you brought me, I was able to complete
+        my humble work. I should explain. Once, I loved a noble lady of gentleness and refinement, who possessed such beauty
+        that I have found myself unable to love another to this day. But it was from afar that I admired her, for it is not
+        for one so lowly as I to pay court to the likes of her. You have heard of the fair Thalia, Lady of Nujel'm? No? Well,
+        she was my Muse, my inspiration, and when I heard she was to be married, I lost whatever pitiful talent I possessed.
+        I felt I must compose a portrait of her, my masterpiece, or I would never be able to paint again. You, my friend, have
+        helped me complete my work. Now I ask another favor of you. Will you take it to her as a wedding gift? She will probably
         reject it, but I must make the offer. */
         public override object Description => 1075368;
         /* Alright then, you have already helped me more than I deserved. I shall find someone else to undertake this task. */
@@ -103,16 +103,16 @@ namespace Server.Engines.Quests
         public override bool DoneOnce => true;
         /* Unfading Memories */
         public override object Title => 1075373;
-        /* Emilio painted this? It is absolutely wonderful! I used to love looking at his paintings, but I don’t remember him creating 
-        anything like this before. Would you be so kind as to carry a letter to him? Fate may have it that I am to marry another, yet 
+        /* Emilio painted this? It is absolutely wonderful! I used to love looking at his paintings, but I don’t remember him creating
+        anything like this before. Would you be so kind as to carry a letter to him? Fate may have it that I am to marry another, yet
         I am compelled to reveal to him that his love was not entirely unrequited. */
         public override object Description => 1075374;
         /* Very well, then. If you will excuse me, I need to get ready. */
         public override object Refuse => 1075376;
         /* Take the letter back to the Artist’s Guild in Britain, if you would do me this kindness. */
         public override object Uncomplete => 1075377;
-        /* She said what? She thinks what of me? I . . . I can’t believe it! All this time, I never knew how she truly felt. Thank you, 
-        my friend. I believe now I will be able to paint once again. Here, take this bleach. I was going to use it to destroy all of my 
+        /* She said what? She thinks what of me? I . . . I can’t believe it! All this time, I never knew how she truly felt. Thank you,
+        my friend. I believe now I will be able to paint once again. Here, take this bleach. I was going to use it to destroy all of my
         works. Perhaps you can find a better use for it now. */
         public override object Complete => 1075378;
         public override void Serialize(GenericWriter writer)

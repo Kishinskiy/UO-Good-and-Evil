@@ -125,7 +125,7 @@ namespace Server.Engines.Quests
                     SayTo(from, 1113040); // Good. I can use this.
 
                     from.AddToBackpack(Activator.CreateInstance(pileType) as Item);
-                    from.SendLocalizedMessage(1113041); // Now mark the inspected item as a quest item to turn it in.					
+                    from.SendLocalizedMessage(1113041); // Now mark the inspected item as a quest item to turn it in.
 
                     return true;
                 }

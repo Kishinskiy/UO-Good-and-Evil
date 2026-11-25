@@ -849,7 +849,7 @@ namespace Server.Commands.Generic
 			}
 		}
 	}
-	
+
 	public class DeleteCommand : BaseCommand
     {
         private readonly List<object> _DeleteConfirm = new List<object>();

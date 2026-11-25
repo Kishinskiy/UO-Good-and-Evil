@@ -6,9 +6,9 @@ namespace Server.Items
     public class MapmakersPen : BaseTool
     {
 		public override CraftSystem CraftSystem => DefCartography.CraftSystem;
-		
+
         public override int LabelNumber => 1044167;// mapmaker's pen
-		
+
         [Constructable]
         public MapmakersPen()
             : base(0x0FBF)
@@ -27,7 +27,7 @@ namespace Server.Items
             : base(serial)
         {
         }
-        
+
         public override void Serialize(GenericWriter writer)
         {
             base.Serialize(writer);

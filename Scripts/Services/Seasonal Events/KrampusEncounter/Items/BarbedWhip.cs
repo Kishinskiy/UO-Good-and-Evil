@@ -3,7 +3,7 @@ namespace Server.Items
     public class BarbedWhip : BaseBashing, Engines.Craft.IRepairable
     {
         public Engines.Craft.CraftSystem RepairSystem => Engines.Craft.DefTinkering.CraftSystem;
-        public override int LabelNumber => 1125641;  // Barbed Whip		
+        public override int LabelNumber => 1125641;  // Barbed Whip
 
         [Constructable]
         public BarbedWhip()

@@ -6,7 +6,7 @@ namespace Server.Items
     public class JointingPlane : BaseTool
     {
 		public override CraftSystem CraftSystem => DefCarpentry.CraftSystem;
-		
+
         [Constructable]
         public JointingPlane()
             : base(0x1030)
@@ -24,8 +24,8 @@ namespace Server.Items
         public JointingPlane(Serial serial)
             : base(serial)
         {
-        }       
-		
+        }
+
         public override void Serialize(GenericWriter writer)
         {
             base.Serialize(writer);

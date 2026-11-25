@@ -106,7 +106,7 @@ namespace Server.Items
 
     public class ShipPaintingDeed : BaseAddonDeed, IRewardOption
     {
-        public override int LabelNumber => 1154180;  // Ship Painting 
+        public override int LabelNumber => 1154180;  // Ship Painting
 
         private DirectionType _Direction;
 

@@ -143,9 +143,9 @@ namespace Server.Gumps
                     if (!armor.IsChildOf(from.Backpack))
                         from.SendLocalizedMessage(1054107); // This item must be in your backpack.
                     else if (armor.ArmorAttributes.MageArmor > 0)
-                        from.SendLocalizedMessage(1153986); // You cannot refine this piece of armor! 
+                        from.SendLocalizedMessage(1153986); // You cannot refine this piece of armor!
                     else if (!CanApplyToArmor(from, armor, m_Item))
-                        from.SendLocalizedMessage(1153987); // The type of armor you have selected is not compatible with this Refinement Tool. 
+                        from.SendLocalizedMessage(1153987); // The type of armor you have selected is not compatible with this Refinement Tool.
                     else if (RefinementItem.CheckForVendor(from, m_Item))
                     {
                         //Resets old refinement if it exists
@@ -178,7 +178,7 @@ namespace Server.Gumps
                     }
                 }
                 else
-                    from.SendLocalizedMessage(1153991); // You can only refine non-medable armor. 
+                    from.SendLocalizedMessage(1153991); // You can only refine non-medable armor.
 
                 from.SendGump(new RefinementGump(m_Item));
             }
@@ -279,10 +279,10 @@ namespace Server.Gumps
             AddHtmlLocalized(98, 140, 312, 105, cliloc, 0xFFFFFF, false, true);
 
             AddButton(98, 255, 9904, 9905, 1, GumpButtonType.Page, 2);
-            AddHtmlLocalized(125, 255, 250, 20, 1153995, 0xFFFFFF, false, false); // What is an Armor Refinement? 
+            AddHtmlLocalized(125, 255, 250, 20, 1153995, 0xFFFFFF, false, false); // What is an Armor Refinement?
 
             AddButton(98, 275, 9904, 9905, 1, GumpButtonType.Page, 3);
-            AddHtmlLocalized(125, 275, 250, 20, 1153996, 0xFFFFFF, false, false); // Where can I find components? 
+            AddHtmlLocalized(125, 275, 250, 20, 1153996, 0xFFFFFF, false, false); // Where can I find components?
 
             AddButton(98, 295, 9904, 9905, 1, GumpButtonType.Page, 4);
             AddHtmlLocalized(125, 295, 250, 20, 1153997, 0xFFFFFF, false, false); // What raw materials do I need to use?

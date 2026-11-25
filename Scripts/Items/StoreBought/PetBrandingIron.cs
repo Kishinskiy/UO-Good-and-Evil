@@ -12,7 +12,7 @@ namespace Server.Items
         public override int SuccessMessage => 1157382;  // // You brand the pet.
         public override int TargetMessage => 1157379;  // Select a pet to brand.
         public override int RemoveMessage => 1157380;  // You remove the brand from the pet.
-        public override int OutOfChargesMessage => 1157377;  // There are no charges left on this branding iron.	
+        public override int OutOfChargesMessage => 1157377;  // There are no charges left on this branding iron.
         public override int NotAccessibleMessage => 1157376;  // The selected pet is not accessible to brand.
         public override int CannotEngraveMessage => 1157375;  // The selected pet cannot be branded by this branding iron.
 

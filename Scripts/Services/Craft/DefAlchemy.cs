@@ -249,7 +249,7 @@ namespace Server.Engines.Craft
             AddRes(index, typeof(Potash), 1116319, 1, 1044253);
             SetNeedWater(index, true);
 
-            // Strange Brew         
+            // Strange Brew
             index = AddCraft(typeof(SmokeBomb), 1116353, 1030248, 90.0, 120.0, typeof(Eggs), 1044477, 1, 1044253);
             AddRes(index, typeof(Ginseng), 1044356, 3, 1044364);
 

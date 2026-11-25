@@ -126,7 +126,7 @@ namespace Server.Items
 
                 AddImageTiled(5, 35, 390, 125, 0xA40);
 
-                /* 
+                /*
 				 * The next time that you try to enhance an item the success rate will be the value listed
 				 * below regardless of your skill and total intensity of the item. Skill requirements still
 				 * apply to material usage.  One charge on this item will be consumed per use and only one

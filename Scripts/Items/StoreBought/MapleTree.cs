@@ -55,7 +55,7 @@ namespace Server.Items
 
         public void GetOptions(RewardOptionList list)
         {
-            list.Add(0, 1071104); // Maple Tree 
+            list.Add(0, 1071104); // Maple Tree
             list.Add(1, 1071301); // Maple Tree (trunk)
         }
 
@@ -75,7 +75,7 @@ namespace Server.Items
                 from.SendGump(new RewardOptionGump(this));
             }
             else
-                from.SendLocalizedMessage(1062334); // This item must be in your backpack to be used.       	
+                from.SendLocalizedMessage(1062334); // This item must be in your backpack to be used.
         }
 
         public override void Serialize(GenericWriter writer)

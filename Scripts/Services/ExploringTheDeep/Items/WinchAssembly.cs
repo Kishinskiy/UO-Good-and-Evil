@@ -33,7 +33,7 @@ namespace Server.Items
         {
             DeleteWinchAssembly(m);
 
-            // Winch 
+            // Winch
             WinchAssembly winch = new WinchAssembly();
             WeakEntityCollection.Add(EntityName, winch);
 
@@ -108,7 +108,7 @@ namespace Server.Items
 
             if (Hatch != null)
             {
-                Hatch.Reset();  
+                Hatch.Reset();
             }
         }
 

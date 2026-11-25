@@ -1586,7 +1586,7 @@ namespace Server.Gumps
             AddCheck(182, 148, 210, 211, false, 137);
             AddCheck(182, 173, 210, 211, false, 138);
             //AddCheck( 182, 198, 210, 211, false, 139 );
-            //AddCheck( 182, 223, 210, 211, false, 140 ); 
+            //AddCheck( 182, 223, 210, 211, false, 140 );
 
             AddLabel(110, 255, 200, "5/5");
             AddButton(10, 255, 0xFAE, 0xFB0, 0, GumpButtonType.Page, 4);

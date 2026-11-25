@@ -128,7 +128,7 @@ namespace Server.Gumps
                     yOffset += 1;
 
                     AddButton(250, 90 + (yOffset * 20), 4005, 4007, 10141, GumpButtonType.Reply, 0);
-                    AddHtmlLocalized(295, 90 + (yOffset * 20), 150, 18, 1079759, LabelColor, false, false);       //Mage Weapon 
+                    AddHtmlLocalized(295, 90 + (yOffset * 20), 150, 18, 1079759, LabelColor, false, false);       //Mage Weapon
                     yOffset += 1;
 
                     if (m_Item is BaseWeapon && (((BaseWeapon)m_Item).Attributes.SpellChanneling == 0 || ((BaseWeapon)m_Item).Attributes.CastSpeed < 0))
@@ -150,7 +150,7 @@ namespace Server.Gumps
                 else if (itemRef == 4)
                 {
                     AddButton(250, 90 + (yOffset * 20), 4005, 4007, 10122, GumpButtonType.Reply, 0);
-                    AddHtmlLocalized(295, 90 + (yOffset * 20), 150, 18, 1079766, LabelColor, false, false);       //Spell Channeling 
+                    AddHtmlLocalized(295, 90 + (yOffset * 20), 150, 18, 1079766, LabelColor, false, false);       //Spell Channeling
                     yOffset += 1;
 
                     if (m_Item is BaseShield && (((BaseShield)m_Item).Attributes.SpellChanneling == 0 || ((BaseShield)m_Item).Attributes.CastSpeed < 0))
@@ -178,7 +178,7 @@ namespace Server.Gumps
                     yOffset += 1;
 
                     AddButton(250, 90 + (yOffset * 20), 4005, 4007, 10115, GumpButtonType.Reply, 0);
-                    AddHtmlLocalized(295, 90 + (yOffset * 20), 150, 18, 1075618, LabelColor, false, false);       //Faster Cast Recovery 
+                    AddHtmlLocalized(295, 90 + (yOffset * 20), 150, 18, 1075618, LabelColor, false, false);       //Faster Cast Recovery
                 }
             }
             else if (menuCat == 2) // == COMBAT ==
@@ -277,7 +277,7 @@ namespace Server.Gumps
                 else if (itemRef == 6)
                 {
                     AddButton(250, 90 + (yOffset * 20), 4005, 4007, 10123, GumpButtonType.Reply, 0);
-                    AddHtmlLocalized(295, 90 + (yOffset * 20), 150, 18, 1015168, LabelColor, false, false);       //Night Sight 
+                    AddHtmlLocalized(295, 90 + (yOffset * 20), 150, 18, 1015168, LabelColor, false, false);       //Night Sight
                     yOffset += 1;
 
                     AddButton(250, 90 + (yOffset * 20), 4005, 4007, 10121, GumpButtonType.Reply, 0);
@@ -370,7 +370,7 @@ namespace Server.Gumps
                     yOffset += 1;
 
                     AddButton(250, 90 + (yOffset * 20), 4005, 4007, 10108, GumpButtonType.Reply, 0);
-                    AddHtmlLocalized(295, 90 + (yOffset * 20), 150, 18, 1079756, LabelColor, false, false);       //Intelligence Bonus                  
+                    AddHtmlLocalized(295, 90 + (yOffset * 20), 150, 18, 1079756, LabelColor, false, false);       //Intelligence Bonus
                     yOffset += 1;
 
                     AddButton(250, 90 + (yOffset * 20), 4005, 4007, 10107, GumpButtonType.Reply, 0);
@@ -428,7 +428,7 @@ namespace Server.Gumps
                 yOffset += 1;
 
                 AddButton(250, 90 + (yOffset * 20), 4005, 4007, 10136, GumpButtonType.Reply, 0);
-                AddHtmlLocalized(295, 90 + (yOffset * 20), 150, 18, 1079704, LabelColor, false, false);           //Hit Harm                
+                AddHtmlLocalized(295, 90 + (yOffset * 20), 150, 18, 1079704, LabelColor, false, false);           //Hit Harm
                 yOffset += 1;
 
                 AddButton(250, 90 + (yOffset * 20), 4005, 4007, 10137, GumpButtonType.Reply, 0);

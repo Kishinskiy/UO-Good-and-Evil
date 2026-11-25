@@ -123,7 +123,7 @@ namespace Server.Items
             if (!IsChildOf(from.Backpack) || from.Backpack == null)
                 from.SendLocalizedMessage(1054107); // This item must be in your backpack.
             else if (!CheckSkill(from))
-                from.SendLocalizedMessage(1153981, m_CraftType.ToString()); // Only a Grandmaster ~1_PROFESSION~ would know what to do with this. 
+                from.SendLocalizedMessage(1153981, m_CraftType.ToString()); // Only a Grandmaster ~1_PROFESSION~ would know what to do with this.
             else if (!from.Backpack.ConsumeTotal(GetRawMaterial(), 20))
                 from.SendLocalizedMessage(1153978); // You lack the required quantity of raw materials to craft the Armor Refinement.
             else
@@ -481,7 +481,7 @@ namespace Server.Items
         }
 
         private readonly int[][] ItemIDs = new int[][]
-        {            // Smith  Tail   Carp  
+        {            // Smith  Tail   Carp
 			new int[] { 19676, 19675, 19677 },  //Reinforcing
 			new int[] { 19676, 19675, 19677 }   //Deflecing
 		};
