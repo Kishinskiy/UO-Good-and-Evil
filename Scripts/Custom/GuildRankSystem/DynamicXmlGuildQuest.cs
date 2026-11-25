@@ -129,6 +129,15 @@ namespace Server.Engines.Quests
                 }
             }
         }
+        
+        public override void OnCompleted()
+        {
+	        if (Owner != null)
+	        {
+		        Owner.PlaySound(CompleteSound);
+		        Owner.SendMessage(0x35, "Испытание выполнено! Вернитесь к любому гильдмастеру, чтобы сдать квест и получить новый ранг.");
+	        }
+        }
 
         public override void Serialize(GenericWriter writer)
         {

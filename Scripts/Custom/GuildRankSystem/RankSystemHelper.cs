@@ -1,11 +1,141 @@
 using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using Server;
+using Server.Commands;
 using Server.Mobiles;
 
 namespace Server.Engines.Quests
 {
+    public class MonsterRankEntry
+    {
+        public int Level { get; set; }
+        public int MinThreat { get; set; }
+        public int Points { get; set; }
+    }
+
     public static class RankSystemHelper
     {
-        // Определяем ранг монстра (10 = слабый, 1 = босс, 0 = мирный/слишком слабый)
+        private static readonly string ConfigPath = Path.Combine(Core.BaseDirectory, "Config", "Rank.cfg");
+
+        public static int MaxRankBelow { get; private set; } = 2;
+        public static int MaxRankAbove { get; private set; } = 2;
+        public static double WeakMonsterMultiplier { get; private set; } = 0.5;
+
+        public static List<MonsterRankEntry> MonsterRanks { get; private set; } = new List<MonsterRankEntry>();
+        public static Dictionary<int, int> PlayerRankRequirements { get; private set; } = new Dictionary<int, int>();
+
+        public static void Initialize()
+        {
+            CommandSystem.Register("ReloadRankConfig", AccessLevel.Administrator, e =>
+            {
+                LoadConfig();
+                e.Mobile.SendMessage(0x35, "Конфигурация Config/Rank.cfg успешно перезагружена.");
+            });
+
+            LoadConfig();
+        }
+
+        public static void LoadConfig()
+        {
+            LoadDefaults();
+
+            if (!File.Exists(ConfigPath))
+            {
+                Console.WriteLine($"[GuildRankSystem] Файл {ConfigPath} не найден! Используются значения по умолчанию.");
+                return;
+            }
+
+            try
+            {
+                Dictionary<string, string> values = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+
+                foreach (string rawLine in File.ReadAllLines(ConfigPath))
+                {
+                    string line = rawLine.Trim();
+                    if (string.IsNullOrEmpty(line) || line.StartsWith("#") || line.StartsWith("//"))
+                        continue;
+
+                    int eqIndex = line.IndexOf('=');
+                    if (eqIndex <= 0)
+                        continue;
+
+                    string key = line.Substring(0, eqIndex).Trim();
+                    string val = line.Substring(eqIndex + 1).Trim();
+                    values[key] = val;
+                }
+
+                if (values.TryGetValue("MaxRankBelow", out string belowStr) && int.TryParse(belowStr, out int below))
+                    MaxRankBelow = below;
+
+                if (values.TryGetValue("MaxRankAbove", out string aboveStr) && int.TryParse(aboveStr, out int above))
+                    MaxRankAbove = above;
+
+                if (values.TryGetValue("WeakMonsterMultiplier", out string multStr) &&
+                    double.TryParse(multStr, NumberStyles.Any, CultureInfo.InvariantCulture, out double mult))
+                    WeakMonsterMultiplier = mult;
+
+                for (int level = 1; level <= 10; level++)
+                {
+                    var entry = MonsterRanks.FirstOrDefault(r => r.Level == level);
+                    if (entry == null)
+                    {
+                        entry = new MonsterRankEntry { Level = level };
+                        MonsterRanks.Add(entry);
+                    }
+
+                    if (values.TryGetValue($"MonsterRank.{level}.MinThreat", out string threatStr) && int.TryParse(threatStr, out int threat))
+                        entry.MinThreat = threat;
+
+                    if (values.TryGetValue($"MonsterRank.{level}.Points", out string ptsStr) && int.TryParse(ptsStr, out int pts))
+                        entry.Points = pts;
+                }
+
+                MonsterRanks = MonsterRanks.OrderBy(r => r.Level).ToList();
+
+                for (int fromRank = 2; fromRank <= 11; fromRank++)
+                {
+                    if (values.TryGetValue($"PlayerRank.{fromRank}.RequiredPoints", out string reqStr) && int.TryParse(reqStr, out int req))
+                        PlayerRankRequirements[fromRank] = req;
+                }
+
+                Console.WriteLine("[GuildRankSystem] Настройки успешно загружены из Config/Rank.cfg.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[GuildRankSystem] Ошибка чтения Config/Rank.cfg: {ex.Message}");
+            }
+        }
+
+        private static void LoadDefaults()
+        {
+            MaxRankBelow = 2;
+            MaxRankAbove = 2;
+            WeakMonsterMultiplier = 0.5;
+
+            MonsterRanks = new List<MonsterRankEntry>
+            {
+                new MonsterRankEntry { Level = 1, MinThreat = 25000, Points = 650 },
+                new MonsterRankEntry { Level = 2, MinThreat = 18000, Points = 400 },
+                new MonsterRankEntry { Level = 3, MinThreat = 13000, Points = 250 },
+                new MonsterRankEntry { Level = 4, MinThreat = 9000,  Points = 160 },
+                new MonsterRankEntry { Level = 5, MinThreat = 6000,  Points = 100 },
+                new MonsterRankEntry { Level = 6, MinThreat = 4000,  Points = 65 },
+                new MonsterRankEntry { Level = 7, MinThreat = 2500,  Points = 40 },
+                new MonsterRankEntry { Level = 8, MinThreat = 1500,  Points = 25 },
+                new MonsterRankEntry { Level = 9, MinThreat = 900,   Points = 15 },
+                new MonsterRankEntry { Level = 10, MinThreat = 500,  Points = 10 }
+            };
+
+            PlayerRankRequirements = new Dictionary<int, int>
+            {
+                { 11, 5000 }, { 10, 8000 }, { 9, 12000 }, { 8, 18000 }, { 7, 25000 },
+                { 6, 35000 }, { 5, 48000 }, { 4, 62000 }, { 3, 80000 }, { 2, 100000 }
+            };
+        }
+
         public static int GetMonsterRank(BaseCreature bc)
         {
             if (bc == null || bc.Summoned || bc.Controlled)
@@ -14,61 +144,29 @@ namespace Server.Engines.Quests
             int negativeKarma = bc.Karma < 0 ? Math.Abs(bc.Karma) : 0;
             int totalThreat = bc.Fame + negativeKarma;
 
-            if (totalThreat < 500)
-                return 0;
+            foreach (var rank in MonsterRanks)
+            {
+                if (totalThreat >= rank.MinThreat)
+                    return rank.Level;
+            }
 
-            if (totalThreat >= 25000) return 1;  // Древние драконы, балроны
-            if (totalThreat >= 18000) return 2;  // Драконы, личи-лорды
-            if (totalThreat >= 13000) return 3;  // Демоны, титаны
-            if (totalThreat >= 9000)  return 4;  // Элементали крови, циклопы
-            if (totalThreat >= 6000)  return 5;  // Огры-лорды, виверны
-            if (totalThreat >= 4000)  return 6;  // Личи, горгульи
-            if (totalThreat >= 2500)  return 7;  // Эттины, тролли
-            if (totalThreat >= 1500)  return 8;  // Орки-капитаны, гарпии
-            if (totalThreat >= 900)   return 9;  // Зомби, скелеты-воины
-
-            return 10; // Обычные скелеты, крысы, монбаты
+            return 0;
         }
 
-        // Базовые очки за убийство монстра определенного ранга
         public static int GetBasePointsByMonsterRank(int monsterRank)
         {
-            switch (monsterRank)
-            {
-                case 10: return 10;   // 250 штук для 2500 очков
-                case 9:  return 16;
-                case 8:  return 25;
-                case 7:  return 40;
-                case 6:  return 65;
-                case 5:  return 100;
-                case 4:  return 150;
-                case 3:  return 220;
-                case 2:  return 320;
-                case 1:  return 500;  // 40 штук для 20000 очков
-                default: return 0;
-            }
+            var entry = MonsterRanks.FirstOrDefault(r => r.Level == monsterRank);
+            return entry != null ? entry.Points : 0;
         }
 
-        // Сколько очков нужно набрать для перехода на следующий ранг
         public static int GetRequiredPointsForRank(int currentPlayerRank)
         {
-            switch (currentPlayerRank)
-            {
-                case 11: return 2500;  // Испытание на 10-й ранг
-                case 10: return 3500;  // Испытание на 9-й ранг
-                case 9:  return 4500;  // Испытание на 8-й ранг
-                case 8:  return 6000;  // Испытание на 7-й ранг
-                case 7:  return 7500;  // Испытание на 6-й ранг
-                case 6:  return 9500;  // Испытание на 5-й ранг
-                case 5:  return 11500; // Испытание на 4-й ранг
-                case 4:  return 14000; // Испытание на 3-й ранг
-                case 3:  return 17000; // Испытание на 2-й ранг
-                case 2:  return 20000; // Испытание на 1-й ранг (высший)
-                default: return 2500;
-            }
+            if (PlayerRankRequirements.TryGetValue(currentPlayerRank, out int points))
+                return points;
+
+            return 5000;
         }
 
-        // Итоговый расчет очков с учетом разницы рангов
         public static int CalculateEarnedPoints(int playerRank, int monsterRank)
         {
             if (monsterRank <= 0)
@@ -76,16 +174,17 @@ namespace Server.Engines.Quests
 
             int targetRank = Math.Max(1, playerRank - 1);
 
-            // Защита от фарма слабых мобов (разница больше 2 рангов)
-            if (monsterRank > targetRank + 2)
+            if (monsterRank > targetRank + MaxRankBelow)
+                return 0;
+
+            if (monsterRank < targetRank - MaxRankAbove)
                 return 0;
 
             int points = GetBasePointsByMonsterRank(monsterRank);
 
-            // Штраф 50%, если монстр на 1-2 ранга слабее текущего испытания
             if (monsterRank > targetRank)
             {
-                points = Math.Max(1, points / 2);
+                points = Math.Max(1, (int)(points * WeakMonsterMultiplier));
             }
 
             return points;

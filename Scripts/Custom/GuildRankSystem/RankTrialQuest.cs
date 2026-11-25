@@ -53,5 +53,14 @@ namespace Server.Engines.Quests
 				Owner.SendMessage(0x35, $"Поздравляем! Ваш новый статус: {Owner.GetGuildRankTitle()}!");
 			}
 		}
+		
+		public override void OnCompleted()
+		{
+			if (Owner != null)
+			{
+				Owner.PlaySound(CompleteSound);
+				Owner.SendMessage(0x35, "Испытание выполнено! Вернитесь к любому гильдмастеру, чтобы сдать квест и получить новый ранг.");
+			}
+		}
 	}
 }
