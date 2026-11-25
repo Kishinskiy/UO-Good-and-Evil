@@ -4364,6 +4364,9 @@ namespace Server.Mobiles
 
             switch (version)
             {
+	            case 44:
+		            m_QuestGuildRank = reader.ReadInt();
+		            goto case 43;
 	            case 43:
 		            m_ActivatedShrines = (ActivatedShrines)reader.ReadInt();
 		            goto case 42;
@@ -4835,7 +4838,9 @@ namespace Server.Mobiles
 
             base.Serialize(writer);
 
-            writer.Write(43); // version
+            writer.Write(44); // version
+            
+            writer.Write(m_QuestGuildRank);
             
             writer.Write((int)m_ActivatedShrines);
 
@@ -5146,6 +5151,8 @@ namespace Server.Mobiles
             {
 	            list.Add(1060658, "Статус\tВладыка Тьмы (Evil)");
             }
+            
+            list.Add(1060658, $"Ранг гильдии\t{GetGuildRankTitle()}");
 
             Engines.JollyRoger.JollyRogerData.DisplayTitle(this, list);
 

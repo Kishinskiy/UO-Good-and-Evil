@@ -3,12 +3,24 @@ using Server.Items;
 using Server.Network;
 using System;
 using System.Collections.Generic;
+using Server.Engines.Quests;
 
 namespace Server.Mobiles
 {
     public abstract class BaseGuildmaster : BaseVendor
     {
         private readonly List<SBInfo> m_SBInfos = new List<SBInfo>();
+        public override Type[] Quests
+        {
+	        get
+	        {
+		        return new Type[]
+		        {
+			        typeof(RankTrialQuest)
+		        };
+	        }
+        }
+
         public BaseGuildmaster(string title)
             : base(title)
         {

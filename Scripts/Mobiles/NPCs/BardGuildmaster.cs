@@ -18,6 +18,7 @@ namespace Server.Mobiles
             : base(serial)
         {
         }
+        
 
         public override NpcGuild NpcGuild => NpcGuild.BardsGuild;
         public override void Serialize(GenericWriter writer)
