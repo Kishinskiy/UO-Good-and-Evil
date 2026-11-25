@@ -129,22 +129,23 @@ namespace Server.Mobiles
         {
             if (from is PlayerMobile pm && pm.InRange(Location, 3))
             {
-                // 1. Проверяем активные квесты (испытание ранга или взятый XML-квест)
-                foreach (BaseQuest active in pm.Quests)
-                {
-                    if (active is RankTrialQuest || active is DynamicXmlGuildQuest)
-                    {
-                        if (active.Completed)
-                        {
-                            active.GiveRewards();
-                        }
-                        else
-                        {
-                            pm.SendGump(new MondainQuestGump(active, MondainQuestGump.Section.InProgress, false));
-                        }
-                        return;
-                    }
-                }
+	            // 1. Проверяем активные квесты (испытание ранга или взятый XML-квест)
+	            foreach (BaseQuest active in pm.Quests)
+	            {
+		            if (active is RankTrialQuest || active is DynamicXmlGuildQuest)
+		            {
+			            if (active.Completed)
+			            {
+				            // Открываем стандартное окно сдачи квеста с текстом Complete и кнопкой получения награды
+				            pm.SendGump(new MondainQuestGump(active, MondainQuestGump.Section.Complete, false));
+			            }
+			            else
+			            {
+				            pm.SendGump(new MondainQuestGump(active, MondainQuestGump.Section.InProgress, false));
+			            }
+			            return;
+		            }
+	            }
 
                 // 2. Собираем доступные квесты
                 List<BaseQuest> availableQuests = new List<BaseQuest>();

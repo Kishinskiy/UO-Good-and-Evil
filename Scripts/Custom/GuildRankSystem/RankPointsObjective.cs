@@ -24,7 +24,6 @@ namespace Server.Engines.Quests
         {
             if (e.Killer is PlayerMobile pm && e.Creature is BaseCreature bc)
             {
-                // Проверяем все активные квесты игрока
                 if (pm.Quests == null)
                     return;
 
@@ -60,7 +59,18 @@ namespace Server.Engines.Quests
             }
             else
             {
-                pm.SendMessage(0x22, $"Этот враг ({monsterRank}-й ранг) слишком слаб для вашего текущего испытания.");
+                int targetRank = Math.Max(1, pm.QuestGuildRank - 1);
+                int minAllowedRank = Math.Max(1, targetRank - RankSystemHelper.MaxRankAbove);
+                int maxAllowedRank = Math.Min(10, targetRank + RankSystemHelper.MaxRankBelow);
+
+                if (monsterRank < minAllowedRank)
+                {
+                    pm.SendMessage(0x22, $"Этот враг ({monsterRank}-й ранг) слишком опасен для вашего текущего испытания (нужны враги {minAllowedRank}–{maxAllowedRank} рангов).");
+                }
+                else
+                {
+                    pm.SendMessage(0x22, $"Этот враг ({monsterRank}-й ранг) слишком слаб для вашего текущего испытания (нужны враги {minAllowedRank}–{maxAllowedRank} рангов).");
+                }
             }
         }
     }
