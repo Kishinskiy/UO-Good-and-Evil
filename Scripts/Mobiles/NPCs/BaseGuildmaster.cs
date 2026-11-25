@@ -10,17 +10,6 @@ namespace Server.Mobiles
     public abstract class BaseGuildmaster : BaseVendor
     {
         private readonly List<SBInfo> m_SBInfos = new List<SBInfo>();
-        public override Type[] Quests
-        {
-	        get
-	        {
-		        return new Type[]
-		        {
-			        typeof(RankTrialQuest)
-		        };
-	        }
-        }
-
         public BaseGuildmaster(string title)
             : base(title)
         {
@@ -123,6 +112,70 @@ namespace Server.Mobiles
             base.OnSpeech(e);
         }
 
+        public virtual Type[] GuildQuests
+        {
+            get
+            {
+                return new Type[]
+                {
+                    typeof(RankTrialQuest)
+                    // Сюда в будущем добавляйте новые квесты гильдии, например:
+                    // typeof(MyRank5GuildQuest),
+                };
+            }
+        }
+
+        public override void OnDoubleClick(Mobile from)
+        {
+            if (from is PlayerMobile pm && pm.InRange(Location, 3))
+            {
+                // 1. Сначала проверяем, нет ли у игрока уже взятых квестов из списка гильдмастера
+                foreach (Type questType in GuildQuests)
+                {
+                    BaseQuest active = QuestHelper.GetQuest(pm, questType);
+                    if (active != null)
+                    {
+                        if (active.Completed)
+                        {
+                            active.GiveRewards();
+                        }
+                        else
+                        {
+                            pm.SendGump(new MondainQuestGump(active, MondainQuestGump.Section.InProgress, false));
+                        }
+                        return;
+                    }
+                }
+
+                // 2. Собираем все доступные для игрока квесты (с учетом его текущего ранга)
+                List<BaseQuest> availableQuests = new List<BaseQuest>();
+
+                foreach (Type questType in GuildQuests)
+                {
+                    if (Activator.CreateInstance(questType) is BaseQuest quest)
+                    {
+                        quest.Owner = pm;
+                        quest.Quester = this;
+
+                        if (quest.CanOffer())
+                        {
+                            availableQuests.Add(quest);
+                        }
+                    }
+                }
+
+                // 3. Если есть доступные квесты — открываем стандартное окно выбора квестов
+                if (availableQuests.Count > 0)
+                {
+	                pm.SendGump(new MondainQuestGump(availableQuests[0]));
+	                return;
+                }
+            }
+
+            base.OnDoubleClick(from);
+        }
+        
+        
         public override bool OnGoldGiven(Mobile from, Gold dropped)
         {
             if (from is PlayerMobile && dropped.Amount == JoinCost)
