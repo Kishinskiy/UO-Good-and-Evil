@@ -1,4 +1,9 @@
 using System;
+using System.IO;
+using System.Xml;
+using System.Globalization;
+using System.Collections.Generic;
+using System.Linq;
 using Server;
 using Server.Items;
 using Server.Mobiles;
@@ -7,52 +12,121 @@ using Server.Engines.Points;
 using Server.Custom.CityLevels;
 using LoyaltyRating = Server.Engines.CityLoyalty.LoyaltyRating;
 
-
 namespace Server.Custom.CityHunting
 {
+    public class TierRequirementDef
+    {
+        public int Level { get; set; }
+        public int MinFame { get; set; }
+        public LoyaltyRating MinLoyalty { get; set; }
+        public double MinCityLevel { get; set; }
+    }
+
     public static class CityHuntingSystem
     {
-        private static readonly HuntTargetDef[] Tier1Targets =
-        {
-            new HuntTargetDef("Orc", "Орк", 25, 35, 3500),
-            new HuntTargetDef("Skeleton", "Скелет", 25, 35, 3000),
-            new HuntTargetDef("Ettin", "Эттин", 20, 30, 4500),
-            new HuntTargetDef("Troll", "Тролль", 20, 30, 4500),
-            new HuntTargetDef("Harpy", "Гарпия", 20, 30, 4000)
-        };
+        private static readonly string ConfigXmlPath = Path.Combine(Core.BaseDirectory, "Data/Custom/CityHuntingTargets.xml");
+        private static readonly Dictionary<int, List<HuntTargetDef>> TargetsByTier = new Dictionary<int, List<HuntTargetDef>>();
+        private static readonly List<TierRequirementDef> TierRequirements = new List<TierRequirementDef>();
 
-        private static readonly HuntTargetDef[] Tier2Targets =
-        {
-            new HuntTargetDef("OgreLord", "Огр-лорд", 25, 35, 9000),
-            new HuntTargetDef("Lich", "Лич", 25, 35, 10000),
-            new HuntTargetDef("Gargoyle", "Гаргулья", 25, 35, 8500),
-            new HuntTargetDef("AirElemental", "Воздушный элементаль", 25, 35, 9000),
-            new HuntTargetDef("EarthElemental", "Земляной элементаль", 25, 35, 8500)
-        };
-
-        private static readonly HuntTargetDef[] Tier3Targets =
-        {
-            new HuntTargetDef("Dragon", "Дракон", 15, 25, 22000),
-            new HuntTargetDef("Daemon", "Демон", 15, 25, 20000),
-            new HuntTargetDef("LichLord", "Древний Лич", 15, 25, 24000),
-            new HuntTargetDef("BloodElemental", "Кровавый элементаль", 15, 25, 23000),
-            new HuntTargetDef("Titan", "Титан", 15, 25, 21000)
-        };
-
-        private static readonly HuntTargetDef[] BossTargets =
-        {
-            new HuntTargetDef("Barracoon", "Барракун (Чемпион)", 1, 1, 50000, isBoss: true),
-            new HuntTargetDef("Rikktor", "Рикктор (Повелитель драконов)", 1, 1, 60000, isBoss: true),
-            new HuntTargetDef("Semidar", "Семидар (Владыка демонов)", 1, 1, 60000, isBoss: true),
-            new HuntTargetDef("Mephitis", "Мефитис (Королева пауков)", 1, 1, 55000, isBoss: true),
-            new HuntTargetDef("Neira", "Нейра (Некромант)", 1, 1, 55000, isBoss: true),
-            new HuntTargetDef("DreadHorn", "Дред Хорн (Peerless Босс)", 1, 1, 65000, isBoss: true),
-            new HuntTargetDef("LadyMelisande", "Леди Мелисанда (Peerless Босс)", 1, 1, 65000, isBoss: true)
-        };
+        public static int MaxTier => TierRequirements.Count > 0 ? TierRequirements.Max(t => t.Level) : 8;
 
         public static void Initialize()
         {
+            LoadConfigFromXml();
             EventSink.CreatureDeath += OnCreatureDeath;
+        }
+
+        public static void LoadConfigFromXml()
+        {
+            TargetsByTier.Clear();
+            TierRequirements.Clear();
+
+            if (!File.Exists(ConfigXmlPath))
+            {
+                Console.WriteLine($"[CityHuntingSystem] XML конфиг не найден: {ConfigXmlPath}");
+                return;
+            }
+
+            try
+            {
+                XmlDocument doc = new XmlDocument();
+                doc.Load(ConfigXmlPath);
+
+                // 1. Загружаем требования для каждого Tier
+                XmlNodeList tierNodes = doc.GetElementsByTagName("Tier");
+                foreach (XmlNode node in tierNodes)
+                {
+                    if (node.Attributes == null)
+                        continue;
+
+                    int level = Utility.ToInt32(node.Attributes["level"]?.Value ?? "1");
+                    int minFame = Utility.ToInt32(node.Attributes["minFame"]?.Value ?? "0");
+
+                    string loyaltyStr = node.Attributes["minLoyalty"]?.Value ?? "Unknown";
+                    if (!Enum.TryParse(loyaltyStr, true, out LoyaltyRating minLoyalty))
+                        minLoyalty = LoyaltyRating.Unknown;
+
+                    double minCityLevel = 0.0;
+                    if (double.TryParse(node.Attributes["minCityLevel"]?.Value, NumberStyles.Any, CultureInfo.InvariantCulture, out double parsedLvl))
+                        minCityLevel = parsedLvl;
+
+                    TierRequirements.Add(new TierRequirementDef
+                    {
+                        Level = level,
+                        MinFame = minFame,
+                        MinLoyalty = minLoyalty,
+                        MinCityLevel = minCityLevel
+                    });
+
+                    if (!TargetsByTier.ContainsKey(level))
+                        TargetsByTier[level] = new List<HuntTargetDef>();
+                }
+
+                // Сортируем от высшего тира к низшему для быстрой проверки
+                TierRequirements.Sort((a, b) => b.Level.CompareTo(a.Level));
+
+                // 2. Загружаем цели охоты
+                XmlNodeList targetNodes = doc.GetElementsByTagName("Target");
+                int loadedTargets = 0;
+
+                foreach (XmlNode node in targetNodes)
+                {
+                    if (node.Attributes == null)
+                        continue;
+
+                    int tier = Utility.ToInt32(node.Attributes["tier"]?.Value ?? "1");
+                    string typeName = node.Attributes["type"]?.Value;
+                    string displayName = node.Attributes["name"]?.Value;
+                    int minKills = Utility.ToInt32(node.Attributes["minKills"]?.Value ?? "10");
+                    int maxKills = Utility.ToInt32(node.Attributes["maxKills"]?.Value ?? "20");
+                    int gold = Utility.ToInt32(node.Attributes["gold"]?.Value ?? "1000");
+                    bool isBoss = bool.TryParse(node.Attributes["isBoss"]?.Value, out bool b) && b;
+
+                    if (string.IsNullOrWhiteSpace(typeName) || string.IsNullOrWhiteSpace(displayName))
+                        continue;
+
+                    if (!TargetsByTier.ContainsKey(tier))
+                        TargetsByTier[tier] = new List<HuntTargetDef>();
+
+                    TargetsByTier[tier].Add(new HuntTargetDef(typeName, displayName, minKills, maxKills, gold, isBoss));
+                    loadedTargets++;
+                }
+
+                Console.WriteLine($"[CityHuntingSystem] Загружено тиров: {TierRequirements.Count}, целей охоты: {loadedTargets}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[CityHuntingSystem] Ошибка чтения XML конфига: {ex.Message}");
+            }
+        }
+
+        private static HuntTargetDef GetRandomTargetForTier(int tier)
+        {
+            if (TargetsByTier.TryGetValue(tier, out var list) && list.Count > 0)
+                return list[Utility.Random(list.Count)];
+
+            var fallback = TargetsByTier.Values.SelectMany(x => x).ToList();
+            return fallback.Count > 0 ? fallback[Utility.Random(fallback.Count)] : new HuntTargetDef("Orc", "Орк", 10, 15, 2000);
         }
 
         public static int GetAvailableTier(PlayerMobile pm, City city)
@@ -67,14 +141,12 @@ namespace Server.Custom.CityHunting
                 rating = loyaltySys.GetLoyaltyRating(pm, entry);
             }
 
-            if (pm.Fame >= 10000 && rating >= LoyaltyRating.Adored && cityLevel >= 75.0)
-                return 4;
-
-            if (pm.Fame >= 7000 && rating >= LoyaltyRating.Admired && cityLevel >= 50.0)
-                return 3;
-
-            if (pm.Fame >= 3000 && rating >= LoyaltyRating.Respected && cityLevel >= 25.0)
-                return 2;
+            // Проверяем от максимального Tier к минимальному
+            foreach (var req in TierRequirements)
+            {
+                if (pm.Fame >= req.MinFame && rating >= req.MinLoyalty && cityLevel >= req.MinCityLevel)
+                    return req.Level;
+            }
 
             return 1;
         }
@@ -82,20 +154,24 @@ namespace Server.Custom.CityHunting
         public static HuntingContract GenerateContract(PlayerMobile pm, City city)
         {
             int tier = GetAvailableTier(pm, city);
-            HuntTargetDef[] pool;
-
-            switch (tier)
-            {
-                case 4: pool = BossTargets; break;
-                case 3: pool = Tier3Targets; break;
-                case 2: pool = Tier2Targets; break;
-                default: pool = Tier1Targets; break;
-            }
-
-            HuntTargetDef selected = pool[Utility.Random(pool.Length)];
+            HuntTargetDef selected = GetRandomTargetForTier(tier);
             int requiredKills = Utility.RandomMinMax(selected.MinKills, selected.MaxKills);
 
             return new HuntingContract(pm, city, selected, requiredKills, tier);
+        }
+
+        public static BoardPosting CreateBoardPosting(int tier)
+        {
+            HuntTargetDef selected = GetRandomTargetForTier(tier);
+            int kills = Utility.RandomMinMax(selected.MinKills, selected.MaxKills);
+
+            return new BoardPosting
+            {
+                Target = selected,
+                RequiredKills = kills,
+                Tier = tier,
+                GoldReward = selected.BaseGoldReward + (kills * 150)
+            };
         }
 
         private static void OnCreatureDeath(CreatureDeathEventArgs e)
@@ -138,29 +214,6 @@ namespace Server.Custom.CityHunting
             }
         }
 
-        public static BoardPosting CreateBoardPosting(int tier)
-        {
-            HuntTargetDef[] pool;
-            switch (tier)
-            {
-                case 4: pool = BossTargets; break;
-                case 3: pool = Tier3Targets; break;
-                case 2: pool = Tier2Targets; break;
-                default: pool = Tier1Targets; break;
-            }
-
-            HuntTargetDef selected = pool[Utility.Random(pool.Length)];
-            int kills = Utility.RandomMinMax(selected.MinKills, selected.MaxKills);
-
-            return new BoardPosting
-            {
-                Target = selected,
-                RequiredKills = kills,
-                Tier = tier,
-                GoldReward = selected.BaseGoldReward + (kills * 150)
-            };
-        }
-
         public static void CompleteContractReward(PlayerMobile pm, HuntingContract contract)
         {
             City city = contract.City;
@@ -173,7 +226,8 @@ namespace Server.Custom.CityHunting
             Banker.Deposit(pm, gold);
             pm.SendMessage(0x35, $"Награда в размере {gold} золота переведена в вашу банковскую ячейку!");
 
-            double cityGainChance = isBoss ? 1.0 : (0.35 * tier);
+            // Шанс роста навыка города и прирост репутации масштабируются под 8 тиров
+            double cityGainChance = isBoss ? 1.0 : Math.Min(1.0, 0.15 * tier);
             CityLevelProgression.TryGainCitySkill(city, cityGainChance, pm);
 
             var loyaltySys = CityLoyaltySystem.GetCityInstance(city);
@@ -182,23 +236,21 @@ namespace Server.Custom.CityHunting
                 var entry = loyaltySys.GetPlayerEntry<CityLoyaltyEntry>(pm, true);
                 if (entry != null)
                 {
-                    int loveGain = isBoss ? 500 : (100 * tier);
+                    int loveGain = isBoss ? (100 * tier) : (50 * tier);
                     entry.Love += loveGain;
                     pm.SendMessage(0x59, $"Ваша репутация (Love) в городе {city} выросла на +{loveGain}!");
                 }
             }
-
-            Server.Misc.Titles.AwardFame(pm, isBoss ? 1500 : (250 * tier), true);
-
+            Server.Misc.Titles.AwardFame(pm, isBoss ? (300 * tier) : (120 * tier), true);
             if (isBoss)
             {
-                pm.AddToBackpack(new Server.Custom.WeaponLeveling.WeaponTemperingScroll());
-                pm.SendMessage(0x35, "За голову легендарного босса вы получили Свиток древней закалки оружия!");
+	            pm.AddToBackpack(new Server.Custom.WeaponLeveling.WeaponTemperingScroll());
+	            pm.SendMessage(0x35, "За голову легендарного босса вы получили Свиток древней закалки оружия!");
             }
-            else if (tier >= 3 && Utility.RandomDouble() < 0.25)
+            else if (tier >= 5 && Utility.RandomDouble() < (0.05 * tier))
             {
-                pm.AddToBackpack(new Server.Custom.WeaponLeveling.WeaponTemperingScroll());
-                pm.SendMessage(0x35, "В качестве особой премии вы получили Свиток древней закалки оружия!");
+	            pm.AddToBackpack(new Server.Custom.WeaponLeveling.WeaponTemperingScroll());
+	            pm.SendMessage(0x35, "В качестве особой премии вы получили Свиток древней закалки оружия!");
             }
         }
     }

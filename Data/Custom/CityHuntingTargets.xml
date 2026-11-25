@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CityHuntingConfig>
+    <!-- Требования для открытия каждого Tier (от 1 до 8) -->
+    <Tiers>
+        <Tier level="1" minFame="0" minLoyalty="Unknown" minCityLevel="0.0" />
+        <Tier level="2" minFame="1500" minLoyalty="Neutral" minCityLevel="10.0" />
+        <Tier level="3" minFame="3000" minLoyalty="Liked" minCityLevel="20.0" />
+        <Tier level="4" minFame="5000" minLoyalty="Respected" minCityLevel="35.0" />
+        <Tier level="5" minFame="7000" minLoyalty="Respected" minCityLevel="50.0" />
+        <Tier level="6" minFame="8500" minLoyalty="Admired" minCityLevel="65.0" />
+        <Tier level="7" minFame="10000" minLoyalty="Admired" minCityLevel="80.0" />
+        <Tier level="8" minFame="12000" minLoyalty="Adored" minCityLevel="95.0" />
+    </Tiers>
+
+    <!-- Цели для охоты по рангам -->
+    <Targets>
+        <!-- Tier 1: Начальные монстры -->
+        <Target tier="1" type="Orc" name="Орк" minKills="20" maxKills="30" gold="3000" />
+        <Target tier="1" type="Skeleton" name="Скелет" minKills="20" maxKills="30" gold="2500" />
+        <Target tier="1" type="Zombie" name="Зомби" minKills="20" maxKills="30" gold="2500" />
+        <Target tier="1" type="Ettin" name="Эттин" minKills="15" maxKills="25" gold="4000" />
+        <Target tier="1" type="Troll" name="Тролль" minKills="15" maxKills="25" gold="4000" />
+
+        <!-- Tier 2: Опытные охотники -->
+        <Target tier="2" type="Harpy" name="Гарпия" minKills="20" maxKills="30" gold="5000" />
+        <Target tier="2" type="Ogre" name="Огр" minKills="20" maxKills="30" gold="5500" />
+        <Target tier="2" type="EarthElemental" name="Земляной элементаль" minKills="20" maxKills="30" gold="6500" />
+        <Target tier="2" type="AirElemental" name="Воздушный элементаль" minKills="20" maxKills="30" gold="6500" />
+        <Target tier="2" type="Gargoyle" name="Гаргулья" minKills="20" maxKills="30" gold="7000" />
+
+        <!-- Tier 3: Опасные подземелья -->
+        <Target tier="3" type="OgreLord" name="Огр-лорд" minKills="20" maxKills="30" gold="9500" />
+        <Target tier="3" type="Lich" name="Лич" minKills="20" maxKills="30" gold="10500" />
+        <Target tier="3" type="FireElemental" name="Огненный элементаль" minKills="20" maxKills="30" gold="10000" />
+        <Target tier="3" type="WaterElemental" name="Водный элементаль" minKills="20" maxKills="30" gold="10000" />
+        <Target tier="3" type="Cyclops" name="Циклоп" minKills="15" maxKills="25" gold="11000" />
+
+        <!-- Tier 4: Элитные существа -->
+        <Target tier="4" type="Titan" name="Титан" minKills="15" maxKills="25" gold="15000" />
+        <Target tier="4" type="Daemon" name="Демон" minKills="15" maxKills="25" gold="16000" />
+        <Target tier="4" type="Wyvern" name="Виверна" minKills="15" maxKills="25" gold="15500" />
+        <Target tier="4" type="DreadSpider" name="Ужасный паук" minKills="15" maxKills="25" gold="15000" />
+        <Target tier="4" type="Executioner" name="Палач" minKills="15" maxKills="25" gold="14500" />
+
+        <!-- Tier 5: Мастера охоты -->
+        <Target tier="5" type="Dragon" name="Дракон" minKills="12" maxKills="20" gold="22000" />
+        <Target tier="5" type="LichLord" name="Древний Лич" minKills="12" maxKills="20" gold="24000" />
+        <Target tier="5" type="BloodElemental" name="Кровавый элементаль" minKills="12" maxKills="20" gold="23000" />
+        <Target tier="5" type="PoisonElemental" name="Ядовитый элементаль" minKills="12" maxKills="20" gold="23500" />
+        <Target tier="5" type="ElderGazer" name="Древний созерцатель" minKills="12" maxKills="20" gold="22500" />
+
+        <!-- Tier 6: Смертоносные твари -->
+        <Target tier="6" type="AncientWyrm" name="Древний змий" minKills="8" maxKills="15" gold="32000" />
+        <Target tier="6" type="Balron" name="Балрон" minKills="8" maxKills="15" gold="35000" />
+        <Target tier="6" type="ShadowWyrm" name="Теневой змий" minKills="8" maxKills="15" gold="34000" />
+        <Target tier="6" type="Succubus" name="Суккуб" minKills="10" maxKills="15" gold="30000" />
+        <Target tier="6" type="SkeletalDragon" name="Костяной дракон" minKills="8" maxKills="12" gold="36000" />
+
+        <!-- Tier 7: Чемпионы подземелий -->
+        <Target tier="7" type="Barracoon" name="Барракун (Чемпион)" minKills="1" maxKills="1" gold="50000" isBoss="true" />
+        <Target tier="7" type="Mephitis" name="Мефитис (Королева пауков)" minKills="1" maxKills="1" gold="52000" isBoss="true" />
+        <Target tier="7" type="Neira" name="Нейра (Некромант)" minKills="1" maxKills="1" gold="52000" isBoss="true" />
+        <Target tier="7" type="Semidar" name="Семидар (Владыка демонов)" minKills="1" maxKills="1" gold="55000" isBoss="true" />
+        <Target tier="7" type="Rikktor" name="Рикктор (Повелитель драконов)" minKills="1" maxKills="1" gold="55000" isBoss="true" />
+
+        <!-- Tier 8: Легендарные Peerless-боссы -->
+        <Target tier="8" type="DreadHorn" name="Дред Хорн (Peerless Босс)" minKills="1" maxKills="1" gold="70000" isBoss="true" />
+        <Target tier="8" type="LadyMelisande" name="Леди Мелисанда (Peerless Босс)" minKills="1" maxKills="1" gold="70000" isBoss="true" />
+        <Target tier="8" type="Travesty" name="Травести (Peerless Босс)" minKills="1" maxKills="1" gold="75000" isBoss="true" />
+        <Target tier="8" type="MonstrousInterredGrizzle" name="Чудовищный Гриззл (Peerless)" minKills="1" maxKills="1" gold="75000" isBoss="true" />
+        <Target tier="8" type="ShimmeringEffusion" name="Сияющая Эффузия (Peerless)" minKills="1" maxKills="1" gold="80000" isBoss="true" />
+    </Targets>
+</CityHuntingConfig>
