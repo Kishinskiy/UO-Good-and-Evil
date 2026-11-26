@@ -36,7 +36,7 @@
         <Description>Ты достаточно окреп, чтобы покинуть ряды новичков. Уничтожь 100 монстров низшего (10-го) ранга, чтобы доказать свою силу и снять статус Young.</Description>
         <OnlyYoung>true</OnlyYoung>
         <RequiredRank>11</RequiredRank>
-        <GuildType>Warrior</GuildType>
+        <GuildType>WarriorsGuild</GuildType>
 
         <!-- Требования к характеристикам и навыкам -->
         <MinStr>60</MinStr>
@@ -47,7 +47,7 @@
 
         <!-- Цель: убить 100 монстров 10-го ранга -->
         <ObjectiveType>SlayRank</ObjectiveType>
-        <TargetRank>10</TargetRank>
+        <TargetRank>6</TargetRank>
         <Amount>100</Amount>
 
         <!-- Награда: снятие статуса Young + золото -->
@@ -60,7 +60,7 @@
         <Description>Твой разум уже способен удерживать сложные плетения эфира. Собери 100 единиц Кровавого Мха (Blood Moss), чтобы доказать свое мастерство поиска компонентов и снять статус новичка.</Description>
         <OnlyYoung>true</OnlyYoung>
         <RequiredRank>11</RequiredRank>
-        <GuildType>Mage</GuildType>
+        <GuildType>MagesGuild</GuildType>
 
         <MinStr>25</MinStr>
         <MinDex>25</MinDex>
@@ -85,7 +85,7 @@
         <Description>Смерть больше не страшит тебя, но темные искусства требуют жертв. Уничтожь 50 скелетов, чтобы напитать свою ауру энергией смерти и снять защиту новичка.</Description>
         <OnlyYoung>true</OnlyYoung>
         <RequiredRank>11</RequiredRank>
-        <GuildType>Mage</GuildType>
+        <GuildType>MagesGuild</GuildType>
 
         <MinStr>30</MinStr>
         <MinDex>25</MinDex>
@@ -110,7 +110,7 @@
         <Description>Истинный рыцарь защищает слабых от порождений тьмы. Истреби 60 зомби, очистив окрестности от скверны, и ты будешь признан полноправным воином.</Description>
         <OnlyYoung>true</OnlyYoung>
         <RequiredRank>11</RequiredRank>
-        <GuildType>Warrior</GuildType>
+        <GuildType>WarriorsGuild</GuildType>
 
         <MinStr>70</MinStr>
         <MinDex>40</MinDex>
@@ -135,7 +135,7 @@
         <Description>Твоя рука тверда, а стрелы бьют без промаха. Выследи и убей 50 гигантских пауков (Giant Spider) в лесах, чтобы доказать свое искусство следопыта.</Description>
         <OnlyYoung>true</OnlyYoung>
         <RequiredRank>11</RequiredRank>
-        <GuildType>Ranger</GuildType>
+        <GuildType>RangersGuild</GuildType>
 
         <MinStr>45</MinStr>
         <MinDex>80</MinDex>
@@ -246,6 +246,7 @@
         <Title>Испытание Гильдии: 3-й ранг</Title>
         <Description>Твое имя уже знают в городах. Спустись в Перчатку Судьбы подземелья Doom, одолей Темного Отца (Dark Father) и набери 620 000 очков охоты, чтобы получить 3-й ранг.</Description>
         <ExactRank>4</ExactRank>
+        <RequireNpcGuild>Any</RequireNpcGuild>
         <GuildType>Any</GuildType>
 
         <!-- Две цели: убить главного босса Doom и набрать очки -->
@@ -261,6 +262,7 @@
         <Title>Испытание Гильдии: 2-й ранг</Title>
         <Description>Ты стоишь в шаге от вершины. Одолей Минакс, принеси её сандалии и набери 800 000 очков охоты, чтобы заслужить 2-й ранг.</Description>
         <ExactRank>3</ExactRank>
+        <RequireNpcGuild>Any</RequireNpcGuild>
         <GuildType>Any</GuildType>
 
         <Objective type="Obtain" target="MinaxsSandals" name="Minax's Sandals" amount="1" />
@@ -275,6 +277,7 @@
         <Title>Высшее Испытание Гильдии: 1-й ранг</Title>
         <Description>Финальное испытание. Только легенды достойны 1-го ранга. Сокруши величайших чудовищ этого мира и впиши свое имя в историю гильдии.</Description>
         <ExactRank>2</ExactRank>
+        <RequireNpcGuild>Any</RequireNpcGuild>
         <GuildType>Any</GuildType>
         <RequireHarrowerKill>true</RequireHarrowerKill>
         <ObjectiveType>HuntPoints</ObjectiveType>

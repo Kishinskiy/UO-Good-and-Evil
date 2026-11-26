@@ -27,7 +27,10 @@ namespace Server.Engines.Quests
         public int ExactRank { get; set; }
         public string GuildType { get; set; }
         public bool RequireHarrowerKill { get; set; }
-        public NpcGuild RequireNpcGuild { get; set; }
+        public string RequireNpcGuild { get; set; }
+
+        
+
 
         public int MinStr { get; set; }
         public int MinDex { get; set; }
@@ -153,7 +156,8 @@ namespace Server.Engines.Quests
                         ExactRank = (int?)el.Element("ExactRank") ?? 0,
                         GuildType = (string)el.Element("GuildType") ?? "Any",
                         RequireHarrowerKill = (bool?)el.Element("RequireHarrowerKill") ?? false,
-                        RequireNpcGuild = reqNpcGuild,
+                        RequireNpcGuild = (string)el.Element("RequireNpcGuild") ?? string.Empty,
+
 
                         MinStr = (int?)el.Element("MinStr") ?? 0,
                         MinDex = (int?)el.Element("MinDex") ?? 0,

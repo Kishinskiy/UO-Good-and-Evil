@@ -80,8 +80,20 @@ namespace Server.Engines.Quests
             if (Owner.QuestGuildRank > Config.RequiredRank)
                 return false;
 
-            if (Config.RequireNpcGuild != NpcGuild.None && Owner.NpcGuild != Config.RequireNpcGuild)
-                return false;
+            if (!string.IsNullOrEmpty(Config.RequireNpcGuild))
+            {
+	            if (Config.RequireNpcGuild.Equals("Any", StringComparison.OrdinalIgnoreCase))
+	            {
+		            if (Owner.NpcGuild == NpcGuild.None)
+			            return false;
+	            }
+	            else if (Enum.TryParse(Config.RequireNpcGuild, true, out NpcGuild reqGuild))
+	            {
+		            if (Owner.NpcGuild != reqGuild)
+			            return false;
+	            }
+            }
+
 
             if (Config.RequireHarrowerKill && (Owner.ChampionTitles == null || Owner.ChampionTitles.Harrower <= 0))
                 return false;
