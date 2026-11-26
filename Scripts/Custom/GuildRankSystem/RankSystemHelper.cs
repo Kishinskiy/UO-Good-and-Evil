@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using Server;
@@ -19,6 +18,9 @@ namespace Server.Engines.Quests
     public static class RankSystemHelper
     {
         private static readonly string ConfigPath = Path.Combine(Core.BaseDirectory, "Config", "Rank.cfg");
+
+        // На сколько рангов монстр может быть слабее игрока (если слабее больше чем на 3 — 0 очков)
+        public static int MaxWeakRankDiff { get; private set; } = 5;
 
         public static List<MonsterRankEntry> MonsterRanks { get; private set; } = new List<MonsterRankEntry>();
         public static Dictionary<int, int> PlayerRankRequirements { get; private set; } = new Dictionary<int, int>();
@@ -63,6 +65,9 @@ namespace Server.Engines.Quests
                     values[key] = val;
                 }
 
+                if (values.TryGetValue("MaxWeakRankDiff", out string weakDiffStr) && int.TryParse(weakDiffStr, out int weakDiff))
+                    MaxWeakRankDiff = weakDiff;
+
                 for (int level = 1; level <= 10; level++)
                 {
                     var entry = MonsterRanks.FirstOrDefault(r => r.Level == level);
@@ -95,8 +100,11 @@ namespace Server.Engines.Quests
             }
         }
 
-                private static void LoadDefaults()
+        private static void LoadDefaults()
         {
+            MaxWeakRankDiff = 5;
+            
+
             MonsterRanks = new List<MonsterRankEntry>
             {
                 new MonsterRankEntry { Level = 1, MinThreat = 48000, Points = 650 },
@@ -118,28 +126,22 @@ namespace Server.Engines.Quests
             };
         }
 
-        // Расчет ранга монстра с учетом HP, Урона, Резистов, Навыков, Славы и Кармы
         public static int GetMonsterRank(BaseCreature bc)
         {
             if (bc == null || bc.Summoned || bc.Controlled)
                 return 0;
 
-            // Защита от зачета мирных животных (олени, птицы, кролики с нулевой славой и кармой)
             if (bc.Fame == 0 && bc.Karma >= 0 && bc.DamageMax <= 3)
                 return 0;
 
             int negativeKarma = bc.Karma < 0 ? Math.Abs(bc.Karma) / 2 : 0;
-
-            // Сумма всех 5 сопротивлений (Physical, Fire, Cold, Poison, Energy)
             int totalResists = bc.PhysicalResistance + bc.FireResistance + bc.ColdResistance + bc.PoisonResistance + bc.EnergyResistance;
 
-            // Основной боевой или магический навык
             double mainCombatSkill = Math.Max(
                 Math.Max(bc.Skills[SkillName.Wrestling].Value, bc.Skills[SkillName.Magery].Value),
                 Math.Max(bc.Skills[SkillName.Necromancy].Value, bc.Skills[SkillName.Chivalry].Value)
             );
 
-            // Усиливающий навык (Tactics для воинов, EvalInt для магов)
             double supportSkill = Math.Max(bc.Skills[SkillName.Tactics].Value, bc.Skills[SkillName.EvalInt].Value);
 
             int skillBonus = (int)((mainCombatSkill * 30) + (supportSkill * 15));
@@ -170,13 +172,45 @@ namespace Server.Engines.Quests
             return 5000;
         }
 
-        // Начисление очков без ограничений по разнице рангов
+        // Прогрессивный расчет очков с учетом разницы рангов игрока и монстра
         public static int CalculateEarnedPoints(int playerRank, int monsterRank)
         {
             if (monsterRank <= 0)
                 return 0;
 
-            return GetBasePointsByMonsterRank(monsterRank);
+            // Целевой ранг игрока (для 11 -> 10, для 5 -> 4, для 2 -> 1)
+            int targetRank = Math.Max(1, playerRank - 1);
+
+            // Положительное значение = монстр сильнее игрока, отрицательное = слабее
+            int rankDiff = targetRank - monsterRank;
+
+            // Если монстр слабее игрока на 6 и более рангов (rankDiff <= -6) — очков нет
+            if (rankDiff < -MaxWeakRankDiff)
+                return 0;
+
+            int basePoints = GetBasePointsByMonsterRank(monsterRank);
+            double multiplier = 1.0;
+
+            if (rankDiff > 0)
+            {
+                // Монстр сильнее: +25% за каждый ранг превосходства (максимум x3.0)
+                multiplier = Math.Min(3.0, 1.0 + (rankDiff * 0.25));
+            }
+            else if (rankDiff < 0)
+            {
+                // Монстр слабее на 1–5 рангов: плавный штраф
+                switch (rankDiff)
+                {
+                    case -1: multiplier = 0.75; break; // На 1 ранг слабее -> 75% очков
+                    case -2: multiplier = 0.55; break; // На 2 ранга слабее -> 55% очков
+                    case -3: multiplier = 0.35; break; // На 3 ранга слабее -> 35% очков
+                    case -4: multiplier = 0.20; break; // На 4 ранга слабее -> 20% очков
+                    case -5: multiplier = 0.10; break; // На 5 рангов слабее -> 10% очков
+                    default: multiplier = 0.05; break;
+                }
+            }
+
+            return Math.Max(1, (int)Math.Round(basePoints * multiplier));
         }
     }
 }

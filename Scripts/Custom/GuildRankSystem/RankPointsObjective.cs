@@ -43,7 +43,7 @@ namespace Server.Engines.Quests
             }
         }
 
-        public void ProcessKill(PlayerMobile pm, BaseCreature bc)
+                public void ProcessKill(PlayerMobile pm, BaseCreature bc)
         {
             int monsterRank = RankSystemHelper.GetMonsterRank(bc);
 
@@ -57,6 +57,13 @@ namespace Server.Engines.Quests
                 CurProgress += earned;
                 pm.SendMessage(0x59, $"Убит враг {monsterRank}-го ранга! Очки испытания: +{earned} ({CurProgress}/{MaxProgress})");
             }
+            else
+            {
+                int targetRank = Math.Max(1, pm.QuestGuildRank - 1);
+                int maxAllowedRank = Math.Min(10, targetRank + RankSystemHelper.MaxWeakRankDiff);
+                pm.SendMessage(0x22, $"Этот враг ({monsterRank}-й ранг) слишком слаб для вашего ранга (нужны враги не ниже {maxAllowedRank}-го ранга).");
+            }
         }
+
     }
 }
