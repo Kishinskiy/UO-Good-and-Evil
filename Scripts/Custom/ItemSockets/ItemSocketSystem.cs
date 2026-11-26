@@ -55,7 +55,6 @@ namespace Server.Custom.ItemSockets
             return list;
         }
 
-        // Учитываем И наши вставленные камни, И ванильные сокеты ServUO (item.Sockets)
         public static int GetUsedSocketsCount(Item item)
         {
             if (item == null || item.Deleted)
@@ -78,26 +77,10 @@ namespace Server.Custom.ItemSockets
             int rarity = 0;
             bool isArtifact = false;
 
-            if (target is BaseWeapon w)
-            {
-                rarity = w.ArtifactRarity;
-                isArtifact = w.IsArtifact;
-            }
-            else if (target is BaseArmor a)
-            {
-                rarity = a.ArtifactRarity;
-                isArtifact = a.IsArtifact;
-            }
-            else if (target is BaseJewel j)
-            {
-                rarity = j.ArtifactRarity;
-                isArtifact = j.IsArtifact;
-            }
-            else if (target is BaseClothing c)
-            {
-                rarity = c.ArtifactRarity;
-                isArtifact = c.IsArtifact;
-            }
+            if (target is BaseWeapon w) { rarity = w.ArtifactRarity; isArtifact = w.IsArtifact; }
+            else if (target is BaseArmor a) { rarity = a.ArtifactRarity; isArtifact = a.IsArtifact; }
+            else if (target is BaseJewel j) { rarity = j.ArtifactRarity; isArtifact = j.IsArtifact; }
+            else if (target is BaseClothing c) { rarity = c.ArtifactRarity; isArtifact = c.IsArtifact; }
 
             int usedSockets = GetUsedSocketsCount(target);
             double socketPenalty = usedSockets * 2.5;
@@ -192,13 +175,12 @@ namespace Server.Custom.ItemSockets
             return Math.Min(1.0, Math.Max(0.10, 0.10 + (progress * 0.90)));
         }
 
-        // Поддержка инкрустации КАК огранённых камней ювелира, ТАК И обычных ванильных камней
+        // Полная поддержка инкрустации КАК огранённых камней ювелира, ТАК И всех ванильных камней (включая редкие ресурсные)
         public static bool TrySocketAnyGem(Mobile from, Item gemItem, Item target)
         {
             if (gemItem is JewelryGem jg)
                 return TrySocketGem(from, jg, target);
 
-            // Конвертация обычного ванильного камня (Ruby, Sapphire и т.д.) в базовый эффект с качеством 0.4
             string vanillaEffect = GetVanillaGemEffect(gemItem, out string vanillaName);
             if (vanillaEffect != null)
             {
@@ -212,6 +194,7 @@ namespace Server.Custom.ItemSockets
         private static string GetVanillaGemEffect(Item gem, out string displayName)
         {
             displayName = gem.GetType().Name;
+            // Обычные ванильные камни
             if (gem is Sapphire) { displayName = "Неограненный сапфир"; return "sapphire"; }
             if (gem is Emerald) { displayName = "Неограненный изумруд"; return "emerald"; }
             if (gem is Diamond) { displayName = "Неограненный алмаз"; return "diamond"; }
@@ -221,6 +204,17 @@ namespace Server.Custom.ItemSockets
             if (gem is Amethyst) { displayName = "Неограненный аметист"; return "amethyst"; }
             if (gem is Tourmaline) { displayName = "Неограненный турмалин"; return "tourmaline"; }
             if (gem is StarSapphire) { displayName = "Неограненный звёздный сапфир"; return "starsapphire"; }
+
+            // Редкие ресурсные камни (Mining / Lumberjacking / Fishing)
+            if (gem is PerfectEmerald) { displayName = "Неограненный совершенный изумруд"; return "perfectemerald"; }
+            if (gem is DarkSapphire) { displayName = "Неограненный тёмный сапфир"; return "darksapphire"; }
+            if (gem is BlueDiamond) { displayName = "Неограненный голубой алмаз"; return "bluediamond"; }
+            if (gem is Turquoise) { displayName = "Неограненная бирюза"; return "turquoise"; }
+            if (gem is EcruCitrine) { displayName = "Неограненный экру-цитрин"; return "ecrucitrine"; }
+            if (gem is FireRuby) { displayName = "Неограненный огненный рубин"; return "firerubyslayer"; }
+            if (gem is WhitePearl) { displayName = "Необработанная белая жемчужина"; return "whitepearl"; }
+            if (gem is BrilliantAmber) { displayName = "Неограненный сияющий янтарь"; return "brilliantamber"; }
+
             return null;
         }
 
@@ -255,7 +249,7 @@ namespace Server.Custom.ItemSockets
             }
 
             double chance = CalculateSocketSuccessChance(playerSkill, 45.0, 75.0);
-            rawGem.Consume(1); // Тратим 1 камень из стопки
+            rawGem.Consume(1);
 
             if (Utility.RandomDouble() > chance)
             {
@@ -264,18 +258,15 @@ namespace Server.Custom.ItemSockets
                 return false;
             }
 
-            ApplyGemBonusToItem(target, effect, 0.4); // Базовый слабый бонус (40% от стандартного)
-
+            ApplyGemBonusToItem(target, effect, 0.4); // 40% от базового эффекта ограненного камня
             if (!SocketedItems.TryGetValue(target.Serial, out var records))
             {
                 records = new List<SocketedGemRecord>();
                 SocketedItems[target.Serial] = records;
             }
-
             records.Add(new SocketedGemRecord { Effect = effect, Quality = 0.4, GemName = gemName });
             UpdateItemSocketTag(target, GetUsedSocketsCount(target), maxSockets);
             target.InvalidateProperties();
-
             from.PlaySound(0x2A);
             from.SendMessage(0x59, $"Вы вставили простой [{gemName}] в оправу ({GetUsedSocketsCount(target)}/{maxSockets}).");
             return true;
@@ -364,47 +355,55 @@ namespace Server.Custom.ItemSockets
             AosElementAttributes resists = GetAosResistances(item);
             switch (effect)
             {
-                case "sapphire":
-                    attrs.WeaponSpeed += (int)Math.Max(1, Math.Round(5.0 * q));
+                // Ванильные базовые
+                case "sapphire": // Ваниль: Mana Increase
+                    attrs.BonusMana += (int)Math.Max(1, Math.Round(8.0 * q));
                     return true;
-                case "emerald":
+                case "emerald": // Ваниль: Hit Chance Increase (HCI)
                     attrs.AttackChance += (int)Math.Max(1, Math.Round(5.0 * q));
                     return true;
-                case "diamond":
+                case "diamond": // Ваниль: Defense Chance Increase (DCI)
                     attrs.DefendChance += (int)Math.Max(1, Math.Round(5.0 * q));
                     return true;
-                case "citrine":
+                case "citrine": // Ваниль: Luck / Stamina
                     attrs.RegenStam += (int)Math.Max(1, Math.Round(5.0 * q));
+                    attrs.Luck += (int)Math.Max(10, Math.Round(30.0 * q));
                     return true;
-                case "amber":
+                case "amber": // Ваниль: Lower Reagent Cost (LRC)
                     attrs.LowerRegCost += (int)Math.Max(1, Math.Round(10.0 * q));
                     return true;
-                case "ruby":
+                // Ванильные продвинутые
+                case "ruby": // Ваниль: Damage Increase (DI)
                     attrs.WeaponDamage += (int)Math.Max(1, Math.Round(15.0 * q));
                     return true;
-                case "amethyst":
+                case "amethyst": // Ваниль: Lower Mana Cost (LMC)
                     attrs.LowerManaCost += (int)Math.Max(1, Math.Round(5.0 * q));
                     return true;
-                case "tourmaline":
+                case "tourmaline": // Ваниль: Swing Speed Increase (SSI)
+                    attrs.WeaponSpeed += (int)Math.Max(1, Math.Round(5.0 * q));
+                    return true;
+                case "starsapphire": // Ваниль: Hit Point Increase (HPI)
+                    attrs.BonusHits += (int)Math.Max(1, Math.Round(8.0 * q));
+                    return true;
+                // Ванильные редкие ресурсные
+                case "perfectemerald": // Ваниль: Hit Point Regeneration
+                    attrs.RegenHits += (int)Math.Max(1, Math.Round(3.0 * q));
+                    return true;
+                case "darksapphire": // Ваниль: Mana Regeneration
                     attrs.RegenMana += (int)Math.Max(1, Math.Round(3.0 * q));
                     return true;
-                case "starsapphire":
-                    int energyBonus = (int)Math.Max(1, Math.Round(5.0 * q));
-                    if (armor != null) armor.EnergyBonus += energyBonus;
-                    else if (weapon != null) weapon.WeaponAttributes.ResistEnergyBonus += energyBonus;
-                    else if (resists != null) resists.Energy += energyBonus;
-                    return true;
-                case "perfectemerald":
-                    attrs.BonusHits += (int)Math.Max(1, Math.Round(10.0 * q));
-                    return true;
-                case "darksapphire":
-                    attrs.BonusMana += (int)Math.Max(1, Math.Round(15.0 * q));
-                    return true;
-                case "bluediamond":
+                case "bluediamond": // Ваниль: Faster Casting
                     attrs.CastSpeed += (int)Math.Max(1, Math.Round(1.0 * q));
                     return true;
-                case "ecrucitrine":
+                case "ecrucitrine": // Ваниль: Enhance Potions
                     attrs.EnhancePotions += (int)Math.Max(5, Math.Round(25.0 * q));
+                    return true;
+                case "whitepearl": // Ваниль: Высший Swing Speed Increase
+                    attrs.WeaponSpeed += (int)Math.Max(2, Math.Round(10.0 * q));
+                    return true;
+                case "brilliantamber": // Ваниль: Faster Cast Recovery + Spell Damage
+                    attrs.CastRecovery += (int)Math.Max(1, Math.Round(1.0 * q));
+                    attrs.SpellDamage += (int)Math.Max(2, Math.Round(10.0 * q));
                     return true;
                 case "firerubyslayer":
                     attrs.WeaponDamage += (int)Math.Max(2, Math.Round(15.0 * q));
@@ -422,6 +421,7 @@ namespace Server.Custom.ItemSockets
                     else
                         attrs.RegenHits += (int)Math.Max(1, Math.Round(3.0 * q));
                     return true;
+                // Резисты (полное совпадение с Imbuing: WhitePearl=Phys, FireRuby=Fire, Sapphire=Cold, Emerald=Poison, Turquoise=Energy)
                 case "physical_resist":
                     int phys = (int)Math.Max(1, Math.Round(4.0 * q));
                     if (armor != null) armor.PhysicalBonus += phys;
@@ -492,6 +492,37 @@ namespace Server.Custom.ItemSockets
                 }
             });
         }
+
+        public static void AppendSocketProperties(Item item, ObjectPropertyList list)
+        {
+            if (item == null || item.Deleted || list == null)
+                return;
+
+            int maxSockets = GetMaxSockets(item);
+            if (maxSockets <= 0)
+                return;
+
+            var records = GetSockets(item);
+            int used = GetUsedSocketsCount(item);
+
+            // Показываем информацию только если в предмете есть хотя бы один вставленный камень
+            if (used <= 0 || records == null || records.Count == 0)
+                return;
+
+            // Красивый заголовок-разделитель с количеством занятых гнёзд (бирюзовый цвет 0x59)
+            list.Add(1060658, $"<BASEFONT COLOR=#00E5FF>Гнёзда инкрустации\t{used} / {maxSockets}<BASEFONT COLOR=#FFFFFF>");
+
+            for (int i = 0; i < records.Count; i++)
+            {
+                var rec = records[i];
+                int percent = (int)Math.Round(rec.Quality * 100);
+                string gemTitle = !string.IsNullOrEmpty(rec.GemName) ? rec.GemName : "Самоцвет";
+
+                // Выводим каждый вставленный камень с его чистотой огранки (золотистый цвет 0x35)
+                list.Add(1060659 + i, $"<BASEFONT COLOR=#FFD700>[Сокет {i + 1}]\t{gemTitle} ({percent}%)<BASEFONT COLOR=#FFFFFF>");
+            }
+        }
+
         private static void OnLoad()
         {
             Persistence.Deserialize(FilePath, reader =>

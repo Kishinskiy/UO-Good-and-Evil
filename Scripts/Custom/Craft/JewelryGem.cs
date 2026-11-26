@@ -1,7 +1,7 @@
 using System;
 using Server;
 using Server.Items;
-using Server.Custom.ItemSockets; // Подключаем систему сокетов
+using Server.Custom.ItemSockets;
 
 namespace Server.Custom.JewelryCrafting
 {
@@ -29,7 +29,6 @@ namespace Server.Custom.JewelryCrafting
 
         private void UpdateGemNameAndTier()
         {
-            // Лорные категории в зависимости от финального множителя силы
             string tier = "Обычный";
             if (m_GemQuality >= 3.0) tier = "Легендарный";
             else if (m_GemQuality >= 2.0) tier = "Совершенный";
@@ -45,21 +44,17 @@ namespace Server.Custom.JewelryCrafting
 
             int percent = (int)Math.Round(m_GemQuality * 100);
             list.Add($"Чистота огранки: {percent}%");
-
-            // Выводим динамически рассчитанный бонус прямо в свойства предмета!
             list.Add(0x35, $"Эффект: {GetGemBonusDescription(m_GemEffect, m_GemQuality)}");
         }
 
-        // Добавляем возможность инкрустировать камень по двойному клику
         public override void OnDoubleClick(Mobile from)
         {
             if (!IsChildOf(from.Backpack))
             {
-                from.SendLocalizedMessage(1042001); // That must be in your pack for you to use it.
+                from.SendLocalizedMessage(1042001);
                 return;
             }
 
-            // Ищем в рюкзаке ювелирное зубило кузнеца (SocketChisel)
             SocketChisel chisel = from.Backpack.FindItemByType<SocketChisel>();
             if (chisel == null || chisel.Deleted || chisel.UsesRemaining <= 0)
             {
@@ -75,23 +70,32 @@ namespace Server.Custom.JewelryCrafting
         {
             switch (effect)
             {
-                case "sapphire": return "Сапфир Скорости";
+                // Базовые (Ванильное соответствие)
+                case "sapphire": return "Сапфир Разума";
                 case "emerald": return "Изумруд Точности";
                 case "diamond": return "Алмаз Защиты";
                 case "citrine": return "Цитрин Выносливости";
                 case "amber": return "Янтарь Снабжения";
+
+                // Продвинутые (Ванильное соответствие)
                 case "ruby": return "Рубин Урона";
                 case "amethyst": return "Аметист Экономии";
-                case "tourmaline": return "Турмалин Потока";
-                case "starsapphire": return "Звёздный Сапфир Воли";
-                case "perfectemerald": return "Изумруд Жизни";
-                case "darksapphire": return "Сапфир Астрала";
+                case "tourmaline": return "Турмалин Скорости";
+                case "starsapphire": return "Звёздный Сапфир Жизни";
+
+                // Высшие / Редкие ресурсные камни (Ванильное соответствие)
+                case "perfectemerald": return "Совершенный Изумруд Регенерации";
+                case "darksapphire": return "Тёмный Сапфир Потока";
                 case "bluediamond": return "Голубой Алмаз Времени";
                 case "turquoise": return "Бирюза Грома";
                 case "ecrucitrine": return "Экру-Цитрин Знахаря";
+                case "whitepearl": return "Белая Жемчужина Стремительности";
+                case "brilliantamber": return "Сияющий Янтарь Чародея";
+
+                // Особые и резисты
                 case "vamp_shard": return "Осколок Вампиризма";
                 case "firerubyslayer": return "Огненный Рубин Истребителя";
-                case "physical_resist": return "Рубин Физической Стойкости";
+                case "physical_resist": return "Жемчужина Физической Стойкости";
                 case "fire_resist": return "Огненный Рубин Стойкости";
                 case "cold_resist": return "Сапфир Ледяной Стойкости";
                 case "poison_resist": return "Изумруд Ядовитой Стойкости";
@@ -105,13 +109,13 @@ namespace Server.Custom.JewelryCrafting
             switch (effect)
             {
                 case "sapphire":
-                    return $"+{(int)Math.Round(5.0 * quality)}% SSI (Скорость атаки)";
+                    return $"+{(int)Math.Round(8.0 * quality)} Макс. Мана (Mana)";
                 case "emerald":
                     return $"+{(int)Math.Round(5.0 * quality)}% HCI (Шанс попадания)";
                 case "diamond":
                     return $"+{(int)Math.Round(5.0 * quality)}% DCI (Шанс защиты)";
                 case "citrine":
-                    return $"+{(int)Math.Round(5.0 * quality)} Стамина-Реген";
+                    return $"+{(int)Math.Round(5.0 * quality)} Стамина-Реген и +{(int)Math.Round(30.0 * quality)} Luck";
                 case "amber":
                     return $"+{(int)Math.Round(10.0 * quality)}% LRC (Экономия реагентов)";
                 case "ruby":
@@ -119,33 +123,37 @@ namespace Server.Custom.JewelryCrafting
                 case "amethyst":
                     return $"-{(int)Math.Round(5.0 * quality)}% LMC (Снижение расхода маны)";
                 case "tourmaline":
-                    return $"+{(int)Math.Round(3.0 * quality)} Мана-Реген";
+                    return $"+{(int)Math.Round(5.0 * quality)}% SSI (Скорость атаки)";
                 case "starsapphire":
-                    return $"+{(int)Math.Round(15.0 * quality)} Magic Resist";
+                    return $"+{(int)Math.Round(8.0 * quality)} Макс. Здоровье (Hits)";
                 case "perfectemerald":
-                    return $"+{(int)Math.Round(10.0 * quality)} Макс. Здоровье (Hits)";
+                    return $"+{(int)Math.Round(3.0 * quality)} ХП-Реген (Regen Hits)";
                 case "darksapphire":
-                    return $"+{(int)Math.Round(15.0 * quality)} Макс. Мана (Mana)";
+                    return $"+{(int)Math.Round(3.0 * quality)} Мана-Реген (Regen Mana)";
                 case "bluediamond":
-                    return $"+{(int)Math.Round(1.0 * quality)} Faster Casting";
+                    return $"+{(int)Math.Round(1.0 * quality)} Faster Casting (FC)";
                 case "turquoise":
-                    return $"+{(int)Math.Round(35.0 * quality)}% Шанс удара молнией";
+                    return $"+{(int)Math.Round(35.0 * quality)}% Шанс удара молнией (или +SDI)";
                 case "ecrucitrine":
                     return $"+{(int)Math.Round(50.0 * quality)}% Усиление лечебных зелий";
+                case "whitepearl":
+                    return $"+{(int)Math.Round(10.0 * quality)}% SSI (Высшая скорость атаки)";
+                case "brilliantamber":
+                    return $"+{(int)Math.Round(1.0 * quality)} FCR и +{(int)Math.Round(10.0 * quality)}% SDI (Урон заклинаний)";
                 case "vamp_shard":
-                    return $"+{(int)Math.Round(20.0 * quality)}% Вампиризм (Восстановление HP при ударе)";
+                    return $"+{(int)Math.Round(20.0 * quality)}% Вампиризм (или ХП-Реген)";
                 case "firerubyslayer":
                     return $"+{(int)Math.Round(20.0 * quality)}% DI (Урон) и +{(int)Math.Round(10.0 * quality)}% HCI (Точность)";
                 case "physical_resist":
-                    return "Используется для повышения максимума физического резиста";
+                    return "Повышает физический резист";
                 case "fire_resist":
-                    return "Используется для повышения максимума огненного резиста";
+                    return "Повышает огненный резист";
                 case "cold_resist":
-                    return "Используется для повышения максимума резиста холода";
+                    return "Повышает резист холода";
                 case "poison_resist":
-                    return "Используется для повышения максимума ядовитого резиста";
+                    return "Повышает ядовитый резист";
                 case "energy_resist":
-                    return "Используется для повышения максимума энергетического резиста";
+                    return "Повышает энергетический резист";
                 default:
                     return "Магический резонанс не настроен";
             }

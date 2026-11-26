@@ -13,6 +13,7 @@ using Server.Spells.Sixth;
 using Server.Spells.SkillMasteries;
 using Server.Spells.Spellweaving;
 using Server.Misc;
+using Server.Custom.ItemSockets;
 
 using System;
 using System.Collections.Generic;
@@ -5110,6 +5111,7 @@ namespace Server.Items
             {
                 list.Add(1072378); // <br>Only when full set is present:
                 GetSetProperties(list);
+                ItemSocketSystem.AppendSocketProperties(this, list);
             }
 
             if (LastParryChance > 0)
