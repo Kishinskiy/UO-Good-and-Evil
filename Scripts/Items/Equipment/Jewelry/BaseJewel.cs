@@ -1,6 +1,7 @@
 using Server.ContextMenus;
 using Server.Engines.Craft;
 using Server.Misc;
+using Server.Custom.ItemSockets;
 
 using System;
 using System.Collections.Generic;
@@ -876,6 +877,7 @@ namespace Server.Items
             {
                 list.Add(1072378); // <br>Only when full set is present:
                 SetHelper.GetSetProperties(list, this);
+                ItemSocketSystem.AppendSocketProperties(this, list);
             }
         }
 
