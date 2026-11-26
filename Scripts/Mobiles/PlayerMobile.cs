@@ -5945,38 +5945,95 @@ namespace Server.Mobiles
                 return false;
             }
 
-            Point3D loc;
-            Map map;
+            Map targetMap = this.Map;
 
+            // Если игрок умер на Felucca или Trammel — оставляем его на его же карте
+            if (targetMap == Map.Trammel || targetMap == Map.Felucca)
+            {
+                // 1. Жесткая привязка по имени данжа из ваших XML (работает даже если не сработал EntranceLocation)
+                if (Region.IsPartOf("Despise"))
+                {
+                    MoveToWorld(new Point3D(1481, 1612, 20), targetMap); // Britain
+                    return true;
+                }
+                if (Region.IsPartOf("Deceit"))
+                {
+                    MoveToWorld(new Point3D(4397, 1089, 0), targetMap); // Moonglow
+                    return true;
+                }
+                if (Region.IsPartOf("Destard"))
+                {
+                    MoveToWorld(new Point3D(1916, 2814, 0), targetMap); // Trinsic
+                    return true;
+                }
+                if (Region.IsPartOf("Covetous") || Region.IsPartOf("Wrong") || Region.IsPartOf("Ice"))
+                {
+                    MoveToWorld(new Point3D(2578, 604, 0), targetMap); // Minoc
+                    return true;
+                }
+                if (Region.IsPartOf("Shame") || Region.IsPartOf("Sanctuary") || Region.IsPartOf("Blighted Grove") || Region.IsPartOf("Orc Cave"))
+                {
+                    MoveToWorld(new Point3D(545, 967, 0), targetMap); // Yew
+                    return true;
+                }
+                if (Region.IsPartOf("Hythloth") || Region.IsPartOf("Fire"))
+                {
+                    MoveToWorld(new Point3D(1412, 3793, 0), targetMap); // Jhelom
+                    return true;
+                }
+                if (Region.IsPartOf("Prism of Light"))
+                {
+                    MoveToWorld(new Point3D(3688, 2232, 20), targetMap); // Magincia
+                    return true;
+                }
+                if (Region.IsPartOf("Painted Caves") || Region.IsPartOf("Solen Hives") || Region.IsPartOf("Misc Dungeons") || Region.IsPartOf("BlackthornDungeon"))
+                {
+                    MoveToWorld(new Point3D(1481, 1612, 20), targetMap); // Britain
+                    return true;
+                }
+                if (Region.IsPartOf("Terathan Keep") || Region.IsPartOf("Khaldun") || Region.IsPartOf("Palace of Paroxysmus"))
+                {
+                    MoveToWorld(new Point3D(5197, 3994, 37), targetMap); // Delucia
+                    return true;
+                }
+            }
+
+            // 2. Если игрок умер не в списке выше (например, в открытом мире или на других картах)
+            Point3D loc = Location;
             DungeonRegion dungeon = (DungeonRegion)Region.GetRegion(typeof(DungeonRegion));
+            
             if (dungeon != null && dungeon.EntranceLocation != Point3D.Zero)
             {
                 loc = dungeon.EntranceLocation;
-                map = dungeon.EntranceMap;
-            }
-            else
-            {
-                loc = Location;
-                map = Map;
+                if (dungeon.EntranceMap != null && dungeon.EntranceMap != Map.Internal)
+                {
+                    targetMap = dungeon.EntranceMap;
+                }
             }
 
             Point3D[] list;
 
-            if (map == Map.Trammel)
+            if (targetMap == Map.Trammel || targetMap == Map.Felucca)
             {
                 list = m_TrammelDeathDestinations;
             }
-            else if (map == Map.Ilshenar)
+            else if (targetMap == Map.Ilshenar)
             {
                 list = m_IlshenarDeathDestinations;
             }
-            else if (map == Map.Malas)
+            else if (targetMap == Map.Malas)
             {
                 list = m_MalasDeathDestinations;
             }
-            else if (map == Map.Tokuno)
+            else if (targetMap == Map.Tokuno)
             {
                 list = m_TokunoDeathDestinations;
+            }
+            else if (targetMap == Map.TerMur)
+            {
+                // В TerMur в стандартном коде вообще не было списка точек — отправляем в Royal City
+                MoveToWorld(new Point3D(750, 3440, -20), Map.TerMur);
+                return true;
             }
             else
             {
@@ -6001,7 +6058,7 @@ namespace Server.Mobiles
                 }
             }
 
-            MoveToWorld(dest, map);
+            MoveToWorld(dest, targetMap);
             return true;
         }
 
