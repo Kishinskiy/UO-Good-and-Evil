@@ -8,10 +8,9 @@ namespace Server.Engines.Quests
     {
         public override object ObjectiveDescription
         {
-            get { return $"Наберите {MaxProgress} очков охоты, побеждая достойных противников."; }
+            get { return $"Наберите {MaxProgress} очков охоты, побеждая монстров."; }
         }
 
-        // Принимаем нужное количество очков из XML (по умолчанию 5000)
         public RankPointsObjective(int maxProgress = 5000) : base(maxProgress)
         {
         }
@@ -30,7 +29,6 @@ namespace Server.Engines.Quests
 
                 foreach (BaseQuest quest in pm.Quests)
                 {
-                    // Проверяем активные XML-квесты игрока
                     if (quest is DynamicXmlGuildQuest)
                     {
                         foreach (BaseObjective obj in quest.Objectives)
@@ -58,21 +56,6 @@ namespace Server.Engines.Quests
             {
                 CurProgress += earned;
                 pm.SendMessage(0x59, $"Убит враг {monsterRank}-го ранга! Очки испытания: +{earned} ({CurProgress}/{MaxProgress})");
-            }
-            else
-            {
-                int targetRank = Math.Max(1, pm.QuestGuildRank - 1);
-                int minAllowedRank = Math.Max(1, targetRank - RankSystemHelper.MaxRankAbove);
-                int maxAllowedRank = Math.Min(10, targetRank + RankSystemHelper.MaxRankBelow);
-
-                if (monsterRank < minAllowedRank)
-                {
-                    pm.SendMessage(0x22, $"Этот враг ({monsterRank}-й ранг) слишком опасен для вашего текущего испытания (нужны враги {minAllowedRank}–{maxAllowedRank} рангов).");
-                }
-                else
-                {
-                    pm.SendMessage(0x22, $"Этот враг ({monsterRank}-й ранг) слишком слаб для вашего текущего испытания (нужны враги {minAllowedRank}–{maxAllowedRank} рангов).");
-                }
             }
         }
     }
