@@ -111,32 +111,32 @@ jobs:
           printf '%s\n' "$DEPLOY_KNOWN_HOSTS" > "$HOME/.ssh/known_hosts"
           chmod 600 "$HOME/.ssh/id_ed25519" "$HOME/.ssh/known_hosts"
 
-      - name: Backup Current ServUO
-        env:
-          DEPLOY_HOST: kishinskiy.ru
-          DEPLOY_USER: servuo
-          RUN_NUMBER: ${{ github.run_number }}
-          RUN_ATTEMPT: ${{ github.run_attempt }}
-          SHORT_SHA: ${{ github.sha }}
-        shell: bash
-        run: |
-          set -Eeuo pipefail
-          DATESTAMP=$(date +%Y-%m-%d)
-          SHORT_SHA="${SHORT_SHA:0:7}"
-          BACKUP_NAME="servuo-${DATESTAMP}_run-${RUN_NUMBER}-${RUN_ATTEMPT}_${SHORT_SHA}.tar.gz"
+      # - name: Backup Current ServUO
+      #   env:
+      #     DEPLOY_HOST: kishinskiy.ru
+      #     DEPLOY_USER: servuo
+      #     RUN_NUMBER: ${{ github.run_number }}
+      #     RUN_ATTEMPT: ${{ github.run_attempt }}
+      #     SHORT_SHA: ${{ github.sha }}
+      #   shell: bash
+      #   run: |
+      #     set -Eeuo pipefail
+      #     DATESTAMP=$(date +%Y-%m-%d)
+      #     SHORT_SHA="${SHORT_SHA:0:7}"
+      #     BACKUP_NAME="servuo-${DATESTAMP}_run-${RUN_NUMBER}-${RUN_ATTEMPT}_${SHORT_SHA}.tar.gz"
 
-          ssh -i "$HOME/.ssh/id_ed25519" -o BatchMode=yes -o StrictHostKeyChecking=yes \
-            "${DEPLOY_USER}@${DEPLOY_HOST}" "bash -s -- '$BACKUP_NAME'" <<'EOF'
-          set -Eeuo pipefail
-          backup_name="$1"
-          mkdir -p /home/servuo/BackUP
-          if [ -d /home/servuo/ServUO ] && [ -n "$(ls -A /home/servuo/ServUO)" ]; then
-            tar -czf "/home/servuo/BackUP/${backup_name}" -C /home/servuo ServUO
-            echo "Создан бэкап: /home/servuo/BackUP/${backup_name}"
-          else
-            echo "Папка /home/servuo/ServUO еще не существует или пуста — бэкап пропущен."
-          fi
-          EOF
+      #     ssh -i "$HOME/.ssh/id_ed25519" -o BatchMode=yes -o StrictHostKeyChecking=yes \
+      #       "${DEPLOY_USER}@${DEPLOY_HOST}" "bash -s -- '$BACKUP_NAME'" <<'EOF'
+      #     set -Eeuo pipefail
+      #     backup_name="$1"
+      #     mkdir -p /home/servuo/BackUP
+      #     if [ -d /home/servuo/ServUO ] && [ -n "$(ls -A /home/servuo/ServUO)" ]; then
+      #       tar -czf "/home/servuo/BackUP/${backup_name}" -C /home/servuo ServUO
+      #       echo "Создан бэкап: /home/servuo/BackUP/${backup_name}"
+      #     else
+      #       echo "Папка /home/servuo/ServUO еще не существует или пуста — бэкап пропущен."
+      #     fi
+      #     EOF
 
 
       - name: Transfer and activate release
