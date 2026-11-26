@@ -8,6 +8,15 @@ using Server.Mobiles;
 
 namespace Server.Engines.Quests
 {
+    public class XmlQuestObjectiveConfig
+    {
+        public string Type { get; set; } // "Slay", "Obtain", "SlayRank", "HuntPoints"
+        public Type TargetType { get; set; }
+        public string TargetName { get; set; }
+        public int TargetRank { get; set; }
+        public int Amount { get; set; }
+    }
+
     public class XmlGuildQuestConfig
     {
         public string Id { get; set; }
@@ -15,26 +24,20 @@ namespace Server.Engines.Quests
         public string Description { get; set; }
         public bool OnlyYoung { get; set; }
         public int RequiredRank { get; set; }
-        public int ExactRank { get; set; } // 0 = не проверять, иначе требуется точный ранг
+        public int ExactRank { get; set; }
         public string GuildType { get; set; }
         public bool RequireHarrowerKill { get; set; }
         public NpcGuild RequireNpcGuild { get; set; }
 
-        // Требования к статам и навыкам
         public int MinStr { get; set; }
         public int MinDex { get; set; }
         public int MinInt { get; set; }
         public Dictionary<SkillName, double> RequiredSkills { get; set; } = new Dictionary<SkillName, double>();
 
-        // Цель квеста
-        public string ObjectiveType { get; set; } // "Slay", "Obtain", "SlayRank" или "HuntPoints"
-        public Type TargetType { get; set; }
-        public string TargetName { get; set; }
-        public int TargetRank { get; set; }
-        public int Amount { get; set; }
+        // Список целей квеста (поддерживает 1 или несколько целей)
+        public List<XmlQuestObjectiveConfig> Objectives { get; set; } = new List<XmlQuestObjectiveConfig>();
 
-        // Награды
-        public int SetRank { get; set; } // 0 = не менять ранг, иначе установить указанный ранг
+        public int SetRank { get; set; }
         public bool RemoveYoung { get; set; }
         public int RewardGold { get; set; }
         public Type RewardItem { get; set; }
@@ -72,31 +75,77 @@ namespace Server.Engines.Quests
                 XDocument doc = XDocument.Load(FilePath);
                 foreach (XElement el in doc.Root.Elements("Quest"))
                 {
-                    string objType = (string)el.Element("ObjectiveType") ?? "Slay";
-                    string targetTypeName = (string)el.Element("TargetType");
-                    Type targetType = !string.IsNullOrEmpty(targetTypeName) ? ScriptCompiler.FindTypeByName(targetTypeName) : null;
+                    string questId = (string)el.Attribute("id") ?? Guid.NewGuid().ToString();
+                    var objectives = new List<XmlQuestObjectiveConfig>();
+                    bool hasError = false;
 
-                    // Для SlayRank и HuntPoints конкретный TargetType не требуется
-                    if (!objType.Equals("SlayRank", StringComparison.OrdinalIgnoreCase) &&
-                        !objType.Equals("HuntPoints", StringComparison.OrdinalIgnoreCase) &&
-                        targetType == null)
+                    // 1. Новый формат: несколько тегов <Objective ... />
+                    foreach (XElement objEl in el.Elements("Objective"))
                     {
-                        Console.WriteLine($"[GuildRankSystem] Ошибка в квесте {(string)el.Attribute("id")}: тип '{targetTypeName}' не найден.");
-                        continue;
+                        string oType = (string)objEl.Attribute("type") ?? "Slay";
+                        string tName = (string)objEl.Attribute("target");
+                        Type tType = !string.IsNullOrEmpty(tName) ? ScriptCompiler.FindTypeByName(tName) : null;
+
+                        if (!oType.Equals("SlayRank", StringComparison.OrdinalIgnoreCase) &&
+                            !oType.Equals("HuntPoints", StringComparison.OrdinalIgnoreCase) &&
+                            tType == null)
+                        {
+                            Console.WriteLine($"[GuildRankSystem] Ошибка в квесте {questId}: тип '{tName}' не найден.");
+                            hasError = true;
+                            break;
+                        }
+
+                        objectives.Add(new XmlQuestObjectiveConfig
+                        {
+                            Type = oType,
+                            TargetType = tType,
+                            TargetName = (string)objEl.Attribute("name") ?? tName,
+                            TargetRank = (int?)objEl.Attribute("rank") ?? 10,
+                            Amount = (int?)objEl.Attribute("amount") ?? 1
+                        });
                     }
+
+                    // 2. Обратная совместимость: старый формат с одним <ObjectiveType>
+                    if (objectives.Count == 0 && !hasError)
+                    {
+                        string objType = (string)el.Element("ObjectiveType") ?? "Slay";
+                        string targetTypeName = (string)el.Element("TargetType");
+                        Type targetType = !string.IsNullOrEmpty(targetTypeName) ? ScriptCompiler.FindTypeByName(targetTypeName) : null;
+
+                        if (!objType.Equals("SlayRank", StringComparison.OrdinalIgnoreCase) &&
+                            !objType.Equals("HuntPoints", StringComparison.OrdinalIgnoreCase) &&
+                            targetType == null)
+                        {
+                            Console.WriteLine($"[GuildRankSystem] Ошибка в квесте {questId}: тип '{targetTypeName}' не найден.");
+                            continue;
+                        }
+
+                        objectives.Add(new XmlQuestObjectiveConfig
+                        {
+                            Type = objType,
+                            TargetType = targetType,
+                            TargetName = (string)el.Element("TargetName") ?? targetTypeName,
+                            TargetRank = (int?)el.Element("TargetRank") ?? 10,
+                            Amount = (int?)el.Element("Amount") ?? 1
+                        });
+                    }
+
+                    if (hasError || objectives.Count == 0)
+                        continue;
 
                     string rewardItemName = (string)el.Element("RewardItem");
                     Type rewardItemType = !string.IsNullOrEmpty(rewardItemName) ? ScriptCompiler.FindTypeByName(rewardItemName) : null;
+
                     string npcGuildStr = (string)el.Element("RequireNpcGuild");
                     NpcGuild reqNpcGuild = NpcGuild.None;
                     if (!string.IsNullOrEmpty(npcGuildStr))
                     {
-	                    Enum.TryParse(npcGuildStr, true, out reqNpcGuild);
+                        Enum.TryParse(npcGuildStr, true, out reqNpcGuild);
                     }
-                    
+
                     var cfg = new XmlGuildQuestConfig
                     {
-                        Id = (string)el.Attribute("id") ?? Guid.NewGuid().ToString(),
+                        Id = questId,
                         Title = (string)el.Element("Title") ?? "Задание гильдии",
                         Description = (string)el.Element("Description") ?? "Выполните поручение гильдии.",
                         OnlyYoung = (bool?)el.Element("OnlyYoung") ?? false,
@@ -110,11 +159,7 @@ namespace Server.Engines.Quests
                         MinDex = (int?)el.Element("MinDex") ?? 0,
                         MinInt = (int?)el.Element("MinInt") ?? 0,
 
-                        ObjectiveType = objType,
-                        TargetType = targetType,
-                        TargetName = (string)el.Element("TargetName") ?? targetTypeName,
-                        TargetRank = (int?)el.Element("TargetRank") ?? 10,
-                        Amount = (int?)el.Element("Amount") ?? 1,
+                        Objectives = objectives,
 
                         SetRank = (int?)el.Element("SetRank") ?? 0,
                         RemoveYoung = (bool?)el.Element("RemoveYoung") ?? false,

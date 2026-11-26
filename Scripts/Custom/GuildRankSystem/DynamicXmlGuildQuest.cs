@@ -14,7 +14,7 @@ namespace Server.Engines.Quests
         public override object Title => Config != null ? Config.Title : "Задание гильдии";
         public override object Description => Config != null ? Config.Description : "";
         public override object Refuse => "Возвращайся, если передумаешь.";
-        public override object Uncomplete => "Ты еще не выполнил условия этого поручения.";
+        public override object Uncomplete => "Ты еще не выполнил все условия этого поручения.";
         public override object Complete => "Отличная работа! Гильдия ценит твой вклад.";
 
         public DynamicXmlGuildQuest() : base()
@@ -25,21 +25,24 @@ namespace Server.Engines.Quests
         {
             Config = config;
 
-            if (config.ObjectiveType.Equals("Obtain", StringComparison.OrdinalIgnoreCase))
+            foreach (var obj in config.Objectives)
             {
-                AddObjective(new ObtainObjective(config.TargetType, config.TargetName, config.Amount));
-            }
-            else if (config.ObjectiveType.Equals("SlayRank", StringComparison.OrdinalIgnoreCase))
-            {
-                AddObjective(new XmlSlayRankObjective(config.TargetRank, config.Amount));
-            }
-            else if (config.ObjectiveType.Equals("HuntPoints", StringComparison.OrdinalIgnoreCase))
-            {
-                AddObjective(new RankPointsObjective(config.Amount));
-            }
-            else
-            {
-                AddObjective(new SlayObjective(config.TargetType, config.TargetName, config.Amount));
+                if (obj.Type.Equals("Obtain", StringComparison.OrdinalIgnoreCase))
+                {
+                    AddObjective(new ObtainObjective(obj.TargetType, obj.TargetName, obj.Amount));
+                }
+                else if (obj.Type.Equals("SlayRank", StringComparison.OrdinalIgnoreCase))
+                {
+                    AddObjective(new XmlSlayRankObjective(obj.TargetRank, obj.Amount));
+                }
+                else if (obj.Type.Equals("HuntPoints", StringComparison.OrdinalIgnoreCase))
+                {
+                    AddObjective(new RankPointsObjective(obj.Amount));
+                }
+                else
+                {
+                    AddObjective(new SlayObjective(obj.TargetType, obj.TargetName, obj.Amount));
+                }
             }
 
             if (config.SetRank > 0)
@@ -54,7 +57,7 @@ namespace Server.Engines.Quests
 
             if (config.RewardGold > 0)
             {
-                AddReward(new BaseReward($"{config.RewardGold} золотых монет"));
+                AddReward(new BaseReward($"{config.RewardGold:N0} золотых монет"));
             }
 
             if (config.RewardItem != null)
@@ -76,12 +79,12 @@ namespace Server.Engines.Quests
 
             if (Owner.QuestGuildRank > Config.RequiredRank)
                 return false;
-            
+
             if (Config.RequireNpcGuild != NpcGuild.None && Owner.NpcGuild != Config.RequireNpcGuild)
-	            return false;
-            
+                return false;
+
             if (Config.RequireHarrowerKill && (Owner.ChampionTitles == null || Owner.ChampionTitles.Harrower <= 0))
-	            return false;
+                return false;
 
             if (Owner.RawStr < Config.MinStr || Owner.RawDex < Config.MinDex || Owner.RawInt < Config.MinInt)
                 return false;
@@ -120,7 +123,15 @@ namespace Server.Engines.Quests
 
                 if (Config.RewardGold > 0)
                 {
-                    Owner.AddToBackpack(new Gold(Config.RewardGold));
+                    if (Config.RewardGold <= 60000)
+                    {
+                        Owner.AddToBackpack(new Gold(Config.RewardGold));
+                    }
+                    else
+                    {
+                        Banker.Deposit(Owner, Config.RewardGold);
+                        Owner.SendMessage(0x35, $"Награда ({Config.RewardGold:N0} золота) переведена на ваш банковский счет.");
+                    }
                 }
 
                 if (Config.RewardItem != null)

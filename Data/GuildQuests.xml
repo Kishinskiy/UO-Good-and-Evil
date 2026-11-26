@@ -244,11 +244,14 @@
     <!-- Переход с 4-го на 3-й ранг -->
     <Quest id="trial_rank_3">
         <Title>Испытание Гильдии: 3-й ранг</Title>
-        <Description>Твое имя уже знают в городах. Пройди суровое испытание охотой, чтобы получить 3-й ранг.</Description>
+        <Description>Твое имя уже знают в городах. Спустись в Перчатку Судьбы подземелья Doom, одолей Темного Отца (Dark Father) и набери 620 000 очков охоты, чтобы получить 3-й ранг.</Description>
         <ExactRank>4</ExactRank>
         <GuildType>Any</GuildType>
-        <ObjectiveType>HuntPoints</ObjectiveType>
-        <Amount>620000</Amount>
+
+        <!-- Две цели: убить главного босса Doom и набрать очки -->
+        <Objective type="Slay" target="DemonKnight" name="Dark Father (Doom)" amount="1" />
+        <Objective type="HuntPoints" amount="620000" />
+
         <SetRank>3</SetRank>
         <RewardGold>1000000</RewardGold>
     </Quest>
@@ -256,11 +259,13 @@
     <!-- Переход с 3-го на 2-й ранг -->
     <Quest id="trial_rank_2">
         <Title>Испытание Гильдии: 2-й ранг</Title>
-        <Description>Ты стоишь в шаге от вершины. Уничтожь сильнейших порождений тьмы и заслужи 2-й ранг.</Description>
+        <Description>Ты стоишь в шаге от вершины. Одолей Минакс, принеси её сандалии и набери 800 000 очков охоты, чтобы заслужить 2-й ранг.</Description>
         <ExactRank>3</ExactRank>
         <GuildType>Any</GuildType>
-        <ObjectiveType>HuntPoints</ObjectiveType>
-        <Amount>800000</Amount>
+
+        <Objective type="Obtain" target="MinaxsSandals" name="Minax's Sandals" amount="1" />
+        <Objective type="HuntPoints" amount="800000" />
+
         <SetRank>2</SetRank>
         <RewardGold>1500000</RewardGold>
     </Quest>
