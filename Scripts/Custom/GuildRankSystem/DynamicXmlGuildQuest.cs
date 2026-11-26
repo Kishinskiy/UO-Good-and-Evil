@@ -24,8 +24,15 @@ namespace Server.Engines.Quests
         public DynamicXmlGuildQuest(XmlGuildQuestConfig config) : base()
         {
             Config = config;
+            InitFromConfig();
+        }
 
-            foreach (var obj in config.Objectives)
+        private void InitFromConfig()
+        {
+            if (Config == null)
+                return;
+
+            foreach (var obj in Config.Objectives)
             {
                 if (obj.Type.Equals("Obtain", StringComparison.OrdinalIgnoreCase))
                 {
@@ -45,24 +52,24 @@ namespace Server.Engines.Quests
                 }
             }
 
-            if (config.SetRank > 0)
+            if (Config.SetRank > 0)
             {
-                AddReward(new BaseReward($"Повышение до {config.SetRank}-го ранга гильдии"));
+                AddReward(new BaseReward($"Повышение до {Config.SetRank}-го ранга гильдии"));
             }
 
-            if (config.RemoveYoung)
+            if (Config.RemoveYoung)
             {
                 AddReward(new BaseReward("Снятие статуса новичка (Young)"));
             }
 
-            if (config.RewardGold > 0)
+            if (Config.RewardGold > 0)
             {
-                AddReward(new BaseReward($"{config.RewardGold:N0} золотых монет"));
+                AddReward(new BaseReward($"{Config.RewardGold:N0} золотых монет"));
             }
 
-            if (config.RewardItem != null)
+            if (Config.RewardItem != null)
             {
-                AddReward(new BaseReward($"{config.RewardItem.Name} (x{config.RewardItemAmount})"));
+                AddReward(new BaseReward($"{Config.RewardItem.Name} (x{Config.RewardItemAmount})"));
             }
         }
 
@@ -82,18 +89,17 @@ namespace Server.Engines.Quests
 
             if (!string.IsNullOrEmpty(Config.RequireNpcGuild))
             {
-	            if (Config.RequireNpcGuild.Equals("Any", StringComparison.OrdinalIgnoreCase))
-	            {
-		            if (Owner.NpcGuild == NpcGuild.None)
-			            return false;
-	            }
-	            else if (Enum.TryParse(Config.RequireNpcGuild, true, out NpcGuild reqGuild))
-	            {
-		            if (Owner.NpcGuild != reqGuild)
-			            return false;
-	            }
+                if (Config.RequireNpcGuild.Equals("Any", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (Owner.NpcGuild == NpcGuild.None)
+                        return false;
+                }
+                else if (Enum.TryParse(Config.RequireNpcGuild, true, out NpcGuild reqGuild))
+                {
+                    if (Owner.NpcGuild != reqGuild)
+                        return false;
+                }
             }
-
 
             if (Config.RequireHarrowerKill && (Owner.ChampionTitles == null || Owner.ChampionTitles.Harrower <= 0))
                 return false;
@@ -192,8 +198,15 @@ namespace Server.Engines.Quests
         public override void Serialize(GenericWriter writer)
         {
             base.Serialize(writer);
-            writer.Write(0);
+            writer.Write(1);
             writer.Write(Config != null ? Config.Id : string.Empty);
+
+            writer.Write(Objectives.Count);
+            foreach (BaseObjective obj in Objectives)
+            {
+                writer.Write(obj.CurProgress);
+                writer.Write(obj.Completed);
+            }
         }
 
         public override void Deserialize(GenericReader reader)
@@ -203,6 +216,26 @@ namespace Server.Engines.Quests
             string questId = reader.ReadString();
 
             Config = XmlGuildQuestManager.Quests.Find(q => q.Id == questId);
+            InitFromConfig();
+
+            if (version >= 1)
+            {
+                int objCount = reader.ReadInt();
+                for (int i = 0; i < objCount; i++)
+                {
+                    int curProgress = reader.ReadInt();
+                    bool completed = reader.ReadBool();
+
+                    if (i < Objectives.Count)
+                    {
+                        Objectives[i].CurProgress = curProgress;
+                        if (completed && !Objectives[i].Completed)
+                        {
+                            Objectives[i].Complete();
+                        }
+                    }
+                }
+            }
         }
     }
 }
