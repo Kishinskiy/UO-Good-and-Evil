@@ -76,6 +76,9 @@ namespace Server.Engines.Quests
 
             if (Owner.QuestGuildRank > Config.RequiredRank)
                 return false;
+            
+            if (Config.RequireNpcGuild != NpcGuild.None && Owner.NpcGuild != Config.RequireNpcGuild)
+	            return false;
 
             if (Owner.RawStr < Config.MinStr || Owner.RawDex < Config.MinDex || Owner.RawInt < Config.MinInt)
                 return false;
