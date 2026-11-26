@@ -36,7 +36,7 @@
         <Description>Ты достаточно окреп, чтобы покинуть ряды новичков. Уничтожь 100 монстров низшего (10-го) ранга, чтобы доказать свою силу и снять статус Young.</Description>
         <OnlyYoung>true</OnlyYoung>
         <RequiredRank>11</RequiredRank>
-        <GuildType>WarriorsGuild</GuildType>
+        <GuildType>Warrior</GuildType>
 
         <!-- Требования к характеристикам и навыкам -->
         <MinStr>60</MinStr>
@@ -60,7 +60,7 @@
         <Description>Твой разум уже способен удерживать сложные плетения эфира. Собери 100 единиц Кровавого Мха (Blood Moss), чтобы доказать свое мастерство поиска компонентов и снять статус новичка.</Description>
         <OnlyYoung>true</OnlyYoung>
         <RequiredRank>11</RequiredRank>
-        <GuildType>MagesGuild</GuildType>
+        <GuildType>Mage</GuildType>
 
         <MinStr>25</MinStr>
         <MinDex>25</MinDex>
@@ -85,7 +85,7 @@
         <Description>Смерть больше не страшит тебя, но темные искусства требуют жертв. Уничтожь 50 скелетов, чтобы напитать свою ауру энергией смерти и снять защиту новичка.</Description>
         <OnlyYoung>true</OnlyYoung>
         <RequiredRank>11</RequiredRank>
-        <GuildType>MagesGuild</GuildType>
+        <GuildType>Mage</GuildType>
 
         <MinStr>30</MinStr>
         <MinDex>25</MinDex>
@@ -110,7 +110,7 @@
         <Description>Истинный рыцарь защищает слабых от порождений тьмы. Истреби 60 зомби, очистив окрестности от скверны, и ты будешь признан полноправным воином.</Description>
         <OnlyYoung>true</OnlyYoung>
         <RequiredRank>11</RequiredRank>
-        <GuildType>WarriorsGuild</GuildType>
+        <GuildType>Warrior</GuildType>
 
         <MinStr>70</MinStr>
         <MinDex>40</MinDex>
@@ -135,7 +135,7 @@
         <Description>Твоя рука тверда, а стрелы бьют без промаха. Выследи и убей 50 гигантских пауков (Giant Spider) в лесах, чтобы доказать свое искусство следопыта.</Description>
         <OnlyYoung>true</OnlyYoung>
         <RequiredRank>11</RequiredRank>
-        <GuildType>RangersGuild</GuildType>
+        <GuildType>Ranger</GuildType>
 
         <MinStr>45</MinStr>
         <MinDex>80</MinDex>
