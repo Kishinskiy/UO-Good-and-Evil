@@ -11,7 +11,8 @@ namespace Server.Engines.Quests
             get { return $"Наберите {MaxProgress} очков охоты, побеждая достойных противников."; }
         }
 
-        public RankPointsObjective() : base(2500)
+        // Принимаем нужное количество очков из XML (по умолчанию 5000)
+        public RankPointsObjective(int maxProgress = 5000) : base(maxProgress)
         {
         }
 
@@ -29,7 +30,8 @@ namespace Server.Engines.Quests
 
                 foreach (BaseQuest quest in pm.Quests)
                 {
-                    if (quest is RankTrialQuest)
+                    // Проверяем активные XML-квесты игрока
+                    if (quest is DynamicXmlGuildQuest)
                     {
                         foreach (BaseObjective obj in quest.Objectives)
                         {

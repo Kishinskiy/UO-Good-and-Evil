@@ -153,4 +153,128 @@
         <RewardItem>Arrow</RewardItem>
         <RewardItemAmount>200</RewardItemAmount>
     </Quest>
+
+    <!-- ================= ИСПЫТАНИЯ НА ПОВЫШЕНИЕ РАНГА ================= -->
+
+    <!-- Переход с 11 (Без ранга) на 10-й ранг -->
+    <Quest id="trial_rank_10">
+        <Title>Испытание Гильдии: 10-й ранг</Title>
+        <Description>Каждый великий герой начинал с малого. Докажи свою решимость в бою с мелкими тварями и заслужи свой первый ранг в гильдии.</Description>
+        <ExactRank>11</ExactRank>
+        <GuildType>Any</GuildType>
+        <ObjectiveType>HuntPoints</ObjectiveType>
+        <Amount>5000</Amount>
+        <SetRank>10</SetRank>
+        <RewardGold>500</RewardGold>
+    </Quest>
+
+    <!-- Переход с 10-го на 9-й ранг -->
+    <Quest id="trial_rank_9">
+        <Title>Испытание Гильдии: 9-й ранг</Title>
+        <Description>Ты сделал первый шаг. Продолжай очищать земли от нежити и монстров, чтобы подняться на 9-й ранг.</Description>
+        <ExactRank>10</ExactRank>
+        <GuildType>Any</GuildType>
+        <ObjectiveType>HuntPoints</ObjectiveType>
+        <Amount>8000</Amount>
+        <SetRank>9</SetRank>
+        <RewardGold>1000</RewardGold>
+    </Quest>
+
+    <!-- Переход с 9-го на 8-й ранг -->
+    <Quest id="trial_rank_8">
+        <Title>Испытание Гильдии: 8-й ранг</Title>
+        <Description>Твои навыки растут, но впереди ждут более опасные враги. Набери достаточно очков охоты для получения 8-го ранга.</Description>
+        <ExactRank>9</ExactRank>
+        <GuildType>Any</GuildType>
+        <ObjectiveType>HuntPoints</ObjectiveType>
+        <Amount>12000</Amount>
+        <SetRank>8</SetRank>
+        <RewardGold>1500</RewardGold>
+    </Quest>
+
+    <!-- Переход с 8-го на 7-й ранг -->
+    <Quest id="trial_rank_7">
+        <Title>Испытание Гильдии: 7-й ранг</Title>
+        <Description>Гильдия начинает присматриваться к твоим успехам. Пройди очередное испытание, чтобы достичь 7-го ранга.</Description>
+        <ExactRank>8</ExactRank>
+        <GuildType>Any</GuildType>
+        <ObjectiveType>HuntPoints</ObjectiveType>
+        <Amount>18000</Amount>
+        <SetRank>7</SetRank>
+        <RewardGold>2000</RewardGold>
+    </Quest>
+
+    <!-- Переход с 7-го на 6-й ранг (БОНУС: автоматическое снятие статуса Young) -->
+    <Quest id="trial_rank_6">
+        <Title>Испытание Гильдии: 6-й ранг (Посвящение)</Title>
+        <Description>Рубеж зрелости. Одолей достойных противников, чтобы получить 6-й ранг. Достигнув этого статуса, ты навсегда покинешь ряды новичков (статус Young будет снят).</Description>
+        <ExactRank>7</ExactRank>
+        <GuildType>Any</GuildType>
+        <ObjectiveType>HuntPoints</ObjectiveType>
+        <Amount>25000</Amount>
+        <SetRank>6</SetRank>
+        <RemoveYoung>true</RemoveYoung>
+        <RewardGold>3000</RewardGold>
+    </Quest>
+
+    <!-- Переход с 6-го на 5-й ранг -->
+    <Quest id="trial_rank_5">
+        <Title>Испытание Гильдии: 5-й ранг</Title>
+        <Description>Теперь ты полноправный искатель приключений. Докажи, что достоин войти в пятерку лучших рангов гильдии.</Description>
+        <ExactRank>6</ExactRank>
+        <GuildType>Any</GuildType>
+        <ObjectiveType>HuntPoints</ObjectiveType>
+        <Amount>35000</Amount>
+        <SetRank>5</SetRank>
+        <RewardGold>5000</RewardGold>
+    </Quest>
+
+    <!-- Переход с 5-го на 4-й ранг -->
+    <Quest id="trial_rank_4">
+        <Title>Испытание Гильдии: 4-й ранг</Title>
+        <Description>Лишь немногие доходят до этого уровня. Сразись с могучими чудовищами и заслужи 4-й ранг.</Description>
+        <ExactRank>5</ExactRank>
+        <GuildType>Any</GuildType>
+        <ObjectiveType>HuntPoints</ObjectiveType>
+        <Amount>48000</Amount>
+        <SetRank>4</SetRank>
+        <RewardGold>7500</RewardGold>
+    </Quest>
+
+    <!-- Переход с 4-го на 3-й ранг -->
+    <Quest id="trial_rank_3">
+        <Title>Испытание Гильдии: 3-й ранг</Title>
+        <Description>Твое имя уже знают в городах. Пройди суровое испытание охотой, чтобы получить 3-й ранг.</Description>
+        <ExactRank>4</ExactRank>
+        <GuildType>Any</GuildType>
+        <ObjectiveType>HuntPoints</ObjectiveType>
+        <Amount>62000</Amount>
+        <SetRank>3</SetRank>
+        <RewardGold>10000</RewardGold>
+    </Quest>
+
+    <!-- Переход с 3-го на 2-й ранг -->
+    <Quest id="trial_rank_2">
+        <Title>Испытание Гильдии: 2-й ранг</Title>
+        <Description>Ты стоишь в шаге от вершины. Уничтожь сильнейших порождений тьмы и заслужи 2-й ранг.</Description>
+        <ExactRank>3</ExactRank>
+        <GuildType>Any</GuildType>
+        <ObjectiveType>HuntPoints</ObjectiveType>
+        <Amount>80000</Amount>
+        <SetRank>2</SetRank>
+        <RewardGold>15000</RewardGold>
+    </Quest>
+
+    <!-- Переход со 2-го на 1-й ранг (Высший) -->
+    <Quest id="trial_rank_1">
+        <Title>Высшее Испытание Гильдии: 1-й ранг</Title>
+        <Description>Финальное испытание. Только легенды достойны 1-го ранга. Сокруши величайших чудовищ этого мира и впиши свое имя в историю гильдии.</Description>
+        <ExactRank>2</ExactRank>
+        <GuildType>Any</GuildType>
+        <ObjectiveType>HuntPoints</ObjectiveType>
+        <Amount>100000</Amount>
+        <SetRank>1</SetRank>
+        <RewardGold>25000</RewardGold>
+    </Quest>
+
 </GuildQuests>

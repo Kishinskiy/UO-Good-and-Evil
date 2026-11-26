@@ -33,9 +33,18 @@ namespace Server.Engines.Quests
             {
                 AddObjective(new XmlSlayRankObjective(config.TargetRank, config.Amount));
             }
+            else if (config.ObjectiveType.Equals("HuntPoints", StringComparison.OrdinalIgnoreCase))
+            {
+                AddObjective(new RankPointsObjective(config.Amount));
+            }
             else
             {
                 AddObjective(new SlayObjective(config.TargetType, config.TargetName, config.Amount));
+            }
+
+            if (config.SetRank > 0)
+            {
+                AddReward(new BaseReward($"Повышение до {config.SetRank}-го ранга гильдии"));
             }
 
             if (config.RemoveYoung)
@@ -59,19 +68,18 @@ namespace Server.Engines.Quests
             if (Owner == null || Config == null)
                 return false;
 
-            // Если квест только для новичков (Young)
             if (Config.OnlyYoung && !Owner.Young)
                 return false;
 
-            // Проверка ранга гильдии
+            if (Config.ExactRank > 0 && Owner.QuestGuildRank != Config.ExactRank)
+                return false;
+
             if (Owner.QuestGuildRank > Config.RequiredRank)
                 return false;
 
-            // Проверка характеристик (статов)
             if (Owner.RawStr < Config.MinStr || Owner.RawDex < Config.MinDex || Owner.RawInt < Config.MinInt)
                 return false;
 
-            // Проверка навыков (скиллов)
             foreach (KeyValuePair<SkillName, double> req in Config.RequiredSkills)
             {
                 if (Owner.Skills[req.Key].Base < req.Value)
@@ -87,6 +95,12 @@ namespace Server.Engines.Quests
 
             if (Owner != null && Config != null)
             {
+                if (Config.SetRank > 0 && Owner.QuestGuildRank > Config.SetRank)
+                {
+                    Owner.QuestGuildRank = Config.SetRank;
+                    Owner.SendMessage(0x35, $"Поздравляем! Ваш новый статус: {Owner.GetGuildRankTitle()}!");
+                }
+
                 if (Config.RemoveYoung && Owner.Young)
                 {
                     if (Owner.Account is Account acc)
@@ -129,14 +143,21 @@ namespace Server.Engines.Quests
                 }
             }
         }
-        
+
         public override void OnCompleted()
         {
-	        if (Owner != null)
-	        {
-		        Owner.PlaySound(CompleteSound);
-		        Owner.SendMessage(0x35, "Испытание выполнено! Вернитесь к любому гильдмастеру, чтобы сдать квест и получить новый ранг.");
-	        }
+            if (Owner != null)
+            {
+                Owner.PlaySound(CompleteSound);
+                if (Config != null && Config.SetRank > 0)
+                {
+                    Owner.SendMessage(0x35, "Испытание выполнено! Вернитесь к любому гильдмастеру, чтобы сдать квест и получить новый ранг.");
+                }
+                else
+                {
+                    Owner.SendMessage(0x35, "Задание выполнено! Вернитесь к гильдмастеру, чтобы сдать квест и получить награду.");
+                }
+            }
         }
 
         public override void Serialize(GenericWriter writer)

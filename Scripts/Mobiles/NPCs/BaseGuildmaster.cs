@@ -112,53 +112,30 @@ namespace Server.Mobiles
             base.OnSpeech(e);
         }
 
-        public virtual Type[] GuildQuests
-        {
-            get
-            {
-                return new Type[]
-                {
-                    typeof(RankTrialQuest)
-                    // Сюда в будущем добавляйте новые квесты гильдии, например:
-                    // typeof(MyRank5GuildQuest),
-                };
-            }
-        }
-
-                public override void OnDoubleClick(Mobile from)
+        public override void OnDoubleClick(Mobile from)
         {
             if (from is PlayerMobile pm && pm.InRange(Location, 3))
             {
-	            // 1. Проверяем активные квесты (испытание ранга или взятый XML-квест)
-	            foreach (BaseQuest active in pm.Quests)
-	            {
-		            if (active is RankTrialQuest || active is DynamicXmlGuildQuest)
-		            {
-			            if (active.Completed)
-			            {
-				            // Открываем стандартное окно сдачи квеста с текстом Complete и кнопкой получения награды
-				            pm.SendGump(new MondainQuestGump(active, MondainQuestGump.Section.Complete, false));
-			            }
-			            else
-			            {
-				            pm.SendGump(new MondainQuestGump(active, MondainQuestGump.Section.InProgress, false));
-			            }
-			            return;
-		            }
-	            }
-
-                // 2. Собираем доступные квесты
-                List<BaseQuest> availableQuests = new List<BaseQuest>();
-
-                // Добавляем испытание ранга, если еще не 1-й ранг
-                RankTrialQuest trial = new RankTrialQuest { Owner = pm, Quester = this };
-                if (trial.CanOffer())
+                // 1. Проверяем активные XML-квесты игрока
+                foreach (BaseQuest active in pm.Quests)
                 {
-                    availableQuests.Add(trial);
+                    if (active is DynamicXmlGuildQuest)
+                    {
+                        if (active.Completed)
+                        {
+                            pm.SendGump(new MondainQuestGump(active, MondainQuestGump.Section.Complete, false));
+                        }
+                        else
+                        {
+                            pm.SendGump(new MondainQuestGump(active, MondainQuestGump.Section.InProgress, false));
+                        }
+                        return;
+                    }
                 }
 
-                // Добавляем квесты из XML, подходящие по рангу и типу гильдмастера
-                string masterTypeName = GetType().Name; // Например, "MageGuildmaster"
+                // 2. Собираем все доступные квесты из XML (испытания ранга, снятие Young, обычные задания)
+                List<BaseQuest> availableQuests = new List<BaseQuest>();
+                string masterTypeName = GetType().Name;
 
                 foreach (XmlGuildQuestConfig cfg in XmlGuildQuestManager.Quests)
                 {
@@ -178,7 +155,7 @@ namespace Server.Mobiles
                     }
                 }
 
-                // 3. Предлагаем первый доступный квест (или меню выбора, если их несколько)
+                // 3. Предлагаем квест или открываем окно выбора
                 if (availableQuests.Count == 1)
                 {
 	                pm.SendGump(new MondainQuestGump(availableQuests[0]));
@@ -190,6 +167,7 @@ namespace Server.Mobiles
 	                pm.SendGump(new GuildQuestSelectGump(pm, availableQuests));
 	                return;
                 }
+
             }
 
             base.OnDoubleClick(from);

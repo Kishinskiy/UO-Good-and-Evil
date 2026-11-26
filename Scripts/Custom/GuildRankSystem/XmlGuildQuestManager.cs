@@ -15,6 +15,7 @@ namespace Server.Engines.Quests
         public string Description { get; set; }
         public bool OnlyYoung { get; set; }
         public int RequiredRank { get; set; }
+        public int ExactRank { get; set; } // 0 = не проверять, иначе требуется точный ранг
         public string GuildType { get; set; }
 
         // Требования к статам и навыкам
@@ -24,13 +25,14 @@ namespace Server.Engines.Quests
         public Dictionary<SkillName, double> RequiredSkills { get; set; } = new Dictionary<SkillName, double>();
 
         // Цель квеста
-        public string ObjectiveType { get; set; } // "Slay", "Obtain" или "SlayRank"
+        public string ObjectiveType { get; set; } // "Slay", "Obtain", "SlayRank" или "HuntPoints"
         public Type TargetType { get; set; }
         public string TargetName { get; set; }
         public int TargetRank { get; set; }
         public int Amount { get; set; }
 
         // Награды
+        public int SetRank { get; set; } // 0 = не менять ранг, иначе установить указанный ранг
         public bool RemoveYoung { get; set; }
         public int RewardGold { get; set; }
         public Type RewardItem { get; set; }
@@ -42,7 +44,7 @@ namespace Server.Engines.Quests
         private static readonly string FilePath = Path.Combine(Core.BaseDirectory, "Data", "GuildQuests.xml");
         public static List<XmlGuildQuestConfig> Quests { get; private set; } = new List<XmlGuildQuestConfig>();
 
-        public static void Initialize()
+        public static void Configure()
         {
             CommandSystem.Register("ReloadGuildQuests", AccessLevel.Administrator, e =>
             {
@@ -72,8 +74,10 @@ namespace Server.Engines.Quests
                     string targetTypeName = (string)el.Element("TargetType");
                     Type targetType = !string.IsNullOrEmpty(targetTypeName) ? ScriptCompiler.FindTypeByName(targetTypeName) : null;
 
-                    // Для Slay и Obtain тип существа/предмета обязателен, для SlayRank — не нужен
-                    if (!objType.Equals("SlayRank", StringComparison.OrdinalIgnoreCase) && targetType == null)
+                    // Для SlayRank и HuntPoints конкретный TargetType не требуется
+                    if (!objType.Equals("SlayRank", StringComparison.OrdinalIgnoreCase) &&
+                        !objType.Equals("HuntPoints", StringComparison.OrdinalIgnoreCase) &&
+                        targetType == null)
                     {
                         Console.WriteLine($"[GuildRankSystem] Ошибка в квесте {(string)el.Attribute("id")}: тип '{targetTypeName}' не найден.");
                         continue;
@@ -89,6 +93,7 @@ namespace Server.Engines.Quests
                         Description = (string)el.Element("Description") ?? "Выполните поручение гильдии.",
                         OnlyYoung = (bool?)el.Element("OnlyYoung") ?? false,
                         RequiredRank = (int?)el.Element("RequiredRank") ?? 11,
+                        ExactRank = (int?)el.Element("ExactRank") ?? 0,
                         GuildType = (string)el.Element("GuildType") ?? "Any",
 
                         MinStr = (int?)el.Element("MinStr") ?? 0,
@@ -101,13 +106,13 @@ namespace Server.Engines.Quests
                         TargetRank = (int?)el.Element("TargetRank") ?? 10,
                         Amount = (int?)el.Element("Amount") ?? 1,
 
+                        SetRank = (int?)el.Element("SetRank") ?? 0,
                         RemoveYoung = (bool?)el.Element("RemoveYoung") ?? false,
                         RewardGold = (int?)el.Element("RewardGold") ?? 0,
                         RewardItem = rewardItemType,
                         RewardItemAmount = (int?)el.Element("RewardItemAmount") ?? 1
                     };
 
-                    // Считываем все требования к навыкам (<SkillReq name="Swords" min="80" />)
                     foreach (XElement skillEl in el.Elements("SkillReq"))
                     {
                         string skillNameStr = (string)skillEl.Attribute("name");
