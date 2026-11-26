@@ -32,4 +32,8 @@
 	<ItemGroup>
 		<Reference Include="System.Web" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Custom\MerchantBot\MerchantBots.xml" />
+	</ItemGroup>
 </Project>

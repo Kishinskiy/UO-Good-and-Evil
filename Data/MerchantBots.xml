@@ -1,7 +1,7 @@
 <?xml version="1.0" standalone="yes"?>
 <Spawns>
-    <!-- ==================== TRAMMEL ==================== -->
-    <!-- Britain (Западный банк / Торговая площадь) -->
+    <!-- ==================== TRAMMEL (Tier 1 и Tier 2) ==================== -->
+    <!-- Britain -->
     <Points>
         <Name>MerchantBot_Britain_Trammel</Name>
         <UniqueId>a1b2c3d4-0001-4000-8000-000000000001</UniqueId>
@@ -14,37 +14,16 @@
         <CentreY>1695</CentreY>
         <CentreZ>0</CentreZ>
         <Range>15</Range>
-        <MaxCount>3</MaxCount>
+        <MaxCount>4</MaxCount>
         <MinDelay>10</MinDelay>
         <MaxDelay>20</MaxDelay>
-        <DelayInSec>False</DelayInSec>
-        <Duration>0</Duration>
-        <DespawnTime>0</DespawnTime>
-        <ProximityRange>-1</ProximityRange>
-        <ProximityTriggerSound>500</ProximityTriggerSound>
-        <TriggerProbability>1</TriggerProbability>
-        <InContainer>False</InContainer>
-        <MinRefractory>0</MinRefractory>
-        <MaxRefractory>0</MaxRefractory>
-        <TODStart>0</TODStart>
-        <TODEnd>0</TODEnd>
-        <TODMode>0</TODMode>
-        <KillReset>1</KillReset>
-        <ExternalTriggering>False</ExternalTriggering>
         <SequentialSpawning>-1</SequentialSpawning>
-        <AllowGhostTriggering>False</AllowGhostTriggering>
-        <AllowNPCTriggering>False</AllowNPCTriggering>
-        <SpawnOnTrigger>False</SpawnOnTrigger>
-        <SmartSpawning>False</SmartSpawning>
-        <Team>0</Team>
-        <Amount>1</Amount>
-        <IsGroup>False</IsGroup>
         <IsRunning>True</IsRunning>
         <IsHomeRangeRelative>True</IsHomeRangeRelative>
-        <Objects2>BlacksmithMerchantBot:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1:OBJ=CarpenterMerchantBot:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1:OBJ=TailorMerchantBot:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1</Objects2>
+        <Objects2>BlacksmithMerchantT1:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1:OBJ=TailorMerchantT1:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1:OBJ=MageMerchantT1:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1:OBJ=HealerMerchantT1:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1</Objects2>
     </Points>
 
-    <!-- Minoc (Центр города / Кузницы) -->
+    <!-- Minoc -->
     <Points>
         <Name>MerchantBot_Minoc_Trammel</Name>
         <UniqueId>a1b2c3d4-0001-4000-8000-000000000002</UniqueId>
@@ -57,16 +36,16 @@
         <CentreY>555</CentreY>
         <CentreZ>0</CentreZ>
         <Range>15</Range>
-        <MaxCount>2</MaxCount>
+        <MaxCount>3</MaxCount>
         <MinDelay>10</MinDelay>
         <MaxDelay>20</MaxDelay>
         <SequentialSpawning>-1</SequentialSpawning>
         <IsRunning>True</IsRunning>
         <IsHomeRangeRelative>True</IsHomeRangeRelative>
-        <Objects2>BlacksmithMerchantBot:MX=2:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1:OBJ=CarpenterMerchantBot:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1</Objects2>
+        <Objects2>BlacksmithMerchantT2:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1:OBJ=MinerMerchantT1:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1:OBJ=TinkerMerchantT1:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1</Objects2>
     </Points>
 
-    <!-- Vesper (Торговый район) -->
+    <!-- Vesper -->
     <Points>
         <Name>MerchantBot_Vesper_Trammel</Name>
         <UniqueId>a1b2c3d4-0001-4000-8000-000000000003</UniqueId>
@@ -79,16 +58,16 @@
         <CentreY>685</CentreY>
         <CentreZ>0</CentreZ>
         <Range>15</Range>
-        <MaxCount>2</MaxCount>
+        <MaxCount>3</MaxCount>
         <MinDelay>10</MinDelay>
         <MaxDelay>20</MaxDelay>
         <SequentialSpawning>-1</SequentialSpawning>
         <IsRunning>True</IsRunning>
         <IsHomeRangeRelative>True</IsHomeRangeRelative>
-        <Objects2>TailorMerchantBot:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1:OBJ=CarpenterMerchantBot:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1</Objects2>
+        <Objects2>TailorMerchantT2:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1:OBJ=BardMerchantT1:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1:OBJ=FishermanMerchantT1:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1</Objects2>
     </Points>
 
-    <!-- Yew (Рынок у Empath Abbey) -->
+    <!-- Yew -->
     <Points>
         <Name>MerchantBot_Yew_Trammel</Name>
         <UniqueId>a1b2c3d4-0001-4000-8000-000000000004</UniqueId>
@@ -101,16 +80,16 @@
         <CentreY>990</CentreY>
         <CentreZ>0</CentreZ>
         <Range>15</Range>
-        <MaxCount>2</MaxCount>
+        <MaxCount>3</MaxCount>
         <MinDelay>10</MinDelay>
         <MaxDelay>20</MaxDelay>
         <SequentialSpawning>-1</SequentialSpawning>
         <IsRunning>True</IsRunning>
         <IsHomeRangeRelative>True</IsHomeRangeRelative>
-        <Objects2>CarpenterMerchantBot:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1:OBJ=TailorMerchantBot:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1</Objects2>
+        <Objects2>CarpenterMerchantT1:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1:OBJ=RangerMerchantT1:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1:OBJ=RangerMerchantT2:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1</Objects2>
     </Points>
 
-    <!-- Trinsic (Центральная площадь) -->
+    <!-- Trinsic -->
     <Points>
         <Name>MerchantBot_Trinsic_Trammel</Name>
         <UniqueId>a1b2c3d4-0001-4000-8000-000000000005</UniqueId>
@@ -123,16 +102,16 @@
         <CentreY>2820</CentreY>
         <CentreZ>0</CentreZ>
         <Range>15</Range>
-        <MaxCount>2</MaxCount>
+        <MaxCount>3</MaxCount>
         <MinDelay>10</MinDelay>
         <MaxDelay>20</MaxDelay>
         <SequentialSpawning>-1</SequentialSpawning>
         <IsRunning>True</IsRunning>
         <IsHomeRangeRelative>True</IsHomeRangeRelative>
-        <Objects2>BlacksmithMerchantBot:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1:OBJ=TailorMerchantBot:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1</Objects2>
+        <Objects2>WarriorMerchantT1:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1:OBJ=WarriorMerchantT2:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1:OBJ=HealerMerchantT2:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1</Objects2>
     </Points>
 
-    <!-- ==================== FELUCCA ==================== -->
+    <!-- ==================== FELUCCA (Tier 2 и Tier 3) ==================== -->
     <!-- Buccaneer's Den -->
     <Points>
         <Name>MerchantBot_BucsDen_Felucca</Name>
@@ -146,13 +125,13 @@
         <CentreY>2165</CentreY>
         <CentreZ>0</CentreZ>
         <Range>12</Range>
-        <MaxCount>2</MaxCount>
+        <MaxCount>3</MaxCount>
         <MinDelay>10</MinDelay>
         <MaxDelay>20</MaxDelay>
         <SequentialSpawning>-1</SequentialSpawning>
         <IsRunning>True</IsRunning>
         <IsHomeRangeRelative>True</IsHomeRangeRelative>
-        <Objects2>BlacksmithMerchantBot:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1:OBJ=TailorMerchantBot:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1</Objects2>
+        <Objects2>ThiefMerchantT1:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1:OBJ=ThiefMerchantT2:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1:OBJ=ThiefMerchantT3:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1</Objects2>
     </Points>
 
     <!-- Britain Felucca -->
@@ -168,16 +147,16 @@
         <CentreY>1695</CentreY>
         <CentreZ>0</CentreZ>
         <Range>15</Range>
-        <MaxCount>2</MaxCount>
+        <MaxCount>3</MaxCount>
         <MinDelay>10</MinDelay>
         <MaxDelay>20</MaxDelay>
         <SequentialSpawning>-1</SequentialSpawning>
         <IsRunning>True</IsRunning>
         <IsHomeRangeRelative>True</IsHomeRangeRelative>
-        <Objects2>BlacksmithMerchantBot:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1:OBJ=CarpenterMerchantBot:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1</Objects2>
+        <Objects2>WarriorMerchantT3:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1:OBJ=BlacksmithMerchantT3:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1:OBJ=FishermanMerchantT3:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1</Objects2>
     </Points>
 
-    <!-- ==================== ILSHENAR ==================== -->
+    <!-- ==================== ILSHENAR (Tier 3) ==================== -->
     <!-- Mistas -->
     <Points>
         <Name>MerchantBot_Mistas_Ilshenar</Name>
@@ -191,16 +170,16 @@
         <CentreY>1070</CentreY>
         <CentreZ>-30</CentreZ>
         <Range>12</Range>
-        <MaxCount>2</MaxCount>
+        <MaxCount>3</MaxCount>
         <MinDelay>10</MinDelay>
         <MaxDelay>20</MaxDelay>
         <SequentialSpawning>-1</SequentialSpawning>
         <IsRunning>True</IsRunning>
         <IsHomeRangeRelative>True</IsHomeRangeRelative>
-        <Objects2>BlacksmithMerchantBot:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1:OBJ=TailorMerchantBot:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1</Objects2>
+        <Objects2>RangerMerchantT3:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1:OBJ=BardMerchantT3:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1:OBJ=HealerMerchantT3:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1</Objects2>
     </Points>
 
-    <!-- Gargoyle City (Ver Lor Reg) -->
+    <!-- Gargoyle City -->
     <Points>
         <Name>MerchantBot_GargoyleCity_Ilshenar</Name>
         <UniqueId>a1b2c3d4-0003-4000-8000-000000000002</UniqueId>
@@ -213,57 +192,13 @@
         <CentreY>670</CentreY>
         <CentreZ>-40</CentreZ>
         <Range>12</Range>
-        <MaxCount>2</MaxCount>
-        <MinDelay>10</MinDelay>
-        <MaxDelay>20</MaxDelay>
-        <SequentialSpawning>-1</SequentialSpawning>
-        <IsRunning>True</IsRunning>
-        <IsHomeRangeRelative>True</IsHomeRangeRelative>
-        <Objects2>CarpenterMerchantBot:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1:OBJ=BlacksmithMerchantBot:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1</Objects2>
-    </Points>
-
-    <!-- ==================== MALAS ==================== -->
-    <!-- Luna (Центральная площадь) -->
-    <Points>
-        <Name>MerchantBot_Luna_Malas</Name>
-        <UniqueId>a1b2c3d4-0004-4000-8000-000000000001</UniqueId>
-        <Map>Malas</Map>
-        <X>990</X>
-        <Y>520</Y>
-        <Width>25</Width>
-        <Height>25</Height>
-        <CentreX>990</CentreX>
-        <CentreY>520</CentreY>
-        <CentreZ>-50</CentreZ>
-        <Range>12</Range>
         <MaxCount>3</MaxCount>
         <MinDelay>10</MinDelay>
         <MaxDelay>20</MaxDelay>
         <SequentialSpawning>-1</SequentialSpawning>
         <IsRunning>True</IsRunning>
         <IsHomeRangeRelative>True</IsHomeRangeRelative>
-        <Objects2>BlacksmithMerchantBot:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1:OBJ=CarpenterMerchantBot:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1:OBJ=TailorMerchantBot:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1</Objects2>
+        <Objects2>CarpenterMerchantT3:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1:OBJ=MinerMerchantT3:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1:OBJ=TinkerMerchantT3:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1</Objects2>
     </Points>
 
-    <!-- Umbra (Центр города) -->
-    <Points>
-        <Name>MerchantBot_Umbra_Malas</Name>
-        <UniqueId>a1b2c3d4-0004-4000-8000-000000000002</UniqueId>
-        <Map>Malas</Map>
-        <X>2045</X>
-        <Y>1345</Y>
-        <Width>25</Width>
-        <Height>25</Height>
-        <CentreX>2045</CentreX>
-        <CentreY>1345</CentreY>
-        <CentreZ>-85</CentreZ>
-        <Range>12</Range>
-        <MaxCount>2</MaxCount>
-        <MinDelay>10</MinDelay>
-        <MaxDelay>20</MaxDelay>
-        <SequentialSpawning>-1</SequentialSpawning>
-        <IsRunning>True</IsRunning>
-        <IsHomeRangeRelative>True</IsHomeRangeRelative>
-        <Objects2>BlacksmithMerchantBot:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1:OBJ=TailorMerchantBot:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1</Objects2>
-    </Points>
 </Spawns>
