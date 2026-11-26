@@ -43,7 +43,7 @@
         <MinDex>60</MinDex>
         <MinInt>10</MinInt>
         <SkillReq name="Swords" min="80" />
-        <SkillReq name="Focus" min="80" />
+        <SkillReq name="Tactics" min="80" />
 
         <!-- Цель: убить 100 монстров 10-го ранга -->
         <ObjectiveType>SlayRank</ObjectiveType>
@@ -163,9 +163,9 @@
         <ExactRank>11</ExactRank>
         <GuildType>Any</GuildType>
         <ObjectiveType>HuntPoints</ObjectiveType>
-        <Amount>5000</Amount>
+        <Amount>50000</Amount>
         <SetRank>10</SetRank>
-        <RewardGold>500</RewardGold>
+        <RewardGold>50000</RewardGold>
     </Quest>
 
     <!-- Переход с 10-го на 9-й ранг -->
@@ -175,9 +175,9 @@
         <ExactRank>10</ExactRank>
         <GuildType>Any</GuildType>
         <ObjectiveType>HuntPoints</ObjectiveType>
-        <Amount>8000</Amount>
+        <Amount>80000</Amount>
         <SetRank>9</SetRank>
-        <RewardGold>1000</RewardGold>
+        <RewardGold>100000</RewardGold>
     </Quest>
 
     <!-- Переход с 9-го на 8-й ранг -->
@@ -187,9 +187,9 @@
         <ExactRank>9</ExactRank>
         <GuildType>Any</GuildType>
         <ObjectiveType>HuntPoints</ObjectiveType>
-        <Amount>12000</Amount>
+        <Amount>120000</Amount>
         <SetRank>8</SetRank>
-        <RewardGold>1500</RewardGold>
+        <RewardGold>150000</RewardGold>
     </Quest>
 
     <!-- Переход с 8-го на 7-й ранг -->
@@ -199,9 +199,9 @@
         <ExactRank>8</ExactRank>
         <GuildType>Any</GuildType>
         <ObjectiveType>HuntPoints</ObjectiveType>
-        <Amount>18000</Amount>
+        <Amount>180000</Amount>
         <SetRank>7</SetRank>
-        <RewardGold>2000</RewardGold>
+        <RewardGold>200000</RewardGold>
     </Quest>
 
     <!-- Переход с 7-го на 6-й ранг (БОНУС: автоматическое снятие статуса Young) -->
@@ -211,10 +211,10 @@
         <ExactRank>7</ExactRank>
         <GuildType>Any</GuildType>
         <ObjectiveType>HuntPoints</ObjectiveType>
-        <Amount>25000</Amount>
+        <Amount>250000</Amount>
         <SetRank>6</SetRank>
         <RemoveYoung>true</RemoveYoung>
-        <RewardGold>3000</RewardGold>
+        <RewardGold>300000</RewardGold>
     </Quest>
 
     <!-- Переход с 6-го на 5-й ранг -->
@@ -224,9 +224,9 @@
         <ExactRank>6</ExactRank>
         <GuildType>Any</GuildType>
         <ObjectiveType>HuntPoints</ObjectiveType>
-        <Amount>35000</Amount>
+        <Amount>350000</Amount>
         <SetRank>5</SetRank>
-        <RewardGold>5000</RewardGold>
+        <RewardGold>500000</RewardGold>
     </Quest>
 
     <!-- Переход с 5-го на 4-й ранг -->
@@ -236,9 +236,9 @@
         <ExactRank>5</ExactRank>
         <GuildType>Any</GuildType>
         <ObjectiveType>HuntPoints</ObjectiveType>
-        <Amount>48000</Amount>
+        <Amount>480000</Amount>
         <SetRank>4</SetRank>
-        <RewardGold>7500</RewardGold>
+        <RewardGold>750000</RewardGold>
     </Quest>
 
     <!-- Переход с 4-го на 3-й ранг -->
@@ -248,9 +248,9 @@
         <ExactRank>4</ExactRank>
         <GuildType>Any</GuildType>
         <ObjectiveType>HuntPoints</ObjectiveType>
-        <Amount>62000</Amount>
+        <Amount>620000</Amount>
         <SetRank>3</SetRank>
-        <RewardGold>10000</RewardGold>
+        <RewardGold>1000000</RewardGold>
     </Quest>
 
     <!-- Переход с 3-го на 2-й ранг -->
@@ -260,9 +260,9 @@
         <ExactRank>3</ExactRank>
         <GuildType>Any</GuildType>
         <ObjectiveType>HuntPoints</ObjectiveType>
-        <Amount>80000</Amount>
+        <Amount>800000</Amount>
         <SetRank>2</SetRank>
-        <RewardGold>15000</RewardGold>
+        <RewardGold>1500000</RewardGold>
     </Quest>
 
     <!-- Переход со 2-го на 1-й ранг (Высший) -->
@@ -271,10 +271,11 @@
         <Description>Финальное испытание. Только легенды достойны 1-го ранга. Сокруши величайших чудовищ этого мира и впиши свое имя в историю гильдии.</Description>
         <ExactRank>2</ExactRank>
         <GuildType>Any</GuildType>
+        <RequireHarrowerKill>true</RequireHarrowerKill>
         <ObjectiveType>HuntPoints</ObjectiveType>
-        <Amount>100000</Amount>
+        <Amount>1000000</Amount>
         <SetRank>1</SetRank>
-        <RewardGold>25000</RewardGold>
+        <RewardGold>2500000</RewardGold>
     </Quest>
 
 </GuildQuests>

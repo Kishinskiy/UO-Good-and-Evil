@@ -79,6 +79,9 @@ namespace Server.Engines.Quests
             
             if (Config.RequireNpcGuild != NpcGuild.None && Owner.NpcGuild != Config.RequireNpcGuild)
 	            return false;
+            
+            if (Config.RequireHarrowerKill && (Owner.ChampionTitles == null || Owner.ChampionTitles.Harrower <= 0))
+	            return false;
 
             if (Owner.RawStr < Config.MinStr || Owner.RawDex < Config.MinDex || Owner.RawInt < Config.MinInt)
                 return false;

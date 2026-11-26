@@ -17,7 +17,7 @@ namespace Server.Engines.Quests
         public int RequiredRank { get; set; }
         public int ExactRank { get; set; } // 0 = не проверять, иначе требуется точный ранг
         public string GuildType { get; set; }
-        
+        public bool RequireHarrowerKill { get; set; }
         public NpcGuild RequireNpcGuild { get; set; }
 
         // Требования к статам и навыкам
@@ -87,7 +87,13 @@ namespace Server.Engines.Quests
 
                     string rewardItemName = (string)el.Element("RewardItem");
                     Type rewardItemType = !string.IsNullOrEmpty(rewardItemName) ? ScriptCompiler.FindTypeByName(rewardItemName) : null;
-
+                    string npcGuildStr = (string)el.Element("RequireNpcGuild");
+                    NpcGuild reqNpcGuild = NpcGuild.None;
+                    if (!string.IsNullOrEmpty(npcGuildStr))
+                    {
+	                    Enum.TryParse(npcGuildStr, true, out reqNpcGuild);
+                    }
+                    
                     var cfg = new XmlGuildQuestConfig
                     {
                         Id = (string)el.Attribute("id") ?? Guid.NewGuid().ToString(),
@@ -97,6 +103,8 @@ namespace Server.Engines.Quests
                         RequiredRank = (int?)el.Element("RequiredRank") ?? 11,
                         ExactRank = (int?)el.Element("ExactRank") ?? 0,
                         GuildType = (string)el.Element("GuildType") ?? "Any",
+                        RequireHarrowerKill = (bool?)el.Element("RequireHarrowerKill") ?? false,
+                        RequireNpcGuild = reqNpcGuild,
 
                         MinStr = (int?)el.Element("MinStr") ?? 0,
                         MinDex = (int?)el.Element("MinDex") ?? 0,
