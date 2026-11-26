@@ -19,19 +19,55 @@ namespace Server.Mobiles
         private bool _marketTimerStarted;
 
         public abstract string ProfessionName { get; }
+        public virtual int Tier => 1;
+        public virtual int RequiredGuildRank => 11; // 11 = без ранга
+        public virtual NpcGuild RequiredNpcGuild => NpcGuild.None;
 
         public BaseMerchantBot() : base(null, null)
         {
             Name = NameList.RandomName("male");
-            Title = $"Traveling {ProfessionName}";
+            Title = $"[Tier {Tier}] {ProfessionName} Merchant";
             CantWalk = false;
-            this.HoldGold = 500000;
+            this.HoldGold = 500000 * Tier;
             this.Direction = (Direction)Utility.Random(8);
 
             DressUp();
         }
 
-        // Методы, которые переопределяет каждый конкретный торговец
+        public bool CheckAccess(Mobile from, bool silent = false)
+        {
+            if (from is PlayerMobile pm)
+            {
+                if (pm.AccessLevel >= AccessLevel.GameMaster)
+                    return true;
+
+                if (RequiredNpcGuild != NpcGuild.None && pm.NpcGuild != RequiredNpcGuild)
+                {
+                    if (!silent)
+                        SayTo(pm, $"Я торгую только с официальными членами гильдии {RequiredNpcGuild}!");
+                    return false;
+                }
+
+                if (pm.QuestGuildRank > RequiredGuildRank)
+                {
+                    if (!silent)
+                        SayTo(pm, $"Твой статус слишком низок. Для торговли со мной нужен минимум {RequiredGuildRank}-й ранг гильдии!");
+                    return false;
+                }
+
+                return true;
+            }
+            return false;
+        }
+
+        public override void OnDoubleClick(Mobile from)
+        {
+            if (!CheckAccess(from))
+                return;
+
+            base.OnDoubleClick(from);
+        }
+
         protected abstract void DressUp();
         public abstract bool IsItemForProfession(Item item);
         protected abstract void GenerateCraftedStock(Hashtable sellItems);
@@ -44,7 +80,6 @@ namespace Server.Mobiles
             Hashtable sellItems = SellItemsField?.GetValue(this) as Hashtable;
             if (sellItems == null) return;
 
-            // 1. Чистка старого ассортимента
             List<Item> toRemove = new List<Item>();
             foreach (DictionaryEntry de in sellItems)
             {
@@ -53,11 +88,9 @@ namespace Server.Mobiles
             }
             foreach (Item item in toRemove) item.Delete();
 
-            // 2. ИИ-спекуляция (выкуп профильных товаров у других вендоров)
             if (Utility.RandomDouble() < 0.45 && sellItems.Count < MaxItemsOnSale)
                 TrySpeculatePlayerVendors(sellItems);
 
-            // 3. Пополнение витрины крафтовыми товарами
             if (sellItems.Count < MaxItemsOnSale)
             {
                 int itemsToGenerate = Utility.RandomMinMax(1, 3);
@@ -70,6 +103,9 @@ namespace Server.Mobiles
 
         public override bool OnDragDrop(Mobile from, Item item)
         {
+            if (!CheckAccess(from))
+                return false;
+
             if (from == null || item == null || this.Deleted || this.Backpack == null || from.Backpack == null)
                 return false;
 
@@ -194,40 +230,69 @@ namespace Server.Mobiles
             return null;
         }
 
-        public BaseMerchantBot(Serial serial) : base(serial) { }
+        protected void ApplyTierMagicAttributes(Item item)
+        {
+            int minProps = Tier;
+            int maxProps = Math.Min(5, Tier + 1);
+            int minIntensity = (Tier - 1) * 25 + 10;
+            int maxIntensity = Math.Min(100, Tier * 25 + 10);
 
+            if (item is BaseWeapon bw)
+            {
+                bw.Quality = ItemQuality.Exceptional;
+                BaseRunicTool.ApplyAttributesTo(bw, false, 0, Utility.RandomMinMax(minProps, maxProps), minIntensity, maxIntensity);
+            }
+            else if (item is BaseArmor ba)
+            {
+                ba.Quality = ItemQuality.Exceptional;
+                BaseRunicTool.ApplyAttributesTo(ba, false, 0, Utility.RandomMinMax(minProps, maxProps), minIntensity, maxIntensity);
+            }
+            else if (item is BaseJewel bj)
+            {
+                BaseRunicTool.ApplyAttributesTo(bj, false, 0, Utility.RandomMinMax(minProps, maxProps), minIntensity, maxIntensity);
+            }
+        }
+
+        protected int GetTierPriceMultiplier()
+        {
+	        switch (Tier)
+	        {
+		        case 2: return 3;
+		        case 3: return 8;
+		        case 4: return 20;
+		        default: return 1;
+	        }
+        }
+        public BaseMerchantBot(Serial serial) : base(serial) { }
         public override void OnAfterSpawn()
         {
-            base.OnAfterSpawn();
-            StartMarketTimer();
-            ProcessMarketCycle();
+	        base.OnAfterSpawn();
+	        StartMarketTimer();
+	        ProcessMarketCycle();
         }
-
         private void StartMarketTimer()
         {
-            if (Deleted || _marketTimerStarted) return;
-            _marketTimerStarted = true;
-            _marketTimer = Timer.DelayCall(TimeSpan.FromSeconds(5.0), UpdateInterval, ProcessMarketCycle);
+	        if (Deleted || _marketTimerStarted) return;
+	        _marketTimerStarted = true;
+	        _marketTimer = Timer.DelayCall(TimeSpan.FromSeconds(5.0), UpdateInterval, ProcessMarketCycle);
         }
-
         public override void OnDelete()
         {
-            _marketTimer?.Stop();
-            base.OnDelete();
+	        _marketTimer?.Stop();
+	        base.OnDelete();
         }
-
         public override void Serialize(GenericWriter writer)
         {
-            base.Serialize(writer);
-            writer.Write((int)0);
+	        base.Serialize(writer);
+	        writer.Write((int)0);
         }
-
         public override void Deserialize(GenericReader reader)
         {
-            base.Deserialize(reader);
-            int version = reader.ReadInt();
-            if (this.HoldGold < 100000) this.HoldGold = 500000;
-            Timer.DelayCall(TimeSpan.FromSeconds(5.0), StartMarketTimer);
+	        base.Deserialize(reader);
+	        int version = reader.ReadInt();
+	        int minGold = 500000 * Tier;
+	        if (this.HoldGold < minGold) this.HoldGold = minGold;
+	        Timer.DelayCall(TimeSpan.FromSeconds(5.0), StartMarketTimer);
         }
     }
 }

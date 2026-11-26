@@ -36,18 +36,18 @@
         <Description>Ты достаточно окреп, чтобы покинуть ряды новичков. Уничтожь 100 монстров низшего (10-го) ранга, чтобы доказать свою силу и снять статус Young.</Description>
         <OnlyYoung>true</OnlyYoung>
         <RequiredRank>11</RequiredRank>
-        <GuildType>Warrior</GuildType>
+        <GuildType>WarriorsGuild</GuildType>
 
         <!-- Требования к характеристикам и навыкам -->
         <MinStr>60</MinStr>
         <MinDex>60</MinDex>
         <MinInt>10</MinInt>
         <SkillReq name="Swords" min="80" />
-        <SkillReq name="Focus" min="80" />
+        <SkillReq name="Tactics" min="80" />
 
         <!-- Цель: убить 100 монстров 10-го ранга -->
         <ObjectiveType>SlayRank</ObjectiveType>
-        <TargetRank>10</TargetRank>
+        <TargetRank>6</TargetRank>
         <Amount>100</Amount>
 
         <!-- Награда: снятие статуса Young + золото -->
@@ -60,7 +60,7 @@
         <Description>Твой разум уже способен удерживать сложные плетения эфира. Собери 100 единиц Кровавого Мха (Blood Moss), чтобы доказать свое мастерство поиска компонентов и снять статус новичка.</Description>
         <OnlyYoung>true</OnlyYoung>
         <RequiredRank>11</RequiredRank>
-        <GuildType>Mage</GuildType>
+        <GuildType>MagesGuild</GuildType>
 
         <MinStr>25</MinStr>
         <MinDex>25</MinDex>
@@ -85,7 +85,7 @@
         <Description>Смерть больше не страшит тебя, но темные искусства требуют жертв. Уничтожь 50 скелетов, чтобы напитать свою ауру энергией смерти и снять защиту новичка.</Description>
         <OnlyYoung>true</OnlyYoung>
         <RequiredRank>11</RequiredRank>
-        <GuildType>Mage</GuildType>
+        <GuildType>MagesGuild</GuildType>
 
         <MinStr>30</MinStr>
         <MinDex>25</MinDex>
@@ -110,7 +110,7 @@
         <Description>Истинный рыцарь защищает слабых от порождений тьмы. Истреби 60 зомби, очистив окрестности от скверны, и ты будешь признан полноправным воином.</Description>
         <OnlyYoung>true</OnlyYoung>
         <RequiredRank>11</RequiredRank>
-        <GuildType>Warrior</GuildType>
+        <GuildType>WarriorsGuild</GuildType>
 
         <MinStr>70</MinStr>
         <MinDex>40</MinDex>
@@ -135,7 +135,7 @@
         <Description>Твоя рука тверда, а стрелы бьют без промаха. Выследи и убей 50 гигантских пауков (Giant Spider) в лесах, чтобы доказать свое искусство следопыта.</Description>
         <OnlyYoung>true</OnlyYoung>
         <RequiredRank>11</RequiredRank>
-        <GuildType>Ranger</GuildType>
+        <GuildType>RangersGuild</GuildType>
 
         <MinStr>45</MinStr>
         <MinDex>80</MinDex>
@@ -163,9 +163,9 @@
         <ExactRank>11</ExactRank>
         <GuildType>Any</GuildType>
         <ObjectiveType>HuntPoints</ObjectiveType>
-        <Amount>5000</Amount>
+        <Amount>50000</Amount>
         <SetRank>10</SetRank>
-        <RewardGold>500</RewardGold>
+        <RewardGold>50000</RewardGold>
     </Quest>
 
     <!-- Переход с 10-го на 9-й ранг -->
@@ -175,9 +175,9 @@
         <ExactRank>10</ExactRank>
         <GuildType>Any</GuildType>
         <ObjectiveType>HuntPoints</ObjectiveType>
-        <Amount>8000</Amount>
+        <Amount>80000</Amount>
         <SetRank>9</SetRank>
-        <RewardGold>1000</RewardGold>
+        <RewardGold>100000</RewardGold>
     </Quest>
 
     <!-- Переход с 9-го на 8-й ранг -->
@@ -187,9 +187,9 @@
         <ExactRank>9</ExactRank>
         <GuildType>Any</GuildType>
         <ObjectiveType>HuntPoints</ObjectiveType>
-        <Amount>12000</Amount>
+        <Amount>120000</Amount>
         <SetRank>8</SetRank>
-        <RewardGold>1500</RewardGold>
+        <RewardGold>150000</RewardGold>
     </Quest>
 
     <!-- Переход с 8-го на 7-й ранг -->
@@ -199,9 +199,9 @@
         <ExactRank>8</ExactRank>
         <GuildType>Any</GuildType>
         <ObjectiveType>HuntPoints</ObjectiveType>
-        <Amount>18000</Amount>
+        <Amount>180000</Amount>
         <SetRank>7</SetRank>
-        <RewardGold>2000</RewardGold>
+        <RewardGold>200000</RewardGold>
     </Quest>
 
     <!-- Переход с 7-го на 6-й ранг (БОНУС: автоматическое снятие статуса Young) -->
@@ -211,10 +211,10 @@
         <ExactRank>7</ExactRank>
         <GuildType>Any</GuildType>
         <ObjectiveType>HuntPoints</ObjectiveType>
-        <Amount>25000</Amount>
+        <Amount>250000</Amount>
         <SetRank>6</SetRank>
         <RemoveYoung>true</RemoveYoung>
-        <RewardGold>3000</RewardGold>
+        <RewardGold>300000</RewardGold>
     </Quest>
 
     <!-- Переход с 6-го на 5-й ранг -->
@@ -224,9 +224,9 @@
         <ExactRank>6</ExactRank>
         <GuildType>Any</GuildType>
         <ObjectiveType>HuntPoints</ObjectiveType>
-        <Amount>35000</Amount>
+        <Amount>350000</Amount>
         <SetRank>5</SetRank>
-        <RewardGold>5000</RewardGold>
+        <RewardGold>500000</RewardGold>
     </Quest>
 
     <!-- Переход с 5-го на 4-й ранг -->
@@ -236,33 +236,40 @@
         <ExactRank>5</ExactRank>
         <GuildType>Any</GuildType>
         <ObjectiveType>HuntPoints</ObjectiveType>
-        <Amount>48000</Amount>
+        <Amount>480000</Amount>
         <SetRank>4</SetRank>
-        <RewardGold>7500</RewardGold>
+        <RewardGold>750000</RewardGold>
     </Quest>
 
     <!-- Переход с 4-го на 3-й ранг -->
     <Quest id="trial_rank_3">
         <Title>Испытание Гильдии: 3-й ранг</Title>
-        <Description>Твое имя уже знают в городах. Пройди суровое испытание охотой, чтобы получить 3-й ранг.</Description>
+        <Description>Твое имя уже знают в городах. Спустись в Перчатку Судьбы подземелья Doom, одолей Темного Отца (Dark Father) и набери 620 000 очков охоты, чтобы получить 3-й ранг.</Description>
         <ExactRank>4</ExactRank>
+        <RequireNpcGuild>Any</RequireNpcGuild>
         <GuildType>Any</GuildType>
-        <ObjectiveType>HuntPoints</ObjectiveType>
-        <Amount>62000</Amount>
+
+        <!-- Две цели: убить главного босса Doom и набрать очки -->
+        <Objective type="Slay" target="DemonKnight" name="Dark Father (Doom)" amount="1" />
+        <Objective type="HuntPoints" amount="620000" />
+
         <SetRank>3</SetRank>
-        <RewardGold>10000</RewardGold>
+        <RewardGold>1000000</RewardGold>
     </Quest>
 
     <!-- Переход с 3-го на 2-й ранг -->
     <Quest id="trial_rank_2">
         <Title>Испытание Гильдии: 2-й ранг</Title>
-        <Description>Ты стоишь в шаге от вершины. Уничтожь сильнейших порождений тьмы и заслужи 2-й ранг.</Description>
+        <Description>Ты стоишь в шаге от вершины. Одолей Минакс, принеси её сандалии и набери 800 000 очков охоты, чтобы заслужить 2-й ранг.</Description>
         <ExactRank>3</ExactRank>
+        <RequireNpcGuild>Any</RequireNpcGuild>
         <GuildType>Any</GuildType>
-        <ObjectiveType>HuntPoints</ObjectiveType>
-        <Amount>80000</Amount>
+
+        <Objective type="Obtain" target="MinaxsSandals" name="Minax's Sandals" amount="1" />
+        <Objective type="HuntPoints" amount="800000" />
+
         <SetRank>2</SetRank>
-        <RewardGold>15000</RewardGold>
+        <RewardGold>1500000</RewardGold>
     </Quest>
 
     <!-- Переход со 2-го на 1-й ранг (Высший) -->
@@ -270,11 +277,13 @@
         <Title>Высшее Испытание Гильдии: 1-й ранг</Title>
         <Description>Финальное испытание. Только легенды достойны 1-го ранга. Сокруши величайших чудовищ этого мира и впиши свое имя в историю гильдии.</Description>
         <ExactRank>2</ExactRank>
+        <RequireNpcGuild>Any</RequireNpcGuild>
         <GuildType>Any</GuildType>
+        <RequireHarrowerKill>true</RequireHarrowerKill>
         <ObjectiveType>HuntPoints</ObjectiveType>
-        <Amount>100000</Amount>
+        <Amount>1000000</Amount>
         <SetRank>1</SetRank>
-        <RewardGold>25000</RewardGold>
+        <RewardGold>2500000</RewardGold>
     </Quest>
 
 </GuildQuests>

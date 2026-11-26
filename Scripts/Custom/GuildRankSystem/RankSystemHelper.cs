@@ -27,7 +27,7 @@ namespace Server.Engines.Quests
         public static List<MonsterRankEntry> MonsterRanks { get; private set; } = new List<MonsterRankEntry>();
         public static Dictionary<int, int> PlayerRankRequirements { get; private set; } = new Dictionary<int, int>();
 
-        public static void Initialize()
+        public static void Configure()
         {
             CommandSystem.Register("ReloadRankConfig", AccessLevel.Administrator, e =>
             {
