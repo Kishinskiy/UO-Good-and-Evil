@@ -43,7 +43,7 @@ namespace Server.Engines.Quests
             }
         }
 
-                public void ProcessKill(PlayerMobile pm, BaseCreature bc)
+        public void ProcessKill(PlayerMobile pm, BaseCreature bc)
         {
             int monsterRank = RankSystemHelper.GetMonsterRank(bc);
 
@@ -65,5 +65,16 @@ namespace Server.Engines.Quests
             }
         }
 
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+            writer.Write(0);
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+            int version = reader.ReadInt();
+        }
     }
 }
