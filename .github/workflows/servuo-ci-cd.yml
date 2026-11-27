@@ -17,14 +17,53 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build:
-    name: Build ServUO
+  # 1. Стейдж проверки изменений (определяет, нужно ли компилировать ядро и рестартить сервер)
+  changes:
+    name: Detect changes
     runs-on: ubuntu-latest
+    outputs:
+      code_changed: ${{ steps.filter.outputs.code_changed }}
     steps:
       - name: Check out source
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 2
+
+      - name: Check modified files
+        id: filter
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" || "${{ github.event_name }}" == "pull_request" ]]; then
+            echo "code_changed=true" >> "$GITHUB_OUTPUT"
+            echo "Сборка и рестарт включены для типа события: ${{ github.event_name }}"
+            exit 0
+          fi
+
+          CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD || echo "FORCE_BUILD")
+          echo "Измененные файлы:"
+          echo "$CHANGED_FILES"
+
+          # Ищем любые файлы, КРОМЕ данных/конфигов (xml, cfg, txt, md, json)
+          NON_DATA_FILES=$(echo "$CHANGED_FILES" | grep -Ev '\.(xml|cfg|txt|md|json)$' || true)
+
+          if [[ -n "$NON_DATA_FILES" ]]; then
+            echo "code_changed=true" >> "$GITHUB_OUTPUT"
+            echo "Обнаружены изменения в коде/проекте — потребуется компиляция и рестарт."
+          else
+            echo "code_changed=false" >> "$GITHUB_OUTPUT"
+            echo "Изменены только xml/cfg/текстовые файлы — деплой пройдет без сборки и рестарта."
+          fi
+
+  # 2. Стейдж компиляции ядра и скриптов (запускается ТОЛЬКО если менялся код)
+  build:
+    name: Build ServUO core & scripts
+    needs: changes
+    if: needs.changes.outputs.code_changed == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
 
       - name: Set up .NET
         uses: actions/setup-dotnet@v4
@@ -37,15 +76,13 @@ jobs:
       - name: Build Release
         run: dotnet build ServUO.sln --configuration Release --no-restore
 
-      - name: Prepare release files
+      - name: Package compiled binaries
         if: github.event_name != 'pull_request'
         shell: bash
         run: |
           set -Eeuo pipefail
-          release="$RUNNER_TEMP/servuo-release"
-          mkdir -p "$release"
-
-          git archive --format=tar "$GITHUB_SHA" | tar -xf - -C "$release"
+          bins="$RUNNER_TEMP/servuo-binaries"
+          mkdir -p "$bins"
 
           required=(ServUO.exe Scripts.dll Settings.dll Server.dll)
           for file in "${required[@]}"; do
@@ -56,22 +93,24 @@ jobs:
           done
 
           find . -maxdepth 1 -type f \( -name '*.dll' -o -name '*.exe' \) \
-            -exec cp -f {} "$release/" \;
-          tar -czf "$RUNNER_TEMP/servuo-release.tar.gz" -C "$release" .
+            -exec cp -f {} "$bins/" \;
+          tar -czf "$RUNNER_TEMP/servuo-binaries.tar.gz" -C "$bins" .
 
-      - name: Upload release files
+      - name: Upload compiled binaries
         if: github.event_name != 'pull_request'
         uses: actions/upload-artifact@v4
         with:
-          name: servuo-release
-          path: ${{ runner.temp }}/servuo-release.tar.gz
+          name: servuo-binaries
+          path: ${{ runner.temp }}/servuo-binaries.tar.gz
           if-no-files-found: error
           retention-days: 7
 
+  # 3. Стейдж деплоя (всегда загружает файлы на сервер, рестарт вынесен в отдельный шаг с условием)
   deploy:
     name: Deploy production
-    if: github.ref == 'refs/heads/master' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
-    needs: build
+    needs: [changes, build]
+    # Запускается всегда, даже если build был пропущен (skipped)
+    if: always() && github.ref == 'refs/heads/master' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && (needs.build.result == 'success' || needs.build.result == 'skipped')
     runs-on: ubuntu-latest
     environment: prod
     steps:
@@ -79,40 +118,33 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: ${{ github.sha }}
-          fetch-depth: 2
 
-      - name: Check if server restart is required
-        id: check_restart
+      - name: Download compiled binaries (if built)
+        if: needs.changes.outputs.code_changed == 'true'
+        uses: actions/download-artifact@v4
+        with:
+          name: servuo-binaries
+          path: ${{ runner.temp }}/servuo-binaries
+
+      - name: Assemble release archive
         shell: bash
         run: |
           set -Eeuo pipefail
-          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
-            echo "restart=true" >> "$GITHUB_OUTPUT"
-            echo "Ручной запуск (workflow_dispatch) — перезапуск включен."
-            exit 0
-          fi
+          release="$RUNNER_TEMP/servuo-release"
+          mkdir -p "$release"
 
-          # Получаем список измененных файлов между предыдущим и текущим коммитом
-          CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD || echo "FORCE_RESTART")
-          echo "Измененные файлы:"
-          echo "$CHANGED_FILES"
+          # Упаковываем актуальные файлы из репозитория (включая xml, cfg, Data и т.д.)
+          git archive --format=tar "$GITHUB_SHA" | tar -xf - -C "$release"
 
-          # Ищем файлы, НЕ относящиеся к xml, cfg, txt, md, json
-          NON_DATA_FILES=$(echo "$CHANGED_FILES" | grep -Ev '\.(xml|cfg|txt|md|json)$' || true)
-
-          if [[ -n "$NON_DATA_FILES" ]]; then
-            echo "restart=true" >> "$GITHUB_OUTPUT"
-            echo "Обнаружены изменения в коде/сборке — требуется перезапуск сервера."
+          # Если ядро пересобиралось — добавляем скомпилированные .dll и .exe в архив
+          if [[ "${{ needs.changes.outputs.code_changed }}" == "true" ]]; then
+            tar -xzf "$RUNNER_TEMP/servuo-binaries/servuo-binaries.tar.gz" -C "$release"
+            echo "В архив добавлены новые скомпилированные файлы ядра."
           else
-            echo "restart=false" >> "$GITHUB_OUTPUT"
-            echo "Изменены только файлы данных (xml/cfg/txt/md/json) — перезапуск НЕ требуется."
+            echo "В архив упакованы только файлы репозитория (без бинарников)."
           fi
 
-      - name: Download release files
-        uses: actions/download-artifact@v4
-        with:
-          name: servuo-release
-          path: ${{ runner.temp }}/servuo-release
+          tar -czf "$RUNNER_TEMP/servuo-release.tar.gz" -C "$release" .
 
       - name: Prepare SSH
         env:
@@ -129,48 +161,49 @@ jobs:
           printf '%s\n' "$DEPLOY_KNOWN_HOSTS" > "$HOME/.ssh/known_hosts"
           chmod 600 "$HOME/.ssh/id_ed25519" "$HOME/.ssh/known_hosts"
 
-      - name: Transfer and activate release
+      - name: Transfer and unpack files to server
+        id: upload_files
         env:
-          RELEASE_ARCHIVE: ${{ runner.temp }}/servuo-release/servuo-release.tar.gz
+          RELEASE_ARCHIVE: ${{ runner.temp }}/servuo-release.tar.gz
           DEPLOY_HOST: kishinskiy.ru
           DEPLOY_USER: servuo
           RELEASE_SHA: ${{ github.sha }}
-          NEED_RESTART: ${{ steps.check_restart.outputs.restart }}
         shell: bash
         run: |
           set -Eeuo pipefail
-          test -s "$RELEASE_ARCHIVE" || { echo "Full server release archive is missing"; exit 1; }
+          test -s "$RELEASE_ARCHIVE" || { echo "Release archive is missing"; exit 1; }
 
           target="${DEPLOY_USER}@${DEPLOY_HOST}"
           remote_tmp="/home/servuo/tmp/servuo-deploy"
 
-          # Создаем временную папку и загружаем архив
           ssh -i "$HOME/.ssh/id_ed25519" -o BatchMode=yes -o StrictHostKeyChecking=yes \
             "$target" "mkdir -p '$remote_tmp'"
           scp -i "$HOME/.ssh/id_ed25519" -o BatchMode=yes -o StrictHostKeyChecking=yes \
             "$RELEASE_ARCHIVE" "$target:$remote_tmp/${RELEASE_SHA}.tar.gz"
 
-          # Распаковываем релиз и перезапускаем службу только если NEED_RESTART=true
           ssh -i "$HOME/.ssh/id_ed25519" -o BatchMode=yes -o StrictHostKeyChecking=yes \
-            "$target" "bash -s -- '$remote_tmp' '$RELEASE_SHA' '$NEED_RESTART'" <<'EOF'
+            "$target" "bash -s -- '$remote_tmp' '$RELEASE_SHA'" <<'EOF'
           set -Eeuo pipefail
           remote_tmp="$1"
           release_sha="$2"
-          need_restart="$3"
-
-          if [[ "$need_restart" == "true" ]]; then
-            echo "Останавливаем службу servuo..."
-            sudo systemctl stop servuo
-          else
-            echo "Обновление без остановки сервера (hot-reload данных)..."
-          fi
 
           mkdir -p /home/servuo/ServUO
           tar -xzf "${remote_tmp}/${release_sha}.tar.gz" -C /home/servuo/ServUO
           rm -f "${remote_tmp}/${release_sha}.tar.gz"
-
-          if [[ "$need_restart" == "true" ]]; then
-            echo "Запускаем службу servuo..."
-            sudo systemctl start servuo
-          fi
+          echo "Файлы успешно распакованы в /home/servuo/ServUO"
           EOF
+
+      # Отдельный шаг/стейдж перезапуска: срабатывает ТОЛЬКО если скомпилированы и загружены новые файлы ядра
+      - name: Restart ServUO server
+        if: needs.changes.outputs.code_changed == 'true' && needs.build.result == 'success' && steps.upload_files.outcome == 'success'
+        env:
+          DEPLOY_HOST: kishinskiy.ru
+          DEPLOY_USER: servuo
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          target="${DEPLOY_USER}@${DEPLOY_HOST}"
+
+          ssh -i "$HOME/.ssh/id_ed25519" -o BatchMode=yes -o StrictHostKeyChecking=yes \
+            "$target" "sudo systemctl restart servuo && sudo systemctl is-active --quiet servuo"
+          echo "Служба servuo успешно перезапущена с новым билдом."
