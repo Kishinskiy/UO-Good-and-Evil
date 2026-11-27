@@ -2,6 +2,7 @@ using System;
 using Server;
 using Server.Engines.Craft;
 using Server.Items;
+using Server.Custom.Farms;
 
 
 namespace Server.Custom.CarpentryTools
@@ -68,6 +69,21 @@ namespace Server.Custom.CarpentryTools
             );
             cs.AddRes(idx3, typeof(CraftNails), 1024142, 6, "У вас недостаточно гвоздей для сборки ящика.");
             ForceNonExceptional(cs, idx3);
+
+            int idxBarrel = cs.AddCraft(
+                typeof(FarmProduceBarrel),
+                1044292,                        // Категория "Containers" (Контейнеры, 1044292 в DefCarpentry)
+                "Бочка для продуктов (500 шт.)",
+                45.0,                           // Мин. навык Carpentry
+                70.0,                           // Макс. навык Carpentry
+                typeof(BarrelStaves),           // Основной ресурс: клепки бочки
+                1044288,                        // Локализация "Barrel Staves"
+                3,                              // Количество клепок (3 шт.)
+                1044253                         // Сообщение при нехватке
+            );
+            cs.AddRes(idxBarrel, typeof(BarrelHoops), 1044289, 1, 1044253); // Железные обручи (1 шт.)
+            cs.AddRes(idxBarrel, typeof(BarrelLid), 1044251, 1, 1044253);   // Крышка бочки (1 шт.)
+            ForceNonExceptional(cs, idxBarrel);
         }
 
         private static void ForceNonExceptional(CraftSystem cs, int index)
