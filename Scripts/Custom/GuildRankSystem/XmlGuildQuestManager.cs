@@ -29,15 +29,11 @@ namespace Server.Engines.Quests
         public bool RequireHarrowerKill { get; set; }
         public string RequireNpcGuild { get; set; }
 
-        
-
-
         public int MinStr { get; set; }
         public int MinDex { get; set; }
         public int MinInt { get; set; }
         public Dictionary<SkillName, double> RequiredSkills { get; set; } = new Dictionary<SkillName, double>();
 
-        // Список целей квеста (поддерживает 1 или несколько целей)
         public List<XmlQuestObjectiveConfig> Objectives { get; set; } = new List<XmlQuestObjectiveConfig>();
 
         public int SetRank { get; set; }
@@ -51,6 +47,7 @@ namespace Server.Engines.Quests
     {
         private static readonly string FilePath = Path.Combine(Core.BaseDirectory, "Data", "GuildQuests.xml");
         public static List<XmlGuildQuestConfig> Quests { get; private set; } = new List<XmlGuildQuestConfig>();
+        public static bool IsLoaded { get; private set; } = false;
 
         public static void Configure()
         {
@@ -59,8 +56,19 @@ namespace Server.Engines.Quests
                 LoadQuests();
                 e.Mobile.SendMessage(0x35, $"Загружено гильдейских квестов из XML: {Quests.Count}");
             });
+        }
 
-            LoadQuests();
+        public static void Initialize()
+        {
+            EnsureLoaded();
+        }
+
+        public static void EnsureLoaded()
+        {
+            if (!IsLoaded)
+            {
+                LoadQuests();
+            }
         }
 
         public static void LoadQuests()
@@ -70,6 +78,7 @@ namespace Server.Engines.Quests
             if (!File.Exists(FilePath))
             {
                 Console.WriteLine($"[GuildRankSystem] Файл {FilePath} не найден.");
+                IsLoaded = true;
                 return;
             }
 
@@ -139,13 +148,6 @@ namespace Server.Engines.Quests
                     string rewardItemName = (string)el.Element("RewardItem");
                     Type rewardItemType = !string.IsNullOrEmpty(rewardItemName) ? ScriptCompiler.FindTypeByName(rewardItemName) : null;
 
-                    string npcGuildStr = (string)el.Element("RequireNpcGuild");
-                    NpcGuild reqNpcGuild = NpcGuild.None;
-                    if (!string.IsNullOrEmpty(npcGuildStr))
-                    {
-                        Enum.TryParse(npcGuildStr, true, out reqNpcGuild);
-                    }
-
                     var cfg = new XmlGuildQuestConfig
                     {
                         Id = questId,
@@ -157,7 +159,6 @@ namespace Server.Engines.Quests
                         GuildType = (string)el.Element("GuildType") ?? "Any",
                         RequireHarrowerKill = (bool?)el.Element("RequireHarrowerKill") ?? false,
                         RequireNpcGuild = (string)el.Element("RequireNpcGuild") ?? string.Empty,
-
 
                         MinStr = (int?)el.Element("MinStr") ?? 0,
                         MinDex = (int?)el.Element("MinDex") ?? 0,
@@ -186,6 +187,7 @@ namespace Server.Engines.Quests
                     Quests.Add(cfg);
                 }
 
+                IsLoaded = true;
                 Console.WriteLine($"[GuildRankSystem] Успешно загружено квестов из XML: {Quests.Count}");
             }
             catch (Exception ex)

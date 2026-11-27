@@ -32,6 +32,9 @@ namespace Server.Engines.Quests
             if (Config == null)
                 return;
 
+            Objectives.Clear();
+            Rewards.Clear();
+
             foreach (var obj in Config.Objectives)
             {
                 if (obj.Type.Equals("Obtain", StringComparison.OrdinalIgnoreCase))
@@ -215,8 +218,18 @@ namespace Server.Engines.Quests
             int version = reader.ReadInt();
             string questId = reader.ReadString();
 
+            XmlGuildQuestManager.EnsureLoaded();
+
             Config = XmlGuildQuestManager.Quests.Find(q => q.Id == questId);
-            InitFromConfig();
+
+            if (Config == null)
+            {
+                Console.WriteLine($"[GuildRankSystem] ОШИБКА десериализации: квест с id '{questId}' не найден в GuildQuests.xml!");
+            }
+            else
+            {
+                InitFromConfig();
+            }
 
             if (version >= 1)
             {

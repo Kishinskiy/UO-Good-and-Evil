@@ -13,6 +13,11 @@ namespace Server.Engines.Quests
             get { return $"Убейте {MaxProgress} монстров {m_TargetRank}-го ранга (убито: {CurProgress}/{MaxProgress})."; }
         }
 
+        public XmlSlayRankObjective() : base(1)
+        {
+            m_TargetRank = 10;
+        }
+
         public XmlSlayRankObjective(int targetRank, int amount) : base(amount)
         {
             m_TargetRank = targetRank;
