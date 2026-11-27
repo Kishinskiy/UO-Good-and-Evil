@@ -762,8 +762,10 @@ namespace Server.Engines.Despise
                     if (Region.Find(spawner.Location, spawner.Map) == m_GoodRegion ||
                         Region.Find(spawner.Location, spawner.Map) == m_EvilRegion)
                     {
-                        if (obj.TypeName.IndexOf(@",{RND,1,5}") < 0)
-                            obj.TypeName = obj.TypeName + @",{RND,1,5}";
+                        if (obj.TypeName != null && obj.TypeName.IndexOf(@",{RND,1,5}") >= 0)
+                        {
+                            obj.TypeName = obj.TypeName.Replace(@",{RND,1,5}", "");
+                        }
                     }
                 }
             }
