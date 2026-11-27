@@ -9,7 +9,6 @@ namespace Server.Engines.Quests
 {
     public class DynamicXmlGuildQuest : BaseQuest
     {
-        private string m_QuestId;
         public XmlGuildQuestConfig Config { get; private set; }
 
         public override object Title => Config != null ? Config.Title : "Задание гильдии";
@@ -25,7 +24,6 @@ namespace Server.Engines.Quests
         public DynamicXmlGuildQuest(XmlGuildQuestConfig config) : base()
         {
             Config = config;
-            m_QuestId = config != null ? config.Id : string.Empty;
             InitFromConfig();
         }
 
@@ -203,54 +201,25 @@ namespace Server.Engines.Quests
         public override void Serialize(GenericWriter writer)
         {
             base.Serialize(writer);
-            writer.Write(1);
-            writer.Write(Config != null ? Config.Id : (m_QuestId ?? string.Empty));
-
-            writer.Write(Objectives.Count);
-            foreach (BaseObjective obj in Objectives)
-            {
-                writer.Write(obj.CurProgress);
-                writer.Write(obj.Completed);
-            }
+            writer.Write(2); // Версия 2: данные сохраняются через XmlGuildQuestPersistence
         }
 
         public override void Deserialize(GenericReader reader)
         {
             base.Deserialize(reader);
             int version = reader.ReadInt();
-            m_QuestId = reader.ReadString();
 
-            XmlGuildQuestManager.EnsureLoaded();
-
-            if (!string.IsNullOrEmpty(m_QuestId))
+            // Обратная совместимость со старыми сейвами версии 0 и 1, чтобы не сбить поток чтения
+            if (version <= 1)
             {
-                Config = XmlGuildQuestManager.Quests.Find(q => q.Id == m_QuestId);
-            }
-
-            if (Config == null)
-            {
-                Console.WriteLine($"[GuildRankSystem] ОШИБКА десериализации: квест с id '{m_QuestId}' не найден в GuildQuests.xml!");
-            }
-            else
-            {
-                InitFromConfig();
-            }
-
-            if (version >= 1)
-            {
-                int objCount = reader.ReadInt();
-                for (int i = 0; i < objCount; i++)
+                string oldQuestId = reader.ReadString();
+                if (version == 1)
                 {
-                    int curProgress = reader.ReadInt();
-                    bool completed = reader.ReadBool();
-
-                    if (i < Objectives.Count)
+                    int objCount = reader.ReadInt();
+                    for (int i = 0; i < objCount; i++)
                     {
-                        Objectives[i].CurProgress = curProgress;
-                        if (completed && !Objectives[i].Completed)
-                        {
-                            Objectives[i].Complete();
-                        }
+                        reader.ReadInt();
+                        reader.ReadBool();
                     }
                 }
             }
