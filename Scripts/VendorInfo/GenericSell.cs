@@ -24,29 +24,45 @@ namespace Server.Mobiles
 
                 return m_Types;
             }
-		}
+        }
 
-		public virtual void Add(Type type, int price)
+        public virtual void Add(Type type, int price)
         {
             m_Table[type] = price;
             m_Types = null;
         }
 
-		public virtual int GetSellPriceFor(IEntity item)
+        public virtual int GetSellPriceFor(IEntity item)
         {
             return GetSellPriceFor(item, null);
         }
 
-		public virtual int GetSellPriceFor(IEntity e, IVendor vendor)
+        public virtual int GetSellPriceFor(IEntity e, IVendor vendor)
         {
-			Type itemType = e.GetType();
+            if (e is BaseTradeCrate crate)
+            {
+                if (!crate.IsFull || crate.Items.Count == 0)
+                    return 0;
+
+                int totalPrice = 0;
+
+                foreach (Item subItem in crate.Items)
+                {
+                    // Умножаем цену 1 штуки на количество в стопке (для оружия Amount = 1, для стрел = 50)
+                    totalPrice += GetSellPriceFor(subItem, vendor) * subItem.Amount;
+                }
+
+                return Math.Max(1, totalPrice);
+            }
+
+            Type itemType = e.GetType();
 
             m_Table.TryGetValue(itemType, out int price);
 
             if (vendor != null && BaseVendor.UseVendorEconomy)
-			{
-				IBuyItemInfo[] buyList = vendor.GetBuyInfo();
-				IBuyItemInfo buyInfo = buyList.FirstOrDefault(bii => bii.EconomyItem && bii.Type == itemType);
+            {
+                IBuyItemInfo[] buyList = vendor.GetBuyInfo();
+                IBuyItemInfo buyInfo = buyList.FirstOrDefault(bii => bii.EconomyItem && bii.Type == itemType);
 
                 if (buyInfo != null)
                 {
@@ -113,28 +129,28 @@ namespace Server.Mobiles
             return price;
         }
 
-		public virtual int GetBuyPriceFor(IEntity item)
+        public virtual int GetBuyPriceFor(IEntity item)
         {
             return GetBuyPriceFor(item, null);
         }
 
-		public virtual int GetBuyPriceFor(IEntity item, IVendor vendor)
+        public virtual int GetBuyPriceFor(IEntity item, IVendor vendor)
         {
             return (int)(1.90 * GetSellPriceFor(item, vendor));
         }
 
-		public virtual string GetNameFor(IEntity e)
+        public virtual string GetNameFor(IEntity e)
         {
             if (e.Name != null)
                 return e.Name;
 
-			if (e is Item item)
-				return item.LabelNumber.ToString();
+            if (e is Item item)
+                return item.LabelNumber.ToString();
 
-			return e.GetType().Name;
+            return e.GetType().Name;
         }
 
-		public virtual bool IsSellable(IEntity e)
+        public virtual bool IsSellable(IEntity e)
         {
             if (e is Item item && item.QuestItem)
                 return false;
@@ -142,10 +158,18 @@ namespace Server.Mobiles
             //if (e.Hue != 0)
             //    return false;
 
+            if (e is BaseTradeCrate crate)
+            {
+                if (!crate.IsFull || crate.SampleItem == null)
+                    return false;
+
+                return IsSellable(crate.SampleItem);
+            }
+
             return IsInList(e.GetType());
         }
 
-		public virtual bool IsResellable(IEntity e)
+        public virtual bool IsResellable(IEntity e)
         {
             if (e is Item item && item.QuestItem)
                 return false;
@@ -153,31 +177,41 @@ namespace Server.Mobiles
             //if (e.Hue != 0)
             //    return false;
 
+            if (e is BaseTradeCrate)
+                return false;
+
             return IsInList(e.GetType());
         }
 
-		public virtual bool IsInList(Type type)
+        public virtual bool IsInList(Type type)
         {
             return m_Table.ContainsKey(type);
-		}
+        }
 
-		public virtual void OnSold(Mobile seller, IVendor vendor, IEntity item, int amount)
-		{
-			Type itemType = item.GetType();
+        public virtual void OnSold(Mobile seller, IVendor vendor, IEntity item, int amount)
+        {
+            if (item is BaseTradeCrate crate && crate.SampleItem != null)
+            {
+                // Передаем в экономику реальное количество единиц товара (CurrentAmount)
+                OnSold(seller, vendor, crate.SampleItem, crate.CurrentAmount * amount);
+                return;
+            }
 
-			IBuyItemInfo[] buyList = vendor.GetBuyInfo();
-			IBuyItemInfo buyInfo = buyList.FirstOrDefault(bii => bii.EconomyItem && bii.Type == itemType);
+            Type itemType = item.GetType();
 
-			if (buyInfo != null)
-			{
-				foreach (IBuyItemInfo bii in buyList)
-				{
-					if (bii.Type == itemType || (itemType == typeof(UncutCloth) && bii.Type == typeof(Cloth)) || (itemType == typeof(Cloth) && bii.Type == typeof(UncutCloth)))
-						bii.TotalSold += amount;
-				}
-			}
+            IBuyItemInfo[] buyList = vendor.GetBuyInfo();
+            IBuyItemInfo buyInfo = buyList.FirstOrDefault(bii => bii.EconomyItem && bii.Type == itemType);
 
-			EventSink.InvokeValidVendorSell(new ValidVendorSellEventArgs(seller, vendor, item, GetSellPriceFor(item, vendor)));
-		}
-	}
+            if (buyInfo != null)
+            {
+                foreach (IBuyItemInfo bii in buyList)
+                {
+                    if (bii.Type == itemType || (itemType == typeof(UncutCloth) && bii.Type == typeof(Cloth)) || (itemType == typeof(Cloth) && bii.Type == typeof(UncutCloth)))
+                        bii.TotalSold += amount;
+                }
+            }
+
+            EventSink.InvokeValidVendorSell(new ValidVendorSellEventArgs(seller, vendor, item, GetSellPriceFor(item, vendor)));
+        }
+    }
 }
