@@ -9,6 +9,7 @@ namespace Server.Engines.Quests
 {
     public class DynamicXmlGuildQuest : BaseQuest
     {
+        private string m_QuestId;
         public XmlGuildQuestConfig Config { get; private set; }
 
         public override object Title => Config != null ? Config.Title : "Задание гильдии";
@@ -24,6 +25,7 @@ namespace Server.Engines.Quests
         public DynamicXmlGuildQuest(XmlGuildQuestConfig config) : base()
         {
             Config = config;
+            m_QuestId = config != null ? config.Id : string.Empty;
             InitFromConfig();
         }
 
@@ -202,7 +204,7 @@ namespace Server.Engines.Quests
         {
             base.Serialize(writer);
             writer.Write(1);
-            writer.Write(Config != null ? Config.Id : string.Empty);
+            writer.Write(Config != null ? Config.Id : (m_QuestId ?? string.Empty));
 
             writer.Write(Objectives.Count);
             foreach (BaseObjective obj in Objectives)
@@ -216,15 +218,18 @@ namespace Server.Engines.Quests
         {
             base.Deserialize(reader);
             int version = reader.ReadInt();
-            string questId = reader.ReadString();
+            m_QuestId = reader.ReadString();
 
             XmlGuildQuestManager.EnsureLoaded();
 
-            Config = XmlGuildQuestManager.Quests.Find(q => q.Id == questId);
+            if (!string.IsNullOrEmpty(m_QuestId))
+            {
+                Config = XmlGuildQuestManager.Quests.Find(q => q.Id == m_QuestId);
+            }
 
             if (Config == null)
             {
-                Console.WriteLine($"[GuildRankSystem] ОШИБКА десериализации: квест с id '{questId}' не найден в GuildQuests.xml!");
+                Console.WriteLine($"[GuildRankSystem] ОШИБКА десериализации: квест с id '{m_QuestId}' не найден в GuildQuests.xml!");
             }
             else
             {

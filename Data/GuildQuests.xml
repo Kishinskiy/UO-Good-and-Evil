@@ -265,7 +265,7 @@
         <RequireNpcGuild>Any</RequireNpcGuild>
         <GuildType>Any</GuildType>
 
-        <Objective type="Obtain" target="MinaxsSandals" name="Minax's Sandals" amount="1" />
+        <Objective type="Obtain" target="MinaxsSandles" name="Minax's Sandals" amount="1" />
         <Objective type="HuntPoints" amount="800000" />
 
         <SetRank>2</SetRank>
