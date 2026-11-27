@@ -11,6 +11,10 @@ namespace Server.Engines.Quests
             get { return $"Наберите {MaxProgress} очков охоты, побеждая монстров."; }
         }
 
+        public RankPointsObjective() : base(5000)
+        {
+        }
+
         public RankPointsObjective(int maxProgress = 5000) : base(maxProgress)
         {
         }
