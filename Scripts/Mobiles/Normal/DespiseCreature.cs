@@ -193,6 +193,8 @@ namespace Server.Engines.Despise
             NoLootOnDeath = true;
 
             SetDamage(MinDamStart, MaxDamStart);
+
+            Power = Utility.RandomMinMax(1, 5);
         }
 
         public override bool IsEnemy(Mobile m)

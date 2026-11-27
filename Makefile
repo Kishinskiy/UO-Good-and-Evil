@@ -1,49 +1,34 @@
-MCS=mcs
-EXENAME=ServUO
-CURPATH=`pwd`
-CFGPATH=${CURPATH}/Settings
-SCRPATH=${CURPATH}/Scripts
-SRVPATH=${CURPATH}/Server
-APPPATH=${CURPATH}/Application
-ICOPATH=${CURPATH}/Application
-REFS=System.Drawing.dll,System.Web.dll,System.Data.dll,System.IO.Compression.FileSystem.dll
-DEFS=-d:MONO -d:ServUO -d:ServUO58 -d:NEWTIMERS -d:NEWPARENT
-NOWARNS=0618,0219,0414,1635
+SLN := ServUO.sln
+APP_PROJ := Application/ServUO.csproj
+EXE := ServUO.exe
 
-PHONY : default build clean run
+.PHONY: default build debug release run run-mono clean restore
 
+# По умолчанию: сборка в Release и запуск
 default: run
 
+# Восстановление NuGet-зависимостей
+restore:
+	dotnet restore "$(SLN)"
+
+# Сборка в режиме Release (как в CI/CD)
+build:
+	dotnet build "$(SLN)" --configuration Release
+
+# Сборка в режиме Debug (с отладочной информацией)
 debug:
-	${MCS} -target:library -out:"${CURPATH}/Settings.dll" -r:${REFS} -nowarn:${NOWARNS} -d:DEBUG ${DEFS} -nologo -debug -unsafe -recurse:"${CFGPATH}/*.cs"
-	${MCS} -target:library -out:"${CURPATH}/Server.dll" -r:"${CURPATH}/Settings.dll",${REFS} -nowarn:${NOWARNS} -d:DEBUG ${DEFS} -nologo -debug -unsafe -recurse:"${SRVPATH}/*.cs"
-	${MCS} -target:library -out:"${CURPATH}/Scripts.dll" -r:"${CURPATH}/Settings.dll","${CURPATH}/Server.dll",${REFS} -nowarn:${NOWARNS} -d:DEBUG ${DEFS} -nologo -debug -unsafe -recurse:"${SCRPATH}/*.cs"
-	${MCS} -target:exe -out:"${CURPATH}/${EXENAME}.exe" -win32icon:"${ICOPATH}/servuo.ico" -r:"${CURPATH}/Settings.dll","${CURPATH}/Server.dll","${CURPATH}/Scripts.dll",${REFS} -nowarn:${NOWARNS} -d:DEBUG ${DEFS} -nologo -debug -unsafe -recurse:"${APPPATH}/*.cs"
-	"${CURPATH}/${EXENAME}.sh"
+	dotnet build "$(SLN)" --configuration Debug
+
+# Запуск сервера через .NET (для проектов под .NET 8 / .NET 10)
 run: build
-	"${CURPATH}/${EXENAME}.sh"
+	dotnet run --project "$(APP_PROJ)" --configuration Release --no-build
 
-build: ${EXENAME}.sh
+# Альтернативный запуск через Mono (если ServUO.csproj нацелен на net472/net48)
+run-mono: build
+	mono "$(EXE)"
 
+# Полная очистка артефактов сборки
 clean:
-	rm -f ${EXENAME}.sh
-	rm -f ${EXENAME}.exe
-	rm -f ${EXENAME}.exe.mdb
-	rm -f *.bin
-
-Settings.dll: ${CFGPATH}/*.cs
-	${MCS} -target:library -out:"${CURPATH}/Settings.dll" -r:${REFS} -nowarn:${NOWARNS} ${DEFS} -nologo -optimize -unsafe -recurse:"${CFGPATH}/*.cs"
-
-Server.dll: Settings.dll ${SRVPATH}/*.cs
-	${MCS} -target:library -out:"${CURPATH}/Server.dll" -r:"${CURPATH}/Settings.dll",${REFS} -nowarn:${NOWARNS} ${DEFS} -nologo -optimize -unsafe -recurse:"${SRVPATH}/*.cs"
-
-Scripts.dll: Settings.dll Server.dll ${SCRPATH}/*.cs
-	${MCS} -target:library -out:"${CURPATH}/Scripts.dll" -r:"${CURPATH}/Settings.dll","${CURPATH}/Server.dll",${REFS} -nowarn:${NOWARNS} ${DEFS} -nologo -optimize -unsafe -recurse:"${SCRPATH}/*.cs"
-
-${EXENAME}.exe: Settings.dll Server.dll Scripts.dll ${APPPATH}/*.cs
-	${MCS} -target:exe -out:"${CURPATH}/${EXENAME}.exe" -win32icon:"${ICOPATH}/servuo.ico" -r:"${CURPATH}/Settings.dll","${CURPATH}/Server.dll","${CURPATH}/Scripts.dll",${REFS} -nowarn:${NOWARNS} ${DEFS} -nologo -optimize -unsafe -recurse:"${APPPATH}/*.cs"
-
-${EXENAME}.sh: ${EXENAME}.exe
-	echo "#!/bin/sh" > "${CURPATH}/${EXENAME}.sh"
-	echo "mono \"${CURPATH}/${EXENAME}.exe\"" >> "${CURPATH}/${EXENAME}.sh"
-	chmod a+x "${CURPATH}/${EXENAME}.sh"
+	dotnet clean "$(SLN)" --configuration Release
+	dotnet clean "$(SLN)" --configuration Debug
+	rm -f Settings.dll Server.dll Scripts.dll "$(EXE)" "$(EXE).mdb" *.pdb
