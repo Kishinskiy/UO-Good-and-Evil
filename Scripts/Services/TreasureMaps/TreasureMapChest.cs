@@ -448,6 +448,12 @@ namespace Server.Items
                 rolls += level - 2;
 
             RefinementComponent.Roll(cont, rolls, 0.10);
+
+            double loreChance = 0.05 + (level * 0.08);
+            if (Utility.RandomDouble() < loreChance)
+            {
+                cont.DropItem(new Server.Custom.VirtueQuests.AncientLoreTome());
+            }
         }
 
         private static Item GetRandomSpecial(int level, Map map)
@@ -681,29 +687,29 @@ namespace Server.Items
                     TreasureMap = reader.ReadItem() as TreasureMap;
                     goto case 2;
                 case 2:
-                    {
-                        Guardians = reader.ReadStrongMobileList();
-                        Temporary = reader.ReadBool();
+                {
+                    Guardians = reader.ReadStrongMobileList();
+                    Temporary = reader.ReadBool();
 
-                        goto case 1;
-                    }
+                    goto case 1;
+                }
                 case 1:
-                    {
-                        Owner = reader.ReadMobile();
+                {
+                    Owner = reader.ReadMobile();
 
-                        goto case 0;
-                    }
+                    goto case 0;
+                }
                 case 0:
-                    {
-                        Level = reader.ReadInt();
-                        DeleteTime = reader.ReadDeltaTime();
-                        m_Lifted = reader.ReadStrongItemList();
+                {
+                    Level = reader.ReadInt();
+                    DeleteTime = reader.ReadDeltaTime();
+                    m_Lifted = reader.ReadStrongItemList();
 
-                        if (version < 2)
-                            Guardians = new List<Mobile>();
+                    if (version < 2)
+                        Guardians = new List<Mobile>();
 
-                        break;
-                    }
+                    break;
+                }
             }
 
             if (!Temporary && DeleteTime > DateTime.UtcNow)

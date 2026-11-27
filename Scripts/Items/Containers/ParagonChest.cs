@@ -224,6 +224,12 @@ namespace Server.Items
             }
 
             DropItem(new TreasureMap(TreasureMapInfo.ConvertLevel(level + 1), (Siege.SiegeShard ? Map.Felucca : Utility.RandomBool() ? Map.Felucca : Map.Trammel)));
+
+            double loreChance = 0.05 + (level * 0.10);
+            if (Utility.RandomDouble() < loreChance)
+            {
+                DropItem(new Server.Custom.VirtueQuests.AncientLoreTome());
+            }
         }
     }
 }

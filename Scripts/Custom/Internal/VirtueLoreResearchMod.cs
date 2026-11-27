@@ -5,6 +5,7 @@ using Server.Mobiles;
 using Server.Targeting;
 using Server.Engines.CannedEvil; // Подключаем систему чемпионов для валидации типов
 
+
 namespace Server.Custom.VirtueQuests
 {
     public static class VirtueLoreResearchMod
@@ -16,6 +17,22 @@ namespace Server.Custom.VirtueQuests
 
         public static bool OnEvaluateTarget(Mobile from, object targeted)
         {
+            if (targeted is AncientLoreTome tome)
+            {
+                if (!tome.IsChildOf(from.Backpack))
+                {
+                    from.SendLocalizedMessage(1042001); // Должно быть в рюкзаке
+                    return true;
+                }
+
+                if (tome.IsDecoded)
+                    tome.OnDoubleClick(from); // Если уже изучена — просто читаем
+                else
+                    tome.StartStudying(from); // Если не изучена — запускаем изучение
+
+                return true;
+            }
+
             if (from == null || !from.Alive || targeted == null) return false;
 
             if (!(targeted is Item item) || !IsLoreResearchTarget(item))
@@ -53,7 +70,7 @@ namespace Server.Custom.VirtueQuests
                item is CrystalBallOfKnowledge;
         }
 
-        private static string GetSeparatedLoreMessage(double skill)
+        public static string GetSeparatedLoreMessage(double skill)
         {
             double roll = Utility.RandomDouble();
 
