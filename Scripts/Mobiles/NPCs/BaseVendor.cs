@@ -1056,7 +1056,7 @@ namespace Server.Mobiles
 
 			var pack = from.Backpack;
 
-			if (pack != null)
+						if (pack != null)
 			{
 				var info = GetSellInfo();
 
@@ -1068,6 +1068,12 @@ namespace Server.Mobiles
 
 					foreach (var item in items)
 					{
+						// Игнорируем предметы, которые уже лежат внутри торгового ящика (чтобы не продать их поштучно)
+						if (item.Parent is BaseTradeCrate)
+						{
+							continue;
+						}
+
 						if (item is Container && (item).Items.Count != 0)
 						{
 							continue;
@@ -1085,6 +1091,24 @@ namespace Server.Mobiles
 							table.Add(new SellItemState(item, ssi.GetSellPriceFor(item, this), ssi.GetNameFor(item)));
 						}
 					}
+
+					// Отдельно ищем все заполненные торговые ящики в рюкзаке игрока
+					var crates = pack.FindItemsByType(typeof(BaseTradeCrate));
+
+					foreach (BaseTradeCrate crate in crates)
+					{
+						var lockable = crate.Parent as LockableContainer;
+
+						if (lockable != null && lockable.Locked)
+						{
+							continue;
+						}
+
+						if (crate.IsStandardLoot() && crate.Movable && ssi.IsSellable(crate))
+						{
+							table.Add(new SellItemState(crate, ssi.GetSellPriceFor(crate, this), ssi.GetNameFor(crate)));
+						}
+					}
 				}
 
 				if (table.Count > 0)
@@ -1098,6 +1122,7 @@ namespace Server.Mobiles
 					Say(true, "You have nothing I would be interested in.");
 				}
 			}
+
 		}
 
 		public override bool OnDragDrop(Mobile from, Item dropped)
@@ -2048,7 +2073,7 @@ namespace Server.Mobiles
 
 			foreach (var resp in list)
 			{
-				if (resp.Item.RootParent != seller || resp.Amount <= 0 || !resp.Item.IsStandardLoot() || !resp.Item.Movable || (resp.Item is Container && resp.Item.Items.Count != 0))
+				if (resp.Item.RootParent != seller || resp.Amount <= 0 || !resp.Item.IsStandardLoot() || !resp.Item.Movable || (resp.Item is Container && !(resp.Item is BaseTradeCrate) && resp.Item.Items.Count != 0))
 				{
 					continue;
 				}
@@ -2076,7 +2101,7 @@ namespace Server.Mobiles
 
 			foreach (var resp in list)
 			{
-				if (resp.Item.RootParent != seller || resp.Amount <= 0 || !resp.Item.IsStandardLoot() || !resp.Item.Movable || (resp.Item is Container && resp.Item.Items.Count != 0))
+				if (resp.Item.RootParent != seller || resp.Amount <= 0 || !resp.Item.IsStandardLoot() || !resp.Item.Movable || (resp.Item is Container && !(resp.Item is BaseTradeCrate) && resp.Item.Items.Count != 0))
 				{
 					continue;
 				}
