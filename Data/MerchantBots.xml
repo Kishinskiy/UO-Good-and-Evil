@@ -1,19 +1,19 @@
 <?xml version="1.0" standalone="yes"?>
 <Spawns>
     <!-- ==================== TRAMMEL (Tier 1 и Tier 2) ==================== -->
-    <!-- Britain -->
+    <!-- Britain (открытая площадь у Западного банка) -->
     <Points>
         <Name>MerchantBot_Britain_Trammel</Name>
         <UniqueId>a1b2c3d4-0001-4000-8000-000000000001</UniqueId>
         <Map>Trammel</Map>
-        <X>1435</X>
-        <Y>1695</Y>
-        <Width>30</Width>
-        <Height>30</Height>
-        <CentreX>1435</CentreX>
-        <CentreY>1695</CentreY>
+        <X>1428</X>
+        <Y>1696</Y>
+        <Width>6</Width>
+        <Height>6</Height>
+        <CentreX>1428</CentreX>
+        <CentreY>1696</CentreY>
         <CentreZ>0</CentreZ>
-        <Range>15</Range>
+        <Range>5</Range>
         <MaxCount>4</MaxCount>
         <MinDelay>10</MinDelay>
         <MaxDelay>20</MaxDelay>
@@ -23,19 +23,19 @@
         <Objects2>BlacksmithMerchantT1:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1:OBJ=TailorMerchantT1:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1:OBJ=MageMerchantT1:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1:OBJ=HealerMerchantT1:MX=1:SB=1:RT=0:TO=0:KL=0:RK=0:CA=1:DN=-1:DX=-1:SP=1:PR=-1</Objects2>
     </Points>
 
-    <!-- Minoc -->
+    <!-- Minoc (открытая дорога у кузницы и банка) -->
     <Points>
         <Name>MerchantBot_Minoc_Trammel</Name>
         <UniqueId>a1b2c3d4-0001-4000-8000-000000000002</UniqueId>
         <Map>Trammel</Map>
-        <X>2500</X>
-        <Y>555</Y>
-        <Width>30</Width>
-        <Height>30</Height>
-        <CentreX>2500</CentreX>
-        <CentreY>555</CentreY>
+        <X>2498</X>
+        <Y>562</Y>
+        <Width>6</Width>
+        <Height>6</Height>
+        <CentreX>2498</CentreX>
+        <CentreY>562</CentreY>
         <CentreZ>0</CentreZ>
-        <Range>15</Range>
+        <Range>5</Range>
         <MaxCount>3</MaxCount>
         <MinDelay>10</MinDelay>
         <MaxDelay>20</MaxDelay>
@@ -52,12 +52,12 @@
         <Map>Trammel</Map>
         <X>2895</X>
         <Y>685</Y>
-        <Width>30</Width>
-        <Height>30</Height>
+        <Width>6</Width>
+        <Height>6</Height>
         <CentreX>2895</CentreX>
         <CentreY>685</CentreY>
         <CentreZ>0</CentreZ>
-        <Range>15</Range>
+        <Range>5</Range>
         <MaxCount>3</MaxCount>
         <MinDelay>10</MinDelay>
         <MaxDelay>20</MaxDelay>
@@ -74,12 +74,12 @@
         <Map>Trammel</Map>
         <X>545</X>
         <Y>990</Y>
-        <Width>30</Width>
-        <Height>30</Height>
+        <Width>6</Width>
+        <Height>6</Height>
         <CentreX>545</CentreX>
         <CentreY>990</CentreY>
         <CentreZ>0</CentreZ>
-        <Range>15</Range>
+        <Range>5</Range>
         <MaxCount>3</MaxCount>
         <MinDelay>10</MinDelay>
         <MaxDelay>20</MaxDelay>
@@ -96,12 +96,12 @@
         <Map>Trammel</Map>
         <X>1825</X>
         <Y>2820</Y>
-        <Width>30</Width>
-        <Height>30</Height>
+        <Width>6</Width>
+        <Height>6</Height>
         <CentreX>1825</CentreX>
         <CentreY>2820</CentreY>
         <CentreZ>0</CentreZ>
-        <Range>15</Range>
+        <Range>5</Range>
         <MaxCount>3</MaxCount>
         <MinDelay>10</MinDelay>
         <MaxDelay>20</MaxDelay>
@@ -119,12 +119,12 @@
         <Map>Felucca</Map>
         <X>2715</X>
         <Y>2165</Y>
-        <Width>25</Width>
-        <Height>25</Height>
+        <Width>6</Width>
+        <Height>6</Height>
         <CentreX>2715</CentreX>
         <CentreY>2165</CentreY>
         <CentreZ>0</CentreZ>
-        <Range>12</Range>
+        <Range>5</Range>
         <MaxCount>3</MaxCount>
         <MinDelay>10</MinDelay>
         <MaxDelay>20</MaxDelay>
@@ -139,14 +139,14 @@
         <Name>MerchantBot_Britain_Felucca</Name>
         <UniqueId>a1b2c3d4-0002-4000-8000-000000000002</UniqueId>
         <Map>Felucca</Map>
-        <X>1435</X>
-        <Y>1695</Y>
-        <Width>30</Width>
-        <Height>30</Height>
-        <CentreX>1435</CentreX>
-        <CentreY>1695</CentreY>
+        <X>1428</X>
+        <Y>1696</Y>
+        <Width>6</Width>
+        <Height>6</Height>
+        <CentreX>1428</CentreX>
+        <CentreY>1696</CentreY>
         <CentreZ>0</CentreZ>
-        <Range>15</Range>
+        <Range>5</Range>
         <MaxCount>3</MaxCount>
         <MinDelay>10</MinDelay>
         <MaxDelay>20</MaxDelay>
@@ -164,12 +164,12 @@
         <Map>Ilshenar</Map>
         <X>815</X>
         <Y>1070</Y>
-        <Width>25</Width>
-        <Height>25</Height>
+        <Width>6</Width>
+        <Height>6</Height>
         <CentreX>815</CentreX>
         <CentreY>1070</CentreY>
         <CentreZ>-30</CentreZ>
-        <Range>12</Range>
+        <Range>5</Range>
         <MaxCount>3</MaxCount>
         <MinDelay>10</MinDelay>
         <MaxDelay>20</MaxDelay>
@@ -186,12 +186,12 @@
         <Map>Ilshenar</Map>
         <X>850</X>
         <Y>670</Y>
-        <Width>25</Width>
-        <Height>25</Height>
+        <Width>6</Width>
+        <Height>6</Height>
         <CentreX>850</CentreX>
         <CentreY>670</CentreY>
         <CentreZ>-40</CentreZ>
-        <Range>12</Range>
+        <Range>5</Range>
         <MaxCount>3</MaxCount>
         <MinDelay>10</MinDelay>
         <MaxDelay>20</MaxDelay>
