@@ -37,14 +37,6 @@ jobs:
       - name: Build Release
         run: dotnet build ServUO.sln --configuration Release --no-restore
 
-#      - name: Check patch whitespace
-#        if: github.event_name == 'pull_request'
-#        shell: bash
-#        env:
-#          BASE_SHA: ${{ github.event.pull_request.base.sha }}
-#          HEAD_SHA: ${{ github.sha }}
-#        run: git diff --check "$BASE_SHA...$HEAD_SHA"
-
       - name: Prepare release files
         if: github.event_name != 'pull_request'
         shell: bash
@@ -76,8 +68,6 @@ jobs:
           if-no-files-found: error
           retention-days: 7
 
-
-
   deploy:
     name: Deploy production
     if: github.ref == 'refs/heads/master' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
@@ -89,6 +79,34 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: ${{ github.sha }}
+          fetch-depth: 2
+
+      - name: Check if server restart is required
+        id: check_restart
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            echo "restart=true" >> "$GITHUB_OUTPUT"
+            echo "Ручной запуск (workflow_dispatch) — перезапуск включен."
+            exit 0
+          fi
+
+          # Получаем список измененных файлов между предыдущим и текущим коммитом
+          CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD || echo "FORCE_RESTART")
+          echo "Измененные файлы:"
+          echo "$CHANGED_FILES"
+
+          # Ищем файлы, НЕ относящиеся к xml, cfg, txt, md, json
+          NON_DATA_FILES=$(echo "$CHANGED_FILES" | grep -Ev '\.(xml|cfg|txt|md|json)$' || true)
+
+          if [[ -n "$NON_DATA_FILES" ]]; then
+            echo "restart=true" >> "$GITHUB_OUTPUT"
+            echo "Обнаружены изменения в коде/сборке — требуется перезапуск сервера."
+          else
+            echo "restart=false" >> "$GITHUB_OUTPUT"
+            echo "Изменены только файлы данных (xml/cfg/txt/md/json) — перезапуск НЕ требуется."
+          fi
 
       - name: Download release files
         uses: actions/download-artifact@v4
@@ -111,40 +129,13 @@ jobs:
           printf '%s\n' "$DEPLOY_KNOWN_HOSTS" > "$HOME/.ssh/known_hosts"
           chmod 600 "$HOME/.ssh/id_ed25519" "$HOME/.ssh/known_hosts"
 
-      # - name: Backup Current ServUO
-      #   env:
-      #     DEPLOY_HOST: kishinskiy.ru
-      #     DEPLOY_USER: servuo
-      #     RUN_NUMBER: ${{ github.run_number }}
-      #     RUN_ATTEMPT: ${{ github.run_attempt }}
-      #     SHORT_SHA: ${{ github.sha }}
-      #   shell: bash
-      #   run: |
-      #     set -Eeuo pipefail
-      #     DATESTAMP=$(date +%Y-%m-%d)
-      #     SHORT_SHA="${SHORT_SHA:0:7}"
-      #     BACKUP_NAME="servuo-${DATESTAMP}_run-${RUN_NUMBER}-${RUN_ATTEMPT}_${SHORT_SHA}.tar.gz"
-
-      #     ssh -i "$HOME/.ssh/id_ed25519" -o BatchMode=yes -o StrictHostKeyChecking=yes \
-      #       "${DEPLOY_USER}@${DEPLOY_HOST}" "bash -s -- '$BACKUP_NAME'" <<'EOF'
-      #     set -Eeuo pipefail
-      #     backup_name="$1"
-      #     mkdir -p /home/servuo/BackUP
-      #     if [ -d /home/servuo/ServUO ] && [ -n "$(ls -A /home/servuo/ServUO)" ]; then
-      #       tar -czf "/home/servuo/BackUP/${backup_name}" -C /home/servuo ServUO
-      #       echo "Создан бэкап: /home/servuo/BackUP/${backup_name}"
-      #     else
-      #       echo "Папка /home/servuo/ServUO еще не существует или пуста — бэкап пропущен."
-      #     fi
-      #     EOF
-
-
       - name: Transfer and activate release
         env:
           RELEASE_ARCHIVE: ${{ runner.temp }}/servuo-release/servuo-release.tar.gz
           DEPLOY_HOST: kishinskiy.ru
           DEPLOY_USER: servuo
           RELEASE_SHA: ${{ github.sha }}
+          NEED_RESTART: ${{ steps.check_restart.outputs.restart }}
         shell: bash
         run: |
           set -Eeuo pipefail
@@ -159,15 +150,27 @@ jobs:
           scp -i "$HOME/.ssh/id_ed25519" -o BatchMode=yes -o StrictHostKeyChecking=yes \
             "$RELEASE_ARCHIVE" "$target:$remote_tmp/${RELEASE_SHA}.tar.gz"
 
-          # Останавливаем сервер, распаковываем релиз, запускаем обратно и чистим мусор
+          # Распаковываем релиз и перезапускаем службу только если NEED_RESTART=true
           ssh -i "$HOME/.ssh/id_ed25519" -o BatchMode=yes -o StrictHostKeyChecking=yes \
-            "$target" "bash -s -- '$remote_tmp' '$RELEASE_SHA'" <<'EOF'
+            "$target" "bash -s -- '$remote_tmp' '$RELEASE_SHA' '$NEED_RESTART'" <<'EOF'
           set -Eeuo pipefail
           remote_tmp="$1"
           release_sha="$2"
-          sudo systemctl stop servuo
+          need_restart="$3"
+
+          if [[ "$need_restart" == "true" ]]; then
+            echo "Останавливаем службу servuo..."
+            sudo systemctl stop servuo
+          else
+            echo "Обновление без остановки сервера (hot-reload данных)..."
+          fi
+
           mkdir -p /home/servuo/ServUO
           tar -xzf "${remote_tmp}/${release_sha}.tar.gz" -C /home/servuo/ServUO
           rm -f "${remote_tmp}/${release_sha}.tar.gz"
-          sudo systemctl start servuo
+
+          if [[ "$need_restart" == "true" ]]; then
+            echo "Запускаем службу servuo..."
+            sudo systemctl start servuo
+          fi
           EOF
