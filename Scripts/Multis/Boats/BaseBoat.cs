@@ -499,7 +499,19 @@ namespace Server.Multis
         public virtual bool IsClassicBoat => true;
         public virtual bool IsRowBoat => false;
         public virtual bool CanLinkToLighthouse => true;
-        public virtual int MaxHits => 25000;
+        public virtual int MaxHits
+        {
+            get
+            {
+                var matData = Server.Custom.Shipbuilding.ShipMaterialRegistry.GetBoatData(this);
+                if (matData != null)
+                {
+                    double hitsMult = 1.0 + (Server.Custom.Shipbuilding.ShipMaterialRegistry.GetWoodBonus(matData.Wood) * 1.5);
+                    return (int)(25000 * hitsMult);
+                }
+                return 25000;
+            }
+        }
         public virtual double TurnDelay => 0.5;
         public virtual double ScuttleLevel => 25.0;
         public virtual TimeSpan BoatDecayDelay => TimeSpan.FromDays(13);
@@ -1100,6 +1112,13 @@ namespace Server.Multis
 
         public virtual void OnTakenDamage(Mobile damager, int damage)
         {
+            var matData = Server.Custom.Shipbuilding.ShipMaterialRegistry.GetBoatData(this);
+            if (matData != null)
+            {
+                double reduction = Server.Custom.Shipbuilding.ShipMaterialRegistry.GetMetalBonus(matData.Metal);
+                damage = (int)(damage * (1.0 - reduction));
+            }
+
             Hits -= damage;
 
             if (damager != null)
@@ -1471,6 +1490,9 @@ namespace Server.Multis
             else
             {
                 boat.BoatItem = this;
+
+                Server.Custom.Shipbuilding.ShipMaterialRegistry.TransferToDockedBoat(this, boat);
+
 
                 if (IsClassicBoat)
                     RemoveKeys(from);

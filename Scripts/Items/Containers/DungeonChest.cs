@@ -142,6 +142,11 @@ namespace Server.Items
 
             for (int i = Utility.Random(1, 2); i > 1; i--)
                 AddLoot(Loot.RandomJewelry());
+
+            if (Utility.RandomDouble() < 0.15)
+            {
+                DropItem(new Server.Custom.VirtueQuests.AncientLoreTome());
+            }
         }
 
         public TreasureLevel3(Serial serial) : base(serial)
@@ -211,6 +216,11 @@ namespace Server.Items
 
             for (int i = Utility.Random(1, 2); i > 1; i--)
                 AddLoot(Loot.RandomJewelry());
+
+            if (Utility.RandomDouble() < 0.30)
+            {
+                DropItem(new Server.Custom.VirtueQuests.AncientLoreTome());
+            }
         }
 
         public TreasureLevel4(Serial serial) : base(serial)

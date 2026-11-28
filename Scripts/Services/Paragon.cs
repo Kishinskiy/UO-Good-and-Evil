@@ -9,7 +9,8 @@ namespace Server.Mobiles
         public static double ChocolateIngredientChance = 0.20;// Chance that a paragon will drop a chocolatiering ingredient
         public static Map[] Maps = new Map[]                   // Maps that paragons will spawn on
         {
-            Map.Ilshenar
+            Map.Ilshenar,
+            Map.Felucca
         };
         public static Type[] Artifacts = new Type[]
         {

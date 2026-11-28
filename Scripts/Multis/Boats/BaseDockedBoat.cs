@@ -107,6 +107,7 @@ namespace Server.Multis
                 from.SendLocalizedMessage(502482); // Where do you wish to place the ship?
                 from.SendGump(new BoatPlacementGump(this, from));
             }
+        
         }
 
         public abstract BaseBoat Boat { get; }
@@ -166,6 +167,9 @@ namespace Server.Multis
                     boat.Refresh();
 
                     boat.OnAfterPlacement(false);
+
+
+                    Server.Custom.Shipbuilding.ShipMaterialRegistry.TransferFromDockedBoat(this, boat);
 
                     LighthouseAddon addon = LighthouseAddon.GetLighthouse(from);
 
