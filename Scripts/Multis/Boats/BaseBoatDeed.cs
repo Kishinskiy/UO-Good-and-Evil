@@ -154,7 +154,8 @@ namespace Server.Multis
 
                     boat.MoveToWorld(p, map);
                     boat.OnAfterPlacement(true);
-
+                    Server.Custom.Shipbuilding.ShipMaterialRegistry.TransferToBoat(this, boat);
+                    
                     LighthouseAddon addon = LighthouseAddon.GetLighthouse(from);
 
                     if (addon != null)
